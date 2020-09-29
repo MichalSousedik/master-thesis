@@ -102,6 +102,7 @@
 		C047A1E3240AD25A00CF7983 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C047A1E5240AD25A00CF7983 /* Main.storyboard */; };
 		C047A1E9240ADA2D00CF7983 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C047A1E8240ADA2D00CF7983 /* Colors.xcassets */; };
 		C047A1F3240AF82100CF7983 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C047A1F2240AF82100CF7983 /* BaseNavigationController.swift */; };
+		C0F6A157243BCD65000C0ADD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F6A156243BCD65000C0ADD /* SignInViewController.swift */; };
 		F842186521820128002B2A49 /* DebugAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842186421820128002B2A49 /* DebugAlertController.swift */; };
 		F84218682182012F002B2A49 /* PopupPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84218662182012F002B2A49 /* PopupPresenting.swift */; };
 		F84218692182012F002B2A49 /* PopupModalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84218672182012F002B2A49 /* PopupModalAnimation.swift */; };
@@ -223,6 +224,7 @@
 		C047A1E4240AD25A00CF7983 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C047A1E8240ADA2D00CF7983 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = ../../../../../../../Downloads/Colors.xcassets; sourceTree = "<group>"; };
 		C047A1F2240AF82100CF7983 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		C0F6A156243BCD65000C0ADD /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D0E0069189DF8FCC4F6DF6BD /* Pods-Milacci-UnitTests.beta-stage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Milacci-UnitTests.beta-stage.xcconfig"; path = "Target Support Files/Pods-Milacci-UnitTests/Pods-Milacci-UnitTests.beta-stage.xcconfig"; sourceTree = "<group>"; };
 		D9F7CDFEC99CF08919BB7A94 /* Pods-Milacci-UnitTests.beta-development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Milacci-UnitTests.beta-development.xcconfig"; path = "Target Support Files/Pods-Milacci-UnitTests/Pods-Milacci-UnitTests.beta-development.xcconfig"; sourceTree = "<group>"; };
 		F58410AD5476A9B193848EF4 /* Pods-Milacci-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Milacci-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-Milacci-UnitTests/Pods-Milacci-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -612,6 +614,7 @@
 			children = (
 				8829099A2135885300825878 /* ExampleViewController.swift */,
 				8829099B2135885300825878 /* ExampleViewModel.swift */,
+				C0F6A156243BCD65000C0ADD /* SignInViewController.swift */,
 			);
 			name = Screens;
 			path = ViewModel/Screens;
@@ -698,6 +701,7 @@
 				69D13B251FDC337200315517 /* Crashlytics */,
 				M6AQ3YSQ77HLHFP38MK33NSP /* Carthage */,
 				8C4E94E23167DC17B57A1728 /* [CP] Embed Pods Frameworks */,
+				D8EB9FEB0D662B322EF9B81E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -718,6 +722,7 @@
 				69F4A6C91F8BD5C5003481A3 /* Resources */,
 				O0VHBKJ4IQ449ZH79TDCSV2L /* Carthage */,
 				DF53679EE38CACBFD0904336 /* [CP] Embed Pods Frameworks */,
+				135EEC913DB1341651B3D206 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -798,6 +803,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		135EEC913DB1341651B3D206 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Milacci-UnitTests/Pods-Milacci-UnitTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Milacci-UnitTests/Pods-Milacci-UnitTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Milacci-UnitTests/Pods-Milacci-UnitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		691039D62028B1D10069972B /* Select GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -834,7 +856,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n#\n# This script verifies that the commitish values in the Cartfile.resolved are in\n# sync with the commitish values in the Carthage/Build/*.version files.\n#\n# Usage:\n#   cd ProjectFolder && /path/to/carthage-verify\n\nsed -E 's/(github|git|binary) \\\"([^\\\"]+)\\\" \\\"([^\\\"]+)\\\"/\\2 \\3/g' Cartfile.resolved | while read line\ndo\nread -a array <<< \"$line\"\n\n# Handles:\n# - ReactiveCocoa/ReactiveSwift > ReactiveSwift\n# - https://github.com/Carthage/Carthage.git > Carthage\n# - https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK.json > Mapbox-iOS-SDK\ndependency=`basename ${array[0]} | awk -F'.' '{ print $1 }'`\n\nresolved_commitish=${array[1]}\n\necho -e \"Cartfile.resolved[$dependency] at $resolved_commitish\"\n\nversion_file=\"Carthage/Build/.$dependency.version\"\n\nif [ ! -f \"$version_file\" ]\nthen\necho -e \"No version file found for $dependency at $version_file, skipping.\"\necho\ncontinue\nfi\n\nversion_file_commitish=`grep -o '\"commitish\".*\"' \"$version_file\" | awk -F'\"' '{ print $4 }'`\n\necho -e \"$version_file at $version_file_commitish\"\n\nif [ \"$resolved_commitish\" != \"$version_file_commitish\" ]\nthen\necho\necho -e \"$dependency commitish ($version_file_commitish) does not match resolved commitish ($resolved_commitish)\"\nexit 1\nfi\n\necho\ndone";
+			shellScript = "#!/bin/bash\n#\n# This script verifies that the commitish values in the Cartfile.resolved are in\n# sync with the commitish values in the Carthage/Build/*.version files.\n#\n# Usage:\n#   cd ProjectFolder && /path/to/carthage-verify\n\nsed -E 's/(github|git|binary) \\\"([^\\\"]+)\\\" \\\"([^\\\"]+)\\\"/\\2 \\3/g' Cartfile.resolved | while read line\ndo\nread -a array <<< \"$line\"\n\n# Handles:\n# - ReactiveCocoa/ReactiveSwift > ReactiveSwift\n# - https://github.com/Carthage/Carthage.git > Carthage\n# - https://www.mapbox.com/ios-sdk/Mapbox-iOS-SDK.json > Mapbox-iOS-SDK\ndependency=`basename ${array[0]} | awk -F'.' '{ print $1 }'`\n\nresolved_commitish=${array[1]}\n\necho -e \"Cartfile.resolved[$dependency] at $resolved_commitish\"\n\nversion_file=\"Carthage/Build/.$dependency.version\"\n\nif [ ! -f \"$version_file\" ]\nthen\necho -e \"No version file found for $dependency at $version_file, skipping.\"\necho\ncontinue\nfi\n\nversion_file_commitish=`grep -o '\"commitish\".*\"' \"$version_file\" | awk -F'\"' '{ print $4 }'`\n\necho -e \"$version_file at $version_file_commitish\"\n\nif [ \"$resolved_commitish\" != \"$version_file_commitish\" ]\nthen\necho\necho -e \"$dependency commitish ($version_file_commitish) does not match resolved commitish ($resolved_commitish)\"\nexit 1\nfi\n\necho\ndone\n";
 		};
 		696CEE6A1F8D1E5C007C6DF7 /* Environment switch */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -971,6 +993,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D8EB9FEB0D662B322EF9B81E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Milacci/Pods-Milacci-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Milacci/Pods-Milacci-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Milacci/Pods-Milacci-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DF53679EE38CACBFD0904336 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1028,7 +1067,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 			showEnvVarsInLog = 0;
 		};
 		O0VHBKJ4IQ449ZH79TDCSV2L /* Carthage */ = {
@@ -1067,6 +1106,7 @@
 				1C8D0D392099EBAA003BB41B /* UIView+Spacer.swift in Sources */,
 				69D13B371FDC3BC800315517 /* FirebaseFetcher.swift in Sources */,
 				F860225121E78798008E7E96 /* Logger.swift in Sources */,
+				C0F6A157243BCD65000C0ADD /* SignInViewController.swift in Sources */,
 				69D13B2A1FDC34F500315517 /* FirebaseAppDelegate.swift in Sources */,
 				F842186521820128002B2A49 /* DebugAlertController.swift in Sources */,
 				69902FC71FDCAFBA00182939 /* AppDependency.swift in Sources */,
@@ -1193,7 +1233,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
@@ -1219,7 +1259,7 @@
 				INFOPLIST_FILE = "$(PROJECT_DIR)/Milacci/Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(ACK_ENVIRONMENT_DIR)/.environment_preprocess.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1310,7 +1350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
@@ -1336,7 +1376,7 @@
 				INFOPLIST_FILE = "$(PROJECT_DIR)/Milacci/Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(ACK_ENVIRONMENT_DIR)/.environment_preprocess.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1459,7 +1499,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1510,7 +1550,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1561,7 +1601,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
@@ -1591,7 +1631,7 @@
 				INFOPLIST_FILE = "$(PROJECT_DIR)/Milacci/Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(ACK_ENVIRONMENT_DIR)/.environment_preprocess.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1625,7 +1665,7 @@
 				INFOPLIST_FILE = "$(PROJECT_DIR)/Milacci/Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(ACK_ENVIRONMENT_DIR)/.environment_preprocess.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1659,7 +1699,7 @@
 				INFOPLIST_FILE = "$(PROJECT_DIR)/Milacci/Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(ACK_ENVIRONMENT_DIR)/.environment_preprocess.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,4 +1,4 @@
-import FirebaseMessaging
+//import FirebaseMessaging
 import ReactiveSwift
 
 protocol HasFirebasePushObserver {
@@ -23,9 +23,9 @@ final class FirebasePushObserver: FirebasePushObserving {
     // MARK: Public interface
 
     func start() {
-        pushManager.actions.registerToken <~ NotificationCenter.default.reactive
-            .notifications(forName: .InstanceIDTokenRefresh)
-            .map { _ in Messaging.messaging().fcmToken }
-            .skipNil()
+//        pushManager.actions.registerToken <~ NotificationCenter.default.reactive
+//            .notifications(forName: .InstanceIDTokenRefresh)
+//            .map { _ in Messaging.messaging().fcmToken }
+//            .skipNil()
     }
 }

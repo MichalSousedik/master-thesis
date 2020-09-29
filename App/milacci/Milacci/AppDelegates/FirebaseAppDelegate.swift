@@ -1,5 +1,5 @@
 import UIKit
-import Firebase
+//import Firebase
 
 /// Initialize and handle Firebase
 final class FirebaseAppDelegate: UIResponder, UIApplicationDelegate {

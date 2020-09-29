@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ezE-Yk-R1C">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Aes-jR-Pra">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,10 +18,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bES-rS-J7i">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bES-rS-J7i" id="GKy-3O-ccN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -55,10 +54,54 @@
             </objects>
             <point key="canvasLocation" x="-1602.8985507246377" y="909.375"/>
         </scene>
+        <!--Sign In View Controller-->
+        <scene sceneID="Zxa-F4-7Ll">
+            <objects>
+                <viewController id="Aes-jR-Pra" customClass="SignInViewController" customModule="Milacci" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v47-pp-d21">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wv6-XT-vXf">
+                                <rect key="frame" x="82" y="605.66666666666663" width="250" height="50"/>
+                                <color key="backgroundColor" name="Button - active"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QHu-RO-2qA"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="RhF-eN-KME"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Přihlásit se Google účtem">
+                                    <color key="titleColor" name="Text - primary"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="20"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="milacek_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Dlj-1i-TGd">
+                                <rect key="frame" x="107" y="320.33333333333331" width="200" height="255.33333333333331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Ajp-C3-nFj"/>
+                                    <constraint firstAttribute="width" secondItem="Dlj-1i-TGd" secondAttribute="height" multiplier="184:235" id="iae-bw-plT"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="Primary"/>
+                        <constraints>
+                            <constraint firstItem="wv6-XT-vXf" firstAttribute="top" secondItem="Dlj-1i-TGd" secondAttribute="bottom" constant="30" id="Kej-tp-BPJ"/>
+                            <constraint firstItem="Dlj-1i-TGd" firstAttribute="centerX" secondItem="v47-pp-d21" secondAttribute="centerX" id="cah-bC-dxM"/>
+                            <constraint firstItem="Dlj-1i-TGd" firstAttribute="centerY" secondItem="v47-pp-d21" secondAttribute="centerY" id="dtG-Z0-l4c"/>
+                            <constraint firstItem="wv6-XT-vXf" firstAttribute="centerX" secondItem="v47-pp-d21" secondAttribute="centerX" id="j0H-h0-fPa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="t0v-PN-5ZB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6lB-cn-U5O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1637.68115942029" y="1632.5892857142856"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Zce-1X-nAK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Id-jc-xcV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController id="ezE-Yk-R1C" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="2Hz-q9-CAW"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oiU-th-VgU">
@@ -77,6 +120,7 @@
                         <segue destination="YQp-9f-zJN" kind="relationship" relationship="viewControllers" id="qTg-RQ-u3q"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Id-jc-xcV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2759" y="86"/>
         </scene>
@@ -100,11 +144,16 @@
             <point key="canvasLocation" x="-3642.0289855072465" y="908.70535714285711"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="Primary"/>
     <resources>
-        <image name="doc" catalog="system" width="56" height="64"/>
-        <image name="doc.fill" catalog="system" width="56" height="64"/>
-        <image name="person" catalog="system" width="64" height="58"/>
-        <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="doc" catalog="system" width="115" height="128"/>
+        <image name="doc.fill" catalog="system" width="115" height="128"/>
+        <image name="milacek_icon" width="184" height="235"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <namedColor name="Button - active">
+            <color red="0.2669999897480011" green="0.28200000524520874" blue="0.30199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Primary">
             <color red="0.47099998593330383" green="0.62400001287460327" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -112,5 +161,4 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
-    <color key="tintColor" name="Primary"/>
 </document>

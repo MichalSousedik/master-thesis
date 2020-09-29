@@ -10,6 +10,9 @@ target 'Milacci' do
     pod 'ACKLocalization', '~> 0.3'
     pod 'SwiftGen', '~> 6.0'
     pod 'Smartling.i18n', '~> 1.0'
+    pod 'GoogleSignIn'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Firestore'
     
     target 'UnitTests' do
         inherit! :complete
