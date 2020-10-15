@@ -1,0 +1,6 @@
+framework module Pods_Milacci {
+  umbrella header "Pods-Milacci-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,8 +1,0 @@
-binary "https://building42.github.io/Specs/Carthage/iOS/Crashlytics.json" "3.14.0"
-binary "https://building42.github.io/Specs/Carthage/iOS/Fabric.json" "1.10.2"
-github "AckeeCZ/ACKategories" "6.5.0"
-github "AckeeCZ/Reqres" "3.1.1"
-github "Alamofire/Alamofire" "4.9.1"
-github "ReactiveCocoa/ReactiveCocoa" "10.3.0"
-github "ReactiveCocoa/ReactiveSwift" "6.2.1"
-github "SnapKit/SnapKit" "5.0.1"
