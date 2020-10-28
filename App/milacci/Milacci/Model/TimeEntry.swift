@@ -8,15 +8,14 @@
 
 import Foundation
 
-
 class TimeEntry {
-    
+
     var dayOfMonth: String
     var month: String
     var timeEntryTitle: String
     var timeEntryDetail: String
     var hours: String
-    
+
     init(dayOfMonth: String, month: String, timeEntryTitle: String, timeEntryDetail: String, hours: String){
         self.dayOfMonth = dayOfMonth
         self.month = month
@@ -24,5 +23,5 @@ class TimeEntry {
         self.timeEntryDetail = timeEntryDetail
         self.hours = hours
     }
-    
+
 }

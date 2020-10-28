@@ -9,11 +9,11 @@
 import Foundation
 
 protocol UserSettingAPI {
-    
+
     var accessToken: String? { get }
     var refreshToken: String? { get }
     var userId: Int { get }
-    
+
     func getSignInModel() -> SignInModel?
     func saveCredentials(credentials: Credentials)
     func saveUser(user: User)
@@ -21,7 +21,7 @@ protocol UserSettingAPI {
 }
 
 public class UserSettingsService {
-    
+
     private struct Keys {
         static let accessToken = "accessToken"
         static let refreshToken = "refreshToken"
@@ -29,9 +29,9 @@ public class UserSettingsService {
         static let userId = "userId"
         static let roles = "roles"
     }
-    
+
     static let shared: UserSettingsService = UserSettingsService()
-    
+
     private init() {}
 
 }
@@ -45,15 +45,15 @@ extension UserSettingsService: UserSettingAPI {
     var accessToken: String? {
         return UserDefaults.standard.string(forKey: Keys.accessToken)
     }
-    
+
     var refreshToken: String? {
         return UserDefaults.standard.string(forKey: Keys.refreshToken)
     }
-    
+
     func getSignInModel() -> SignInModel? {
-    
+
         let expiresIn: Int = UserDefaults.standard.integer(forKey: Keys.expiresIn)
-        
+
         guard let accessToken = accessToken,
               let refreshToken = refreshToken,
               expiresIn != 0,
@@ -75,7 +75,7 @@ extension UserSettingsService: UserSettingAPI {
         UserDefaults.standard.set(credentials.refreshToken, forKey: Keys.refreshToken)
         UserDefaults.standard.set(credentials.expiresIn, forKey: Keys.expiresIn)
     }
-    
+
     func saveUser(user: User) {
         UserDefaults.standard.set(user.id, forKey: Keys.userId)
         let arrayOfData: [Role] = user.roles ?? []

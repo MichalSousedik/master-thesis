@@ -11,18 +11,17 @@ import UIKit
 class InvoiceTableViewCell: UITableViewCell {
 
     static let identifier: String = "InvoiceTableViewCell"
-    
+
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var clipImageView: UIImageView!
-    
-    
+
     func configure(usingViewModel viewModel: InvoiceViewPresentable) {
         dateLabel.text = viewModel.date
         amountLabel.text = viewModel.value
         stateLabel.text = viewModel.state
         clipImageView.tintColor = viewModel.isFilePresent ? UIColor.label : UIColor.clear
     }
-    
+
 }

@@ -10,10 +10,9 @@ import UIKit
 import GoogleSignIn
 import AlamofireNetworkActivityLogger
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NetworkActivityLogger.shared.startLogging()
         GIDSignIn.sharedInstance().clientID = "689143727034-q39sbqfa8snc0gnhnp9m09109ftksege.apps.googleusercontent.com"

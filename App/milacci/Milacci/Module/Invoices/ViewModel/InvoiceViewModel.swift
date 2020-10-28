@@ -18,7 +18,7 @@ protocol InvoiceViewPresentable {
     var invoice: Invoice { get }
 }
 
-struct InvoiceViewModel : InvoiceViewPresentable{
+struct InvoiceViewModel: InvoiceViewPresentable{
     var date: String
     var state: String
     var isFilePresent: Bool
@@ -27,7 +27,7 @@ struct InvoiceViewModel : InvoiceViewPresentable{
 }
 
 extension InvoiceViewModel {
-    
+
     init(withInvoice invoice: Invoice){
         self.invoice = invoice
         self.state = invoice.state.description
@@ -39,5 +39,5 @@ extension InvoiceViewModel {
             self.value = value
         }
     }
-    
+
 }

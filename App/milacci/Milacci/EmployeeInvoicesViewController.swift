@@ -10,13 +10,11 @@ import UIKit
 import GoogleSignIn
 
 class EmployeeInvoicesTableViewController: UITableViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-    
-    
+
 }

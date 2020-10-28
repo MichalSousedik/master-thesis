@@ -10,14 +10,13 @@ import UIKit
 import MobileCoreServices
 import Alamofire
 
-
 protocol FileAction {
     func image() -> UIImage?
     func execute()
 }
 
 struct FileActionFactory{
-    
+
     static func create(fileName: String?, vcDelegate: InvoiceDetailViewController) -> FileAction {
         if fileName == nil {
             return UploadFile(vcDelegate: vcDelegate)
@@ -25,12 +24,12 @@ struct FileActionFactory{
             return DownloadFile(vcDelegate: vcDelegate)
         }
     }
-    
+
 }
 
-struct UploadFile : FileAction {
-    
-    var vcDelegate: InvoiceDetailViewController?;
+struct UploadFile: FileAction {
+
+    weak var vcDelegate: InvoiceDetailViewController?
 
     func image() -> UIImage? {
         return UIImage(systemName: "plus")
@@ -38,24 +37,23 @@ struct UploadFile : FileAction {
 
     func execute() {
         let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeZipArchive)], in: .open)
-        documentPicker.delegate = vcDelegate!
+        guard let vcDelegate = vcDelegate else { fatalError("VC Delegate is not present") }
+        documentPicker.delegate = vcDelegate
         documentPicker.allowsMultipleSelection = false
         documentPicker.modalPresentationStyle = .formSheet
-        vcDelegate?.present(documentPicker, animated: true)
+        vcDelegate.present(documentPicker, animated: true)
     }
-    
-    
+
 }
 
+struct DownloadFile: FileAction {
 
-struct DownloadFile : FileAction {
-    
-    var vcDelegate: InvoiceDetailViewController?;
-    
+    weak var vcDelegate: InvoiceDetailViewController?
+
     func image() -> UIImage? {
         return UIImage(systemName: "icloud.and.arrow.down")
     }
-    
+
     func execute() {
         vcDelegate?.invoiceButton.isEnabled = false
         vcDelegate?.invoiceProgressView.isHidden = false
@@ -70,6 +68,5 @@ struct DownloadFile : FileAction {
                 vcDelegate?.invoiceProgressView.isHidden = true
             }
     }
-    
-    
+
 }

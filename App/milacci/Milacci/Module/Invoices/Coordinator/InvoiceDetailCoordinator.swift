@@ -10,20 +10,20 @@ import UIKit
 import RxSwift
 
 class InvoiceDetailCoordinator: BaseCoordinator {
-    
+
     private let model: Invoice
-    
+
     init(model: Invoice, navigationController: UINavigationController) {
         self.model = model
         super.init()
         self.navigationController = navigationController
     }
-    
+
     override func start(){
         let view = InvoiceDetailViewController.instantiate()
         view.viewModelBuilder = { [model] in
             return InvoiceDetailViewModel(input: $0,
-                                   dependencies:(invoice: model, ()),
+                                   dependencies: (invoice: model, ()),
                                    api: InvoicesService.shared)
         }
         navigationController.pushViewController(view, animated: true)

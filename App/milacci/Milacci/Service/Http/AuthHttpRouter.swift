@@ -9,23 +9,23 @@
 import Alamofire
 
 struct AuthHttpRouter: HttpRouter {
-    
+
     var accessToken: String?
-    
+
     let path: String = "auth/google/sign-in"
     let method = HTTPMethod.post
-    
+
     var headers: HTTPHeaders? {
         return [
             "Content-type": "application/json"
         ]
     }
-    
+
     func body() throws -> Data? {
         guard let accessToken = accessToken else { throw NetworkingError.custom(message: "Access token not provided")}
         let json: [String: Any] = ["accessToken": accessToken]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         return jsonData
     }
-    
+
 }

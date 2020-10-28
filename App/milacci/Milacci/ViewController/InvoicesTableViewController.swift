@@ -12,13 +12,13 @@ import RxCocoa
 import RxSwift
 
 class InvoicesViewController: UIViewController, Storyboardable {
-    
+
     @IBOutlet var tableView: UITableView!
-    
+
     private var viewModel: InvoicesViewPresentable!
     var viewModelBuilder: InvoicesViewPresentable.ViewModelBuilder!
     private let disposeBag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = viewModelBuilder()
@@ -29,7 +29,6 @@ class InvoicesViewController: UIViewController, Storyboardable {
 //            cell.viewModel = self.invoicesViewModel?.createCellViewModel(forIndex: row)
 //        }.disposed(by: disposeBag)
     }
-    
-}
 
+}
 

@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 class SignInCoordinator: BaseCoordinator {
-    
+
     override func start(){
         let view = SignInViewController.instantiate()
         navigationController.pushViewController(view, animated: true)
     }
-    
+
 }

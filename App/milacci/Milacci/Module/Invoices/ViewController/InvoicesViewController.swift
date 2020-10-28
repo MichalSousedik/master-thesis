@@ -12,24 +12,24 @@ import RxSwift
 import RxDataSources
 
 class InvoicesViewController: UIViewController, Storyboardable {
-    
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var tableViewFooter: UIView!
     @IBOutlet weak var loadMoreActivityIndicator: UIActivityIndicatorView!
-    
+
     private var viewModel: InvoicesViewPresentable!
     private let refreshControl = UIRefreshControl()
     private let refreshSubject = PublishSubject<Void>()
-    
+
     var viewModelBuilder: InvoicesViewPresentable.ViewModelBuilder!
     private let bag = DisposeBag()
-    
+
     private lazy var dataSource = RxTableViewSectionedReloadDataSource<InvoiceItemsSection>(configureCell: { _, tableView, indexPath, item in
         let invoiceCell = tableView.dequeueReusableCell(withIdentifier: InvoiceTableViewCell.identifier, for: indexPath) as!  InvoiceTableViewCell
         invoiceCell.configure(usingViewModel: item)
         return invoiceCell
     })
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = viewModelBuilder((
@@ -45,39 +45,39 @@ class InvoicesViewController: UIViewController, Storyboardable {
 }
 
 private extension InvoicesViewController {
-    
+
     func setupViewModelBinding() {
         self.viewModel.output.invoices
             .drive(tableView.rx.items(dataSource: self.dataSource))
             .disposed(by: bag)
-        
+
         self.viewModel.output.isLoading.drive(onNext: { [weak self] isLoading in
             if(!isLoading) {
                 self?.hideLoadingIndicator()
             }
         }).disposed(by: bag)
-        
+
         self.viewModel.output.errorOccured.drive(onNext: {[weak self] error in
             guard let self = self else { return }
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.handle(error, retryHandler: { [weak self] in
                     self?.refreshInvoices()
                 })                }
         }).disposed(by: bag)
     }
-    
+
     func setupViewBinding() {
         refreshControl.rx.controlEvent(.valueChanged)
         .subscribe({[weak self] _ in
             self?.refreshInvoices()
         }).disposed(by: bag)
-        
+
         tableView.rx.reachedBottom.drive(onNext: { [weak self] in
             self?.tableView.tableFooterView?.isHidden = false
         }).disposed(by: bag)
     }
-    
+
     func setupUI() {
         self.tableView.refreshControl = refreshControl
         self.refreshControl.tintColor = UIColor(named: "primary")
@@ -89,19 +89,18 @@ private extension InvoicesViewController {
 }
 
 private extension InvoicesViewController {
-    
+
     func refreshInvoices(){
         self.refreshControl.beginRefreshing()
         self.refreshSubject.onNext(())
     }
-    
+
     func hideLoadingIndicator(){
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.refreshControl.endRefreshing()
             self.tableView.tableFooterView?.isHidden = true
 //        }
     }
-    
-}
 
+}
 

@@ -9,26 +9,26 @@
 import Alamofire
 
 struct InvoicesHttpRouter: HttpRouter {
-    
+
     private var accessToken: String {
         return UserSettingsService.shared.accessToken ?? ""
     }
     private var userId: Int {
          return UserSettingsService.shared.userId
     }
-    
+
     let path: String = "invoices"
     let method = HTTPMethod.get
     let limit = 10
     let order = "-createdAt"
-    
+
     var headers: HTTPHeaders? {
         return [
             "Content-type": "application/json",
             "Authorization": "Bearer \(accessToken)"
         ]
     }
-    
+
     var offset: Int
     var parameters: Parameters? {
         var params = Parameters()

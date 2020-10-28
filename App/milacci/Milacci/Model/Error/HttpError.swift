@@ -7,6 +7,6 @@
 //
 
 enum NetworkingError: Error {
-    case unauthorized;
-    case custom(message: String);
+    case unauthorized
+    case custom(message: String)
 }

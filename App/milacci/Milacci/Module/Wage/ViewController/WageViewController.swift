@@ -9,10 +9,9 @@
 import UIKit
 
 class WageViewController: UIViewController, Storyboardable {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
 
 }

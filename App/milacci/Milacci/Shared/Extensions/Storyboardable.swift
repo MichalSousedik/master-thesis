@@ -16,12 +16,12 @@ protocol Storyboardable {
 
 //https://www.hackingwithswift.com/articles/71/how-to-use-coordinator-pattern-in-ios-app
 extension Storyboardable where Self: UIViewController {
-        
+
     static func instantiate() -> Self {
         let fullName = NSStringFromClass(self)
         let className = fullName.components(separatedBy: ".")[1]
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         return storyboard.instantiateViewController(identifier: className)
     }
-    
+
 }

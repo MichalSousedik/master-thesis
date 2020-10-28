@@ -26,8 +26,8 @@ extension UIViewController {
         view.removeFromSuperview()
         removeFromParent()
     }
-    
+
     func handleConnection(isConnected: Bool){
-        
+
     }
 }

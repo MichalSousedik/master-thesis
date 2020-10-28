@@ -12,11 +12,10 @@ import OHHTTPStubs
 import Alamofire
 
 class InvoicesService: InvoicesAPI {
-    
+
     static let shared: InvoicesService = InvoicesService()
     private lazy var httpService = InvoiceHttpSerivce()
-    
-    
+
     func fetchInvoice(id: Int) -> Single<Invoice> {
 //        InvoicesService.mockInvoiceEndpoint()
         return Single.create{ [httpService] (single) -> Disposable in
@@ -34,15 +33,15 @@ class InvoicesService: InvoicesAPI {
             } catch {
                 single(.error(NetworkingError.serverError(error)))
             }
-            
+
             return Disposables.create()
         }
     }
-    
+
     func fetchInvoices(page: Int) -> Single<InvoicesResponse> {
 //        InvoicesService.mockInvoicesEndpoint()
         return Single.create{ [httpService] (single) -> Disposable in
-            
+
             do {
                 try InvoicesHttpRouter(offset: page)
                     .request(usingHttpService: httpService)
@@ -81,36 +80,34 @@ class InvoicesService: InvoicesAPI {
             } catch {
                 single(.error(NetworkingError.serverError(error)))
             }
-            
+
             return Disposables.create()
         }
     }
-    
+
 }
 
 extension InvoicesService {
-    
+
     static func parseInvoices(result: AFDataResponse<Any>) throws -> InvoicesResponse {
         guard
             let data = result.data else {
             throw NetworkingError.custom(message: "Data couldn't be extracted from result")
         }
-        
-        
-        return try perform(JSONDecoder().decode(InvoicesResponse.self, from : data))
+
+        return try perform(JSONDecoder().decode(InvoicesResponse.self, from: data))
             {NetworkingError.decodingFailed($0)}
     }
-    
-    
+
     static func parseInvoiceDetail(result: AFDataResponse<Any>) throws -> Invoice {
         guard
             let data = result.data else {
             throw NetworkingError.custom(message: "Data couldn't be extracted from result")
         }
-        
-        return try perform(JSONDecoder().decode(Invoice.self, from : data)) {NetworkingError.decodingFailed($0)}
+
+        return try perform(JSONDecoder().decode(Invoice.self, from: data)) {NetworkingError.decodingFailed($0)}
     }
-    
+
 }
 
 extension InvoicesService {

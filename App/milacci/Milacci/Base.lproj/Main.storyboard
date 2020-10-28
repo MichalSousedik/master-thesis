@@ -41,33 +41,6 @@
             </objects>
             <point key="canvasLocation" x="3483" y="779"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hKY-m8-Zci">
-            <objects>
-                <viewController id="HrW-NT-EVT" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7kJ-oB-RkC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zařízení není připojeno k internetu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6Q-tl-pAE">
-                                <rect key="frame" x="24.5" y="434" width="365" height="28"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <color key="textColor" name="Title text"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="dzg-8u-yuT"/>
-                        <color key="backgroundColor" name="secondary"/>
-                        <constraints>
-                            <constraint firstItem="j6Q-tl-pAE" firstAttribute="centerY" secondItem="7kJ-oB-RkC" secondAttribute="centerY" id="Ebt-mg-quj"/>
-                            <constraint firstItem="j6Q-tl-pAE" firstAttribute="centerX" secondItem="7kJ-oB-RkC" secondAttribute="centerX" id="Plb-Uq-Fci"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="foz-Yd-d5w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3497" y="101"/>
-        </scene>
         <!--Invoices-->
         <scene sceneID="Sqz-Lh-oNb">
             <objects>
@@ -418,16 +391,16 @@
         <image name="rightArrow" width="10" height="14"/>
         <image name="signOff" width="24" height="24"/>
         <namedColor name="Title text">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="button-color">
             <color red="0.26666666666666666" green="0.28235294117647058" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
-            <color red="0.47099998593330383" green="0.62400001287460327" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondary">
-            <color red="0.3529999852180481" green="0.47099998593330383" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68199998140335083" green="0.68199998140335083" blue="0.69800001382827759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -6,7 +6,6 @@
 //  Copyright © 2020 Michal Sousedik. All rights reserved.
 //
 
-
 import RxSwift
 
 struct PaginationUISource {
@@ -26,35 +25,35 @@ struct PaginationSink<T> {
 }
 
 extension PaginationSink {
-    
+
     init(uiSource: PaginationUISource, loadData: @escaping (Int) -> Observable<[T]>) {
         let loadResults = BehaviorSubject<[Int: [T]]>(value: [:])
-    
+
         let maxPage = loadResults
             .map { $0.keys }
             .map { $0.max() ?? 1 }
-        
+
         let reload = uiSource.refresh
             .map { -1 }
-        
+
         let loadNext = uiSource.loadNextPage
             .withLatestFrom(maxPage)
             .map { $0 + 1 }
-        
+
 //        let start = Observable.merge(reload, loadNext, Observable.just(1))
                 let start = Observable.merge(reload, loadNext)
-        
+
         let page = start
             .flatMap { page in
                 Observable.combineLatest(Observable.just(page), loadData(page == -1 ? 1 : page)){
                     (pageNumber: $0, items: $1)
-                    
+
                 }
                     .materialize()
                     .filter { $0.isCompleted == false }
             }
             .share()
-        
+
         _ = page
             .compactMap { $0.element }
             .withLatestFrom(loadResults) { (pages: $1, newPage: $0) }
@@ -75,7 +74,7 @@ extension PaginationSink {
             .map { $0.error }
             .filter { $0 != nil }
             .map { $0! }
-        
+
         self.isLoading = isLoading
         self.elements = elements
         self.error = error

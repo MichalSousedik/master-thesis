@@ -10,15 +10,13 @@ import Foundation
 import UIKit
 
 class BaseCoordinator: Coordinator {
-    
+
     var navigationController: UINavigationController = UINavigationController()
-    
-    
+
     var childCoordinator: [Coordinator] = []
-    
+
     func start() {
         fatalError("Start function is not implemented for BaseCoordinator class.")
     }
-    
-    
+
 }

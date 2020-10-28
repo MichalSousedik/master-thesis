@@ -26,26 +26,25 @@ extension Invoice {
         let month = self.numberToMonth(parts[1])
         return "\(month) \(year)"
     }
-    
+
     func numberToMonth(_ monthNumber: String) -> String {
         switch(monthNumber){
-        case "01" : return "Leden";
-        case "02" : return "Únor";
-        case "03" : return "Březen";
-        case "04" : return "Duben";
-        case "05" : return "Květen";
-        case "06" : return "Červen";
-        case "07" : return "Červenec";
-        case "08" : return "Srpen";
-        case "09" : return "Září";
-        case "10" : return "Říjen";
-        case "11" : return "Listopad";
-        case "12" : return "Prosinec";
-        default: return "";
+        case "01" : return "Leden"
+        case "02" : return "Únor"
+        case "03" : return "Březen"
+        case "04" : return "Duben"
+        case "05" : return "Květen"
+        case "06" : return "Červen"
+        case "07" : return "Červenec"
+        case "08" : return "Srpen"
+        case "09" : return "Září"
+        case "10" : return "Říjen"
+        case "11" : return "Listopad"
+        case "12" : return "Prosinec"
+        default: return ""
         }
     }
 }
-
 
 extension Invoice: Hashable {
     func hash(into hasher: inout Hasher) {
@@ -76,7 +75,7 @@ extension InvoiceState {
             case .waiting: return "Čekající"
         }
     }
-    
+
 }
 
 enum WorkType: String, Codable {

@@ -14,7 +14,7 @@ enum NetworkingError: Error {
     case serverError(Error)
     case missingData
     case decodingFailed(Error)
-    case custom(message: String);
+    case custom(message: String)
 }
 
 extension NetworkingError: LocalizedError {

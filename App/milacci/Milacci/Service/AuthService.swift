@@ -14,10 +14,9 @@ protocol AuthAPI {
 }
 
 class AuthService: AuthAPI {
-    
+
     static let shared: AuthAPI = AuthService()
     private lazy var httpService = AuthHttpService()
-
 
     func signIn(accessToken: String) -> Single<SignInModel> {
         return Single.create{ [httpService] (single) -> Disposable in
@@ -35,22 +34,22 @@ class AuthService: AuthAPI {
             } catch {
                 single(.error(NetworkingError.serverError(error)))
             }
-            
+
             return Disposables.create()
         }
     }
-    
+
 }
 
 extension AuthService {
-    
+
     static func parse(result: AFDataResponse<Any>) throws -> SignInModel {
         guard
             let data = result.data else {
             throw NetworkingError.custom(message: "Data couldn't be extracted from result")
         }
-        
-        return try perform(JSONDecoder().decode(SignInModel.self, from : data))
+
+        return try perform(JSONDecoder().decode(SignInModel.self, from: data))
             {NetworkingError.decodingFailed($0)}
     }
 }

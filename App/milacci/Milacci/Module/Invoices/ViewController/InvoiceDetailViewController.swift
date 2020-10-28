@@ -12,9 +12,8 @@ import RxCocoa
 import Alamofire
 import SkeletonView
 
-
 class InvoiceDetailViewController: UIViewController, Storyboardable {
-    
+
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var hoursTitleLabel: UILabel!
@@ -23,20 +22,20 @@ class InvoiceDetailViewController: UIViewController, Storyboardable {
     @IBOutlet weak var hourlyWageLabel: UILabel!
     @IBOutlet weak var invoiceButton: UIButton!
     @IBOutlet weak var invoiceProgressView: UIProgressView!
-    
+
     private var viewModel: InvoiceDetailViewPresentable!
     var viewModelBuilder: InvoiceDetailViewPresentable.ViewModelBuilder!
     private let bag = DisposeBag()
-    
+
     private var fileAction: FileAction?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = viewModelBuilder(())
         self.setupUI()
         self.setupBinding()
     }
-    
+
     @IBAction func press(_ sender: Any) {
         fileAction?.execute()
     }
@@ -44,15 +43,15 @@ class InvoiceDetailViewController: UIViewController, Storyboardable {
 }
 
 private extension InvoiceDetailViewController {
-    
+
     func setupUI() {
         hourlyWageLabel.showAnimatedGradientSkeleton()
         hourlyWageTitleLabel.showAnimatedGradientSkeleton()
         hoursLabel.showAnimatedGradientSkeleton()
         hoursTitleLabel.showAnimatedGradientSkeleton()
-        
+
     }
-    
+
     func setupBinding() {
         self.viewModel.output.date.drive(self.rx.title)
             .disposed(by: bag)
@@ -69,17 +68,17 @@ private extension InvoiceDetailViewController {
             hourlyWageTitleLabel?.hideSkeleton()
         }).disposed(by: bag)
         self.viewModel.output.fileName.drive(onNext: { [invoiceButton, self] (fileName) in
+            guard let invoiceButton = invoiceButton else { print("invoice button does not exist"); return}
             self.fileAction = FileActionFactory.create(fileName: fileName, vcDelegate: self)
-            invoiceButton?.layer.cornerRadius = 0.5 * invoiceButton!.bounds.size.width
-            invoiceButton?.setImage(fileAction?.image(), for: .normal)
+            invoiceButton.layer.cornerRadius = 0.5 * invoiceButton.bounds.size.width
+            invoiceButton.setImage(fileAction?.image(), for: .normal)
         }).disposed(by: bag)
     }
-    
+
 }
 
-
 extension InvoiceDetailViewController: UIDocumentPickerDelegate {
-     
+
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let url = urls.first else {
             print("First URL does not exist")
@@ -98,7 +97,7 @@ extension InvoiceDetailViewController: UIDocumentPickerDelegate {
                 self.invoiceProgressView.isHidden = true
                 self.viewModel.refreshState()
         })
-            
+
     }
 }
 

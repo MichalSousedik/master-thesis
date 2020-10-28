@@ -12,7 +12,7 @@ import GoogleSignIn
 class SignInViewController: UIViewController, Storyboardable {
 
     @IBOutlet weak var signInButton: GIDSignInButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.presentingViewController = self

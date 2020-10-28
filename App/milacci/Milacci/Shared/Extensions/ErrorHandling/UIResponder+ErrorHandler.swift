@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIResponder {
-    
+
     @objc func handle(_ error: Error,
                       from viewController: UIViewController,
                       retryHandler: (() -> Void)?) {
@@ -26,8 +26,7 @@ extension UIResponder {
             from: viewController,
             retryHandler: retryHandler
         )
-        
+
     }
 
-    
 }

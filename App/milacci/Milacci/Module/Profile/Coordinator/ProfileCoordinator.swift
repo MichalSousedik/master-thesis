@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 
 class ProfileCoordinator: BaseCoordinator {
-    
+
     init(navigationController: UINavigationController) {
         super.init()
         self.navigationController = navigationController
     }
-    
+
     override func start(){
         let view = ProfileViewController.instantiate()
         view.tabBarItem = UITabBarItem(title: "Profil", image: UIImage(systemName: "person.fill"), tag: 0)
         navigationController.pushViewController(view, animated: true)
     }
-    
+
 }

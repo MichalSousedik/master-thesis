@@ -10,14 +10,13 @@ import UIKit
 import GoogleSignIn
 
 class ProfileViewController: UIViewController, Storyboardable {
-    
+
     @IBAction func signOut(){
         GIDSignIn.sharedInstance()?.disconnect()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
 
 }

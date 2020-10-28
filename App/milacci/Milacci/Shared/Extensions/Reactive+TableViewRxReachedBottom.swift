@@ -16,13 +16,13 @@ extension Reactive where Base: UIScrollView {
                 guard let scrollView = base else {
                     return Observable.empty()
                 }
-                
+
                 let visibleHeight = scrollView.frame.height
                     - scrollView.contentInset.top
                     - scrollView.contentInset.bottom
                 let yPosition = contentOffset.y + scrollView.contentInset.top
                 let threshold = max(0.0, scrollView.contentSize.height - visibleHeight)
-                
+
                 return yPosition > threshold ? Observable.just(scrollView.contentSize.height) : Observable.empty()
             }
             .distinctUntilChanged()

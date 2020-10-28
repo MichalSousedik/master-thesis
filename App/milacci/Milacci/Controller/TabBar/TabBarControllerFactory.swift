@@ -15,6 +15,6 @@ struct TabBarControllerFactory {
         if roles.contains(.user) {return WorkerTabBarControoler()}
         fatalError("Role is not supported")
     }
-    
+
     private init(){}
 }

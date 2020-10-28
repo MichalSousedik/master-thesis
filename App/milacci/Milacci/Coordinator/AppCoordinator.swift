@@ -9,19 +9,19 @@
 import Foundation
 import UIKit
 import GoogleSignIn
-    
+
 class AppCoordinator: BaseCoordinator {
- 
+
     private let window: UIWindow
-    
+
     init(window: UIWindow) {
         self.window = window
     }
-    
+
     override func start() {
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     }
-    
+
     func reload() {
         if let signInModel = UserSettingsService.shared.getSignInModel() {
             window.rootViewController = TabBarControllerFactory.create(roles: signInModel.user.roles ?? [])
@@ -33,6 +33,5 @@ class AppCoordinator: BaseCoordinator {
         }
         window.makeKeyAndVisible()
     }
-    
 
 }

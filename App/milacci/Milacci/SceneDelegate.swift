@@ -12,7 +12,6 @@ import Alamofire
 import Network
 import RxSwift
 
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -22,17 +21,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     let monitor = NWPathMonitor()
     var labels: [UILabel] = []
-    
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-  
+
         GIDSignIn.sharedInstance().delegate = self
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        self.window = UIWindow(windowScene: windowScene)
-        self.appCoordinator = AppCoordinator.init(window: self.window!)
+        guard let windowScene = (scene as? UIWindowScene)
+              else { fatalError("Scene is not of type UIWindowScene") }
+
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        self.appCoordinator = AppCoordinator.init(window: window)
         self.appCoordinator?.start()
         self.handleOfflineState()
     }
-    
+
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
@@ -60,11 +62,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-    
+
 }
 
 extension SceneDelegate: GIDSignInDelegate {
-    
+
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
         if let error = error {
@@ -89,11 +91,11 @@ extension SceneDelegate: GIDSignInDelegate {
         UserSettingsService.shared.clearAll()
         self.appCoordinator?.reload()
     }
-    
+
 }
 
 private extension SceneDelegate {
-    
+
     func signIn(accessToken: String){
         self.authService.signIn(accessToken: accessToken)
             .subscribe { [weak self] signInModel in
@@ -101,18 +103,18 @@ private extension SceneDelegate {
                 UserSettingsService.shared.saveUser(user: signInModel.user)
                 self?.appCoordinator?.reload()
             } onError: { [weak self] error in
-                guard let window = self?.window else { print("No window found"); return}
+                guard let window = self?.window else { print("No window found"); return }
                 let vc = ErrorViewController.instantiate()
                 window.rootViewController = vc
                 window.makeKeyAndVisible()
                 vc.handle(error, from: vc, retryHandler: nil)
             }.disposed(by: bag)
     }
-    
+
 }
 
 private extension SceneDelegate {
-    
+
     func handleOfflineState() {
         monitor.start(queue: .global())
         monitor.pathUpdateHandler = {[weak self] path in
@@ -120,28 +122,26 @@ private extension SceneDelegate {
                 DispatchQueue.main.async{
                     self?.labels.forEach{$0.removeFromSuperview()}
                 }
-                print("Online")
             } else {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                    guard let self = self
-                    else {return}
-                    var label: UILabel
-                    if self.labels.isEmpty {
-                        label = UILabel(frame: CGRect(x: 0, y: 0, width: self.window!.bounds.width, height: self.window!.bounds.height))
-                        label.translatesAutoresizingMaskIntoConstraints = false
-                        label.backgroundColor = UIColor.red
-                        label.textAlignment = .center
-                        label.text = "No Internet Connection"
-                        self.labels.append(label)
-                    } else {
-                        label = self.labels.first!
-                    }
+                    guard let self = self,
+                          let window = self.window
+                    else { print("Self or window does not exist"); return }
+                    let label = self.labels.first ?? self.createOfflineView(frame: CGRect(x: 0, y: 0, width: window.bounds.width, height: window.bounds.height))
                     self.window?.rootViewController?.view.addSubview(label)
-                    
                 }
-                print("Offline")
             }
         }
     }
-    
+
+    func createOfflineView(frame: CGRect) -> UIView {
+        let label = UILabel(frame: frame)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = UIColor.red
+        label.textAlignment = .center
+        label.text = "No Internet Connection"
+        self.labels.append(label)
+        return label
+    }
+
 }

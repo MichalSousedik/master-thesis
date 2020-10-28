@@ -9,17 +9,17 @@
 import Alamofire
 
 struct InvoiceDetailHttpRouter: HttpRouter {
-    
+
     var baseUrlString: String {
         return "https://milacci2-api-development.ack.ee/api/v1"
     }
-    
+
     var id: Int
-    
-    var path : String {
+
+    var path: String {
         return "invoice/\(id)"
     }
-    
+
     var method = HTTPMethod.get
-    
+
 }
