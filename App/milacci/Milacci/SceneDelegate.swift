@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         GIDSignIn.sharedInstance().delegate = self
         guard let windowScene = (scene as? UIWindowScene)
-              else { fatalError("Scene is not of type UIWindowScene") }
+        else { fatalError("Scene is not of type UIWindowScene") }
 
         let window = UIWindow(windowScene: windowScene)
         self.window = window
@@ -79,8 +79,7 @@ extension SceneDelegate: GIDSignInDelegate {
             return
         }
         guard let accessToken = user.authentication.accessToken else {
-            print("Access token was not provided for used from Google Sign in")
-            return
+            fatalError("Access token was not provided from Google Sign in")
         }
         self.signIn(accessToken: accessToken)
 
@@ -119,7 +118,7 @@ private extension SceneDelegate {
         monitor.start(queue: .global())
         monitor.pathUpdateHandler = {[weak self] path in
             if path.status == .satisfied {
-                DispatchQueue.main.async{
+                DispatchQueue.main.async{ [weak self] in
                     self?.labels.forEach{$0.removeFromSuperview()}
                 }
             } else {
@@ -139,7 +138,7 @@ private extension SceneDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor.red
         label.textAlignment = .center
-        label.text = "No Internet Connection"
+        label.text = NSLocalizedString("No Internet Connection", comment: "")
         self.labels.append(label)
         return label
     }

@@ -10,7 +10,7 @@ import RxSwift
 import Alamofire
 
 protocol AuthAPI {
-    func signIn(accessToken: String) -> Single<SignInModel>
+    func signIn(accessToken: String) -> Single<SignInResponse>
 }
 
 class AuthService: AuthAPI {
@@ -18,7 +18,7 @@ class AuthService: AuthAPI {
     static let shared: AuthAPI = AuthService()
     private lazy var httpService = AuthHttpService()
 
-    func signIn(accessToken: String) -> Single<SignInModel> {
+    func signIn(accessToken: String) -> Single<SignInResponse> {
         return Single.create{ [httpService] (single) -> Disposable in
             do {
                 try AuthHttpRouter(accessToken: accessToken)
@@ -43,13 +43,13 @@ class AuthService: AuthAPI {
 
 extension AuthService {
 
-    static func parse(result: AFDataResponse<Any>) throws -> SignInModel {
+    static func parse(result: AFDataResponse<Any>) throws -> SignInResponse {
         guard
             let data = result.data else {
-            throw NetworkingError.custom(message: "Data couldn't be extracted from result")
+            throw NetworkingError.custom(message: NSLocalizedString("Data couldn't be extracted from result", comment: ""))
         }
 
-        return try perform(JSONDecoder().decode(SignInModel.self, from: data))
+        return try perform(JSONDecoder().decode(SignInResponse.self, from: data))
             {NetworkingError.decodingFailed($0)}
     }
 }

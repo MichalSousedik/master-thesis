@@ -15,8 +15,8 @@ class BaseNavigationController: UINavigationController {
         let navigationBarAppearence = UINavigationBarAppearance()
         navigationBarAppearence.shadowColor = .clear
         navigationBarAppearence.backgroundColor = UIColor(named: "primary")
-        navigationBarAppearence.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "Title text") ?? .label]
-        navigationBarAppearence.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "Title text") ?? .label]
+        navigationBarAppearence.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
+        navigationBarAppearence.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
         self.navigationBar.standardAppearance = navigationBarAppearence
 
         self.navigationBar.tintColor = .white
@@ -29,7 +29,7 @@ class BaseNavigationController: UINavigationController {
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
 
 }

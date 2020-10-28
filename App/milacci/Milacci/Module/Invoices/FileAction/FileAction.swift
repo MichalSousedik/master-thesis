@@ -37,7 +37,7 @@ struct UploadFile: FileAction {
 
     func execute() {
         let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeZipArchive)], in: .open)
-        guard let vcDelegate = vcDelegate else { fatalError("VC Delegate is not present") }
+        guard let vcDelegate = vcDelegate else { fatalError(NSLocalizedString("VC Delegate is not present", comment: "")) }
         documentPicker.delegate = vcDelegate
         documentPicker.allowsMultipleSelection = false
         documentPicker.modalPresentationStyle = .formSheet

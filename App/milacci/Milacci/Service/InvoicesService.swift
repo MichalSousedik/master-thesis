@@ -17,7 +17,7 @@ class InvoicesService: InvoicesAPI {
     private lazy var httpService = InvoiceHttpSerivce()
 
     func fetchInvoice(id: Int) -> Single<Invoice> {
-//        InvoicesService.mockInvoiceEndpoint()
+        //        InvoicesService.mockInvoiceEndpoint()
         return Single.create{ [httpService] (single) -> Disposable in
             do {
                 try InvoiceDetailHttpRouter(id: id)
@@ -29,7 +29,7 @@ class InvoicesService: InvoicesAPI {
                         } catch {
                             single(.error(error))
                         }
-                }
+                    }
             } catch {
                 single(.error(NetworkingError.serverError(error)))
             }
@@ -39,7 +39,7 @@ class InvoicesService: InvoicesAPI {
     }
 
     func fetchInvoices(page: Int) -> Single<InvoicesResponse> {
-//        InvoicesService.mockInvoicesEndpoint()
+        //        InvoicesService.mockInvoicesEndpoint()
         return Single.create{ [httpService] (single) -> Disposable in
 
             do {
@@ -50,15 +50,15 @@ class InvoicesService: InvoicesAPI {
                         if let error = result.error {
                             var networkingError: NetworkingError
                             if let afError = error.asAFError {
-                                        switch afError {
-                                        case .sessionTaskFailed(let sessionError):
-                                            if let urlError = sessionError as? URLError, urlError.code == URLError.notConnectedToInternet {
-                                                single(.error(NetworkingError.deviceIsOffline))
-                                            }
-                                            break
-                                        default:
-                                            print(afError)
-                                        }
+                                switch afError {
+                                case .sessionTaskFailed(let sessionError):
+                                    if let urlError = sessionError as? URLError, urlError.code == URLError.notConnectedToInternet {
+                                        single(.error(NetworkingError.deviceIsOffline))
+                                    }
+                                    break
+                                default:
+                                    print(afError)
+                                }
                             }
                             switch error.responseCode {
                             case 404:
@@ -76,7 +76,7 @@ class InvoicesService: InvoicesAPI {
                                 single(.error(error))
                             }
                         }
-                }
+                    }
             } catch {
                 single(.error(NetworkingError.serverError(error)))
             }
@@ -92,7 +92,7 @@ extension InvoicesService {
     static func parseInvoices(result: AFDataResponse<Any>) throws -> InvoicesResponse {
         guard
             let data = result.data else {
-            throw NetworkingError.custom(message: "Data couldn't be extracted from result")
+            throw NetworkingError.custom(message: NSLocalizedString("Data couldn't be extracted from result", comment: ""))
         }
 
         return try perform(JSONDecoder().decode(InvoicesResponse.self, from: data))
@@ -102,7 +102,8 @@ extension InvoicesService {
     static func parseInvoiceDetail(result: AFDataResponse<Any>) throws -> Invoice {
         guard
             let data = result.data else {
-            throw NetworkingError.custom(message: "Data couldn't be extracted from result")
+            throw NetworkingError.custom(message: NSLocalizedString("Data couldn't be extracted from result", comment: ""))
+
         }
 
         return try perform(JSONDecoder().decode(Invoice.self, from: data)) {NetworkingError.decodingFailed($0)}
@@ -112,7 +113,7 @@ extension InvoicesService {
 
 extension InvoicesService {
     static func perform<T>(_ expression: @autoclosure () throws -> T,
-                    errorTransform: (Error) -> Error) throws -> T {
+                           errorTransform: (Error) -> Error) throws -> T {
         do {
             return try expression()
         } catch {

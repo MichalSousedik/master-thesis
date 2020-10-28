@@ -1,0 +1,45 @@
+/* 
+  Localizable.strings
+  Milacci
+
+  Created by Michal Sousedik on 28/10/2020.
+  Copyright © 2020 Michal Sousedik. All rights reserved.
+*/
+
+"Access Token not provided" = "Access token není k dispozici";
+"Wage" = "Mzda";
+"Data couldn't be extracted from result" = "Nepodařilo se získat data ze serverové odpovědi";
+"Profile" = "Profil";
+"VC Delegate is not present" = "ViewController Delegate nebyl specifikován";
+"January" = "Leden";
+"February" = "Únor";
+"March" = "Březen";
+"April" = "Duben";
+"May" = "Květen";
+"June" = "Červen";
+"July" = "Červenec";
+"August" = "Srpen";
+"September" = "Září";
+"October" = "Říjen";
+"November" = "Listopad";
+"December" = "Prosinec";
+"Unknown month" = "Neznámý měsíc";
+"New" = "Nová";
+"Paid" = "Zaplacená";
+"Approved" = "Schválená";
+"Waiting" = "Čekajicí";
+"Invoices" = "Faktury";
+"Error occured" = "Vyskytla se chyba";
+"Cancel" = "Zrušit";
+"Retry" = "Zkusit znovu";
+"Crowns" = "Kč";
+"Device is offline" = "Nelze se připojit k síti";
+"Account was not authorized" = "Váš učet se nepodařilo autorizovat";
+"Resource was not found" = "Zdroj dat se nepodařilo lokalizovat";
+"Server got into trouble" = "Náš server se dostal do potíží:";
+"Searched data couldn't be located" = "Vyhledávaná data neexistují";
+"Received data couldn't be loaded because they are in a wrong format" = "Obdžená data nebyla načtena, neboť nejsou ve správném formátu";
+"Fetching data resulted in error" = "Získávání dat ze serveru se nepodařilo dokončit:";
+"No Internet Connection" = "Zařízení není připojeno k internetu";
+
+

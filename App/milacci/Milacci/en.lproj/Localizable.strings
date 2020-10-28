@@ -1,0 +1,43 @@
+/* 
+  Localizable.strings
+  Milacci
+
+  Created by Michal Sousedik on 28/10/2020.
+  Copyright © 2020 Michal Sousedik. All rights reserved.
+*/
+
+"Access Token not provided" = "Access token not provided";
+"Wage" = "Wage";
+"Data couldn't be extracted from result" = "Data couldn't be extracted from result";
+"Profile" = "Profile";
+"VC Delegate is not present" = "ViewController Delegate is not present";
+"January" = "January";
+"February" = "February";
+"March" = "March";
+"April" = "April";
+"May" = "May";
+"June" = "June";
+"July" = "July";
+"August" = "August";
+"September" = "September";
+"October" = "October";
+"November" = "November";
+"December" = "December";
+"Unknown month" = "Unknown month";
+"New" = "New";
+"Paid" = "Paid";
+"Approved" = "Approved";
+"Waiting" = "Waiting";
+"Invoices" = "Invoices";
+"Error occured" = "Error occured";
+"Cancel" = "Cancel";
+"Retry" = "Retry";
+"Crowns" = "Kč";
+"Device is offline" = "Device is offline";
+"Account was not authorized" = "Account was not authorized";
+"Resource was not found" = "Resource was not found";
+"Server got into trouble" = "Server got into trouble";
+"Searched data couldn't be located" = "Searched data couldn't be located";
+"Received data couldn't be loaded because they are in a wrong format" = "Received data couldn't be loaded because they are in a wrong format";
+"Fetching data resulted in error" = "Fetching data resulted in error";
+"No Internet Connection" = "No Internet Connection";

@@ -1,0 +1,20 @@
+/* Class = "UILabel"; text = "Hodinová mzda"; ObjectID = "4kD-Jk-b15"; */
+"4kD-Jk-b15.text" = "Hodinová mzda";
+
+/* Class = "UILabel"; text = "Kontaktujte správce aplikace"; ObjectID = "BsN-yK-jEE"; */
+"BsN-yK-jEE.text" = "Kontaktujte správce aplikace";
+
+/* Class = "UINavigationItem"; title = "Profil"; ObjectID = "Gv6-Un-0Vg"; */
+"Gv6-Un-0Vg.title" = "Profil";
+
+/* Class = "UILabel"; text = "Počet hodin"; ObjectID = "Rc5-mJ-xo3"; */
+"Rc5-mJ-xo3.text" = "Počet hodin";
+
+/* Class = "UILabel"; text = "Chyba při přihlašování"; ObjectID = "cw1-Vo-hCV"; */
+"cw1-Vo-hCV.text" = "Chyba při přihlašování";
+
+/* Class = "UINavigationItem"; title = "Faktury"; ObjectID = "q1N-1U-kUS"; */
+"q1N-1U-kUS.title" = "Faktury";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "thZ-5Z-k1h"; */
+"thZ-5Z-k1h.normalTitle" = "Přihlásit se";

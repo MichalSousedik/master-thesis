@@ -12,7 +12,7 @@ extension Formatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.groupingSeparator = " "
-        formatter.positiveSuffix = " Kč"
+        formatter.positiveSuffix = " \(NSLocalizedString("Crowns", comment: ""))"
         return formatter
     }()
 }

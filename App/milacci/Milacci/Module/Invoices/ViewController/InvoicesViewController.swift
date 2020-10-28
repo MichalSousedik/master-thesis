@@ -69,9 +69,9 @@ private extension InvoicesViewController {
 
     func setupViewBinding() {
         refreshControl.rx.controlEvent(.valueChanged)
-        .subscribe({[weak self] _ in
-            self?.refreshInvoices()
-        }).disposed(by: bag)
+            .subscribe({[weak self] _ in
+                self?.refreshInvoices()
+            }).disposed(by: bag)
 
         tableView.rx.reachedBottom.drive(onNext: { [weak self] in
             self?.tableView.tableFooterView?.isHidden = false
@@ -96,10 +96,8 @@ private extension InvoicesViewController {
     }
 
     func hideLoadingIndicator(){
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.refreshControl.endRefreshing()
-            self.tableView.tableFooterView?.isHidden = true
-//        }
+        self.refreshControl.endRefreshing()
+        self.tableView.tableFooterView?.isHidden = true
     }
 
 }

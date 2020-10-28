@@ -45,6 +45,7 @@ PODS:
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
   - SkeletonView (1.10.0)
+  - SwiftFormat/CLI (0.47.1)
   - SwiftLint (0.40.3)
 
 DEPENDENCIES:
@@ -57,6 +58,7 @@ DEPENDENCIES:
   - RxDataSources (~> 4.0)
   - RxSwift (~> 5)
   - SkeletonView
+  - SwiftFormat/CLI
   - SwiftLint
 
 SPEC REPOS:
@@ -75,6 +77,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SkeletonView
+    - SwiftFormat
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -92,8 +95,9 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SkeletonView: 14fbe9702c7fb5c5f011b44ac3ae99fc73155726
+  SwiftFormat: 115c4a06fd8b6ef19525aafa058cbfeed1944bd5
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: a5930af3750df7bd597f1e92001515b40cb5b72f
+PODFILE CHECKSUM: 9d72868e944cdff742a952b9af39f18931c7469a
 
 COCOAPODS: 1.9.3

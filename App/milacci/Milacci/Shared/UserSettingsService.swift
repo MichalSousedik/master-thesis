@@ -14,7 +14,7 @@ protocol UserSettingAPI {
     var refreshToken: String? { get }
     var userId: Int { get }
 
-    func getSignInModel() -> SignInModel?
+    func getSignInModel() -> SignInResponse?
     func saveCredentials(credentials: Credentials)
     func saveUser(user: User)
     func clearAll()
@@ -50,7 +50,7 @@ extension UserSettingsService: UserSettingAPI {
         return UserDefaults.standard.string(forKey: Keys.refreshToken)
     }
 
-    func getSignInModel() -> SignInModel? {
+    func getSignInModel() -> SignInResponse? {
 
         let expiresIn: Int = UserDefaults.standard.integer(forKey: Keys.expiresIn)
 
@@ -62,7 +62,7 @@ extension UserSettingsService: UserSettingAPI {
               userId != 0 else {
             return nil
         }
-        return SignInModel(user: User(id: userId, roles: roles),
+        return SignInResponse(user: User(id: userId, roles: roles),
                           credentials: Credentials(
                             accessToken: accessToken,
                             refreshToken: refreshToken,

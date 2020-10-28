@@ -84,7 +84,7 @@ extension InvoiceDetailViewController: UIDocumentPickerDelegate {
             print("First URL does not exist")
             return
         }
-//        AF.upload(url, to: "https://milacci2-api-development.ack.ee/api/v1/invoices/1/file-urls")
+        //        AF.upload(url, to: "https://milacci2-api-development.ack.ee/api/v1/invoices/1/file-urls")
         AF.upload(url, to: "https://httpbin.org/post")
             .uploadProgress { progress in
                 print("Upload Progress: \(progress.fractionCompleted)")
@@ -96,7 +96,7 @@ extension InvoiceDetailViewController: UIDocumentPickerDelegate {
                 self.invoiceButton.isEnabled = true
                 self.invoiceProgressView.isHidden = true
                 self.viewModel.refreshState()
-        })
+            })
 
     }
 }

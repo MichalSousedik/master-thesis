@@ -62,24 +62,24 @@ class InvoicesViewModel: InvoicesViewPresentable{
 
 private extension InvoicesViewModel {
 
-   func processInput() {
-    self.input.invoiceSelect
-        .map { [router] in
-            router.accept($0.invoice)
-        }
-    .drive()
-    .disposed(by: bag)
+    func processInput() {
+        self.input.invoiceSelect
+            .map { [router] in
+                router.accept($0.invoice)
+            }
+            .drive()
+            .disposed(by: bag)
 
-    let source = PaginationUISource(refresh: self.input.refreshTrigger.asObservable(),
-                                    loadNextPage: self.input.loadNextPageTrigger.asObservable())
-    let sink = PaginationSink(uiSource: source, loadData: load(page: ))
+        let source = PaginationUISource(refresh: self.input.refreshTrigger.asObservable(),
+                                        loadNextPage: self.input.loadNextPageTrigger.asObservable())
+        let sink = PaginationSink(uiSource: source, loadData: load(page: ))
 
-    sink.isLoading.bind(to: state.isLoading)
-        .disposed(by: bag)
-    sink.elements.bind(to: state.invoices)
-        .disposed(by: bag)
-    sink.error.bind(to: state.errorOccured)
-        .disposed(by: bag)
+        sink.isLoading.bind(to: state.isLoading)
+            .disposed(by: bag)
+        sink.elements.bind(to: state.invoices)
+            .disposed(by: bag)
+        sink.error.bind(to: state.errorOccured)
+            .disposed(by: bag)
     }
 
     func load(page: Int) -> Observable<InvoicesResponse> {
@@ -91,11 +91,11 @@ private extension InvoicesViewModel {
         let sections = state.invoices.asObservable()
             .map({
                 $0.compactMap({
-                   InvoiceViewModel(withInvoice: $0)
+                    InvoiceViewModel(withInvoice: $0)
                 })
             })
-        .map({[InvoiceItemsSection(model: 0, items: $0)]})
-        .asDriver(onErrorJustReturn: [])
+            .map({[InvoiceItemsSection(model: 0, items: $0)]})
+            .asDriver(onErrorJustReturn: [])
         return (
             invoices: sections,
             isLoading: state.isLoading.asDriver(onErrorJustReturn: false),

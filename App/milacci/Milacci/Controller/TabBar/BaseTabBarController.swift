@@ -37,8 +37,8 @@ class BaseTabBarController: UITabBarController {
         itemAppearance.normal.iconColor = UIColor(named: "secondary")
         itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "secondary") ?? .label]
 
-        itemAppearance.selected.iconColor = .white
-        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        itemAppearance.selected.iconColor = .label
+        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
     }
 
 }

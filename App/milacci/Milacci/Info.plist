@@ -2,8 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>API_BASE_URL_ENDPOINT</key>
+	<string>$(API_BASE_URL_ENDPOINT)</string>
+	<key>API_BASE_URL_ENDPOINT_VERSION</key>
+	<string>$(API_BASE_URL_ENDPOINT_VERSION)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Miláčci</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -50,10 +56,6 @@
 			</array>
 		</dict>
 	</dict>
-	<key>API_BASE_URL_ENDPOINT</key>
-	<string>$(API_BASE_URL_ENDPOINT)</string>
-	<key>API_BASE_URL_ENDPOINT_VERSION</key>
-	<string>$(API_BASE_URL_ENDPOINT_VERSION)</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

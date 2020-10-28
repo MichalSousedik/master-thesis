@@ -8,7 +8,6 @@
 
 import Foundation
 
-// MARK: - SignInModelElement
 struct Invoice: Codable {
     let id: Int
     let periodOfIssue: String
@@ -20,6 +19,7 @@ struct Invoice: Codable {
 }
 
 extension Invoice {
+
     var formattedPeriodOfIssue: String {
         let parts = periodOfIssue.components(separatedBy: "-")
         let year = parts[0]
@@ -29,19 +29,19 @@ extension Invoice {
 
     func numberToMonth(_ monthNumber: String) -> String {
         switch(monthNumber){
-        case "01" : return "Leden"
-        case "02" : return "Únor"
-        case "03" : return "Březen"
-        case "04" : return "Duben"
-        case "05" : return "Květen"
-        case "06" : return "Červen"
-        case "07" : return "Červenec"
-        case "08" : return "Srpen"
-        case "09" : return "Září"
-        case "10" : return "Říjen"
-        case "11" : return "Listopad"
-        case "12" : return "Prosinec"
-        default: return ""
+        case "01" : return NSLocalizedString("January", comment: "")
+        case "02" : return NSLocalizedString("February", comment: "")
+        case "03" : return NSLocalizedString("March", comment: "")
+        case "04" : return NSLocalizedString("April", comment: "")
+        case "05" : return NSLocalizedString("May", comment: "")
+        case "06" : return NSLocalizedString("June", comment: "")
+        case "07" : return NSLocalizedString("July", comment: "")
+        case "08" : return NSLocalizedString("August", comment: "")
+        case "09" : return NSLocalizedString("September", comment: "")
+        case "10" : return NSLocalizedString("October", comment: "")
+        case "11" : return NSLocalizedString("November", comment: "")
+        case "12" : return NSLocalizedString("December", comment: "")
+        default: return NSLocalizedString("Unknown month", comment: "")
         }
     }
 }
@@ -69,10 +69,10 @@ extension InvoiceState {
 
     var description: String {
         switch self{
-            case .notIssued: return "Nová"
-            case .paid: return "Zaplacená"
-            case .approved: return "Schválená"
-            case .waiting: return "Čekající"
+        case .notIssued: return NSLocalizedString("New", comment: "")
+        case .paid: return NSLocalizedString("Paid", comment: "")
+        case .approved:return NSLocalizedString("Approved", comment: "")
+        case .waiting: return NSLocalizedString("Waiting", comment: "")
         }
     }
 

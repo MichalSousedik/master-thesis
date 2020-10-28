@@ -13,20 +13,20 @@ extension AppDelegate {
                          from viewController: UIViewController,
                          retryHandler: (() -> Void)?) {
         let alert = UIAlertController(
-            title: "Objevila se chyba",
+            title: NSLocalizedString("Error appeared", comment: ""),
             message: error.localizedDescription,
             preferredStyle: .alert
         )
 
         alert.addAction(UIAlertAction(
-            title: "Zrušit",
+            title: NSLocalizedString("Cancel", comment: ""),
             style: .default
         ))
 
         switch error.resolveCategory() {
         case .retryable:
             alert.addAction(UIAlertAction(
-                title: "Zkusit znovu",
+                title: NSLocalizedString("Retry", comment: ""),
                 style: .default,
                 handler: { _ in
                     guard let retryHandler = retryHandler else {return}

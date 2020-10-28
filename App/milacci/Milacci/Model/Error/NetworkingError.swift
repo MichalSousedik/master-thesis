@@ -21,19 +21,19 @@ extension NetworkingError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .deviceIsOffline:
-            return "Nelze se připojit k síti"
+            return NSLocalizedString("Device is offline", comment: "")
         case .unauthorized:
-            return "Váš učet se nepodařilo autorizovat"
+            return NSLocalizedString("Account was not authorized", comment: "")
         case .resourceNotFound:
-            return "Zdroj dat se nepodařilo lokalizovat"
+            return NSLocalizedString("Resource was not found", comment: "")
         case .serverError(let error):
-            return "Náš server se dostal do potíží: \(error.localizedDescription)"
+            return "\(NSLocalizedString("Server got into trouble", comment: "")) \(error.localizedDescription)"
         case .missingData:
-            return "Vyhledávaná data neexistují"
+            return NSLocalizedString("Searched data couldn't be located", comment: "")
         case .decodingFailed:
-            return "Obdžená data nebyla načtena, neboť nejsou ve správném formátu"
+            return NSLocalizedString("Received data couldn't be loaded because they are in a wrong format", comment: "")
         case .custom(let message):
-            return "Získávání dat ze serveru se nepodařilo dokončit: \(message)"
+            return "\(NSLocalizedString("Fetching data resulted in error", comment: "")) \(message)"
         }
     }
 }

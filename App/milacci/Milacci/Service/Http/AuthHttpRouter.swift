@@ -22,7 +22,7 @@ struct AuthHttpRouter: HttpRouter {
     }
 
     func body() throws -> Data? {
-        guard let accessToken = accessToken else { throw NetworkingError.custom(message: "Access token not provided")}
+        guard let accessToken = accessToken else { throw NetworkingError.custom(message: NSLocalizedString("Access Token not provided", comment: ""))}
         let json: [String: Any] = ["accessToken": accessToken]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         return jsonData
