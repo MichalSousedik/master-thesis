@@ -7,26 +7,30 @@
 //
 
 import UIKit
-//import GoogleSignIn
+import GoogleSignIn
+import Alamofire
+import Network
+import RxSwift
+
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-//, GIDSignInDelegate {
 
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
+    var authService: AuthAPI = AuthService.shared
+    var bag: DisposeBag = DisposeBag()
 
-
+    let monitor = NWPathMonitor()
+    var labels: [UILabel] = []
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
-//        GIDSignIn.sharedInstance().delegate = self
+  
+        GIDSignIn.sharedInstance().delegate = self
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         self.appCoordinator = AppCoordinator.init(window: self.window!)
         self.appCoordinator?.start()
-        
+        self.handleOfflineState()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -57,24 +61,87 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
     
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-//              withError error: Error!) {
-//        if let error = error {
-//            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-//                print("The user has not signed in before or they have since signed out.")
-//            } else {
-//                print("\(error.localizedDescription)")
-//            }
-//            return
-//        }
-//        self.appCoordinator?.reload()
-//
-//    }
-//
-//    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
-//              withError error: Error!) {
-//        self.appCoordinator?.reload()
-//    }
+}
+
+extension SceneDelegate: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                print("The user has not signed in before or they have since signed out.")
+            } else {
+                print("\(error.localizedDescription)")
+            }
+            self.appCoordinator?.reload()
+            return
+        }
+        guard let accessToken = user.authentication.accessToken else {
+            print("Access token was not provided for used from Google Sign in")
+            return
+        }
+        self.signIn(accessToken: accessToken)
+
+    }
+
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+        UserSettingsService.shared.clearAll()
+        self.appCoordinator?.reload()
+    }
     
 }
 
+private extension SceneDelegate {
+    
+    func signIn(accessToken: String){
+        self.authService.signIn(accessToken: accessToken)
+            .subscribe { [weak self] signInModel in
+                UserSettingsService.shared.saveCredentials(credentials: signInModel.credentials)
+                UserSettingsService.shared.saveUser(user: signInModel.user)
+                self?.appCoordinator?.reload()
+            } onError: { [weak self] error in
+                guard let window = self?.window else { print("No window found"); return}
+                let vc = ErrorViewController.instantiate()
+                window.rootViewController = vc
+                window.makeKeyAndVisible()
+                vc.handle(error, from: vc, retryHandler: nil)
+            }.disposed(by: bag)
+    }
+    
+}
+
+private extension SceneDelegate {
+    
+    func handleOfflineState() {
+        monitor.start(queue: .global())
+        monitor.pathUpdateHandler = {[weak self] path in
+            if path.status == .satisfied {
+                DispatchQueue.main.async{
+                    self?.labels.forEach{$0.removeFromSuperview()}
+                }
+                print("Online")
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                    guard let self = self
+                    else {return}
+                    var label: UILabel
+                    if self.labels.isEmpty {
+                        label = UILabel(frame: CGRect(x: 0, y: 0, width: self.window!.bounds.width, height: self.window!.bounds.height))
+                        label.translatesAutoresizingMaskIntoConstraints = false
+                        label.backgroundColor = UIColor.red
+                        label.textAlignment = .center
+                        label.text = "No Internet Connection"
+                        self.labels.append(label)
+                    } else {
+                        label = self.labels.first!
+                    }
+                    self.window?.rootViewController?.view.addSubview(label)
+                    
+                }
+                print("Offline")
+            }
+        }
+    }
+    
+}

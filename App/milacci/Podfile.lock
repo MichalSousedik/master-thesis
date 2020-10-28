@@ -1,5 +1,7 @@
 PODS:
-  - Alamofire (5.2.2)
+  - Alamofire (5.0.5)
+  - AlamofireNetworkActivityLogger (3.0.0):
+    - Alamofire (~> 5.0.0-rc.2)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
@@ -13,11 +15,12 @@ PODS:
   - GTMAppAuth (1.1.0):
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher (~> 1.4)
-  - GTMSessionFetcher (1.4.0):
-    - GTMSessionFetcher/Full (= 1.4.0)
-  - GTMSessionFetcher/Core (1.4.0)
-  - GTMSessionFetcher/Full (1.4.0):
-    - GTMSessionFetcher/Core (= 1.4.0)
+  - GTMSessionFetcher (1.5.0):
+    - GTMSessionFetcher/Full (= 1.5.0)
+  - GTMSessionFetcher/Core (1.5.0)
+  - GTMSessionFetcher/Full (1.5.0):
+    - GTMSessionFetcher/Core (= 1.5.0)
+  - KeychainSwift (19.0.0)
   - OHHTTPStubs/Core (9.0.0)
   - OHHTTPStubs/Default (9.0.0):
     - OHHTTPStubs/Core
@@ -42,45 +45,55 @@ PODS:
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
   - SkeletonView (1.10.0)
+  - SwiftLint (0.40.3)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.2)
+  - Alamofire (~> 5.0)
+  - AlamofireNetworkActivityLogger (~> 3.0)
   - GoogleSignIn (~> 5.0)
+  - KeychainSwift (~> 19.0)
   - OHHTTPStubs/Swift
   - RxCocoa (~> 5)
   - RxDataSources (~> 4.0)
   - RxSwift (~> 5)
   - SkeletonView
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireNetworkActivityLogger
     - AppAuth
     - Differentiator
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
+    - KeychainSwift
     - OHHTTPStubs
     - RxCocoa
     - RxDataSources
     - RxRelay
     - RxSwift
     - SkeletonView
+    - SwiftLint
 
 SPEC CHECKSUMS:
-  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
+  AlamofireNetworkActivityLogger: 94e8a7d454a4a9800cef1d0c1d3699754493684b
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
-  GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SkeletonView: 14fbe9702c7fb5c5f011b44ac3ae99fc73155726
+  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: 421fe930b9ac71ea3584e5691feec157f7bf2277
+PODFILE CHECKSUM: a5930af3750df7bd597f1e92001515b40cb5b72f
 
 COCOAPODS: 1.9.3

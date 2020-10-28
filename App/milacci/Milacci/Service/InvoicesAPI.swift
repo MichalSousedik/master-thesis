@@ -9,6 +9,6 @@
 import RxSwift
 
 protocol InvoicesAPI {
-    func fetchInvoices(userId: Int, page: Int) -> Single<InvoicesResponse>
+    func fetchInvoices(page: Int) -> Single<InvoicesResponse>
     func fetchInvoice(id: Int) -> Single<Invoice>
 }

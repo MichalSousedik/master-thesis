@@ -24,10 +24,14 @@ protocol HttpRouter {
 
 extension HttpRouter {
     
+    var baseUrlString: String {
+        let url = Bundle.main.object(forInfoDictionaryKey: "API_BASE_URL_ENDPOINT") as? String ?? ""
+        let version = Bundle.main.object(forInfoDictionaryKey: "API_BASE_URL_ENDPOINT_VERSION") as? String ?? ""
+        return "\(url)/\(version)"
+    }
     var parameters: Parameters? { return nil }
     func body() throws -> Data? { return nil }
     var headers: HTTPHeaders? { return nil }
-    var baseUrlString: String { return "https://private-a1268e-milacci1.apiary-mock.com/api/v1/" }
     
     func asUrlRequest() throws -> URLRequest {
         var url = try baseUrlString.asURL()

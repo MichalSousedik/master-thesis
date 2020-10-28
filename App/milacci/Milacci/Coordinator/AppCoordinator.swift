@@ -8,8 +8,7 @@
 
 import Foundation
 import UIKit
-//import GoogleSignIn
-
+import GoogleSignIn
     
 class AppCoordinator: BaseCoordinator {
  
@@ -20,19 +19,18 @@ class AppCoordinator: BaseCoordinator {
     }
     
     override func start() {
-//        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        reload()
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     }
     
     func reload() {
-//        if(GIDSignIn.sharedInstance()?.currentUser == nil){
-//            let signInCoordinator = SignInCoordinator()
-//            self.add(coordinator: signInCoordinator)
-//            signInCoordinator.start()
-//            window.rootViewController = signInCoordinator.navigationController
-//        } else {
-            window.rootViewController = BaseTabBarController()
-//        }
+        if let signInModel = UserSettingsService.shared.getSignInModel() {
+            window.rootViewController = TabBarControllerFactory.create(roles: signInModel.user.roles ?? [])
+        } else {
+            let signInCoordinator = SignInCoordinator()
+            self.add(coordinator: signInCoordinator)
+            signInCoordinator.start()
+            window.rootViewController = signInCoordinator.navigationController
+        }
         window.makeKeyAndVisible()
     }
     

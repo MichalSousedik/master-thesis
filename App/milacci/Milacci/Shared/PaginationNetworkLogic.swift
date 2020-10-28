@@ -27,18 +27,17 @@ struct PaginationSink<T> {
 
 extension PaginationSink {
     
-    init(ui: PaginationUISource, loadData: @escaping (Int) -> Observable<[T]>)
-    {
+    init(uiSource: PaginationUISource, loadData: @escaping (Int) -> Observable<[T]>) {
         let loadResults = BehaviorSubject<[Int: [T]]>(value: [:])
-        
+    
         let maxPage = loadResults
             .map { $0.keys }
             .map { $0.max() ?? 1 }
         
-        let reload = ui.refresh
+        let reload = uiSource.refresh
             .map { -1 }
         
-        let loadNext = ui.loadNextPage
+        let loadNext = uiSource.loadNextPage
             .withLatestFrom(maxPage)
             .map { $0 + 1 }
         
@@ -47,7 +46,10 @@ extension PaginationSink {
         
         let page = start
             .flatMap { page in
-                Observable.combineLatest(Observable.just(page), loadData(page == -1 ? 1 : page)) { (pageNumber: $0, items: $1) }
+                Observable.combineLatest(Observable.just(page), loadData(page == -1 ? 1 : page)){
+                    (pageNumber: $0, items: $1)
+                    
+                }
                     .materialize()
                     .filter { $0.isCompleted == false }
             }
@@ -57,24 +59,25 @@ extension PaginationSink {
             .compactMap { $0.element }
             .withLatestFrom(loadResults) { (pages: $1, newPage: $0) }
             .filter { $0.newPage.pageNumber == -1 || !$0.newPage.items.isEmpty }
-            .map { $0.newPage.pageNumber == -1 ? [1: $0.newPage.items] : $0.pages.merging([$0.newPage], uniquingKeysWith: { $1 }) }
+            .map { $0.newPage.pageNumber == -1 ? [1: $0.newPage.items] : $0.pages.merging([$0.newPage],
+                                                                                          uniquingKeysWith: { $1 }) }
             .subscribe(loadResults)
-        
-        let _isLoading = Observable.merge(start.map { _ in 1 }, page.map { _ in -1 })
+
+        let isLoading = Observable.merge(start.map { _ in 1 }, page.map { _ in -1 })
             .scan(0, accumulator: +)
             .map { $0 > 0 }
             .distinctUntilChanged()
-        
-        let _elements = loadResults
+
+        let elements = loadResults
             .map { $0.sorted(by: { $0.key < $1.key }).flatMap { $0.value } }
-        
-        let _error = page
+
+        let error = page
             .map { $0.error }
             .filter { $0 != nil }
             .map { $0! }
         
-        isLoading = _isLoading
-        elements = _elements
-        error = _error
+        self.isLoading = isLoading
+        self.elements = elements
+        self.error = error
     }
 }
