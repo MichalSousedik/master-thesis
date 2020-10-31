@@ -13,20 +13,20 @@ extension AppDelegate {
                          from viewController: UIViewController,
                          retryHandler: (() -> Void)?) {
         let alert = UIAlertController(
-            title: NSLocalizedString("Error appeared", comment: ""),
+            title: L10n.errorOccured,
             message: error.localizedDescription,
             preferredStyle: .alert
         )
 
         alert.addAction(UIAlertAction(
-            title: NSLocalizedString("Cancel", comment: ""),
+            title: L10n.cancel,
             style: .default
         ))
 
         switch error.resolveCategory() {
         case .retryable:
             alert.addAction(UIAlertAction(
-                title: NSLocalizedString("Retry", comment: ""),
+                title: L10n.retry,
                 style: .default,
                 handler: { _ in
                     guard let retryHandler = retryHandler else {return}

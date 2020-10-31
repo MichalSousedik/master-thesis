@@ -1,0 +1,17 @@
+strings:
+  inputs: Milacci/Resources/en.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: Milacci/Model/Generated/Strings.swift
+xcassets:
+  inputs:
+    - Milacci/Resources/Images.xcassets
+    - Milacci/Resources/Colors.xcassets
+  outputs:
+    - templateName: swift5
+      output: Milacci/Model/Generated/Assets.swift
+plist:
+  inputs: Milacci/Resources/environment.plist
+  outputs:
+    templateName: runtime-swift5
+    output: Milacci/Model/Generated/Plist.swift

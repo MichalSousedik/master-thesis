@@ -44,8 +44,9 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - SFSafeSymbols (2.0.1)
   - SkeletonView (1.10.0)
-  - SwiftFormat/CLI (0.47.1)
+  - SwiftGen (6.4.0)
   - SwiftLint (0.40.3)
 
 DEPENDENCIES:
@@ -57,8 +58,9 @@ DEPENDENCIES:
   - RxCocoa (~> 5)
   - RxDataSources (~> 4.0)
   - RxSwift (~> 5)
+  - SFSafeSymbols (~> 2.0.1)
   - SkeletonView
-  - SwiftFormat/CLI
+  - SwiftGen (~> 6.0)
   - SwiftLint
 
 SPEC REPOS:
@@ -76,8 +78,9 @@ SPEC REPOS:
     - RxDataSources
     - RxRelay
     - RxSwift
+    - SFSafeSymbols
     - SkeletonView
-    - SwiftFormat
+    - SwiftGen
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -94,10 +97,11 @@ SPEC CHECKSUMS:
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SFSafeSymbols: e17b285224b44888825d59368b26fb190c2fb900
   SkeletonView: 14fbe9702c7fb5c5f011b44ac3ae99fc73155726
-  SwiftFormat: 115c4a06fd8b6ef19525aafa058cbfeed1944bd5
+  SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: 9d72868e944cdff742a952b9af39f18931c7469a
+PODFILE CHECKSUM: 4d1c48d961a6d63edf0a6e97be7dfd1f7ba64067
 
 COCOAPODS: 1.9.3

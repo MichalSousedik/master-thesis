@@ -29,19 +29,19 @@ extension Invoice {
 
     func numberToMonth(_ monthNumber: String) -> String {
         switch(monthNumber){
-        case "01" : return NSLocalizedString("January", comment: "")
-        case "02" : return NSLocalizedString("February", comment: "")
-        case "03" : return NSLocalizedString("March", comment: "")
-        case "04" : return NSLocalizedString("April", comment: "")
-        case "05" : return NSLocalizedString("May", comment: "")
-        case "06" : return NSLocalizedString("June", comment: "")
-        case "07" : return NSLocalizedString("July", comment: "")
-        case "08" : return NSLocalizedString("August", comment: "")
-        case "09" : return NSLocalizedString("September", comment: "")
-        case "10" : return NSLocalizedString("October", comment: "")
-        case "11" : return NSLocalizedString("November", comment: "")
-        case "12" : return NSLocalizedString("December", comment: "")
-        default: return NSLocalizedString("Unknown month", comment: "")
+        case "01" : return L10n.january
+        case "02" : return L10n.february
+        case "03" : return L10n.march
+        case "04" : return L10n.april
+        case "05" : return L10n.may
+        case "06" : return L10n.june
+        case "07" : return L10n.july
+        case "08" : return L10n.august
+        case "09" : return L10n.september
+        case "10" : return L10n.october
+        case "11" : return L10n.november
+        case "12" : return L10n.december
+        default: return L10n.unknownMonth
         }
     }
 }
@@ -69,10 +69,10 @@ extension InvoiceState {
 
     var description: String {
         switch self{
-        case .notIssued: return NSLocalizedString("New", comment: "")
-        case .paid: return NSLocalizedString("Paid", comment: "")
-        case .approved:return NSLocalizedString("Approved", comment: "")
-        case .waiting: return NSLocalizedString("Waiting", comment: "")
+        case .notIssued: return L10n.new
+        case .paid: return L10n.paid
+        case .approved:return L10n.approved
+        case .waiting: return L10n.waiting
         }
     }
 

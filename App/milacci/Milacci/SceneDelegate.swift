@@ -138,7 +138,7 @@ private extension SceneDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor.red
         label.textAlignment = .center
-        label.text = NSLocalizedString("No Internet Connection", comment: "")
+        label.text = L10n.noInternetConnection
         self.labels.append(label)
         return label
     }

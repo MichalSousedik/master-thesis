@@ -1,4 +1,4 @@
- platform :ios, '10.0'
+ platform :ios, '13.0'
 
 target 'Milacci' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -17,6 +17,8 @@ target 'Milacci' do
   pod 'KeychainSwift', '~> 19.0'
   
   pod 'SwiftLint'
+  pod 'SwiftGen', '~> 6.0'
+  pod 'SFSafeSymbols', '~> 2.0.1'
   
 end
 

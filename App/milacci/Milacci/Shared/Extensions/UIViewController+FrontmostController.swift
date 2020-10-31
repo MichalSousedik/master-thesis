@@ -16,7 +16,6 @@ extension UIViewController {
         case let split as UISplitViewController: return split.viewControllers.last
         case let navigation as UINavigationController: return navigation.topViewController
         case let tabBar as UITabBarController: return tabBar.selectedViewController
-        // Add cases for your app's container controllers...
         default: return nil
         }
     }

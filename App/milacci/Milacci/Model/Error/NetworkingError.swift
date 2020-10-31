@@ -21,19 +21,19 @@ extension NetworkingError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .deviceIsOffline:
-            return NSLocalizedString("Device is offline", comment: "")
+            return L10n.deviceIsOffline
         case .unauthorized:
-            return NSLocalizedString("Account was not authorized", comment: "")
+            return L10n.accountWasNotAuthorized
         case .resourceNotFound:
-            return NSLocalizedString("Resource was not found", comment: "")
+            return L10n.resourceWasNotFound
         case .serverError(let error):
-            return "\(NSLocalizedString("Server got into trouble", comment: "")) \(error.localizedDescription)"
+            return "\(L10n.serverGotIntoTrouble) \(error.localizedDescription)"
         case .missingData:
-            return NSLocalizedString("Searched data couldn't be located", comment: "")
+            return L10n.searchedDataCouldnTBeLocated
         case .decodingFailed:
-            return NSLocalizedString("Received data couldn't be loaded because they are in a wrong format", comment: "")
+            return L10n.receivedDataCouldnTBeLoadedBecauseTheyAreInAWrongFormat
         case .custom(let message):
-            return "\(NSLocalizedString("Fetching data resulted in error", comment: "")) \(message)"
+            return "\(L10n.fetchingDataResultedInError) \(message)"
         }
     }
 }

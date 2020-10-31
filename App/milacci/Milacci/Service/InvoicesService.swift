@@ -92,7 +92,7 @@ extension InvoicesService {
     static func parseInvoices(result: AFDataResponse<Any>) throws -> InvoicesResponse {
         guard
             let data = result.data else {
-            throw NetworkingError.custom(message: NSLocalizedString("Data couldn't be extracted from result", comment: ""))
+            throw NetworkingError.custom(message: L10n.dataCouldnTBeExtractedFromResult)
         }
 
         return try perform(JSONDecoder().decode(InvoicesResponse.self, from: data))
@@ -102,7 +102,7 @@ extension InvoicesService {
     static func parseInvoiceDetail(result: AFDataResponse<Any>) throws -> Invoice {
         guard
             let data = result.data else {
-            throw NetworkingError.custom(message: NSLocalizedString("Data couldn't be extracted from result", comment: ""))
+            throw NetworkingError.custom(message: L10n.dataCouldnTBeExtractedFromResult)
 
         }
 

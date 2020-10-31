@@ -16,13 +16,14 @@ class BaseTabBarController: UITabBarController {
         super.viewDidLoad()
 
         let appearance = UITabBarAppearance()
-        appearance.backgroundColor = UIColor(named: "primary")
+        appearance.backgroundColor = Asset.Colors.primary.color
 
         setTabBarItemColors(appearance.stackedLayoutAppearance)
         setTabBarItemColors(appearance.inlineLayoutAppearance)
         setTabBarItemColors(appearance.compactInlineLayoutAppearance)
 
         self.tabBar.standardAppearance = appearance
+        self.tabBar.alpha = CGFloat(0.95)
 
         self.tabBar.items?.forEach { tabBarItem in
             tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
@@ -34,8 +35,8 @@ class BaseTabBarController: UITabBarController {
     }
 
     private func setTabBarItemColors(_ itemAppearance: UITabBarItemAppearance) {
-        itemAppearance.normal.iconColor = UIColor(named: "secondary")
-        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "secondary") ?? .label]
+        itemAppearance.normal.iconColor = Asset.Colors.secondary.color
+        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Asset.Colors.secondary.color]
 
         itemAppearance.selected.iconColor = .label
         itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]

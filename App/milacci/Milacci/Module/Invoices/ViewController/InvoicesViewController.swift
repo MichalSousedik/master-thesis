@@ -20,6 +20,8 @@ class InvoicesViewController: UIViewController, Storyboardable {
     private var viewModel: InvoicesViewPresentable!
     private let refreshControl = UIRefreshControl()
     private let refreshSubject = PublishSubject<Void>()
+    private var loadingViewController: LoadingViewController?
+    private let resetReachedBottom = PublishSubject<Void>()
 
     var viewModelBuilder: InvoicesViewPresentable.ViewModelBuilder!
     private let bag = DisposeBag()
@@ -35,12 +37,13 @@ class InvoicesViewController: UIViewController, Storyboardable {
         viewModel = viewModelBuilder((
             invoiceSelect: tableView.rx.modelSelected(InvoiceViewModel.self).asDriver(),
             refreshTrigger: refreshSubject.asDriver(onErrorJustReturn: ()),
-            loadNextPageTrigger: tableView.rx.reachedBottom
+            loadNextPageTrigger: tableView.rx.reached(reset: resetReachedBottom)
         ))
         setupUI()
         setupViewModelBinding()
         setupViewBinding()
         refreshInvoices()
+        showLoadingIndicator()
     }
 }
 
@@ -71,16 +74,17 @@ private extension InvoicesViewController {
         refreshControl.rx.controlEvent(.valueChanged)
             .subscribe({[weak self] _ in
                 self?.refreshInvoices()
+                self?.resetReachedBottom.onNext(())
             }).disposed(by: bag)
-
-        tableView.rx.reachedBottom.drive(onNext: { [weak self] in
+        tableView.rx.reached(reset: resetReachedBottom).drive(onNext: { [weak self] in
             self?.tableView.tableFooterView?.isHidden = false
         }).disposed(by: bag)
     }
 
     func setupUI() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.tableView.refreshControl = refreshControl
-        self.refreshControl.tintColor = UIColor(named: "primary")
+        self.refreshControl.tintColor = .label
         self.tableView.tableFooterView = self.tableViewFooter
         self.tableView.tableFooterView?.isHidden = true
         self.loadMoreActivityIndicator.startAnimating()
@@ -91,13 +95,19 @@ private extension InvoicesViewController {
 private extension InvoicesViewController {
 
     func refreshInvoices(){
-        self.refreshControl.beginRefreshing()
         self.refreshSubject.onNext(())
     }
 
     func hideLoadingIndicator(){
+        self.loadingViewController?.remove()
         self.refreshControl.endRefreshing()
         self.tableView.tableFooterView?.isHidden = true
+    }
+
+    func showLoadingIndicator() {
+        let loadingViewController = LoadingViewController()
+        add(loadingViewController)
+        self.loadingViewController = loadingViewController
     }
 
 }

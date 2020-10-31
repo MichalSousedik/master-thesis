@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SFSafeSymbols
 
 class WageCoordinator: BaseCoordinator {
 
@@ -18,7 +19,7 @@ class WageCoordinator: BaseCoordinator {
 
     override func start(){
         let view = WageViewController.instantiate()
-        view.tabBarItem = UITabBarItem(title: NSLocalizedString("Wage", comment: ""), image: UIImage(systemName: "dollarsign.square.fill"), tag: 0)
+        view.tabBarItem = UITabBarItem(title: L10n.wage, image: UIImage(systemSymbol: SFSymbol.dollarsignSquareFill), tag: 0)
         navigationController.pushViewController(view, animated: true)
     }
 

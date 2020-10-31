@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		37093A70253CE51E00E87BA4 /* UserSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37093A6F253CE51E00E87BA4 /* UserSettingsService.swift */; };
 		37093A72253CE9B200E87BA4 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37093A71253CE9B200E87BA4 /* SignInResponse.swift */; };
+		3711806E254A2D18000DFFFA /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3711806B254A2D18000DFFFA /* Plist.swift */; };
+		3711806F254A2D18000DFFFA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3711806C254A2D18000DFFFA /* Strings.swift */; };
+		37118071254A2D60000DFFFA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37118070254A2D60000DFFFA /* Images.xcassets */; };
+		37118073254A2EF3000DFFFA /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37118072254A2EF3000DFFFA /* Colors.xcassets */; };
+		37118077254A2FD2000DFFFA /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37118076254A2FD2000DFFFA /* Assets.swift */; };
 		375B0D582531BCD000C90879 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375B0D572531BCD000C90879 /* CloudKit.framework */; };
 		37A9037D2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */; };
 		37A9037F25362647006251EE /* PaginationNetworkLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9037E25362647006251EE /* PaginationNetworkLogic.swift */; };
@@ -32,6 +37,7 @@
 		37F70B212548AF0B001E9D07 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70B202548AF0B001E9D07 /* AuthService.swift */; };
 		37F70B232548AFA2001E9D07 /* AuthHttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70B222548AFA2001E9D07 /* AuthHttpService.swift */; };
 		37F70BA52549B38E001E9D07 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37F70BA72549B38E001E9D07 /* Localizable.strings */; };
+		37F70BCB254A0F2F001E9D07 /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F70BCA254A0F2F001E9D07 /* environment.plist */; };
 		C00D050E251BEC6D004D42E8 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00D050D251BEC6D004D42E8 /* NetworkingError.swift */; };
 		C01CF704251FE9EF00C8CE06 /* Numeric+CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01CF703251FE9EF00C8CE06 /* Numeric+CurrencyFormatter.swift */; };
 		C01CF706251FFC9300C8CE06 /* InvoiceDetailHttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01CF705251FFC9300C8CE06 /* InvoiceDetailHttpRouter.swift */; };
@@ -41,7 +47,6 @@
 		C0455E5F2479BF8500D96F53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0455E5E2479BF8500D96F53 /* SceneDelegate.swift */; };
 		C0455E612479BF8500D96F53 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0455E602479BF8500D96F53 /* SignInViewController.swift */; };
 		C0455E642479BF8500D96F53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0455E622479BF8500D96F53 /* Main.storyboard */; };
-		C0455E662479BF8900D96F53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0455E652479BF8900D96F53 /* Assets.xcassets */; };
 		C0455E692479BF8900D96F53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0455E672479BF8900D96F53 /* LaunchScreen.storyboard */; };
 		C054EAFE2479DFA800C11F16 /* InvoicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C054EAFD2479DFA800C11F16 /* InvoicesViewController.swift */; };
 		C0553582251955D100B04A18 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0553581251955D100B04A18 /* BaseCoordinator.swift */; };
@@ -86,6 +91,11 @@
 /* Begin PBXFileReference section */
 		37093A6F253CE51E00E87BA4 /* UserSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsService.swift; sourceTree = "<group>"; };
 		37093A71253CE9B200E87BA4 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
+		3711806B254A2D18000DFFFA /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
+		3711806C254A2D18000DFFFA /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		37118070254A2D60000DFFFA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		37118072254A2EF3000DFFFA /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		37118076254A2FD2000DFFFA /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		375B0D562531B22B00C90879 /* MilacciDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MilacciDebug.entitlements; sourceTree = "<group>"; };
 		375B0D572531BCD000C90879 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+TableViewRxReachedBottom.swift"; sourceTree = "<group>"; };
@@ -116,6 +126,7 @@
 		37F70B91254994C3001E9D07 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		37F70BA62549B38E001E9D07 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		37F70BA82549B398001E9D07 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		37F70BCA254A0F2F001E9D07 /* environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		92ABC71A3510F6D0BFB2913A /* Pods_Milacci.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Milacci.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0C5AEAF214F5D05E4F750C /* Pods-Milacci.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Milacci.release.xcconfig"; path = "Target Support Files/Pods-Milacci/Pods-Milacci.release.xcconfig"; sourceTree = "<group>"; };
 		C00D050D251BEC6D004D42E8 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
@@ -127,7 +138,6 @@
 		C0455E5C2479BF8500D96F53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0455E5E2479BF8500D96F53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C0455E602479BF8500D96F53 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		C0455E652479BF8900D96F53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0455E6A2479BF8900D96F53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C054EAFD2479DFA800C11F16 /* InvoicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesViewController.swift; sourceTree = "<group>"; };
 		C0553581251955D100B04A18 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
@@ -269,6 +279,27 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		37F70BC8254A0E0C001E9D07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				37F70BA72549B38E001E9D07 /* Localizable.strings */,
+				37F70BCA254A0F2F001E9D07 /* environment.plist */,
+				37118070254A2D60000DFFFA /* Images.xcassets */,
+				37118072254A2EF3000DFFFA /* Colors.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		37F70BC9254A0E30001E9D07 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				37118076254A2FD2000DFFFA /* Assets.swift */,
+				3711806B254A2D18000DFFFA /* Plist.swift */,
+				3711806C254A2D18000DFFFA /* Strings.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		C00D050F251BFE4B004D42E8 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +339,7 @@
 		C0455E5B2479BF8500D96F53 /* Milacci */ = {
 			isa = PBXGroup;
 			children = (
+				37F70BC8254A0E0C001E9D07 /* Resources */,
 				375B0D562531B22B00C90879 /* MilacciDebug.entitlements */,
 				37CA024F25250F8100948444 /* Milacci.entitlements */,
 				C0574566251A9B3D00051D12 /* Service */,
@@ -320,10 +352,8 @@
 				C0455E5C2479BF8500D96F53 /* AppDelegate.swift */,
 				C0455E5E2479BF8500D96F53 /* SceneDelegate.swift */,
 				C0455E622479BF8500D96F53 /* Main.storyboard */,
-				C0455E652479BF8900D96F53 /* Assets.xcassets */,
 				C0455E672479BF8900D96F53 /* LaunchScreen.storyboard */,
 				C0455E6A2479BF8900D96F53 /* Info.plist */,
-				37F70BA72549B38E001E9D07 /* Localizable.strings */,
 			);
 			path = Milacci;
 			sourceTree = "<group>";
@@ -377,6 +407,7 @@
 		C0B93503247D831400A457AD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				37F70BC9254A0E30001E9D07 /* Generated */,
 				37F70AFD254499CD001E9D07 /* Error */,
 				37093A71253CE9B200E87BA4 /* SignInResponse.swift */,
 				37F70AFB254460D1001E9D07 /* HttpErrorResponse.swift */,
@@ -518,6 +549,7 @@
 			buildConfigurationList = C0455E6D2479BF8900D96F53 /* Build configuration list for PBXNativeTarget "Milacci" */;
 			buildPhases = (
 				70D78C15A393832527E341C9 /* [CP] Check Pods Manifest.lock */,
+				37F70BC72549CFB4001E9D07 /* SwiftGen */,
 				C0455E552479BF8500D96F53 /* Sources */,
 				C0455E562479BF8500D96F53 /* Frameworks */,
 				C0455E572479BF8500D96F53 /* Resources */,
@@ -576,8 +608,10 @@
 			files = (
 				C0455E692479BF8900D96F53 /* LaunchScreen.storyboard in Resources */,
 				37F70BA52549B38E001E9D07 /* Localizable.strings in Resources */,
-				C0455E662479BF8900D96F53 /* Assets.xcassets in Resources */,
+				37118071254A2D60000DFFFA /* Images.xcassets in Resources */,
 				C0455E642479BF8500D96F53 /* Main.storyboard in Resources */,
+				37F70BCB254A0F2F001E9D07 /* environment.plist in Resources */,
+				37118073254A2EF3000DFFFA /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +635,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		37F70BC72549CFB4001E9D07 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\nif [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" config run\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n\n#export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n#\n#LOC_SRC_FILE=\"${PROJECT_DIR}/${TARGET_NAME}/Resources/en.lproj/Localizable.strings\"\n#LOC_DST_FILE=\"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/LocalizedStrings.swift\"\n#\n#SHARED_IMG_SRC_FILE=\"${PROJECT_DIR}/${TARGET_NAME}/Assets.xcassets\"\n#ASSETS_DST_FILE=\"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/Assets.swift\"\n#\n#PLIST_SRC_FILE=\"${PROJECT_DIR}/${TARGET_NAME}/Resources/environment.plist\"\n#PLIST_DST_FILE=\"${PROJECT_DIR}/${TARGET_NAME}/Model/Generated/Environment.swift\"\n#\n#echo \"[SwiftGen] Generating strings\"\n#swiftgen strings -t structured-swift5 \"$LOC_SRC_FILE\" -o \"${LOC_DST_FILE}\"\n#echo \"[SwiftGen] Generating assets\"\n#swiftgen xcassets -t swift5 \"$SHARED_IMG_SRC_FILE\" -o \"${ASSETS_DST_FILE}\"\n#echo \"[SwiftGen] Generating environment plist\"\n#swiftgen plist -t runtime-swift5 \"$PLIST_SRC_FILE\" -o \"${PLIST_DST_FILE}\" --param enumName=\"Environment\"\n";
 		};
 		70D78C15A393832527E341C9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -680,6 +732,7 @@
 				37F70B032545B349001E9D07 /* UIViewController+ErrorHandler.swift in Sources */,
 				C0455E5D2479BF8500D96F53 /* AppDelegate.swift in Sources */,
 				C0BAE0122509605600472B91 /* InvoiceViewModel.swift in Sources */,
+				3711806E254A2D18000DFFFA /* Plist.swift in Sources */,
 				37F70AE825444BB9001E9D07 /* WageViewController.swift in Sources */,
 				C0E8E11A25195F0E00A21F9E /* SignInCoordinator.swift in Sources */,
 				37F70B1F2548A99A001E9D07 /* AuthHttpRouter.swift in Sources */,
@@ -697,6 +750,7 @@
 				37F70AE625444ADC001E9D07 /* WageCoordinator.swift in Sources */,
 				C0574571251AA0CF00051D12 /* InvoicesService.swift in Sources */,
 				37F70B072545B40B001E9D07 /* Error+ResolveCategory.swift in Sources */,
+				3711806F254A2D18000DFFFA /* Strings.swift in Sources */,
 				C0B9350C247DA59400A457AD /* InvoiceDetailViewController.swift in Sources */,
 				C0E1B251248430FE00F68394 /* BaseTabBarController.swift in Sources */,
 				C0E342DE251A861700860E44 /* ProfileCoordinator.swift in Sources */,
@@ -713,6 +767,7 @@
 				37A9037D2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift in Sources */,
 				C057456F251A9D6600051D12 /* InvoicesHttpRouter.swift in Sources */,
 				37F70B012545B277001E9D07 /* UIResponder+ErrorHandler.swift in Sources */,
+				37118077254A2FD2000DFFFA /* Assets.swift in Sources */,
 				C0ACCB60247AC283002F7263 /* InvoiceTableViewCell.swift in Sources */,
 				C01CF704251FE9EF00C8CE06 /* Numeric+CurrencyFormatter.swift in Sources */,
 				C057456D251A9CDA00051D12 /* InvoiceHttpService.swift in Sources */,
@@ -876,8 +931,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D01D35A00D62CD44ECB82C60 /* Pods-Milacci.debug.xcconfig */;
 			buildSettings = {
-				API_BASE_URL_ENDPOINT = "https://milacci2-api-development.ack.ee/api";
-				API_BASE_URL_ENDPOINT_VERSION = v1;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Milacci/MilacciDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -905,8 +958,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BF0C5AEAF214F5D05E4F750C /* Pods-Milacci.release.xcconfig */;
 			buildSettings = {
-				API_BASE_URL_ENDPOINT = "https://milacci2-api-development.ack.ee/api";
-				API_BASE_URL_ENDPOINT_VERSION = v1;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Milacci/Milacci.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";

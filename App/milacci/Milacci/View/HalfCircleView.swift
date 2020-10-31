@@ -39,7 +39,7 @@ class HalfCircleView: UIView {
         path.addLine(to: CGPoint(x: width, y: 0))
         path.close()
 
-        UIColor(named: "primary")?.setFill()
+        Asset.Colors.primary.color.setFill()
         path.fill()
     }
 

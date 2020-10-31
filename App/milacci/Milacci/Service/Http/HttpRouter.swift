@@ -25,8 +25,8 @@ protocol HttpRouter {
 extension HttpRouter {
 
     var baseUrlString: String {
-        let url = Bundle.main.object(forInfoDictionaryKey: "API_BASE_URL_ENDPOINT") as? String ?? ""
-        let version = Bundle.main.object(forInfoDictionaryKey: "API_BASE_URL_ENDPOINT_VERSION") as? String ?? ""
+        let url = PlistFiles.apiBaseUrlEndpoint
+        let version = PlistFiles.apiBaseUrlEndpointVersion
         return "\(url)/\(version)"
     }
     var parameters: Parameters? { return nil }

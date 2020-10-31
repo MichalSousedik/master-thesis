@@ -9,6 +9,7 @@
 import UIKit
 import MobileCoreServices
 import Alamofire
+import SFSafeSymbols
 
 protocol FileAction {
     func image() -> UIImage?
@@ -32,12 +33,12 @@ struct UploadFile: FileAction {
     weak var vcDelegate: InvoiceDetailViewController?
 
     func image() -> UIImage? {
-        return UIImage(systemName: "plus")
+        return UIImage(systemSymbol: .plus)
     }
 
     func execute() {
         let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeZipArchive)], in: .open)
-        guard let vcDelegate = vcDelegate else { fatalError(NSLocalizedString("VC Delegate is not present", comment: "")) }
+        guard let vcDelegate = vcDelegate else { fatalError(L10n.vcDelegateIsNotPresent) }
         documentPicker.delegate = vcDelegate
         documentPicker.allowsMultipleSelection = false
         documentPicker.modalPresentationStyle = .formSheet
@@ -51,7 +52,7 @@ struct DownloadFile: FileAction {
     weak var vcDelegate: InvoiceDetailViewController?
 
     func image() -> UIImage? {
-        return UIImage(systemName: "icloud.and.arrow.down")
+        return UIImage(systemSymbol: .icloudAndArrowDown)
     }
 
     func execute() {

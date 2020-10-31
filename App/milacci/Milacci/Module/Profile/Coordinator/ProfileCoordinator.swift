@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SFSafeSymbols
 
 class ProfileCoordinator: BaseCoordinator {
 
@@ -18,7 +19,7 @@ class ProfileCoordinator: BaseCoordinator {
 
     override func start(){
         let view = ProfileViewController.instantiate()
-        view.tabBarItem = UITabBarItem(title: NSLocalizedString("Profile", comment: ""), image: UIImage(systemName: "person.fill"), tag: 0)
+        view.tabBarItem = UITabBarItem(title: L10n.profile, image: UIImage(systemSymbol: .personFill), tag: 0)
         navigationController.pushViewController(view, animated: true)
     }
 
