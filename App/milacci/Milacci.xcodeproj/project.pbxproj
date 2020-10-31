@@ -14,6 +14,8 @@
 		37118071254A2D60000DFFFA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37118070254A2D60000DFFFA /* Images.xcassets */; };
 		37118073254A2EF3000DFFFA /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37118072254A2EF3000DFFFA /* Colors.xcassets */; };
 		37118077254A2FD2000DFFFA /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37118076254A2FD2000DFFFA /* Assets.swift */; };
+		373E827E254DDABB00A93E0D /* ViewControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373E827D254DDABB00A93E0D /* ViewControllerError.swift */; };
+		373E8280254DF84700A93E0D /* UploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373E827F254DF84700A93E0D /* UploadResponse.swift */; };
 		375B0D582531BCD000C90879 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375B0D572531BCD000C90879 /* CloudKit.framework */; };
 		37A9037D2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */; };
 		37A9037F25362647006251EE /* PaginationNetworkLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9037E25362647006251EE /* PaginationNetworkLogic.swift */; };
@@ -96,6 +98,8 @@
 		37118070254A2D60000DFFFA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		37118072254A2EF3000DFFFA /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		37118076254A2FD2000DFFFA /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		373E827D254DDABB00A93E0D /* ViewControllerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerError.swift; sourceTree = "<group>"; };
+		373E827F254DF84700A93E0D /* UploadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResponse.swift; sourceTree = "<group>"; };
 		375B0D562531B22B00C90879 /* MilacciDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MilacciDebug.entitlements; sourceTree = "<group>"; };
 		375B0D572531BCD000C90879 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+TableViewRxReachedBottom.swift"; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 			children = (
 				C00D050D251BEC6D004D42E8 /* NetworkingError.swift */,
 				37F70B082545B432001E9D07 /* ErrorCategory.swift */,
+				373E827D254DDABB00A93E0D /* ViewControllerError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -537,6 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */,
+				373E827F254DF84700A93E0D /* UploadResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -741,6 +747,7 @@
 				C054EAFE2479DFA800C11F16 /* InvoicesViewController.swift in Sources */,
 				37093A70253CE51E00E87BA4 /* UserSettingsService.swift in Sources */,
 				C079A553251D4E4A00331E17 /* InvoiceDetailCoordinator.swift in Sources */,
+				373E827E254DDABB00A93E0D /* ViewControllerError.swift in Sources */,
 				C040DDE62519540600822300 /* Coordinator.swift in Sources */,
 				C058335F248051E7004CA055 /* HalfCircleView.swift in Sources */,
 				37F70B212548AF0B001E9D07 /* AuthService.swift in Sources */,
@@ -769,6 +776,7 @@
 				37F70B012545B277001E9D07 /* UIResponder+ErrorHandler.swift in Sources */,
 				37118077254A2FD2000DFFFA /* Assets.swift in Sources */,
 				C0ACCB60247AC283002F7263 /* InvoiceTableViewCell.swift in Sources */,
+				373E8280254DF84700A93E0D /* UploadResponse.swift in Sources */,
 				C01CF704251FE9EF00C8CE06 /* Numeric+CurrencyFormatter.swift in Sources */,
 				C057456D251A9CDA00051D12 /* InvoiceHttpService.swift in Sources */,
 				37F70AE125439AA2001E9D07 /* InvoicesResponse.swift in Sources */,
@@ -935,6 +943,7 @@
 				CODE_SIGN_ENTITLEMENTS = Milacci/MilacciDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "Milacci/Resources/Images.xcassets Milacci/Resources/Colors.xcassets";
 				DEVELOPMENT_TEAM = FRYD8HMFR6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -962,6 +971,7 @@
 				CODE_SIGN_ENTITLEMENTS = Milacci/Milacci.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "Milacci/Resources/Images.xcassets Milacci/Resources/Colors.xcassets";
 				DEVELOPMENT_TEAM = FRYD8HMFR6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -16,6 +16,24 @@ class InvoicesService: InvoicesAPI {
     static let shared: InvoicesService = InvoicesService()
     private lazy var httpService = InvoiceHttpSerivce()
 
+    func uploadFile(id: Int, url: URL) -> Single<String> {
+        //        InvoicesService.mockInvoiceEndpoint()
+        return Single.create{ [httpService] (single) -> Disposable in
+            AF.upload(url, to: "https://milacci2-api-development.ack.ee/api/v1/invoices/\(id)/file-urls", headers:
+                        ["Authorization": "Bearer \(UserSettingsService.shared.accessToken ?? "")"])
+                .responseJSON{ result in
+                    do {
+                        let uploadResponse = try InvoicesService.parseUploadResponse(result: result)
+                        single(.success(uploadResponse.fileUrl))
+                    } catch {
+                        single(.error(error))
+                    }
+                }
+
+            return Disposables.create()
+        }
+    }
+
     func fetchInvoice(id: Int) -> Single<Invoice> {
         //        InvoicesService.mockInvoiceEndpoint()
         return Single.create{ [httpService] (single) -> Disposable in
@@ -43,7 +61,7 @@ class InvoicesService: InvoicesAPI {
         return Single.create{ [httpService] (single) -> Disposable in
 
             do {
-                try InvoicesHttpRouter(offset: page)
+                try InvoicesHttpRouter(offset: (page - 1)*10)
                     .request(usingHttpService: httpService)
                     .validate()
                     .responseJSON{ result in
@@ -89,6 +107,16 @@ class InvoicesService: InvoicesAPI {
 
 extension InvoicesService {
 
+    static func parseUploadResponse(result: AFDataResponse<Any>) throws -> UploadResponse {
+        guard
+            let data = result.data else {
+            throw NetworkingError.custom(message: L10n.dataCouldnTBeExtractedFromResult)
+        }
+
+        return try perform(JSONDecoder().decode(UploadResponse.self, from: data))
+            {NetworkingError.decodingFailed($0)}
+    }
+
     static func parseInvoices(result: AFDataResponse<Any>) throws -> InvoicesResponse {
         guard
             let data = result.data else {
@@ -103,9 +131,7 @@ extension InvoicesService {
         guard
             let data = result.data else {
             throw NetworkingError.custom(message: L10n.dataCouldnTBeExtractedFromResult)
-
         }
-
         return try perform(JSONDecoder().decode(Invoice.self, from: data)) {NetworkingError.decodingFailed($0)}
     }
 

@@ -10,6 +10,9 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxDataSources
+import Alamofire
+import MobileCoreServices
+import SafariServices
 
 class InvoicesViewController: UIViewController, Storyboardable {
 
@@ -22,6 +25,7 @@ class InvoicesViewController: UIViewController, Storyboardable {
     private let refreshSubject = PublishSubject<Void>()
     private var loadingViewController: LoadingViewController?
     private let resetReachedBottom = PublishSubject<Void>()
+    private let filePick = PublishSubject<URL>()
 
     var viewModelBuilder: InvoicesViewPresentable.ViewModelBuilder!
     private let bag = DisposeBag()
@@ -37,7 +41,8 @@ class InvoicesViewController: UIViewController, Storyboardable {
         viewModel = viewModelBuilder((
             invoiceSelect: tableView.rx.modelSelected(InvoiceViewModel.self).asDriver(),
             refreshTrigger: refreshSubject.asDriver(onErrorJustReturn: ()),
-            loadNextPageTrigger: tableView.rx.reachedBottom(reset: resetReachedBottom)
+            loadNextPageTrigger: tableView.rx.reachedBottom(reset: resetReachedBottom),
+            filePick: filePick.asDriver(onErrorDriveWith: .empty())
         ))
         setupUI()
         setupViewModelBinding()
@@ -68,6 +73,32 @@ private extension InvoicesViewController {
                     self?.refreshInvoices()
                 })                }
         }).disposed(by: bag)
+
+        self.viewModel.output.showUrl.drive(onNext: { [weak self] url in
+            guard let self = self else { return }
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+
+            let vc = SFSafariViewController(url: url, configuration: config)
+            self.present(vc, animated: true)
+        }).disposed(by: bag)
+
+        self.viewModel.output.pickFile.drive(onNext: { [weak self] invoiceViewModel in
+            guard let self = self else { return }
+            let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF), String(kUTTypeSpreadsheet)], in: .open)
+            documentPicker.delegate = self
+            documentPicker.allowsMultipleSelection = false
+            documentPicker.modalPresentationStyle = .formSheet
+            self.present(documentPicker, animated: true)
+        }).disposed(by: bag)
+
+        self.viewModel.output.isUploadingFile.drive(onNext: {[weak self] uploading in
+            if uploading.isUploading {
+                self?.showLoadingIndicator()
+            } else {
+                self?.removeLoadingIndicator()
+            }
+        }).disposed(by: bag)
     }
 
     func setupViewBinding() {
@@ -92,6 +123,17 @@ private extension InvoicesViewController {
 
 }
 
+extension InvoicesViewController: UIDocumentPickerDelegate {
+
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first else {
+            handle(ViewControllerError.selectedUrlIsNotAccessible, retryHandler: nil)
+            return
+        }
+        filePick.onNext(url)
+    }
+}
+
 private extension InvoicesViewController {
 
     func refreshInvoices(){
@@ -99,15 +141,22 @@ private extension InvoicesViewController {
     }
 
     func hideLoadingIndicator(){
-        self.loadingViewController?.remove()
+        self.removeLoadingIndicator()
         self.refreshControl.endRefreshing()
         self.tableView.tableFooterView?.isHidden = true
     }
 
     func showLoadingIndicator() {
-        let loadingViewController = LoadingViewController()
-        add(loadingViewController)
-        self.loadingViewController = loadingViewController
+        if self.loadingViewController == nil {
+            let loadingViewController = LoadingViewController()
+            self.loadingViewController = loadingViewController
+            self.add(loadingViewController)
+        }
+    }
+
+    func removeLoadingIndicator() {
+        self.loadingViewController?.remove()
+        self.loadingViewController = nil
     }
 
 }

@@ -23,11 +23,6 @@ class BaseTabBarController: UITabBarController {
         setTabBarItemColors(appearance.compactInlineLayoutAppearance)
 
         self.tabBar.standardAppearance = appearance
-        self.tabBar.alpha = CGFloat(0.95)
-
-        self.tabBar.items?.forEach { tabBarItem in
-            tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        }
 
         let coordinators = self.coordinators
         coordinators.forEach({$0.start()})
@@ -38,8 +33,8 @@ class BaseTabBarController: UITabBarController {
         itemAppearance.normal.iconColor = Asset.Colors.secondary.color
         itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Asset.Colors.secondary.color]
 
-        itemAppearance.selected.iconColor = .label
-        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
+        itemAppearance.selected.iconColor = Asset.Colors.primary1.color
+        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Asset.Colors.primary1.color]
     }
 
 }

@@ -13,10 +13,9 @@ class BaseNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let navigationBarAppearence = UINavigationBarAppearance()
-//        navigationBarAppearence.shadowColor = .clear
         navigationBarAppearence.backgroundColor = Asset.Colors.primary.color
-        navigationBarAppearence.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
-        navigationBarAppearence.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
+        navigationBarAppearence.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Asset.Colors.primary1.color]
+        navigationBarAppearence.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Asset.Colors.primary1.color]
         self.navigationBar.standardAppearance = navigationBarAppearence
 
         self.navigationBar.tintColor = .white

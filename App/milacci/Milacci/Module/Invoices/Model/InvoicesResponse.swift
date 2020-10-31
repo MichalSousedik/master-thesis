@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 struct Invoice: Codable {
     let id: Int
@@ -15,7 +16,7 @@ struct Invoice: Codable {
     let totalHours: Int?
     let userWorkType: WorkType?
     let value: String?
-    let filename: String?
+    var filename: String?
 }
 
 extension Invoice {

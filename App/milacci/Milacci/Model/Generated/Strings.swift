@@ -68,6 +68,8 @@ internal enum L10n {
   internal static let retry = L10n.tr("Localizable", "Retry")
   /// Searched data couldn't be located
   internal static let searchedDataCouldnTBeLocated = L10n.tr("Localizable", "Searched data couldn't be located")
+  /// Selected URL is not accessible
+  internal static let selectedURLIsNotAccessible = L10n.tr("Localizable", "Selected URL is not accessible")
   /// September
   internal static let september = L10n.tr("Localizable", "September")
   /// Server got into trouble

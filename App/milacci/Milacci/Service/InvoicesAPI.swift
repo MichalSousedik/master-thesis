@@ -9,6 +9,7 @@
 import RxSwift
 
 protocol InvoicesAPI {
+    func uploadFile(id: Int, url: URL) -> Single<String>
     func fetchInvoices(page: Int) -> Single<InvoicesResponse>
     func fetchInvoice(id: Int) -> Single<Invoice>
 }

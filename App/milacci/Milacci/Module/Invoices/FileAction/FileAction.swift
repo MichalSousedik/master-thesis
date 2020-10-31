@@ -28,9 +28,11 @@ struct FileActionFactory{
 
 }
 
+typealias DocumentPickerDelegate = UIDocumentPickerDelegate & UIViewController
+
 struct UploadFile: FileAction {
 
-    weak var vcDelegate: InvoiceDetailViewController?
+    weak var vcDelegate: DocumentPickerDelegate?
 
     func image() -> UIImage? {
         return UIImage(systemSymbol: .plus)

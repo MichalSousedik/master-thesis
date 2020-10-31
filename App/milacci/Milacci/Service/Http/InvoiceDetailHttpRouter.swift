@@ -10,12 +10,23 @@ import Alamofire
 
 struct InvoiceDetailHttpRouter: HttpRouter {
 
+    private var accessToken: String {
+        return UserSettingsService.shared.accessToken ?? ""
+    }
+
     var id: Int
 
     var path: String {
-        return "invoice/\(id)"
+        return "invoices/\(id)"
     }
 
     var method = HTTPMethod.get
+
+    var headers: HTTPHeaders? {
+        return [
+            "Content-type": "application/json",
+            "Authorization": "Bearer \(accessToken)"
+        ]
+    }
 
 }

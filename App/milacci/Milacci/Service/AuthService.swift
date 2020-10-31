@@ -26,6 +26,8 @@ class AuthService: AuthAPI {
                     .responseJSON{ result in
                         do {
                             let user = try AuthService.parse(result: result)
+
+                            print(user.credentials.accessToken)
                             single(.success(user))
                         } catch {
                             single(.error(error))

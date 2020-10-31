@@ -30,6 +30,7 @@ internal enum Asset {
     internal static let secondary = ColorAsset(name: "secondary")
   }
   internal enum Images {
+    internal static let launchingAppIcon1 = ImageAsset(name: "launching-app-icon-1")
     internal static let launchingAppIcon = ImageAsset(name: "launching-app-icon")
   }
 }

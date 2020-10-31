@@ -41,3 +41,4 @@
 "Received data couldn't be loaded because they are in a wrong format" = "Received data couldn't be loaded because they are in a wrong format";
 "Fetching data resulted in error" = "Fetching data resulted in error";
 "No Internet Connection" = "No Internet Connection";
+"Selected URL is not accessible" = "Selected URL is not accessible";

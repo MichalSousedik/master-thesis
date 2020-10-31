@@ -41,5 +41,5 @@
 "Received data couldn't be loaded because they are in a wrong format" = "Obdžená data nebyla načtena, neboť nejsou ve správném formátu";
 "Fetching data resulted in error" = "Získávání dat ze serveru se nepodařilo dokončit:";
 "No Internet Connection" = "Zařízení není připojeno k internetu";
-
+"Selected URL is not accessible" = "Zvolený soubor není dostupný";
 
