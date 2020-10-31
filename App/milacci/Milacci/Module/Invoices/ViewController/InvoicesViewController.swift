@@ -37,7 +37,7 @@ class InvoicesViewController: UIViewController, Storyboardable {
         viewModel = viewModelBuilder((
             invoiceSelect: tableView.rx.modelSelected(InvoiceViewModel.self).asDriver(),
             refreshTrigger: refreshSubject.asDriver(onErrorJustReturn: ()),
-            loadNextPageTrigger: tableView.rx.reached(reset: resetReachedBottom)
+            loadNextPageTrigger: tableView.rx.reachedBottom(reset: resetReachedBottom)
         ))
         setupUI()
         setupViewModelBinding()
@@ -76,7 +76,7 @@ private extension InvoicesViewController {
                 self?.refreshInvoices()
                 self?.resetReachedBottom.onNext(())
             }).disposed(by: bag)
-        tableView.rx.reached(reset: resetReachedBottom).drive(onNext: { [weak self] in
+        tableView.rx.reachedBottom(reset: resetReachedBottom).drive(onNext: { [weak self] in
             self?.tableView.tableFooterView?.isHidden = false
         }).disposed(by: bag)
     }
