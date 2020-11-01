@@ -11,19 +11,19 @@ import RxSwift
 import OHHTTPStubs
 import Alamofire
 
-class InvoicesService: InvoicesAPI {
+class InvoiceService: InvoicesAPI {
 
-    static let shared: InvoicesService = InvoicesService()
+    static let shared: InvoiceService = InvoiceService()
     private lazy var httpService = InvoiceHttpSerivce()
 
     func uploadFile(id: Int, url: URL) -> Single<String> {
         //        InvoicesService.mockInvoiceEndpoint()
-        return Single.create{ [httpService] (single) -> Disposable in
+        return Single.create{ (single) -> Disposable in
             AF.upload(url, to: "https://milacci2-api-development.ack.ee/api/v1/invoices/\(id)/file-urls", headers:
                         ["Authorization": "Bearer \(UserSettingsService.shared.accessToken ?? "")"])
                 .responseJSON{ result in
                     do {
-                        let uploadResponse = try InvoicesService.parseUploadResponse(result: result)
+                        let uploadResponse = try InvoiceService.parseUploadResponse(result: result)
                         single(.success(uploadResponse.fileUrl))
                     } catch {
                         single(.error(error))
@@ -38,11 +38,11 @@ class InvoicesService: InvoicesAPI {
         //        InvoicesService.mockInvoiceEndpoint()
         return Single.create{ [httpService] (single) -> Disposable in
             do {
-                try InvoiceDetailHttpRouter(id: id)
+                try InvoiceHttpRouter.detail(id: id)
                     .request(usingHttpService: httpService)
                     .responseJSON{ result in
                         do {
-                            let invoice = try InvoicesService.parseInvoiceDetail(result: result)
+                            let invoice = try InvoiceService.parseInvoiceDetail(result: result)
                             single(.success(invoice))
                         } catch {
                             single(.error(error))
@@ -61,24 +61,26 @@ class InvoicesService: InvoicesAPI {
         return Single.create{ [httpService] (single) -> Disposable in
 
             do {
-                try InvoicesHttpRouter(offset: (page - 1)*10)
+                try InvoiceHttpRouter.fetch(offset: (page - 1)*10)
                     .request(usingHttpService: httpService)
-                    .validate()
                     .responseJSON{ result in
                         if let error = result.error {
                             var networkingError: NetworkingError
-                            if let afError = error.asAFError {
-                                switch afError {
-                                case .sessionTaskFailed(let sessionError):
-                                    if let urlError = sessionError as? URLError, urlError.code == URLError.notConnectedToInternet {
-                                        single(.error(NetworkingError.deviceIsOffline))
-                                    }
-                                    break
-                                default:
-                                    print(afError)
-                                }
-                            }
+//                            if let afError = error.asAFError {
+//                                switch afError {
+//                                case .sessionTaskFailed(let sessionError):
+//                                    if let urlError = sessionError as? URLError, urlError.code == URLError.notConnectedToInternet {
+//                                        single(.error(NetworkingError.deviceIsOffline))
+//                                    }
+//                                    break
+//                                default:
+//                                    print(afError)
+//                                }
+//                            }
                             switch error.responseCode {
+                            case 401:
+                                networkingError = NetworkingError.unauthorized
+                                break
                             case 404:
                                 networkingError = NetworkingError.resourceNotFound
                                 break
@@ -88,7 +90,7 @@ class InvoicesService: InvoicesAPI {
                             single(.error(networkingError))
                         } else {
                             do {
-                                let invoices = try InvoicesService.parseInvoices(result: result)
+                                let invoices = try InvoiceService.parseInvoices(result: result)
                                 single(.success(invoices))
                             } catch {
                                 single(.error(error))
@@ -105,7 +107,7 @@ class InvoicesService: InvoicesAPI {
 
 }
 
-extension InvoicesService {
+extension InvoiceService {
 
     static func parseUploadResponse(result: AFDataResponse<Any>) throws -> UploadResponse {
         guard
@@ -137,7 +139,7 @@ extension InvoicesService {
 
 }
 
-extension InvoicesService {
+extension InvoiceService {
     static func perform<T>(_ expression: @autoclosure () throws -> T,
                            errorTransform: (Error) -> Error) throws -> T {
         do {

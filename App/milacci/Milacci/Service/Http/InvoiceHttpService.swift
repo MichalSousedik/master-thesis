@@ -12,8 +12,8 @@ class InvoiceHttpSerivce: HttpService {
 
     var sessionManager: Session = Session.default
 
-    func request(_ urlRequest: URLRequestConvertible) -> DataRequest {
-        return sessionManager.request(urlRequest)
+    func request(_ urlRequest: URLRequestConvertible, requestInterceptor: RequestInterceptor?) -> DataRequest {
+        return sessionManager.request(urlRequest, interceptor: requestInterceptor).validate(statusCode: 200..<400)
     }
 
 }

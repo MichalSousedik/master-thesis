@@ -20,6 +20,9 @@
 		37A9037D2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */; };
 		37A9037F25362647006251EE /* PaginationNetworkLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9037E25362647006251EE /* PaginationNetworkLogic.swift */; };
 		37A9038F2538F85C006251EE /* FileAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9038E2538F85C006251EE /* FileAction.swift */; };
+		37C374A2254ED85600480D2C /* AccessTokenInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374A1254ED85600480D2C /* AccessTokenInterceptor.swift */; };
+		37C374A4254F020C00480D2C /* InitiatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374A3254F020C00480D2C /* InitiatingViewController.swift */; };
+		37C374A9254F032100480D2C /* InitiatingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374A8254F032100480D2C /* InitiatingCoordinator.swift */; };
 		37F70AE125439AA2001E9D07 /* InvoicesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */; };
 		37F70AE625444ADC001E9D07 /* WageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE525444ADC001E9D07 /* WageCoordinator.swift */; };
 		37F70AE825444BB9001E9D07 /* WageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE725444BB9001E9D07 /* WageViewController.swift */; };
@@ -42,7 +45,6 @@
 		37F70BCB254A0F2F001E9D07 /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F70BCA254A0F2F001E9D07 /* environment.plist */; };
 		C00D050E251BEC6D004D42E8 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00D050D251BEC6D004D42E8 /* NetworkingError.swift */; };
 		C01CF704251FE9EF00C8CE06 /* Numeric+CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01CF703251FE9EF00C8CE06 /* Numeric+CurrencyFormatter.swift */; };
-		C01CF706251FFC9300C8CE06 /* InvoiceDetailHttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01CF705251FFC9300C8CE06 /* InvoiceDetailHttpRouter.swift */; };
 		C040DDE4251953F200822300 /* InvoicesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C040DDE3251953F200822300 /* InvoicesCoordinator.swift */; };
 		C040DDE62519540600822300 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C040DDE52519540600822300 /* Coordinator.swift */; };
 		C0455E5D2479BF8500D96F53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0455E5C2479BF8500D96F53 /* AppDelegate.swift */; };
@@ -56,8 +58,8 @@
 		C0574569251A9B6100051D12 /* HttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0574568251A9B6100051D12 /* HttpRouter.swift */; };
 		C057456B251A9C1A00051D12 /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C057456A251A9C1A00051D12 /* HttpService.swift */; };
 		C057456D251A9CDA00051D12 /* InvoiceHttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C057456C251A9CDA00051D12 /* InvoiceHttpService.swift */; };
-		C057456F251A9D6600051D12 /* InvoicesHttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C057456E251A9D6600051D12 /* InvoicesHttpRouter.swift */; };
-		C0574571251AA0CF00051D12 /* InvoicesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0574570251AA0CF00051D12 /* InvoicesService.swift */; };
+		C057456F251A9D6600051D12 /* InvoiceHttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C057456E251A9D6600051D12 /* InvoiceHttpRouter.swift */; };
+		C0574571251AA0CF00051D12 /* InvoiceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0574570251AA0CF00051D12 /* InvoiceService.swift */; };
 		C0574573251AA0EC00051D12 /* InvoicesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0574572251AA0EC00051D12 /* InvoicesAPI.swift */; };
 		C058335F248051E7004CA055 /* HalfCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C058335E248051E7004CA055 /* HalfCircleView.swift */; };
 		C05833622481477C004CA055 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05833612481477C004CA055 /* BaseNavigationController.swift */; };
@@ -105,6 +107,9 @@
 		37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+TableViewRxReachedBottom.swift"; sourceTree = "<group>"; };
 		37A9037E25362647006251EE /* PaginationNetworkLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationNetworkLogic.swift; sourceTree = "<group>"; };
 		37A9038E2538F85C006251EE /* FileAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAction.swift; sourceTree = "<group>"; };
+		37C374A1254ED85600480D2C /* AccessTokenInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenInterceptor.swift; sourceTree = "<group>"; };
+		37C374A3254F020C00480D2C /* InitiatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiatingViewController.swift; sourceTree = "<group>"; };
+		37C374A8254F032100480D2C /* InitiatingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiatingCoordinator.swift; sourceTree = "<group>"; };
 		37CA024F25250F8100948444 /* Milacci.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Milacci.entitlements; sourceTree = "<group>"; };
 		37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesResponse.swift; sourceTree = "<group>"; };
 		37F70AE525444ADC001E9D07 /* WageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageCoordinator.swift; sourceTree = "<group>"; };
@@ -135,7 +140,6 @@
 		BF0C5AEAF214F5D05E4F750C /* Pods-Milacci.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Milacci.release.xcconfig"; path = "Target Support Files/Pods-Milacci/Pods-Milacci.release.xcconfig"; sourceTree = "<group>"; };
 		C00D050D251BEC6D004D42E8 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		C01CF703251FE9EF00C8CE06 /* Numeric+CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+CurrencyFormatter.swift"; sourceTree = "<group>"; };
-		C01CF705251FFC9300C8CE06 /* InvoiceDetailHttpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailHttpRouter.swift; sourceTree = "<group>"; };
 		C040DDE3251953F200822300 /* InvoicesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesCoordinator.swift; sourceTree = "<group>"; };
 		C040DDE52519540600822300 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C0455E592479BF8500D96F53 /* Milacci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Milacci.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,8 +153,8 @@
 		C0574568251A9B6100051D12 /* HttpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRouter.swift; sourceTree = "<group>"; };
 		C057456A251A9C1A00051D12 /* HttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
 		C057456C251A9CDA00051D12 /* InvoiceHttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceHttpService.swift; sourceTree = "<group>"; };
-		C057456E251A9D6600051D12 /* InvoicesHttpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesHttpRouter.swift; sourceTree = "<group>"; };
-		C0574570251AA0CF00051D12 /* InvoicesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesService.swift; sourceTree = "<group>"; };
+		C057456E251A9D6600051D12 /* InvoiceHttpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceHttpRouter.swift; sourceTree = "<group>"; };
+		C0574570251AA0CF00051D12 /* InvoiceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceService.swift; sourceTree = "<group>"; };
 		C0574572251AA0EC00051D12 /* InvoicesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesAPI.swift; sourceTree = "<group>"; };
 		C058335E248051E7004CA055 /* HalfCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleView.swift; sourceTree = "<group>"; };
 		C05833612481477C004CA055 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -226,6 +230,31 @@
 				37A9038E2538F85C006251EE /* FileAction.swift */,
 			);
 			path = FileAction;
+			sourceTree = "<group>";
+		};
+		37C374A5254F02EF00480D2C /* Initiation */ = {
+			isa = PBXGroup;
+			children = (
+				37C374A7254F030100480D2C /* ViewController */,
+				37C374A6254F02FB00480D2C /* Coordinator */,
+			);
+			path = Initiation;
+			sourceTree = "<group>";
+		};
+		37C374A6254F02FB00480D2C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				37C374A8254F032100480D2C /* InitiatingCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		37C374A7254F030100480D2C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				37C374A3254F020C00480D2C /* InitiatingViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		37F70AE225444A47001E9D07 /* Wage */ = {
@@ -377,7 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				C0574567251A9B4600051D12 /* Http */,
-				C0574570251AA0CF00051D12 /* InvoicesService.swift */,
+				C0574570251AA0CF00051D12 /* InvoiceService.swift */,
 				C0574572251AA0EC00051D12 /* InvoicesAPI.swift */,
 				37F70B202548AF0B001E9D07 /* AuthService.swift */,
 			);
@@ -390,10 +419,10 @@
 				C0574568251A9B6100051D12 /* HttpRouter.swift */,
 				C057456A251A9C1A00051D12 /* HttpService.swift */,
 				C057456C251A9CDA00051D12 /* InvoiceHttpService.swift */,
-				C057456E251A9D6600051D12 /* InvoicesHttpRouter.swift */,
-				C01CF705251FFC9300C8CE06 /* InvoiceDetailHttpRouter.swift */,
+				C057456E251A9D6600051D12 /* InvoiceHttpRouter.swift */,
 				37F70B1E2548A999001E9D07 /* AuthHttpRouter.swift */,
 				37F70B222548AFA2001E9D07 /* AuthHttpService.swift */,
+				37C374A1254ED85600480D2C /* AccessTokenInterceptor.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -481,6 +510,7 @@
 		C0E8E11B251A7F9400A21F9E /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				37C374A5254F02EF00480D2C /* Initiation */,
 				37F70AE225444A47001E9D07 /* Wage */,
 				C0E342DF251A8B2C00860E44 /* SignIn */,
 				C0E342DA251A85DC00860E44 /* Profile */,
@@ -755,7 +785,7 @@
 				37A9037F25362647006251EE /* PaginationNetworkLogic.swift in Sources */,
 				37093A72253CE9B200E87BA4 /* SignInResponse.swift in Sources */,
 				37F70AE625444ADC001E9D07 /* WageCoordinator.swift in Sources */,
-				C0574571251AA0CF00051D12 /* InvoicesService.swift in Sources */,
+				C0574571251AA0CF00051D12 /* InvoiceService.swift in Sources */,
 				37F70B072545B40B001E9D07 /* Error+ResolveCategory.swift in Sources */,
 				3711806F254A2D18000DFFFA /* Strings.swift in Sources */,
 				C0B9350C247DA59400A457AD /* InvoiceDetailViewController.swift in Sources */,
@@ -770,15 +800,17 @@
 				C0455E5F2479BF8500D96F53 /* SceneDelegate.swift in Sources */,
 				37F70B0F2545B7FA001E9D07 /* UIViewController+ChildViewController.swift in Sources */,
 				C00D050E251BEC6D004D42E8 /* NetworkingError.swift in Sources */,
-				C01CF706251FFC9300C8CE06 /* InvoiceDetailHttpRouter.swift in Sources */,
 				37A9037D2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift in Sources */,
-				C057456F251A9D6600051D12 /* InvoicesHttpRouter.swift in Sources */,
+				C057456F251A9D6600051D12 /* InvoiceHttpRouter.swift in Sources */,
+				37C374A4254F020C00480D2C /* InitiatingViewController.swift in Sources */,
 				37F70B012545B277001E9D07 /* UIResponder+ErrorHandler.swift in Sources */,
 				37118077254A2FD2000DFFFA /* Assets.swift in Sources */,
 				C0ACCB60247AC283002F7263 /* InvoiceTableViewCell.swift in Sources */,
 				373E8280254DF84700A93E0D /* UploadResponse.swift in Sources */,
+				37C374A9254F032100480D2C /* InitiatingCoordinator.swift in Sources */,
 				C01CF704251FE9EF00C8CE06 /* Numeric+CurrencyFormatter.swift in Sources */,
 				C057456D251A9CDA00051D12 /* InvoiceHttpService.swift in Sources */,
+				37C374A2254ED85600480D2C /* AccessTokenInterceptor.swift in Sources */,
 				37F70AE125439AA2001E9D07 /* InvoicesResponse.swift in Sources */,
 				C05833622481477C004CA055 /* BaseNavigationController.swift in Sources */,
 			);

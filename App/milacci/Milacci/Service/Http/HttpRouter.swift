@@ -16,6 +16,7 @@ protocol HttpRouter {
     var method: HTTPMethod { get }
     var headers: HTTPHeaders? { get }
     var parameters: Parameters? { get }
+    var requestInterceptor: RequestInterceptor? { get }
     func body() throws -> Data?
 
     func request(usingHttpService: HttpService) throws -> DataRequest
@@ -32,6 +33,7 @@ extension HttpRouter {
     var parameters: Parameters? { return nil }
     func body() throws -> Data? { return nil }
     var headers: HTTPHeaders? { return nil }
+    var requestInterceptor: RequestInterceptor? { return nil }
 
     func asUrlRequest() throws -> URLRequest {
         var url = try baseUrlString.asURL()
@@ -43,7 +45,7 @@ extension HttpRouter {
     }
 
     func request(usingHttpService service: HttpService) throws -> DataRequest {
-        return try service.request(asUrlRequest())
+        return try service.request(asUrlRequest(), requestInterceptor: requestInterceptor)
     }
 
 }

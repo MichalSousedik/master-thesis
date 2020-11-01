@@ -36,8 +36,7 @@ extension AppDelegate {
         case .nonRetryable:
             break
         case .requiresLogout:
-//            return performLogout()
-        fatalError("Not implemented")
+            break
         }
 
         viewController.present(alert, animated: true)

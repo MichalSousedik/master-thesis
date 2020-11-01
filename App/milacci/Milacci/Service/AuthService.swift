@@ -21,7 +21,7 @@ class AuthService: AuthAPI {
     func signIn(accessToken: String) -> Single<SignInResponse> {
         return Single.create{ [httpService] (single) -> Disposable in
             do {
-                try AuthHttpRouter(accessToken: accessToken)
+                try AuthHttpRouter.authenticate(accessToken: accessToken)
                     .request(usingHttpService: httpService)
                     .responseJSON{ result in
                         do {

@@ -8,12 +8,27 @@
 
 import Alamofire
 
-struct AuthHttpRouter: HttpRouter {
+enum AuthHttpRouter {
+    case authenticate(accessToken: String)
+    case refreshToken(refreshToken: String)
+}
 
-    var accessToken: String?
+extension AuthHttpRouter: HttpRouter {
 
-    let path: String = "auth/google/sign-in"
-    let method = HTTPMethod.post
+//    var accessToken: String?
+
+    var path: String {
+        switch self {
+        case .authenticate:
+            return "auth/google/sign-in"
+        case .refreshToken:
+            return "auth/refresh"
+        }
+    }
+
+    var method: HTTPMethod {
+        .post
+    }
 
     var headers: HTTPHeaders? {
         return [
@@ -22,10 +37,17 @@ struct AuthHttpRouter: HttpRouter {
     }
 
     func body() throws -> Data? {
-        guard let accessToken = accessToken else { throw NetworkingError.custom(message: L10n.accessTokenNotProvided)}
-        let json: [String: Any] = ["accessToken": accessToken]
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        return jsonData
+        switch self {
+        case .authenticate(let accessToken):
+            let json: [String: Any] = ["accessToken": accessToken]
+            let jsonData = try? JSONSerialization.data(withJSONObject: json)
+            return jsonData
+        case .refreshToken(let refreshToken):
+            let json: [String: Any] = ["token": refreshToken]
+            let jsonData = try? JSONSerialization.data(withJSONObject: json)
+            return jsonData
+        }
+
     }
 
 }

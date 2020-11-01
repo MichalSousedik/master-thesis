@@ -20,7 +20,7 @@ class InvoicesCoordinator: BaseCoordinator {
 
     override func start(){
         let view = InvoicesViewController.instantiate()
-        let service = InvoicesService.shared
+        let service = InvoiceService.shared
         view.viewModelBuilder = { [bag] in
             let viewModel = InvoicesViewModel(input: $0, api: service)
 

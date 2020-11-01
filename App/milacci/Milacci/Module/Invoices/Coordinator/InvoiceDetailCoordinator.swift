@@ -24,7 +24,7 @@ class InvoiceDetailCoordinator: BaseCoordinator {
         view.viewModelBuilder = { [model] in
             return InvoiceDetailViewModel(input: $0,
                                    dependencies: (invoice: model, ()),
-                                   api: InvoicesService.shared)
+                                   api: InvoiceService.shared)
         }
         navigationController.pushViewController(view, animated: true)
     }
