@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol UserSettingAPI {
+protocol UserSettingsAPI {
 
     var accessToken: String? { get }
     var refreshToken: String? { get }
@@ -36,7 +36,7 @@ public class UserSettingsService {
 
 }
 
-extension UserSettingsService: UserSettingAPI {
+extension UserSettingsService: UserSettingsAPI {
 
     var userId: Int {
         return UserDefaults.standard.integer(forKey: Keys.userId)

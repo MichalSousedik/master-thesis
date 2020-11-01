@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var appCoordinator: AppCoordinator?
     var authService: AuthAPI = AuthService.shared
     var bag: DisposeBag = DisposeBag()
+    let userSettingsApi: UserSettingsAPI = UserSettingsService.shared
 
     let monitor = NWPathMonitor()
     var labels: [UILabel] = []
@@ -72,8 +73,14 @@ extension SceneDelegate: GIDSignInDelegate {
         if let error = error {
             if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
                 print("The user has not signed in before or they have since signed out.")
-            } else {
-                print("\(error.localizedDescription)")
+            } else if (error as NSError).code == -10 {
+                //TODO - handle access token expired
+                print(error.localizedDescription)
+                self.userSettingsApi.clearAll()
+            }
+            else {
+                print(error.localizedDescription)
+                self.userSettingsApi.clearAll()
             }
             self.appCoordinator?.reload()
             return
@@ -87,7 +94,7 @@ extension SceneDelegate: GIDSignInDelegate {
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
               withError error: Error!) {
-        UserSettingsService.shared.clearAll()
+        self.userSettingsApi.clearAll()
         self.appCoordinator?.reload()
     }
 
@@ -98,15 +105,11 @@ private extension SceneDelegate {
     func signIn(accessToken: String){
         self.authService.signIn(accessToken: accessToken)
             .subscribe { [weak self] signInModel in
-                UserSettingsService.shared.saveCredentials(credentials: signInModel.credentials)
-                UserSettingsService.shared.saveUser(user: signInModel.user)
+                self?.userSettingsApi.saveCredentials(credentials: signInModel.credentials)
+                self?.userSettingsApi.saveUser(user: signInModel.user)
                 self?.appCoordinator?.reload()
             } onError: { [weak self] error in
-                guard let window = self?.window else { print("No window found"); return }
-                let vc = ErrorViewController.instantiate()
-                window.rootViewController = vc
-                window.makeKeyAndVisible()
-                vc.handle(error, from: vc, retryHandler: nil)
+                self?.displayError(error: error, window: self?.window)
             }.disposed(by: bag)
     }
 
@@ -141,6 +144,14 @@ private extension SceneDelegate {
         label.text = L10n.noInternetConnection
         self.labels.append(label)
         return label
+    }
+
+    func displayError(error: Error, window: UIWindow?) {
+        guard let window = window else { print("No window found"); return }
+        let vc = ErrorViewController.instantiate()
+        window.rootViewController = vc
+        window.makeKeyAndVisible()
+        vc.handle(error, from: vc, retryHandler: nil)
     }
 
 }

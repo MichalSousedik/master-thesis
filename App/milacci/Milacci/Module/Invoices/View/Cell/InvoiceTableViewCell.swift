@@ -16,15 +16,14 @@ class InvoiceTableViewCell: UITableViewCell {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var clipImageView: UIImageView!
-    @IBOutlet weak var onRowClickButton: UIButton!
     @IBOutlet weak var progressView: UIProgressView!
-
+    @IBOutlet weak var rowActionImageView: UIImageView!
     func configure(usingViewModel viewModel: InvoiceViewPresentable) {
         dateLabel.text = viewModel.date
         amountLabel.text = viewModel.value
         stateLabel.text = viewModel.state
         clipImageView.tintColor = viewModel.isFilePresent ? UIColor.label : UIColor.clear
-        onRowClickButton.setImage(UIImage(systemSymbol: viewModel.isFilePresent ? .squareAndArrowDown : .squareAndArrowUp, withConfiguration: nil), for: .normal)
+        rowActionImageView.image = UIImage(systemSymbol: viewModel.isFilePresent ? .squareAndArrowDown : .squareAndArrowUp, withConfiguration: nil)
     }
 
 }
