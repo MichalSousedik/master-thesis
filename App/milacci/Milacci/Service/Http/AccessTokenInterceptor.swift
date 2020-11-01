@@ -78,18 +78,16 @@ private extension AccessTokenInterceptor {
         do {
             try AuthHttpRouter.refreshToken(refreshToken: self.refreshToken ?? "")
                 .request(usingHttpService: self.httpService)
-                .responseJSON {[weak self] (dataResponse) in
+                .responseJSON {[weak self] (result) in
                     self?.isRefreshing = false
-                    if let error = dataResponse.error {
-                        completion(nil, error)
-                        return
-                    }
 
-                    guard let statusCode = dataResponse.response?.statusCode,
-                          statusCode == 200 else { completion(nil, nil); return }
-                    if let signInResponse = try? AuthService.parse(result: dataResponse) {
-                        completion(signInResponse, nil)
-                    }
+                    HttpResponseHandler.handle(result: result, completion: { (item, error) in
+                        if let error = error {
+                            completion(nil, error)
+                        } else if let item = item {
+                            completion(item, nil)
+                        }
+                    }, type: SignInResponse.self)
                 }
         } catch {
             completion(nil, error)

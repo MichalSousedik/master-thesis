@@ -23,6 +23,8 @@
 		37C374A2254ED85600480D2C /* AccessTokenInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374A1254ED85600480D2C /* AccessTokenInterceptor.swift */; };
 		37C374A4254F020C00480D2C /* InitiatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374A3254F020C00480D2C /* InitiatingViewController.swift */; };
 		37C374A9254F032100480D2C /* InitiatingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374A8254F032100480D2C /* InitiatingCoordinator.swift */; };
+		37C374AB254F175500480D2C /* HttpResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374AA254F175500480D2C /* HttpResponseHandler.swift */; };
+		37C374AF254F19CF00480D2C /* InvoiceService+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374AE254F19CF00480D2C /* InvoiceService+Mock.swift */; };
 		37F70AE125439AA2001E9D07 /* InvoicesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */; };
 		37F70AE625444ADC001E9D07 /* WageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE525444ADC001E9D07 /* WageCoordinator.swift */; };
 		37F70AE825444BB9001E9D07 /* WageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE725444BB9001E9D07 /* WageViewController.swift */; };
@@ -110,6 +112,8 @@
 		37C374A1254ED85600480D2C /* AccessTokenInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenInterceptor.swift; sourceTree = "<group>"; };
 		37C374A3254F020C00480D2C /* InitiatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiatingViewController.swift; sourceTree = "<group>"; };
 		37C374A8254F032100480D2C /* InitiatingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiatingCoordinator.swift; sourceTree = "<group>"; };
+		37C374AA254F175500480D2C /* HttpResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResponseHandler.swift; sourceTree = "<group>"; };
+		37C374AE254F19CF00480D2C /* InvoiceService+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InvoiceService+Mock.swift"; sourceTree = "<group>"; };
 		37CA024F25250F8100948444 /* Milacci.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Milacci.entitlements; sourceTree = "<group>"; };
 		37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesResponse.swift; sourceTree = "<group>"; };
 		37F70AE525444ADC001E9D07 /* WageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageCoordinator.swift; sourceTree = "<group>"; };
@@ -409,6 +413,7 @@
 				C0574570251AA0CF00051D12 /* InvoiceService.swift */,
 				C0574572251AA0EC00051D12 /* InvoicesAPI.swift */,
 				37F70B202548AF0B001E9D07 /* AuthService.swift */,
+				37C374AA254F175500480D2C /* HttpResponseHandler.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 				37F70B1E2548A999001E9D07 /* AuthHttpRouter.swift */,
 				37F70B222548AFA2001E9D07 /* AuthHttpService.swift */,
 				37C374A1254ED85600480D2C /* AccessTokenInterceptor.swift */,
+				37C374AE254F19CF00480D2C /* InvoiceService+Mock.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -767,6 +773,7 @@
 				C0455E612479BF8500D96F53 /* SignInViewController.swift in Sources */,
 				37F70B032545B349001E9D07 /* UIViewController+ErrorHandler.swift in Sources */,
 				C0455E5D2479BF8500D96F53 /* AppDelegate.swift in Sources */,
+				37C374AB254F175500480D2C /* HttpResponseHandler.swift in Sources */,
 				C0BAE0122509605600472B91 /* InvoiceViewModel.swift in Sources */,
 				3711806E254A2D18000DFFFA /* Plist.swift in Sources */,
 				37F70AE825444BB9001E9D07 /* WageViewController.swift in Sources */,
@@ -787,6 +794,7 @@
 				37F70AE625444ADC001E9D07 /* WageCoordinator.swift in Sources */,
 				C0574571251AA0CF00051D12 /* InvoiceService.swift in Sources */,
 				37F70B072545B40B001E9D07 /* Error+ResolveCategory.swift in Sources */,
+				37C374AF254F19CF00480D2C /* InvoiceService+Mock.swift in Sources */,
 				3711806F254A2D18000DFFFA /* Strings.swift in Sources */,
 				C0B9350C247DA59400A457AD /* InvoiceDetailViewController.swift in Sources */,
 				C0E1B251248430FE00F68394 /* BaseTabBarController.swift in Sources */,

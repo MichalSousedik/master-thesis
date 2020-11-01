@@ -36,6 +36,8 @@ internal enum L10n {
   internal static let february = L10n.tr("Localizable", "February")
   /// Fetching data resulted in error
   internal static let fetchingDataResultedInError = L10n.tr("Localizable", "Fetching data resulted in error")
+  /// Access forbidden
+  internal static let forbidden = L10n.tr("Localizable", "Forbidden")
   /// Invoices
   internal static let invoices = L10n.tr("Localizable", "Invoices")
   /// January

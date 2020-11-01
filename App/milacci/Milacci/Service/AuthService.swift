@@ -24,14 +24,13 @@ class AuthService: AuthAPI {
                 try AuthHttpRouter.authenticate(accessToken: accessToken)
                     .request(usingHttpService: httpService)
                     .responseJSON{ result in
-                        do {
-                            let user = try AuthService.parse(result: result)
-
-                            print(user.credentials.accessToken)
-                            single(.success(user))
-                        } catch {
-                            single(.error(error))
-                        }
+                        HttpResponseHandler.handle(result: result, completion: { (item, error) in
+                            if let error = error {
+                                single(.error(error))
+                            } else if let item = item {
+                                single(.success(item))
+                            }
+                        }, type: SignInResponse.self)
                 }
             } catch {
                 single(.error(NetworkingError.serverError(error)))
@@ -41,28 +40,4 @@ class AuthService: AuthAPI {
         }
     }
 
-}
-
-extension AuthService {
-
-    static func parse(result: AFDataResponse<Any>) throws -> SignInResponse {
-        guard
-            let data = result.data else {
-            throw NetworkingError.custom(message: L10n.dataCouldnTBeExtractedFromResult)
-        }
-
-        return try perform(JSONDecoder().decode(SignInResponse.self, from: data))
-            {NetworkingError.decodingFailed($0)}
-    }
-}
-
-extension AuthService {
-    static func perform<T>(_ expression: @autoclosure () throws -> T,
-                    errorTransform: (Error) -> Error) throws -> T {
-        do {
-            return try expression()
-        } catch {
-            throw errorTransform(error)
-        }
-    }
 }

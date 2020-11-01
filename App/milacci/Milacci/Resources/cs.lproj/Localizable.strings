@@ -42,4 +42,5 @@
 "Fetching data resulted in error" = "Získávání dat ze serveru se nepodařilo dokončit:";
 "No Internet Connection" = "Zařízení není připojeno k internetu";
 "Selected URL is not accessible" = "Zvolený soubor není dostupný";
+"Forbidden" = "Přístup byl odepřen";
 

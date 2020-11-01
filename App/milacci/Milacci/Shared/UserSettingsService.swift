@@ -18,6 +18,7 @@ protocol UserSettingsAPI {
     func saveCredentials(credentials: Credentials)
     func saveUser(user: User)
     func clearAll()
+    func clearAccessToken()
 }
 
 public class UserSettingsService {
@@ -54,7 +55,7 @@ extension UserSettingsService: UserSettingsAPI {
 
         let expiresIn: Int = UserDefaults.standard.integer(forKey: Keys.expiresIn)
 
-        guard let accessToken = accessToken,
+        guard let accessToken = accessToken ?? "",
               let refreshToken = refreshToken,
               expiresIn != 0,
               let rolesData = UserDefaults.standard.data(forKey: Keys.roles),
@@ -88,6 +89,11 @@ extension UserSettingsService: UserSettingsAPI {
         UserDefaults.standard.removeObject(forKey: Keys.refreshToken)
         UserDefaults.standard.removeObject(forKey: Keys.expiresIn)
         UserDefaults.standard.removeObject(forKey: Keys.userId)
+
+    }
+
+    func clearAccessToken() {
+        UserDefaults.standard.removeObject(forKey: Keys.accessToken)
 
     }
 

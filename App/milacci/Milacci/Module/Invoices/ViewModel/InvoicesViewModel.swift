@@ -80,16 +80,25 @@ private extension InvoicesViewModel {
 
     func processInput() {
         self.input.invoiceSelect
-            .map { [api, state] in
+            .map { [api, state, bag] in
                 if $0.isFilePresent {
+                    state.isUploadingInvoice.onNext(
+                        (isUploading: true, forInvoice: $0.invoice)
+                    )
                     api.fetchInvoice(id: $0.invoice.id).subscribe(onSuccess: { [state] (invoice) in
+                        state.isUploadingInvoice.onNext(
+                            (isUploading: false, forInvoice: nil)
+                        )
                         if let filename = invoice.filename,
                            let url = URL(string: filename) {
                             state.fileToBeDisplayed.onNext(url)
                         }
-                    }, onError: { (error) in
+                    }, onError: { [state] (error) in
+                        state.isUploadingInvoice.onNext(
+                            (isUploading: false, forInvoice: nil)
+                        )
                         state.errorOccured.accept(error)
-                    }).disposed(by: self.bag)
+                    }).disposed(by: bag)
                 } else {
                     state.pickFile.onNext(())
                 }

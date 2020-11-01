@@ -11,6 +11,7 @@ enum NetworkingError: Error {
     case deviceIsOffline
     case unauthorized
     case resourceNotFound
+    case forbiden
     case serverError(Error)
     case missingData
     case decodingFailed(Error)
@@ -32,6 +33,8 @@ extension NetworkingError: LocalizedError {
             return L10n.searchedDataCouldnTBeLocated
         case .decodingFailed:
             return L10n.receivedDataCouldnTBeLoadedBecauseTheyAreInAWrongFormat
+        case .forbiden:
+            return L10n.forbidden
         case .custom(let message):
             return "\(L10n.fetchingDataResultedInError) \(message)"
         }
@@ -43,7 +46,7 @@ extension NetworkingError: CategorizedError {
         switch self {
         case .deviceIsOffline, .serverError:
             return .retryable
-        case .resourceNotFound, .missingData, .decodingFailed, .custom:
+        case .resourceNotFound, .missingData, .forbiden, .decodingFailed, .custom:
             return .nonRetryable
         case .unauthorized:
             return .requiresLogout
