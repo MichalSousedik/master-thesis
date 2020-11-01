@@ -114,6 +114,9 @@
 		37C374A8254F032100480D2C /* InitiatingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiatingCoordinator.swift; sourceTree = "<group>"; };
 		37C374AA254F175500480D2C /* HttpResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResponseHandler.swift; sourceTree = "<group>"; };
 		37C374AE254F19CF00480D2C /* InvoiceService+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InvoiceService+Mock.swift"; sourceTree = "<group>"; };
+		37C374B2254F3B5300480D2C /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main.strings; sourceTree = "<group>"; };
+		37C374B3254F3B5400480D2C /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		37C374B4254F3B5400480D2C /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		37CA024F25250F8100948444 /* Milacci.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Milacci.entitlements; sourceTree = "<group>"; };
 		37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesResponse.swift; sourceTree = "<group>"; };
 		37F70AE525444ADC001E9D07 /* WageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageCoordinator.swift; sourceTree = "<group>"; };
@@ -135,9 +138,6 @@
 		37F70B222548AFA2001E9D07 /* AuthHttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHttpService.swift; sourceTree = "<group>"; };
 		37F70B8E254992C0001E9D07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		37F70B8F254992C1001E9D07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		37F70B90254994C2001E9D07 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main.strings; sourceTree = "<group>"; };
-		37F70B91254994C3001E9D07 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		37F70BA62549B38E001E9D07 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		37F70BA82549B398001E9D07 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		37F70BCA254A0F2F001E9D07 /* environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		92ABC71A3510F6D0BFB2913A /* Pods_Milacci.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Milacci.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -830,8 +830,8 @@
 		37F70BA72549B38E001E9D07 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				37F70BA62549B38E001E9D07 /* cs */,
 				37F70BA82549B398001E9D07 /* en */,
+				37C374B4254F3B5400480D2C /* cs */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -840,7 +840,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				37F70B8E254992C0001E9D07 /* Base */,
-				37F70B90254994C2001E9D07 /* cs */,
+				37C374B2254F3B5300480D2C /* cs */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -849,7 +849,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				37F70B8F254992C1001E9D07 /* Base */,
-				37F70B91254994C3001E9D07 /* cs */,
+				37C374B3254F3B5400480D2C /* cs */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

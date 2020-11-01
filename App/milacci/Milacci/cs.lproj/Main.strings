@@ -1,20 +1,51 @@
-/* Class = "UILabel"; text = "Hodinová mzda"; ObjectID = "4kD-Jk-b15"; */
+
+/* Class = "UILabel"; text = "200 Kč"; ObjectID = "2o8-xT-hi1"; */
+"2o8-xT-hi1.text" = "200 Kč";
+
+/* Class = "UILabel"; text = "Hourly wage"; ObjectID = "4kD-Jk-b15"; */
 "4kD-Jk-b15.text" = "Hodinová mzda";
 
-/* Class = "UILabel"; text = "Kontaktujte správce aplikace"; ObjectID = "BsN-yK-jEE"; */
+/* Class = "UILabel"; text = "Try it again later"; ObjectID = "BsN-yK-jEE"; */
 "BsN-yK-jEE.text" = "Zkuste to později";
 
-/* Class = "UINavigationItem"; title = "Profil"; ObjectID = "Gv6-Un-0Vg"; */
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "Gv6-Un-0Vg"; */
 "Gv6-Un-0Vg.title" = "Profil";
 
-/* Class = "UILabel"; text = "Počet hodin"; ObjectID = "Rc5-mJ-xo3"; */
+/* Class = "UILabel"; text = "20 000 Kč"; ObjectID = "JL7-n7-4HG"; */
+"JL7-n7-4HG.text" = "20 000 Kč";    
+
+/* Class = "UILabel"; text = "Hours count"; ObjectID = "Rc5-mJ-xo3"; */
 "Rc5-mJ-xo3.text" = "Počet hodin";
 
-/* Class = "UILabel"; text = "Chyba při přihlašování"; ObjectID = "cw1-Vo-hCV"; */
+/* Class = "UILabel"; text = "Sign in error occured"; ObjectID = "cw1-Vo-hCV"; */
 "cw1-Vo-hCV.text" = "Chyba při přihlašování";
 
-/* Class = "UINavigationItem"; title = "Faktury"; ObjectID = "q1N-1U-kUS"; */
+/* Class = "UILabel"; text = "New"; ObjectID = "fYA-em-KkL"; */
+"fYA-em-KkL.text" = "Nová";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "jju-cV-bfC"; */
+"jju-cV-bfC.text" = "100";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "mrN-BU-6y9"; */
+"mrN-BU-6y9.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "pDC-YU-W5V"; */
+"pDC-YU-W5V.title" = "Item";
+
+/* Class = "UILabel"; text = "May 2020"; ObjectID = "pee-J1-mXh"; */
+"pee-J1-mXh.text" = "Květen 2020";
+
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "pjz-Zg-5xC"; */
+"pjz-Zg-5xC.text" = "Načítá se...";
+
+/* Class = "UINavigationItem"; title = "Invoices"; ObjectID = "q1N-1U-kUS"; */
 "q1N-1U-kUS.title" = "Faktury";
 
-/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "thZ-5Z-k1h"; */
+/* Class = "UIButton"; normalTitle = "Sign in with Google"; ObjectID = "thZ-5Z-k1h"; */
 "thZ-5Z-k1h.normalTitle" = "Přihlásit se pomocí Google účtu";
+
+/* Class = "UILabel"; text = "Paid"; ObjectID = "vht-7B-9ig"; */
+"vht-7B-9ig.text" = "Zaplacená";
+
+/* Class = "UILabel"; text = "200 000 000 Kč"; ObjectID = "zIq-yo-WeM"; */
+"zIq-yo-WeM.text" = "200 000 000 Kč";
