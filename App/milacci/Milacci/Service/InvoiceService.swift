@@ -23,17 +23,45 @@ class InvoiceService: InvoicesAPI {
 
     func uploadFile(id: Int, url: URL) -> Single<String> {
         return Single.create{ (single) -> Disposable in
-            AF.upload(url, to: "https://milacci2-api-development.ack.ee/api/v1/invoices/\(id)/file-urls", headers:
-                        ["Authorization": "Bearer \(UserSettingsService.shared.accessToken ?? "")"])
-                .responseJSON{ result in
-                    HttpResponseHandler.handle(result: result, completion: { (item, error) in
-                        if let error = error {
-                            single(.error(error))
-                        } else if let item = item {
-                            single(.success(item))
+
+            if url.startAccessingSecurityScopedResource() {
+                let fileName = url.lastPathComponent
+                let docData = try! Data(contentsOf: url)
+                let params = [
+                    "type": "invoice",
+                    "invoiceId": id,
+                    "sheet": docData
+                ] as [String: Any]
+                url.stopAccessingSecurityScopedResource()
+                do {
+                    let urlTo = try "https://httpbin.org/post".asURL()
+                    AF.upload(multipartFormData: { [docData, fileName] multiPart in
+                        for (key, value) in params {
+                            if let temp = value as? String,
+                               let data = temp.data(using: .utf8){
+                                multiPart.append(data, withName: key)
+                            }
+                            if let temp = value as? Int,
+                               let data = "\(temp)".data(using: .utf8){
+                                multiPart.append(data, withName: key)
+                            }
                         }
-                    }, type: String.self)
+                        multiPart.append(docData, withName: "sheet", fileName: fileName, mimeType: "application/pdf")
+                    }, to: urlTo)
+                    .validate(statusCode: 200..<299)
+                    .responseJSON { (result) in
+                        if let error = result.error {
+                            single(.error(error))
+                        } else {
+                            debugPrint(result)
+                            single(.success("Hello"))
+                        }
+                    }
+
+                }catch {
+                    single(.error(NetworkingError.serverError(error)))
                 }
+            }
 
             return Disposables.create()
         }

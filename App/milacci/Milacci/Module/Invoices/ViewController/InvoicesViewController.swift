@@ -85,7 +85,7 @@ private extension InvoicesViewController {
 
         self.viewModel.output.pickFile.drive(onNext: { [weak self] invoiceViewModel in
             guard let self = self else { return }
-            let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF), String(kUTTypeSpreadsheet)], in: .open)
+            let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .open)
             documentPicker.delegate = self
             documentPicker.allowsMultipleSelection = false
             documentPicker.modalPresentationStyle = .formSheet
