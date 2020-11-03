@@ -105,7 +105,6 @@ private extension InvoicesViewController {
         refreshControl.rx.controlEvent(.valueChanged)
             .subscribe({[weak self] _ in
                 self?.refreshInvoices()
-//                self?.resetReachedBottom.onNext(())
             }).disposed(by: bag)
         tableView.rx.reachedBottom(reset: resetReachedBottom).drive(onNext: { [weak self] in
             self?.tableView.tableFooterView?.isHidden = false

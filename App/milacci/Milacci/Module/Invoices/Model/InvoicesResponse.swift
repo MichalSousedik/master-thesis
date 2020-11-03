@@ -14,7 +14,6 @@ struct Invoice: Codable {
     let periodOfIssue: String
     let state: InvoiceState
     let totalHours: Int?
-    let userWorkType: WorkType?
     let value: String?
     var filename: String?
 }
@@ -77,11 +76,6 @@ extension InvoiceState {
         }
     }
 
-}
-
-enum WorkType: String, Codable {
-    case agreement = "agreement"
-    case registrationNumber = "registrationNumber"
 }
 
 typealias InvoicesResponse = [Invoice]

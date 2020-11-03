@@ -10,10 +10,16 @@ import Foundation
 import RxSwift
 import Alamofire
 
+protocol InvoicesAPI {
+    func uploadFile(id: Int, url: URL) -> Single<String>
+    func fetchInvoices(page: Int) -> Single<InvoicesResponse>
+    func fetchInvoice(id: Int) -> Single<Invoice>
+}
+
 class InvoiceService: InvoicesAPI {
 
     static let shared: InvoiceService = InvoiceService()
-    private lazy var httpService = InvoiceHttpSerivce()
+    private lazy var httpService = InvoiceHttpService()
 
     func uploadFile(id: Int, url: URL) -> Single<String> {
         return Single.create{ (single) -> Disposable in

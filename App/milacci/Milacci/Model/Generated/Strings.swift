@@ -14,12 +14,22 @@ internal enum L10n {
   internal static let accessTokenNotProvided = L10n.tr("Localizable", "Access Token not provided")
   /// Account was not authorized
   internal static let accountWasNotAuthorized = L10n.tr("Localizable", "Account was not authorized")
+  /// Accounts
+  internal static let accounts = L10n.tr("Localizable", "Accounts")
+  /// Agreement
+  internal static let agreement = L10n.tr("Localizable", "Agreement")
+  /// Android Developer
+  internal static let android = L10n.tr("Localizable", "Android")
   /// Approved
   internal static let approved = L10n.tr("Localizable", "Approved")
   /// April
   internal static let april = L10n.tr("Localizable", "April")
   /// August
   internal static let august = L10n.tr("Localizable", "August")
+  /// Backend Developer
+  internal static let backend = L10n.tr("Localizable", "Backend")
+  /// Boss
+  internal static let boss = L10n.tr("Localizable", "Boss")
   /// Cancel
   internal static let cancel = L10n.tr("Localizable", "Cancel")
   /// Kč
@@ -28,8 +38,14 @@ internal enum L10n {
   internal static let dataCouldnTBeExtractedFromResult = L10n.tr("Localizable", "Data couldn't be extracted from result")
   /// December
   internal static let december = L10n.tr("Localizable", "December")
+  /// Designer
+  internal static let design = L10n.tr("Localizable", "Design")
   /// Device is offline
   internal static let deviceIsOffline = L10n.tr("Localizable", "Device is offline")
+  /// DevOps
+  internal static let devops = L10n.tr("Localizable", "Devops")
+  /// Employment Contract
+  internal static let employmentContract = L10n.tr("Localizable", "Employment Contract")
   /// Error occured
   internal static let errorOccured = L10n.tr("Localizable", "Error occured")
   /// February
@@ -38,8 +54,14 @@ internal enum L10n {
   internal static let fetchingDataResultedInError = L10n.tr("Localizable", "Fetching data resulted in error")
   /// Access forbidden
   internal static let forbidden = L10n.tr("Localizable", "Forbidden")
+  /// Frontend Developer
+  internal static let frontend = L10n.tr("Localizable", "Frontend")
+  /// Human Resources
+  internal static let hr = L10n.tr("Localizable", "HR")
   /// Invoices
   internal static let invoices = L10n.tr("Localizable", "Invoices")
+  /// iOS Developer
+  internal static let ios = L10n.tr("Localizable", "IOS")
   /// January
   internal static let january = L10n.tr("Localizable", "January")
   /// July
@@ -48,6 +70,8 @@ internal enum L10n {
   internal static let june = L10n.tr("Localizable", "June")
   /// March
   internal static let march = L10n.tr("Localizable", "March")
+  /// Marketing specialist
+  internal static let marketing = L10n.tr("Localizable", "Marketing")
   /// May
   internal static let may = L10n.tr("Localizable", "May")
   /// New
@@ -58,16 +82,24 @@ internal enum L10n {
   internal static let november = L10n.tr("Localizable", "November")
   /// October
   internal static let october = L10n.tr("Localizable", "October")
+  /// Office Manager
+  internal static let office = L10n.tr("Localizable", "Office")
   /// Paid
   internal static let paid = L10n.tr("Localizable", "Paid")
   /// Profile
   internal static let profile = L10n.tr("Localizable", "Profile")
+  /// Project Manager
+  internal static let projectManager = L10n.tr("Localizable", "Project Manager")
   /// Received data couldn't be loaded because they are in a wrong format
   internal static let receivedDataCouldnTBeLoadedBecauseTheyAreInAWrongFormat = L10n.tr("Localizable", "Received data couldn't be loaded because they are in a wrong format")
+  /// Registration Number
+  internal static let registrationNumber = L10n.tr("Localizable", "Registration Number")
   /// Resource was not found
   internal static let resourceWasNotFound = L10n.tr("Localizable", "Resource was not found")
   /// Retry
   internal static let retry = L10n.tr("Localizable", "Retry")
+  /// Sales
+  internal static let sales = L10n.tr("Localizable", "Sales")
   /// Searched data couldn't be located
   internal static let searchedDataCouldnTBeLocated = L10n.tr("Localizable", "Searched data couldn't be located")
   /// Selected URL is not accessible
@@ -76,6 +108,8 @@ internal enum L10n {
   internal static let september = L10n.tr("Localizable", "September")
   /// Server got into trouble
   internal static let serverGotIntoTrouble = L10n.tr("Localizable", "Server got into trouble")
+  /// Tester
+  internal static let tester = L10n.tr("Localizable", "Tester")
   /// Unknown month
   internal static let unknownMonth = L10n.tr("Localizable", "Unknown month")
   /// ViewController Delegate is not present

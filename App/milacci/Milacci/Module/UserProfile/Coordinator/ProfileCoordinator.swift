@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SFSafeSymbols
 
-class ProfileCoordinator: BaseCoordinator {
+class UserProfileCoordinator: BaseCoordinator {
 
     init(navigationController: UINavigationController) {
         super.init()
@@ -18,7 +18,7 @@ class ProfileCoordinator: BaseCoordinator {
     }
 
     override func start(){
-        let view = ProfileViewController.instantiate()
+        let view = UserProfileViewController.instantiate()
         view.tabBarItem = UITabBarItem(title: L10n.profile, image: UIImage(systemSymbol: .personFill), tag: 0)
         view.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: 9, right: 0)
         navigationController.pushViewController(view, animated: true)

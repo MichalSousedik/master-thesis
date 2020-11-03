@@ -43,4 +43,20 @@
 "No Internet Connection" = "Zařízení není připojeno k internetu";
 "Selected URL is not accessible" = "Zvolený soubor není dostupný";
 "Forbidden" = "Přístup byl odepřen";
-
+"Backend" = "Backend Developer";
+"Frontend" = "Frontend Developer";
+"Android" = "Android Developer";
+"IOS" = "iOS Developer";
+"Devops" = "DevOps";
+"Tester" = "Tester";
+"Design" = "Designer";
+"Marketing" = "Marketing specialist";
+"HR" = "Human Resources";
+"Office" = "Office Manager";
+"Sales" = "Sales";
+"Accounts" = "Accounts";
+"Boss" = "Boss";
+"Project Manager" = "Project Manager";
+"Registration Number" = "Evidenční číslo";
+"Agreement" = "Dohoda";
+"Employment Contract" = "Zaměstnanecká smlouva";

@@ -20,11 +20,15 @@
 		37A9037D2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */; };
 		37A9037F25362647006251EE /* PaginationNetworkLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9037E25362647006251EE /* PaginationNetworkLogic.swift */; };
 		37A9038F2538F85C006251EE /* FileAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9038E2538F85C006251EE /* FileAction.swift */; };
+		37B465EC2550C3F400B245AB /* UserService+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B465EB2550C3F400B245AB /* UserService+Mock.swift */; };
 		37C374A2254ED85600480D2C /* AccessTokenInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374A1254ED85600480D2C /* AccessTokenInterceptor.swift */; };
 		37C374A4254F020C00480D2C /* InitiatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374A3254F020C00480D2C /* InitiatingViewController.swift */; };
 		37C374A9254F032100480D2C /* InitiatingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374A8254F032100480D2C /* InitiatingCoordinator.swift */; };
 		37C374AB254F175500480D2C /* HttpResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374AA254F175500480D2C /* HttpResponseHandler.swift */; };
 		37C374AF254F19CF00480D2C /* InvoiceService+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374AE254F19CF00480D2C /* InvoiceService+Mock.swift */; };
+		37C374B7254F886F00480D2C /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374B6254F886F00480D2C /* UserProfileViewModel.swift */; };
+		37C374B92550B73300480D2C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374B82550B73300480D2C /* UserService.swift */; };
+		37C374BB2550B81100480D2C /* UserHttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374BA2550B81100480D2C /* UserHttpRouter.swift */; };
 		37F70AE125439AA2001E9D07 /* InvoicesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */; };
 		37F70AE625444ADC001E9D07 /* WageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE525444ADC001E9D07 /* WageCoordinator.swift */; };
 		37F70AE825444BB9001E9D07 /* WageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE725444BB9001E9D07 /* WageViewController.swift */; };
@@ -62,20 +66,19 @@
 		C057456D251A9CDA00051D12 /* InvoiceHttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C057456C251A9CDA00051D12 /* InvoiceHttpService.swift */; };
 		C057456F251A9D6600051D12 /* InvoiceHttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C057456E251A9D6600051D12 /* InvoiceHttpRouter.swift */; };
 		C0574571251AA0CF00051D12 /* InvoiceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0574570251AA0CF00051D12 /* InvoiceService.swift */; };
-		C0574573251AA0EC00051D12 /* InvoicesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0574572251AA0EC00051D12 /* InvoicesAPI.swift */; };
 		C058335F248051E7004CA055 /* HalfCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C058335E248051E7004CA055 /* HalfCircleView.swift */; };
 		C05833622481477C004CA055 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05833612481477C004CA055 /* BaseNavigationController.swift */; };
 		C05B59F624E333BF003009AC /* Pods_Milacci.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05B59F224E33397003009AC /* Pods_Milacci.framework */; };
 		C05B59F724E333BF003009AC /* Pods_Milacci.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C05B59F224E33397003009AC /* Pods_Milacci.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C079A551251D36FA00331E17 /* InvoiceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079A550251D36FA00331E17 /* InvoiceDetailViewModel.swift */; };
 		C079A553251D4E4A00331E17 /* InvoiceDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079A552251D4E4A00331E17 /* InvoiceDetailCoordinator.swift */; };
-		C0ACCB5E247AAD54002F7263 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ACCB5D247AAD54002F7263 /* ProfileViewController.swift */; };
+		C0ACCB5E247AAD54002F7263 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ACCB5D247AAD54002F7263 /* UserProfileViewController.swift */; };
 		C0ACCB60247AC283002F7263 /* InvoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ACCB5F247AC283002F7263 /* InvoiceTableViewCell.swift */; };
 		C0AF73A8250948D000B7CA0F /* InvoicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF73A7250948D000B7CA0F /* InvoicesViewModel.swift */; };
 		C0B9350C247DA59400A457AD /* InvoiceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9350B247DA59400A457AD /* InvoiceDetailViewController.swift */; };
 		C0BAE0122509605600472B91 /* InvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BAE0112509605600472B91 /* InvoiceViewModel.swift */; };
 		C0E1B251248430FE00F68394 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E1B250248430FE00F68394 /* BaseTabBarController.swift */; };
-		C0E342DE251A861700860E44 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E342DD251A861700860E44 /* ProfileCoordinator.swift */; };
+		C0E342DE251A861700860E44 /* UserProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E342DD251A861700860E44 /* UserProfileCoordinator.swift */; };
 		C0E8E11825195B8900A21F9E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8E11725195B8900A21F9E /* AppCoordinator.swift */; };
 		C0E8E11A25195F0E00A21F9E /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8E11925195F0E00A21F9E /* SignInCoordinator.swift */; };
 /* End PBXBuildFile section */
@@ -109,6 +112,7 @@
 		37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+TableViewRxReachedBottom.swift"; sourceTree = "<group>"; };
 		37A9037E25362647006251EE /* PaginationNetworkLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationNetworkLogic.swift; sourceTree = "<group>"; };
 		37A9038E2538F85C006251EE /* FileAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAction.swift; sourceTree = "<group>"; };
+		37B465EB2550C3F400B245AB /* UserService+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserService+Mock.swift"; sourceTree = "<group>"; };
 		37C374A1254ED85600480D2C /* AccessTokenInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenInterceptor.swift; sourceTree = "<group>"; };
 		37C374A3254F020C00480D2C /* InitiatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiatingViewController.swift; sourceTree = "<group>"; };
 		37C374A8254F032100480D2C /* InitiatingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiatingCoordinator.swift; sourceTree = "<group>"; };
@@ -117,6 +121,9 @@
 		37C374B2254F3B5300480D2C /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main.strings; sourceTree = "<group>"; };
 		37C374B3254F3B5400480D2C /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		37C374B4254F3B5400480D2C /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		37C374B6254F886F00480D2C /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		37C374B82550B73300480D2C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		37C374BA2550B81100480D2C /* UserHttpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHttpRouter.swift; sourceTree = "<group>"; };
 		37CA024F25250F8100948444 /* Milacci.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Milacci.entitlements; sourceTree = "<group>"; };
 		37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesResponse.swift; sourceTree = "<group>"; };
 		37F70AE525444ADC001E9D07 /* WageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageCoordinator.swift; sourceTree = "<group>"; };
@@ -159,7 +166,6 @@
 		C057456C251A9CDA00051D12 /* InvoiceHttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceHttpService.swift; sourceTree = "<group>"; };
 		C057456E251A9D6600051D12 /* InvoiceHttpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceHttpRouter.swift; sourceTree = "<group>"; };
 		C0574570251AA0CF00051D12 /* InvoiceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceService.swift; sourceTree = "<group>"; };
-		C0574572251AA0EC00051D12 /* InvoicesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesAPI.swift; sourceTree = "<group>"; };
 		C058335E248051E7004CA055 /* HalfCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleView.swift; sourceTree = "<group>"; };
 		C05833612481477C004CA055 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		C05B59F024E33386003009AC /* Pods_Milacci.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Milacci.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,14 +173,14 @@
 		C070BE6E24DB57AC004F09CE /* Pods_Milacci.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Milacci.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C079A550251D36FA00331E17 /* InvoiceDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailViewModel.swift; sourceTree = "<group>"; };
 		C079A552251D4E4A00331E17 /* InvoiceDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailCoordinator.swift; sourceTree = "<group>"; };
-		C0ACCB5D247AAD54002F7263 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C0ACCB5D247AAD54002F7263 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		C0ACCB5F247AC283002F7263 /* InvoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTableViewCell.swift; sourceTree = "<group>"; };
 		C0AF73A7250948D000B7CA0F /* InvoicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesViewModel.swift; sourceTree = "<group>"; };
 		C0B51A6C24E33B9F00CB934C /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework; sourceTree = "<group>"; };
 		C0B9350B247DA59400A457AD /* InvoiceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailViewController.swift; sourceTree = "<group>"; };
 		C0BAE0112509605600472B91 /* InvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewModel.swift; sourceTree = "<group>"; };
 		C0E1B250248430FE00F68394 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
-		C0E342DD251A861700860E44 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		C0E342DD251A861700860E44 /* UserProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCoordinator.swift; sourceTree = "<group>"; };
 		C0E8E11725195B8900A21F9E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C0E8E11925195F0E00A21F9E /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		D01D35A00D62CD44ECB82C60 /* Pods-Milacci.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Milacci.debug.xcconfig"; path = "Target Support Files/Pods-Milacci/Pods-Milacci.debug.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +265,14 @@
 				37C374A3254F020C00480D2C /* InitiatingViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		37C374B5254F886300480D2C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				37C374B6254F886F00480D2C /* UserProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		37F70AE225444A47001E9D07 /* Wage */ = {
@@ -411,9 +425,8 @@
 			children = (
 				C0574567251A9B4600051D12 /* Http */,
 				C0574570251AA0CF00051D12 /* InvoiceService.swift */,
-				C0574572251AA0EC00051D12 /* InvoicesAPI.swift */,
 				37F70B202548AF0B001E9D07 /* AuthService.swift */,
-				37C374AA254F175500480D2C /* HttpResponseHandler.swift */,
+				37C374B82550B73300480D2C /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -421,6 +434,7 @@
 		C0574567251A9B4600051D12 /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				37C374AA254F175500480D2C /* HttpResponseHandler.swift */,
 				C0574568251A9B6100051D12 /* HttpRouter.swift */,
 				C057456A251A9C1A00051D12 /* HttpService.swift */,
 				C057456C251A9CDA00051D12 /* InvoiceHttpService.swift */,
@@ -429,6 +443,8 @@
 				37F70B222548AFA2001E9D07 /* AuthHttpService.swift */,
 				37C374A1254ED85600480D2C /* AccessTokenInterceptor.swift */,
 				37C374AE254F19CF00480D2C /* InvoiceService+Mock.swift */,
+				37C374BA2550B81100480D2C /* UserHttpRouter.swift */,
+				37B465EB2550C3F400B245AB /* UserService+Mock.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -463,19 +479,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C0E342DA251A85DC00860E44 /* Profile */ = {
+		C0E342DA251A85DC00860E44 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				37C374B5254F886300480D2C /* ViewModel */,
 				C0E342DC251A85FE00860E44 /* Coordinator */,
 				C0E342DB251A85F000860E44 /* ViewController */,
 			);
-			path = Profile;
+			path = UserProfile;
 			sourceTree = "<group>";
 		};
 		C0E342DB251A85F000860E44 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C0ACCB5D247AAD54002F7263 /* ProfileViewController.swift */,
+				C0ACCB5D247AAD54002F7263 /* UserProfileViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -483,7 +500,7 @@
 		C0E342DC251A85FE00860E44 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				C0E342DD251A861700860E44 /* ProfileCoordinator.swift */,
+				C0E342DD251A861700860E44 /* UserProfileCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -519,7 +536,7 @@
 				37C374A5254F02EF00480D2C /* Initiation */,
 				37F70AE225444A47001E9D07 /* Wage */,
 				C0E342DF251A8B2C00860E44 /* SignIn */,
-				C0E342DA251A85DC00860E44 /* Profile */,
+				C0E342DA251A85DC00860E44 /* UserProfile */,
 				C0E8E11C251A7F9F00A21F9E /* Invoices */,
 			);
 			path = Module;
@@ -759,14 +776,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0574573251AA0EC00051D12 /* InvoicesAPI.swift in Sources */,
 				37F70B1125474DFA001E9D07 /* UIViewController+FrontmostController.swift in Sources */,
 				C0E8E11825195B8900A21F9E /* AppCoordinator.swift in Sources */,
 				37F70B232548AFA2001E9D07 /* AuthHttpService.swift in Sources */,
 				C057456B251A9C1A00051D12 /* HttpService.swift in Sources */,
 				C079A551251D36FA00331E17 /* InvoiceDetailViewModel.swift in Sources */,
 				37F70AEC254451D0001E9D07 /* TabBarControllerFactory.swift in Sources */,
-				C0ACCB5E247AAD54002F7263 /* ProfileViewController.swift in Sources */,
+				C0ACCB5E247AAD54002F7263 /* UserProfileViewController.swift in Sources */,
 				37F70AEA25444D1D001E9D07 /* WorkerTabBarController.swift in Sources */,
 				37F70B0D2545B7C3001E9D07 /* LoadingViewController.swift in Sources */,
 				C0574569251A9B6100051D12 /* HttpRouter.swift in Sources */,
@@ -776,6 +792,7 @@
 				37C374AB254F175500480D2C /* HttpResponseHandler.swift in Sources */,
 				C0BAE0122509605600472B91 /* InvoiceViewModel.swift in Sources */,
 				3711806E254A2D18000DFFFA /* Plist.swift in Sources */,
+				37C374B7254F886F00480D2C /* UserProfileViewModel.swift in Sources */,
 				37F70AE825444BB9001E9D07 /* WageViewController.swift in Sources */,
 				C0E8E11A25195F0E00A21F9E /* SignInCoordinator.swift in Sources */,
 				37F70B1F2548A99A001E9D07 /* AuthHttpRouter.swift in Sources */,
@@ -798,14 +815,16 @@
 				3711806F254A2D18000DFFFA /* Strings.swift in Sources */,
 				C0B9350C247DA59400A457AD /* InvoiceDetailViewController.swift in Sources */,
 				C0E1B251248430FE00F68394 /* BaseTabBarController.swift in Sources */,
-				C0E342DE251A861700860E44 /* ProfileCoordinator.swift in Sources */,
+				C0E342DE251A861700860E44 /* UserProfileCoordinator.swift in Sources */,
 				37F70B092545B432001E9D07 /* ErrorCategory.swift in Sources */,
 				37A9038F2538F85C006251EE /* FileAction.swift in Sources */,
+				37B465EC2550C3F400B245AB /* UserService+Mock.swift in Sources */,
 				C0AF73A8250948D000B7CA0F /* InvoicesViewModel.swift in Sources */,
 				C0553582251955D100B04A18 /* BaseCoordinator.swift in Sources */,
 				37F70B1325474F49001E9D07 /* ErrorViewController.swift in Sources */,
 				C05535852519567200B04A18 /* Storyboardable.swift in Sources */,
 				C0455E5F2479BF8500D96F53 /* SceneDelegate.swift in Sources */,
+				37C374BB2550B81100480D2C /* UserHttpRouter.swift in Sources */,
 				37F70B0F2545B7FA001E9D07 /* UIViewController+ChildViewController.swift in Sources */,
 				C00D050E251BEC6D004D42E8 /* NetworkingError.swift in Sources */,
 				37A9037D2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift in Sources */,
@@ -815,6 +834,7 @@
 				37118077254A2FD2000DFFFA /* Assets.swift in Sources */,
 				C0ACCB60247AC283002F7263 /* InvoiceTableViewCell.swift in Sources */,
 				373E8280254DF84700A93E0D /* UploadResponse.swift in Sources */,
+				37C374B92550B73300480D2C /* UserService.swift in Sources */,
 				37C374A9254F032100480D2C /* InitiatingCoordinator.swift in Sources */,
 				C01CF704251FE9EF00C8CE06 /* Numeric+CurrencyFormatter.swift in Sources */,
 				C057456D251A9CDA00051D12 /* InvoiceHttpService.swift in Sources */,

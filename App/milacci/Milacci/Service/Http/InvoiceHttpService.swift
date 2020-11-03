@@ -8,7 +8,7 @@
 
 import Alamofire
 
-class InvoiceHttpSerivce: HttpService {
+class InvoiceHttpService: HttpService {
 
     var sessionManager: Session = Session.default
 
