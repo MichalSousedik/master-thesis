@@ -32,7 +32,8 @@ protocol InvoicesViewPresentable {
         errorOccured: Driver<Error>,
         pickFile: Driver<Void>,
         showUrl: Driver<URL>,
-        isUploadingFile: Driver<Uploading>
+        isUploadingFile: Driver<Uploading>,
+        info: Driver<String>
     )
 
     typealias ViewModelBuilder = (InvoicesViewPresentable.Input) -> InvoicesViewPresentable
@@ -54,13 +55,15 @@ class InvoicesViewModel: InvoicesViewPresentable{
                        errorOccured: PublishRelay<Error>,
                        pickFile: PublishSubject<Void>,
                        fileToBeDisplayed: PublishSubject<URL>,
-                       isUploadingInvoice: PublishSubject<Uploading>)
+                       isUploadingInvoice: PublishSubject<Uploading>,
+                       info: PublishRelay<String>)
     private let state: State = (invoices: BehaviorRelay<[Invoice]>(value: []),
                                 isLoading: PublishRelay<Bool>(),
                                 errorOccured: PublishRelay<Error>(),
                                 pickFile: PublishSubject<Void>(),
                                 fileToBeDisplayed: PublishSubject<URL>(),
-                                isUploadingInvoice: PublishSubject<Uploading>())
+                                isUploadingInvoice: PublishSubject<Uploading>(),
+                                info: PublishRelay())
 
     typealias RoutingAction = PublishRelay<Invoice>
     private let router: RoutingAction = PublishRelay()
@@ -79,60 +82,8 @@ class InvoicesViewModel: InvoicesViewPresentable{
 private extension InvoicesViewModel {
 
     func processInput() {
-        self.input.invoiceSelect
-            .map { [api, state, bag] in
-                if $0.isFilePresent {
-                    state.isUploadingInvoice.onNext(
-                        (isUploading: true, forInvoice: $0.invoice)
-                    )
-                    api.fetchInvoice(id: $0.invoice.id).subscribe(onSuccess: { [state] (invoice) in
-                        state.isUploadingInvoice.onNext(
-                            (isUploading: false, forInvoice: nil)
-                        )
-                        if let filename = invoice.filename,
-                           let url = URL(string: filename) {
-                            state.fileToBeDisplayed.onNext(url)
-                        }
-                    }, onError: { [state] (error) in
-                        state.isUploadingInvoice.onNext(
-                            (isUploading: false, forInvoice: nil)
-                        )
-                        state.errorOccured.accept(error)
-                    }).disposed(by: bag)
-                } else {
-                    state.pickFile.onNext(())
-                }
-            }
-            .drive()
-            .disposed(by: bag)
-
-        self.input.filePick
-            .withLatestFrom(self.input.invoiceSelect) { (url, invoiceViewModel) in
-                self.state.isUploadingInvoice.onNext(
-                    (isUploading: true, forInvoice: invoiceViewModel.invoice)
-                )
-                self.api.uploadFile(id: invoiceViewModel.invoice.id, url: url)
-                    .subscribe { (fileUrl) in
-                        var list = self.state.invoices.value
-                        if let index = list.firstIndex(where: { invoice in
-                            return invoice.id == invoiceViewModel.invoice.id
-                        }) {
-                            list[index].filename = fileUrl
-                            print(fileUrl)
-                        }
-                        self.state.invoices.accept(list)
-                        self.state.isUploadingInvoice.onNext(
-                            (isUploading: false, forInvoice: nil)
-                        )
-                    } onError: { (error) in
-                        self.state.errorOccured.accept(error)
-                        self.state.isUploadingInvoice.onNext(
-                            (isUploading: false, forInvoice: nil)
-                        )
-
-                    }.disposed(by: self.bag)
-            }.drive()
-            .disposed(by: bag)
+        self.handleInvoiceSelect()
+        self.handleFilePick()
 
         let source = PaginationUISource(refresh: self.input.refreshTrigger.asObservable(),
                                         loadNextPage: self.input.loadNextPageTrigger.asObservable())
@@ -169,7 +120,71 @@ private extension InvoicesViewModel {
             pickFile: state.pickFile.asDriver(onErrorDriveWith: .empty()),
             showUrl: state.fileToBeDisplayed.asDriver(onErrorDriveWith: .empty()),
             isUploadingFile: state.isUploadingInvoice.asDriver(onErrorJustReturn:
-                                                                (isUploading: false, forInvoice: nil))
+                                                                (isUploading: false, forInvoice: nil)),
+            info: state.info.asDriver(onErrorDriveWith: .empty())
         )
+    }
+}
+
+private extension InvoicesViewModel {
+    func handleFilePick() {
+        self.input.filePick
+            .withLatestFrom(self.input.invoiceSelect) { (url, invoiceViewModel) in
+                self.state.isUploadingInvoice.onNext(
+                    (isUploading: true, forInvoice: invoiceViewModel.invoice)
+                )
+                self.api.updateInvoice(invoice: invoiceViewModel.invoice, url: url)
+                    .subscribe { (item) in
+                        var list = self.state.invoices.value
+                        if let index = list.firstIndex(where: { invoice in
+                            return invoice.id == invoiceViewModel.invoice.id
+                        }) {
+                            list[index] = item
+                        }
+                        self.state.invoices.accept(list)
+                        self.state.isUploadingInvoice.onNext(
+                            (isUploading: false, forInvoice: nil)
+                        )
+                    } onError: { (error) in
+                        self.state.errorOccured.accept(error)
+                        self.state.isUploadingInvoice.onNext(
+                            (isUploading: false, forInvoice: nil)
+                        )
+
+                    }.disposed(by: self.bag)
+            }.drive()
+            .disposed(by: bag)
+    }
+
+    func handleInvoiceSelect(){
+        self.input.invoiceSelect
+            .map { [api, state, bag] in
+                if let message = $0.infoMessage {
+                    state.info.accept(message)
+                }
+                if $0.canDownloadFile {
+                    state.isUploadingInvoice.onNext(
+                        (isUploading: true, forInvoice: $0.invoice)
+                    )
+                    api.fetchInvoice(id: $0.invoice.id).subscribe(onSuccess: { [state] (invoice) in
+                        state.isUploadingInvoice.onNext(
+                            (isUploading: false, forInvoice: nil)
+                        )
+                        if let filename = invoice.filename,
+                           let url = URL(string: filename) {
+                            state.fileToBeDisplayed.onNext(url)
+                        }
+                    }, onError: { [state] (error) in
+                        state.isUploadingInvoice.onNext(
+                            (isUploading: false, forInvoice: nil)
+                        )
+                        state.errorOccured.accept(error)
+                    }).disposed(by: bag)
+                } else if $0.canUploadFile {
+                    state.pickFile.onNext(())
+                }
+            }
+            .drive()
+            .disposed(by: bag)
     }
 }

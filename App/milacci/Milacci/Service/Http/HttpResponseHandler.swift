@@ -12,7 +12,7 @@ class HttpResponseHandler {
 
     static func handle<T: Decodable>(result: AFDataResponse<Any>, completion: @escaping (T?, Error?) -> Void, type: T.Type) {
         if let error = result.error {
-            completion(nil, HttpResponseHandler.handleError(error: error))
+            completion(nil, HttpResponseHandler.handleError(error: error, result: result))
         } else {
             do {
                 let items = try HttpResponseHandler.parse(result: result, type: T.self)
@@ -23,7 +23,7 @@ class HttpResponseHandler {
         }
     }
 
-    private static func handleError(error: AFError) -> NetworkingError {
+    private static func handleError(error: AFError, result: AFDataResponse<Any>) -> NetworkingError {
         if let afError = error.asAFError {
             switch afError {
             case .sessionTaskFailed(let sessionError):
@@ -34,6 +34,12 @@ class HttpResponseHandler {
             }}
 
         switch error.responseCode {
+        case 400:
+            if let errorResponse = try? HttpResponseHandler.parse(result: result, type: ErrorResponse.self) {
+                return NetworkingError.custom(message: errorResponse.error.message)
+            } else {
+                return NetworkingError.custom(message: L10n.notAbleToParseErrorResponse)
+            }
         case 401:
             return NetworkingError.unauthorized
         case 403:

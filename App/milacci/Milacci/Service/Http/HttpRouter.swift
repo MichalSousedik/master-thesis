@@ -16,10 +16,12 @@ protocol HttpRouter {
     var method: HTTPMethod { get }
     var headers: HTTPHeaders? { get }
     var parameters: Parameters? { get }
+    var multipartParameters: MultipartParameters? { get }
     var requestInterceptor: RequestInterceptor? { get }
     func body() throws -> Data?
 
     func request(usingHttpService: HttpService) throws -> DataRequest
+    func upload(usingHttpService: HttpService) throws -> DataRequest
 
 }
 
@@ -31,6 +33,7 @@ extension HttpRouter {
         return "\(url)/\(version)"
     }
     var parameters: Parameters? { return nil }
+    var multipartParameters: MultipartParameters? { return nil }
     func body() throws -> Data? { return nil }
     var headers: HTTPHeaders? { return nil }
     var requestInterceptor: RequestInterceptor? { return nil }
@@ -48,4 +51,7 @@ extension HttpRouter {
         return try service.request(asUrlRequest(), requestInterceptor: requestInterceptor)
     }
 
+    func upload(usingHttpService service: HttpService) throws -> DataRequest {
+        return try service.upload(asUrlRequest(), multipartParameters: multipartParameters ?? [:], requestInterceptor: requestInterceptor)
+    }
 }

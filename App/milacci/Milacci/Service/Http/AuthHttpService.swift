@@ -16,4 +16,8 @@ class AuthHttpService: HttpService {
         return sessionManager.request(urlRequest).validate(statusCode: 200..<299)
     }
 
+    func upload(_ urlRequest: URLRequestConvertible, multipartParameters: MultipartParameters, requestInterceptor: RequestInterceptor?) -> DataRequest {
+        fatalError("Not implemented")
+    }
+
 }

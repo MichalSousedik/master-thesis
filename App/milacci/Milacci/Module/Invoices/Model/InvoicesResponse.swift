@@ -16,6 +16,7 @@ struct Invoice: Codable {
     let totalHours: Int?
     let value: String?
     var filename: String?
+    var userWorkType: WorkType?
 }
 
 extension Invoice {

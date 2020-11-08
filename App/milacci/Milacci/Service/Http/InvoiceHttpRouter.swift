@@ -11,6 +11,7 @@ import Alamofire
 enum InvoiceHttpRouter {
     case fetch(offset: Int, userId: Int? = nil)
     case detail(id: Int)
+    case update(invoice: Invoice, url: URL? = nil)
 }
 
 extension InvoiceHttpRouter: HttpRouter {
@@ -21,6 +22,8 @@ extension InvoiceHttpRouter: HttpRouter {
             return "invoices"
         case .detail(let id):
             return "invoices/\(id)"
+        case .update(let invoice, _):
+            return "invoices/\(invoice.id)"
         }
     }
 
@@ -28,13 +31,22 @@ extension InvoiceHttpRouter: HttpRouter {
         switch self {
         case .fetch: return .get
         case .detail: return .get
+        case .update: return .put
         }
     }
 
     var headers: HTTPHeaders? {
-        return [
+        switch self {
+        case .fetch: return [
             "Content-type": "application/json",
         ]
+        case .detail: return [
+            "Content-type": "application/json",
+        ]
+        case .update: return [
+            "Content-type": "multipart/form-data",
+        ]
+        }
     }
 
     var parameters: Parameters? {
@@ -51,7 +63,19 @@ extension InvoiceHttpRouter: HttpRouter {
         default:
             return nil
         }
+    }
 
+    var multipartParameters: MultipartParameters? {
+        switch self {
+        case .fetch: return [:]
+        case .detail: return [:]
+        case .update(let invoice, let url):
+            var params = ["state": invoice.state] as [String: Any]
+            if let url = url {
+                params["file"] = url
+            }
+            return params
+        }
     }
 
     var requestInterceptor: RequestInterceptor? { return AccessTokenInterceptor(userSettingsAPI: UserSettingsService.shared) }

@@ -50,7 +50,7 @@ internal enum L10n {
   internal static let errorOccured = L10n.tr("Localizable", "Error occured")
   /// February
   internal static let february = L10n.tr("Localizable", "February")
-  /// Fetching data resulted in error
+  /// Request coudn't be completed:
   internal static let fetchingDataResultedInError = L10n.tr("Localizable", "Fetching data resulted in error")
   /// Access forbidden
   internal static let forbidden = L10n.tr("Localizable", "Forbidden")
@@ -58,6 +58,10 @@ internal enum L10n {
   internal static let frontend = L10n.tr("Localizable", "Frontend")
   /// Human Resources
   internal static let hr = L10n.tr("Localizable", "HR")
+  /// Invoice is already approved
+  internal static let invoiceIsAlreadyApproved = L10n.tr("Localizable", "Invoice is already approved")
+  /// Invoice is already paid
+  internal static let invoiceIsAlreadyPaid = L10n.tr("Localizable", "Invoice is already paid")
   /// Invoices
   internal static let invoices = L10n.tr("Localizable", "Invoices")
   /// iOS Developer
@@ -76,8 +80,12 @@ internal enum L10n {
   internal static let may = L10n.tr("Localizable", "May")
   /// New
   internal static let new = L10n.tr("Localizable", "New")
+  /// Uploading document is not permited
+  internal static let noActionAvailable = L10n.tr("Localizable", "No action available")
   /// No Internet Connection
   internal static let noInternetConnection = L10n.tr("Localizable", "No Internet Connection")
+  /// Not able to parse error response.
+  internal static let notAbleToParseErrorResponse = L10n.tr("Localizable", "Not able to parse error response")
   /// November
   internal static let november = L10n.tr("Localizable", "November")
   /// October
@@ -112,6 +120,8 @@ internal enum L10n {
   internal static let tester = L10n.tr("Localizable", "Tester")
   /// Unknown month
   internal static let unknownMonth = L10n.tr("Localizable", "Unknown month")
+  /// User's work type for selected month is 'agreement'
+  internal static let userWorkTypeIsAgreement = L10n.tr("Localizable", "User work type is agreement")
   /// ViewController Delegate is not present
   internal static let vcDelegateIsNotPresent = L10n.tr("Localizable", "VC Delegate is not present")
   /// Wage

@@ -16,7 +16,7 @@ protocol UserAPI {
 class UserService: UserAPI {
 
     static let shared: UserAPI = UserService()
-    private lazy var httpService = InvoiceHttpService()
+    private lazy var httpService = SecuredHttpService()
 
     func fetchDetail(id: Int) -> Single<UserDetail> {
 //        mockDetailEndpoint()

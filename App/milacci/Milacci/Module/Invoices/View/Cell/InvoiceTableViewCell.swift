@@ -22,8 +22,16 @@ class InvoiceTableViewCell: UITableViewCell {
         dateLabel.text = viewModel.date
         amountLabel.text = viewModel.value
         stateLabel.text = viewModel.state
-        clipImageView.tintColor = viewModel.isFilePresent ? UIColor.label : UIColor.clear
-        rowActionImageView.image = UIImage(systemSymbol: viewModel.isFilePresent ? .squareAndArrowDown : .squareAndArrowUp, withConfiguration: nil)
+        clipImageView.tintColor = viewModel.canDownloadFile ? UIColor.label : UIColor.clear
+        rowActionImageView.tintColor = .secondaryLabel
+
+        if viewModel.canUploadFile {
+            rowActionImageView.image = UIImage(systemSymbol: .squareAndArrowUp, withConfiguration: nil)
+        } else if viewModel.canDownloadFile {
+            rowActionImageView.image = UIImage(systemSymbol: .squareAndArrowDown, withConfiguration: nil)
+        } else {
+            rowActionImageView.tintColor = .clear
+        }
     }
 
 }

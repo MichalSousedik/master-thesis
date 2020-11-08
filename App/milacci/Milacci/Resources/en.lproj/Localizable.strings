@@ -39,7 +39,7 @@
 "Server got into trouble" = "Server got into trouble";
 "Searched data couldn't be located" = "Searched data couldn't be located";
 "Received data couldn't be loaded because they are in a wrong format" = "Received data couldn't be loaded because they are in a wrong format";
-"Fetching data resulted in error" = "Fetching data resulted in error";
+"Fetching data resulted in error" = "Request coudn't be completed:";
 "No Internet Connection" = "No Internet Connection";
 "Selected URL is not accessible" = "Selected URL is not accessible";
 "Forbidden" = "Access forbidden";
@@ -60,3 +60,8 @@
 "Registration Number" = "Registration Number";
 "Agreement" = "Agreement";
 "Employment Contract" = "Employment Contract";
+"Not able to parse error response"="Not able to parse error response.";
+"No action available" = "Uploading document is not permited";
+"User work type is agreement" = "User's work type for selected month is 'agreement'";
+"Invoice is already approved" = "Invoice is already approved";
+"Invoice is already paid" = "Invoice is already paid";

@@ -11,7 +11,7 @@ import RxSwift
 import Alamofire
 
 protocol InvoicesAPI {
-    func uploadFile(id: Int, url: URL) -> Single<String>
+    func updateInvoice(invoice: Invoice, url: URL) -> Single<Invoice>
     func fetchInvoices(page: Int, userId: Int?) -> Single<InvoicesResponse>
     func fetchInvoice(id: Int) -> Single<Invoice>
 }
@@ -19,50 +19,25 @@ protocol InvoicesAPI {
 class InvoiceService: InvoicesAPI {
 
     static let shared: InvoiceService = InvoiceService()
-    private lazy var httpService = InvoiceHttpService()
+    private lazy var httpService = SecuredHttpService()
 
-    func uploadFile(id: Int, url: URL) -> Single<String> {
-        return Single.create{ (single) -> Disposable in
-
-            if url.startAccessingSecurityScopedResource() {
-                let fileName = url.lastPathComponent
-                let docData = try! Data(contentsOf: url)
-                let params = [
-                    "type": "invoice",
-                    "invoiceId": id,
-                    "sheet": docData
-                ] as [String: Any]
-                url.stopAccessingSecurityScopedResource()
-                do {
-                    let urlTo = try "https://httpbin.org/post".asURL()
-                    AF.upload(multipartFormData: { [docData, fileName] multiPart in
-                        for (key, value) in params {
-                            if let temp = value as? String,
-                               let data = temp.data(using: .utf8){
-                                multiPart.append(data, withName: key)
+    func updateInvoice(invoice: Invoice, url: URL) -> Single<Invoice> {
+        return Single.create{[httpService] (single) -> Disposable in
+            do {
+                try InvoiceHttpRouter.update(invoice: invoice, url: url)
+                    .upload(usingHttpService: httpService)
+                    .responseJSON{ result in
+                        HttpResponseHandler.handle(result: result, completion: { (invoice, error) in
+                            if let error = error {
+                                single(.error(error))
+                            } else if let invoice = invoice {
+                                single(.success(invoice))
                             }
-                            if let temp = value as? Int,
-                               let data = "\(temp)".data(using: .utf8){
-                                multiPart.append(data, withName: key)
-                            }
-                        }
-                        multiPart.append(docData, withName: "sheet", fileName: fileName, mimeType: "application/pdf")
-                    }, to: urlTo)
-                    .validate(statusCode: 200..<299)
-                    .responseJSON { (result) in
-                        if let error = result.error {
-                            single(.error(error))
-                        } else {
-                            debugPrint(result)
-                            single(.success("Hello"))
-                        }
+                        }, type: Invoice.self)
                     }
-
-                }catch {
-                    single(.error(NetworkingError.serverError(error)))
-                }
+            } catch {
+                single(.error(NetworkingError.serverError(error)))
             }
-
             return Disposables.create()
         }
     }

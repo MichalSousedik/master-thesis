@@ -99,6 +99,21 @@ private extension InvoicesViewController {
                 self?.removeLoadingIndicator()
             }
         }).disposed(by: bag)
+
+        self.viewModel.output.info.drive(onNext: {[weak self] (message) in
+            let alert = UIAlertController(
+                title: L10n.noActionAvailable,
+                message: message,
+                preferredStyle: .alert
+            )
+
+            alert.addAction(UIAlertAction(
+                title: L10n.cancel,
+                style: .default
+            ))
+            self?.present(alert, animated: true)
+        }).disposed(by: bag)
+
     }
 
     func setupViewBinding() {

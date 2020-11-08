@@ -101,7 +101,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dvs-FT-SNq">
-                                            <rect key="frame" x="226.5" y="30" width="124.5" height="20.5"/>
+                                            <rect key="frame" x="230.5" y="30" width="124.5" height="20.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 000 000 Kč" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIq-yo-WeM">
                                                     <rect key="frame" x="0.0" y="0.0" width="124.5" height="20.5"/>
@@ -112,12 +112,12 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zef-du-frP">
-                                            <rect key="frame" x="361" y="28" width="23" height="20"/>
+                                            <rect key="frame" x="365" y="28" width="19" height="20"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CvK-xR-pDR">
-                                                    <rect key="frame" x="0.0" y="-4" width="23" height="26"/>
+                                                    <rect key="frame" x="0.0" y="-1" width="19" height="21"/>
                                                     <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                                    <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="large"/>
+                                                    <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="medium"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="tintColor" name="primary-1"/>
@@ -254,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJX-DI-Nc7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4678.2608695652179" y="1181.9196428571429"/>
+            <point key="canvasLocation" x="5477" y="2462"/>
         </scene>
         <!--UserProfile-->
         <scene sceneID="jAM-XO-pvJ">
@@ -555,7 +555,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6E-cF-VqQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5492.753623188406" y="1180.5803571428571"/>
+            <point key="canvasLocation" x="4529" y="1194"/>
         </scene>
         <!--Error View Controller-->
         <scene sceneID="jFO-Pq-OFr">
@@ -683,6 +683,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7TY-6z-5bx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aIg-DO-D3z" firstAttribute="leading" secondItem="7TY-6z-5bx" secondAttribute="leading" id="3C3-5y-eRu"/>
                             <constraint firstItem="EbF-n3-wt4" firstAttribute="leading" secondItem="7TY-6z-5bx" secondAttribute="leading" id="6Lk-dI-aGQ"/>
@@ -709,7 +710,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4X-wA-L1I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5587" y="2101"/>
+            <point key="canvasLocation" x="5477" y="1757"/>
         </scene>
         <!--Wage View Controller-->
         <scene sceneID="GJI-s4-Z1I">
@@ -724,7 +725,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVw-jF-g4n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6416" y="1755"/>
+            <point key="canvasLocation" x="4529" y="2129"/>
         </scene>
     </scenes>
     <resources>

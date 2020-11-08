@@ -39,7 +39,7 @@
 "Server got into trouble" = "Náš server se dostal do potíží:";
 "Searched data couldn't be located" = "Vyhledávaná data neexistují";
 "Received data couldn't be loaded because they are in a wrong format" = "Obdžená data nebyla načtena, neboť nejsou ve správném formátu";
-"Fetching data resulted in error" = "Získávání dat ze serveru se nepodařilo dokončit:";
+"Fetching data resulted in error" = "Požadavek se nepodařilo dokončit:";
 "No Internet Connection" = "Zařízení není připojeno k internetu";
 "Selected URL is not accessible" = "Zvolený soubor není dostupný";
 "Forbidden" = "Přístup byl odepřen";
@@ -57,6 +57,11 @@
 "Accounts" = "Accounts";
 "Boss" = "Boss";
 "Project Manager" = "Project Manager";
-"Registration Number" = "Evidenční číslo";
+"Registration Number" = "IČO";
 "Agreement" = "Dohoda";
 "Employment Contract" = "Zaměstnanecká smlouva";
+"Not able to parse error response"="Chybu se nepodařilo dekódovat.";
+"No action available" = "Nahrání dokumentu není možné";
+"User work type is agreement" = "Typ pracovního poměr pro zvolený měsíc je dohodou";
+"Invoice is already approved" = "Faktura již byla schválena";
+"Invoice is already paid" = "Faktura již byla zaplacena";
