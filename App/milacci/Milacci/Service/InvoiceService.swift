@@ -12,7 +12,7 @@ import Alamofire
 
 protocol InvoicesAPI {
     func uploadFile(id: Int, url: URL) -> Single<String>
-    func fetchInvoices(page: Int) -> Single<InvoicesResponse>
+    func fetchInvoices(page: Int, userId: Int?) -> Single<InvoicesResponse>
     func fetchInvoice(id: Int) -> Single<Invoice>
 }
 
@@ -89,10 +89,11 @@ class InvoiceService: InvoicesAPI {
         }
     }
 
-    func fetchInvoices(page: Int) -> Single<InvoicesResponse> {
+    func fetchInvoices(page: Int, userId: Int? = nil) -> Single<InvoicesResponse> {
+//        self.mockInvoicesEndpoint()
         return Single.create{ [httpService] (single) -> Disposable in
             do {
-                try InvoiceHttpRouter.fetch(offset: (page - 1)*10)
+                try InvoiceHttpRouter.fetch(offset: (page - 1)*10, userId: userId)
                     .request(usingHttpService: httpService)
                     .responseJSON { result in
                         HttpResponseHandler.handle(result: result, completion: { (invoices, error) in

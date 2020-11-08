@@ -19,7 +19,7 @@ class UserService: UserAPI {
     private lazy var httpService = InvoiceHttpService()
 
     func fetchDetail(id: Int) -> Single<UserDetail> {
-        mockDetailEndpoint()
+//        mockDetailEndpoint()
         return Single.create{ [httpService] (single) -> Disposable in
             do {
                 try UserHttpRouter.detail(id: id)

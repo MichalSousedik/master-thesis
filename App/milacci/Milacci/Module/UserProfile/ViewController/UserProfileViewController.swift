@@ -95,7 +95,7 @@ class UserProfileViewController: UIViewController, Storyboardable {
             workTypeLabel?.hideSkeleton()
         }).disposed(by: bag)
         self.viewModel.output.error.drive(onNext: { [weak self] in
-            self?.handle($0) {
+            self?.handle($0) { [weak self] in
                 self?.refresh.accept(())
             }
         }).disposed(by: bag)

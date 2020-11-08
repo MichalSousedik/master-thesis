@@ -3,11 +3,10 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -188,6 +187,74 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="4528.985507246377" y="474.77678571428567"/>
+        </scene>
+        <!--Hourly Rate-->
+        <scene sceneID="wma-VW-m6E">
+            <objects>
+                <viewController storyboardIdentifier="HourlyRateViewController" id="Ac9-gC-f7f" userLabel="Hourly Rate" customClass="HourlyRateViewController" customModule="Milacci" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cs4-pk-b4m">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGP-ym-GZa" userLabel="Content View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yIL-HG-67s" userLabel="Header">
+                                        <rect key="frame" x="105.5" y="0.0" width="203.5" height="797.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Hourly Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ef5-hk-MeB">
+                                                <rect key="frame" x="0.0" y="0.0" width="203.5" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="2000 Kč" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCV-pU-ubv">
+                                                <rect key="frame" x="33.5" y="34" width="136.5" height="763.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                                <color key="textColor" name="primary-1"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAx-vN-mpK" userLabel="Border">
+                                        <rect key="frame" x="0.0" y="817.5" width="414" height="0.5"/>
+                                        <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="4Ik-ky-GeR"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FAx-vN-mpK" firstAttribute="leading" secondItem="CGP-ym-GZa" secondAttribute="leading" id="C4X-sr-LT1"/>
+                                    <constraint firstItem="yIL-HG-67s" firstAttribute="top" secondItem="CGP-ym-GZa" secondAttribute="top" id="hw0-gu-19f"/>
+                                    <constraint firstAttribute="trailing" secondItem="FAx-vN-mpK" secondAttribute="trailing" id="rKa-dH-KFz"/>
+                                    <constraint firstItem="yIL-HG-67s" firstAttribute="centerX" secondItem="CGP-ym-GZa" secondAttribute="centerX" id="wJq-Dy-1cQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="FAx-vN-mpK" secondAttribute="bottom" id="zJ2-pT-p04"/>
+                                    <constraint firstItem="FAx-vN-mpK" firstAttribute="top" secondItem="yIL-HG-67s" secondAttribute="bottom" constant="20" id="zsa-MO-LBt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="k11-lG-Xbh"/>
+                        <constraints>
+                            <constraint firstItem="CGP-ym-GZa" firstAttribute="trailing" secondItem="k11-lG-Xbh" secondAttribute="trailing" id="3tI-6Y-b3H"/>
+                            <constraint firstItem="CGP-ym-GZa" firstAttribute="top" secondItem="k11-lG-Xbh" secondAttribute="top" id="7lj-6i-XZg"/>
+                            <constraint firstItem="CGP-ym-GZa" firstAttribute="leading" secondItem="k11-lG-Xbh" secondAttribute="leading" id="FGJ-bJ-zxK"/>
+                            <constraint firstItem="k11-lG-Xbh" firstAttribute="bottom" secondItem="CGP-ym-GZa" secondAttribute="bottom" priority="999" id="qcr-bE-paA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="hourlyRateLabel" destination="dCV-pU-ubv" id="kne-Qh-ZKQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mJX-DI-Nc7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4678.2608695652179" y="1181.9196428571429"/>
         </scene>
         <!--UserProfile-->
         <scene sceneID="jAM-XO-pvJ">
@@ -490,160 +557,6 @@
             </objects>
             <point key="canvasLocation" x="5492.753623188406" y="1180.5803571428571"/>
         </scene>
-        <!--Invoice detail-->
-        <scene sceneID="tVd-Rq-Q8d">
-            <objects>
-                <viewController storyboardIdentifier="InvoiceDetailViewController" id="H9p-GN-bcd" userLabel="Invoice detail" customClass="InvoiceDetailViewController" customModule="Milacci" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RsJ-4n-YZw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfs-Mi-DU8" userLabel="InvoiceFile">
-                                <rect key="frame" x="167" y="408" width="80" height="80"/>
-                                <color key="backgroundColor" name="button-color"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="7in-Pl-ChC"/>
-                                    <constraint firstAttribute="height" constant="80" id="hxs-Zd-4lf"/>
-                                </constraints>
-                                <color key="tintColor" name="Title text"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="eye" catalog="system" symbolScale="default"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="default"/>
-                                </state>
-                                <connections>
-                                    <action selector="press:" destination="H9p-GN-bcd" eventType="touchUpInside" id="Vef-4A-KDB"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WgZ-MA-tvj" userLabel="Overview Stack View">
-                                <rect key="frame" x="84" y="588" width="246" height="63"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pZR-u6-QkY">
-                                        <rect key="frame" x="0.0" y="0.0" width="119" height="63"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rc5-mJ-xo3">
-                                                <rect key="frame" x="1" y="0.0" width="117" height="26.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jju-cV-bfC">
-                                                <rect key="frame" x="39.5" y="36.5" width="40" height="26.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dQm-hE-20R">
-                                        <rect key="frame" x="127" y="0.0" width="119" height="63"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hourly wage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kD-Jk-b15">
-                                                <rect key="frame" x="0.0" y="0.0" width="119" height="26.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 Kč" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o8-xT-hi1">
-                                                <rect key="frame" x="23" y="36.5" width="73.5" height="26.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonLineSpacing">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fda-sH-fzN">
-                                <rect key="frame" x="132" y="498" width="150" height="4"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="WEE-bH-949"/>
-                                </constraints>
-                                <color key="progressTintColor" name="primary"/>
-                            </progressView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g8S-0v-jec" userLabel="Header Stack View">
-                                <rect key="frame" x="138" y="235.5" width="138" height="72.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 000 Kč" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JL7-n7-4HG">
-                                        <rect key="frame" x="0.0" y="0.0" width="138" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYA-em-KkL">
-                                        <rect key="frame" x="43.5" y="41" width="51.5" height="31.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="GNd-hL-glq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="WgZ-MA-tvj" firstAttribute="centerX" secondItem="RsJ-4n-YZw" secondAttribute="centerX" id="BcI-QX-9rb"/>
-                            <constraint firstItem="wfs-Mi-DU8" firstAttribute="centerX" secondItem="RsJ-4n-YZw" secondAttribute="centerX" id="JjV-jC-nBT"/>
-                            <constraint firstItem="WgZ-MA-tvj" firstAttribute="top" secondItem="wfs-Mi-DU8" secondAttribute="bottom" constant="100" id="RPw-HY-dMm"/>
-                            <constraint firstItem="wfs-Mi-DU8" firstAttribute="top" secondItem="g8S-0v-jec" secondAttribute="bottom" constant="100" id="RX5-ij-EJk"/>
-                            <constraint firstItem="wfs-Mi-DU8" firstAttribute="centerY" secondItem="RsJ-4n-YZw" secondAttribute="centerY" id="ct6-Zq-gp6"/>
-                            <constraint firstItem="g8S-0v-jec" firstAttribute="centerX" secondItem="RsJ-4n-YZw" secondAttribute="centerX" id="rvB-DS-gUI"/>
-                            <constraint firstItem="Fda-sH-fzN" firstAttribute="centerX" secondItem="RsJ-4n-YZw" secondAttribute="centerX" id="tBo-hj-Kz7"/>
-                            <constraint firstItem="Fda-sH-fzN" firstAttribute="top" secondItem="wfs-Mi-DU8" secondAttribute="bottom" constant="10" id="zKs-oo-DPm"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="6Ij-pz-lZ7"/>
-                    <connections>
-                        <outlet property="hourlyWageLabel" destination="2o8-xT-hi1" id="gjb-KM-lek"/>
-                        <outlet property="hourlyWageTitleLabel" destination="4kD-Jk-b15" id="SBD-4h-X0K"/>
-                        <outlet property="hoursLabel" destination="jju-cV-bfC" id="7Qx-WH-lbh"/>
-                        <outlet property="hoursTitleLabel" destination="Rc5-mJ-xo3" id="Cyj-8w-bos"/>
-                        <outlet property="invoiceButton" destination="wfs-Mi-DU8" id="7m1-S3-K29"/>
-                        <outlet property="invoiceProgressView" destination="Fda-sH-fzN" id="iwW-Dr-MaJ"/>
-                        <outlet property="stateLabel" destination="fYA-em-KkL" id="WNR-ic-E0Z"/>
-                        <outlet property="valueLabel" destination="JL7-n7-4HG" id="v2b-Q1-qHG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bb3-JI-Ja8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5313.04347826087" y="543.75"/>
-        </scene>
-        <!--Wage-->
-        <scene sceneID="bck-OS-uGP">
-            <objects>
-                <viewController storyboardIdentifier="WageViewController" id="7HL-hE-2Ad" userLabel="Wage" customClass="WageViewController" customModule="Milacci" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aOl-se-akf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="fpz-wk-BNV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yYC-8U-KI8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4529" y="1862"/>
-        </scene>
         <!--Error View Controller-->
         <scene sceneID="jFO-Pq-OFr">
             <objects>
@@ -714,21 +627,113 @@
             </objects>
             <point key="canvasLocation" x="3483" y="1440"/>
         </scene>
+        <!--WageChart-->
+        <scene sceneID="zBT-bp-7IA">
+            <objects>
+                <viewController storyboardIdentifier="WageChartViewController" id="H0i-ey-23X" userLabel="WageChart" customClass="WageChartViewController" customModule="Milacci" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m7M-do-5O4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EbF-n3-wt4" userLabel="Graph" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="97" width="414" height="706"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIg-DO-D3z" userLabel="Loading">
+                                <rect key="frame" x="0.0" y="73" width="414" height="730"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="AAq-tL-vWB">
+                                        <rect key="frame" x="188.5" y="346.5" width="37" height="37"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="color" systemColor="labelColor"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="AAq-tL-vWB" firstAttribute="centerY" secondItem="aIg-DO-D3z" secondAttribute="centerY" id="TpU-Kn-sbm"/>
+                                    <constraint firstItem="AAq-tL-vWB" firstAttribute="centerX" secondItem="aIg-DO-D3z" secondAttribute="centerX" id="iTI-h9-m3d"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="W3y-C7-nHL">
+                                <rect key="frame" x="54.5" y="73" width="305.5" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XF7-i4-3RN">
+                                        <rect key="frame" x="0.0" y="0.0" width="61" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currently selected wage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b20-3a-NZR">
+                                        <rect key="frame" x="76" y="0.0" width="229.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly Wage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzV-mQ-CR1">
+                                <rect key="frame" x="144" y="44" width="126" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7TY-6z-5bx"/>
+                        <constraints>
+                            <constraint firstItem="aIg-DO-D3z" firstAttribute="leading" secondItem="7TY-6z-5bx" secondAttribute="leading" id="3C3-5y-eRu"/>
+                            <constraint firstItem="EbF-n3-wt4" firstAttribute="leading" secondItem="7TY-6z-5bx" secondAttribute="leading" id="6Lk-dI-aGQ"/>
+                            <constraint firstItem="EbF-n3-wt4" firstAttribute="top" secondItem="W3y-C7-nHL" secondAttribute="bottom" id="8sv-kM-qnP"/>
+                            <constraint firstItem="aIg-DO-D3z" firstAttribute="trailing" secondItem="7TY-6z-5bx" secondAttribute="trailing" id="BOg-nM-IiQ"/>
+                            <constraint firstItem="W3y-C7-nHL" firstAttribute="centerX" secondItem="m7M-do-5O4" secondAttribute="centerX" id="LrG-Wt-d0w"/>
+                            <constraint firstItem="W3y-C7-nHL" firstAttribute="top" secondItem="XzV-mQ-CR1" secondAttribute="bottom" constant="5" id="ViI-aW-7YB"/>
+                            <constraint firstItem="7TY-6z-5bx" firstAttribute="bottom" secondItem="aIg-DO-D3z" secondAttribute="bottom" constant="10" id="WK4-cw-Te3"/>
+                            <constraint firstItem="aIg-DO-D3z" firstAttribute="top" secondItem="W3y-C7-nHL" secondAttribute="top" id="chN-UA-nuo"/>
+                            <constraint firstItem="7TY-6z-5bx" firstAttribute="bottom" secondItem="EbF-n3-wt4" secondAttribute="bottom" constant="10" id="j4k-vS-IOZ"/>
+                            <constraint firstItem="XzV-mQ-CR1" firstAttribute="top" secondItem="7TY-6z-5bx" secondAttribute="top" id="rtT-eG-JEL"/>
+                            <constraint firstItem="XzV-mQ-CR1" firstAttribute="centerX" secondItem="m7M-do-5O4" secondAttribute="centerX" id="wVx-aY-EkO"/>
+                            <constraint firstItem="EbF-n3-wt4" firstAttribute="trailing" secondItem="7TY-6z-5bx" secondAttribute="trailing" id="xcQ-MP-2W8"/>
+                        </constraints>
+                    </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="graphView" destination="EbF-n3-wt4" id="HU1-QK-CMe"/>
+                        <outlet property="loadingActivityIndicator" destination="AAq-tL-vWB" id="cyh-iO-sPw"/>
+                        <outlet property="loadingView" destination="aIg-DO-D3z" id="j07-bk-I97"/>
+                        <outlet property="monthLabel" destination="XF7-i4-3RN" id="jaP-ge-mGR"/>
+                        <outlet property="monthWageLabel" destination="b20-3a-NZR" id="cc4-rf-t1Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H4X-wA-L1I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5587" y="2101"/>
+        </scene>
+        <!--Wage View Controller-->
+        <scene sceneID="GJI-s4-Z1I">
+            <objects>
+                <viewController storyboardIdentifier="WageViewController" id="jbe-Tp-XT5" customClass="WageViewController" customModule="Milacci" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kAU-PH-hd5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vpY-N4-lUc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xVw-jF-g4n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6416" y="1755"/>
+        </scene>
     </scenes>
     <resources>
         <image name="escape" catalog="system" width="128" height="121"/>
-        <image name="eye" catalog="system" width="128" height="81"/>
         <image name="launching-app-icon" width="184" height="235"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <namedColor name="Title text">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="button-color">
-            <color red="0.2669999897480011" green="0.28200000524520874" blue="0.30199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="primary">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary-1">
             <color red="0.0" green="0.0" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

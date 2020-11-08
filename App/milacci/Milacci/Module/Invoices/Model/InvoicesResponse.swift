@@ -27,6 +27,13 @@ extension Invoice {
         return "\(month) \(year)"
     }
 
+    var chartPeriodOfIssue: String {
+        let parts = periodOfIssue.components(separatedBy: "-")
+        let year = parts[0]
+        let month = parts[1]
+        return "\(month)-\(year)"
+    }
+
     func numberToMonth(_ monthNumber: String) -> String {
         switch(monthNumber){
         case "01" : return L10n.january

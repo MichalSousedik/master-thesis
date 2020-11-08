@@ -105,6 +105,7 @@ private extension SceneDelegate {
     func signIn(accessToken: String){
         self.authService.signIn(accessToken: accessToken)
             .subscribe { [weak self] signInModel in
+                print(signInModel.credentials.accessToken)
                 self?.userSettingsApi.saveCredentials(credentials: signInModel.credentials)
                 self?.userSettingsApi.saveUser(user: signInModel.user)
                 self?.appCoordinator?.reload()

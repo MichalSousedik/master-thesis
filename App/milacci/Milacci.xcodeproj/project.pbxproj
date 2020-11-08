@@ -17,6 +17,8 @@
 		373E827E254DDABB00A93E0D /* ViewControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373E827D254DDABB00A93E0D /* ViewControllerError.swift */; };
 		373E8280254DF84700A93E0D /* UploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373E827F254DF84700A93E0D /* UploadResponse.swift */; };
 		375B0D582531BCD000C90879 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375B0D572531BCD000C90879 /* CloudKit.framework */; };
+		377E75162555FF7C003B557A /* WageChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E75152555FF7C003B557A /* WageChartViewModel.swift */; };
+		377E751925560001003B557A /* InvoiceChartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E751825560001003B557A /* InvoiceChartEntry.swift */; };
 		37A9037D2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */; };
 		37A9037F25362647006251EE /* PaginationNetworkLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9037E25362647006251EE /* PaginationNetworkLogic.swift */; };
 		37A9038F2538F85C006251EE /* FileAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9038E2538F85C006251EE /* FileAction.swift */; };
@@ -29,9 +31,14 @@
 		37C374B7254F886F00480D2C /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374B6254F886F00480D2C /* UserProfileViewModel.swift */; };
 		37C374B92550B73300480D2C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374B82550B73300480D2C /* UserService.swift */; };
 		37C374BB2550B81100480D2C /* UserHttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374BA2550B81100480D2C /* UserHttpRouter.swift */; };
+		37CCBC1F2556B91300250F08 /* WageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CCBC1E2556B91300250F08 /* WageViewController.swift */; };
+		37CCBC212556B9A100250F08 /* HourlyRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CCBC202556B9A100250F08 /* HourlyRateViewController.swift */; };
+		37EEE7D2255779F600BC3C50 /* HourlyRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7D1255779F600BC3C50 /* HourlyRateViewModel.swift */; };
+		37EEE7DA255790E700BC3C50 /* HourRateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7D9255790E700BC3C50 /* HourRateTests.swift */; };
+		37EEE7E5255809D800BC3C50 /* UserDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7E4255809D800BC3C50 /* UserDetailTests.swift */; };
 		37F70AE125439AA2001E9D07 /* InvoicesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */; };
 		37F70AE625444ADC001E9D07 /* WageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE525444ADC001E9D07 /* WageCoordinator.swift */; };
-		37F70AE825444BB9001E9D07 /* WageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE725444BB9001E9D07 /* WageViewController.swift */; };
+		37F70AE825444BB9001E9D07 /* WageChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE725444BB9001E9D07 /* WageChartViewController.swift */; };
 		37F70AEA25444D1D001E9D07 /* WorkerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE925444D1D001E9D07 /* WorkerTabBarController.swift */; };
 		37F70AEC254451D0001E9D07 /* TabBarControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AEB254451D0001E9D07 /* TabBarControllerFactory.swift */; };
 		37F70AFC254460D1001E9D07 /* HttpErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AFB254460D1001E9D07 /* HttpErrorResponse.swift */; };
@@ -83,6 +90,16 @@
 		C0E8E11A25195F0E00A21F9E /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8E11925195F0E00A21F9E /* SignInCoordinator.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		37EEE7DC255790E700BC3C50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0455E512479BF8500D96F53 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0455E582479BF8500D96F53;
+			remoteInfo = Milacci;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		C05B59F824E333BF003009AC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -109,6 +126,8 @@
 		373E827F254DF84700A93E0D /* UploadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResponse.swift; sourceTree = "<group>"; };
 		375B0D562531B22B00C90879 /* MilacciDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MilacciDebug.entitlements; sourceTree = "<group>"; };
 		375B0D572531BCD000C90879 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		377E75152555FF7C003B557A /* WageChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageChartViewModel.swift; sourceTree = "<group>"; };
+		377E751825560001003B557A /* InvoiceChartEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceChartEntry.swift; sourceTree = "<group>"; };
 		37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+TableViewRxReachedBottom.swift"; sourceTree = "<group>"; };
 		37A9037E25362647006251EE /* PaginationNetworkLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationNetworkLogic.swift; sourceTree = "<group>"; };
 		37A9038E2538F85C006251EE /* FileAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAction.swift; sourceTree = "<group>"; };
@@ -125,9 +144,16 @@
 		37C374B82550B73300480D2C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		37C374BA2550B81100480D2C /* UserHttpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHttpRouter.swift; sourceTree = "<group>"; };
 		37CA024F25250F8100948444 /* Milacci.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Milacci.entitlements; sourceTree = "<group>"; };
+		37CCBC1E2556B91300250F08 /* WageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageViewController.swift; sourceTree = "<group>"; };
+		37CCBC202556B9A100250F08 /* HourlyRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyRateViewController.swift; sourceTree = "<group>"; };
+		37EEE7D1255779F600BC3C50 /* HourlyRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyRateViewModel.swift; sourceTree = "<group>"; };
+		37EEE7D7255790E700BC3C50 /* MilacciTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilacciTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37EEE7D9255790E700BC3C50 /* HourRateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourRateTests.swift; sourceTree = "<group>"; };
+		37EEE7DB255790E700BC3C50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37EEE7E4255809D800BC3C50 /* UserDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailTests.swift; sourceTree = "<group>"; };
 		37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesResponse.swift; sourceTree = "<group>"; };
 		37F70AE525444ADC001E9D07 /* WageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageCoordinator.swift; sourceTree = "<group>"; };
-		37F70AE725444BB9001E9D07 /* WageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageViewController.swift; sourceTree = "<group>"; };
+		37F70AE725444BB9001E9D07 /* WageChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageChartViewController.swift; sourceTree = "<group>"; };
 		37F70AE925444D1D001E9D07 /* WorkerTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerTabBarController.swift; sourceTree = "<group>"; };
 		37F70AEB254451D0001E9D07 /* TabBarControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerFactory.swift; sourceTree = "<group>"; };
 		37F70AFB254460D1001E9D07 /* HttpErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpErrorResponse.swift; sourceTree = "<group>"; };
@@ -187,6 +213,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		37EEE7D4255790E700BC3C50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0455E562479BF8500D96F53 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,6 +252,23 @@
 				92ABC71A3510F6D0BFB2913A /* Pods_Milacci.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		377E75142555FF6D003B557A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				377E75152555FF7C003B557A /* WageChartViewModel.swift */,
+				37EEE7D1255779F600BC3C50 /* HourlyRateViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		377E75172555FFF7003B557A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				377E751825560001003B557A /* InvoiceChartEntry.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		37A9037B2533AF27006251EE /* Extensions */ = {
@@ -275,9 +325,21 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		37EEE7D8255790E700BC3C50 /* MilacciTests */ = {
+			isa = PBXGroup;
+			children = (
+				37EEE7E4255809D800BC3C50 /* UserDetailTests.swift */,
+				37EEE7D9255790E700BC3C50 /* HourRateTests.swift */,
+				37EEE7DB255790E700BC3C50 /* Info.plist */,
+			);
+			path = MilacciTests;
+			sourceTree = "<group>";
+		};
 		37F70AE225444A47001E9D07 /* Wage */ = {
 			isa = PBXGroup;
 			children = (
+				377E75172555FFF7003B557A /* Model */,
+				377E75142555FF6D003B557A /* ViewModel */,
 				37F70AE425444AB1001E9D07 /* Coordinator */,
 				37F70AE325444AA4001E9D07 /* ViewController */,
 			);
@@ -287,7 +349,9 @@
 		37F70AE325444AA4001E9D07 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				37F70AE725444BB9001E9D07 /* WageViewController.swift */,
+				37F70AE725444BB9001E9D07 /* WageChartViewController.swift */,
+				37CCBC1E2556B91300250F08 /* WageViewController.swift */,
+				37CCBC202556B9A100250F08 /* HourlyRateViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -374,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				C0455E5B2479BF8500D96F53 /* Milacci */,
+				37EEE7D8255790E700BC3C50 /* MilacciTests */,
 				C0455E5A2479BF8500D96F53 /* Products */,
 				2881B083111DC7DEB27A82F7 /* Pods */,
 				31583BC1B48A5B6D96EA11AA /* Frameworks */,
@@ -384,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				C0455E592479BF8500D96F53 /* Milacci.app */,
+				37EEE7D7255790E700BC3C50 /* MilacciTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -603,6 +669,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		37EEE7D6255790E700BC3C50 /* MilacciTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37EEE7DE255790E700BC3C50 /* Build configuration list for PBXNativeTarget "MilacciTests" */;
+			buildPhases = (
+				37EEE7D3255790E700BC3C50 /* Sources */,
+				37EEE7D4255790E700BC3C50 /* Frameworks */,
+				37EEE7D5255790E700BC3C50 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37EEE7DD255790E700BC3C50 /* PBXTargetDependency */,
+			);
+			name = MilacciTests;
+			productName = MilacciTests;
+			productReference = 37EEE7D7255790E700BC3C50 /* MilacciTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C0455E582479BF8500D96F53 /* Milacci */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0455E6D2479BF8900D96F53 /* Build configuration list for PBXNativeTarget "Milacci" */;
@@ -632,10 +716,14 @@
 		C0455E512479BF8500D96F53 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Michal Sousedik";
 				TargetAttributes = {
+					37EEE7D6255790E700BC3C50 = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = C0455E582479BF8500D96F53;
+					};
 					C0455E582479BF8500D96F53 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -656,11 +744,19 @@
 			projectRoot = "";
 			targets = (
 				C0455E582479BF8500D96F53 /* Milacci */,
+				37EEE7D6255790E700BC3C50 /* MilacciTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		37EEE7D5255790E700BC3C50 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0455E572479BF8500D96F53 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -772,10 +868,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		37EEE7D3255790E700BC3C50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37EEE7DA255790E700BC3C50 /* HourRateTests.swift in Sources */,
+				37EEE7E5255809D800BC3C50 /* UserDetailTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0455E552479BF8500D96F53 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377E75162555FF7C003B557A /* WageChartViewModel.swift in Sources */,
 				37F70B1125474DFA001E9D07 /* UIViewController+FrontmostController.swift in Sources */,
 				C0E8E11825195B8900A21F9E /* AppCoordinator.swift in Sources */,
 				37F70B232548AFA2001E9D07 /* AuthHttpService.swift in Sources */,
@@ -793,7 +899,7 @@
 				C0BAE0122509605600472B91 /* InvoiceViewModel.swift in Sources */,
 				3711806E254A2D18000DFFFA /* Plist.swift in Sources */,
 				37C374B7254F886F00480D2C /* UserProfileViewModel.swift in Sources */,
-				37F70AE825444BB9001E9D07 /* WageViewController.swift in Sources */,
+				37F70AE825444BB9001E9D07 /* WageChartViewController.swift in Sources */,
 				C0E8E11A25195F0E00A21F9E /* SignInCoordinator.swift in Sources */,
 				37F70B1F2548A99A001E9D07 /* AuthHttpRouter.swift in Sources */,
 				37F70B052545B3CF001E9D07 /* AppDelegate+ErrorHandler.swift in Sources */,
@@ -803,6 +909,8 @@
 				C079A553251D4E4A00331E17 /* InvoiceDetailCoordinator.swift in Sources */,
 				373E827E254DDABB00A93E0D /* ViewControllerError.swift in Sources */,
 				C040DDE62519540600822300 /* Coordinator.swift in Sources */,
+				377E751925560001003B557A /* InvoiceChartEntry.swift in Sources */,
+				37CCBC212556B9A100250F08 /* HourlyRateViewController.swift in Sources */,
 				C058335F248051E7004CA055 /* HalfCircleView.swift in Sources */,
 				37F70B212548AF0B001E9D07 /* AuthService.swift in Sources */,
 				C040DDE4251953F200822300 /* InvoicesCoordinator.swift in Sources */,
@@ -832,6 +940,8 @@
 				37C374A4254F020C00480D2C /* InitiatingViewController.swift in Sources */,
 				37F70B012545B277001E9D07 /* UIResponder+ErrorHandler.swift in Sources */,
 				37118077254A2FD2000DFFFA /* Assets.swift in Sources */,
+				37EEE7D2255779F600BC3C50 /* HourlyRateViewModel.swift in Sources */,
+				37CCBC1F2556B91300250F08 /* WageViewController.swift in Sources */,
 				C0ACCB60247AC283002F7263 /* InvoiceTableViewCell.swift in Sources */,
 				373E8280254DF84700A93E0D /* UploadResponse.swift in Sources */,
 				37C374B92550B73300480D2C /* UserService.swift in Sources */,
@@ -845,6 +955,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		37EEE7DD255790E700BC3C50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0455E582479BF8500D96F53 /* Milacci */;
+			targetProxy = 37EEE7DC255790E700BC3C50 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		37F70BA72549B38E001E9D07 /* Localizable.strings */ = {
@@ -877,6 +995,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		37EEE7DF255790E700BC3C50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FRYD8HMFR6;
+				INFOPLIST_FILE = MilacciTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cvut.MilacciTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Milacci.app/Milacci";
+			};
+			name = Debug;
+		};
+		37EEE7E0255790E700BC3C50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FRYD8HMFR6;
+				INFOPLIST_FILE = MilacciTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cvut.MilacciTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Milacci.app/Milacci";
+			};
+			name = Release;
+		};
 		C0455E6B2479BF8900D96F53 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1054,6 +1216,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		37EEE7DE255790E700BC3C50 /* Build configuration list for PBXNativeTarget "MilacciTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37EEE7DF255790E700BC3C50 /* Debug */,
+				37EEE7E0255790E700BC3C50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C0455E542479BF8500D96F53 /* Build configuration list for PBXProject "Milacci" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

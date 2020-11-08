@@ -32,7 +32,7 @@ class InvoicesCoordinator: BaseCoordinator {
 
             return viewModel
         }
-        view.tabBarItem = UITabBarItem(title: L10n.invoices, image: UIImage(systemSymbol: .docFill), tag: 0)
+        view.tabBarItem = UITabBarItem(title: L10n.invoices, image: Asset.Images.invoiceMinimalistIcon.image, tag: 0)
         navigationController.pushViewController(view, animated: true)
     }
 

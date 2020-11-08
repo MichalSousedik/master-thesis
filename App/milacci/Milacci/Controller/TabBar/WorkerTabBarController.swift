@@ -11,8 +11,11 @@ import UIKit
 
 class WorkerTabBarControoler: BaseTabBarController {
     override var coordinators: [Coordinator] {[
+
         InvoicesCoordinator(navigationController: BaseNavigationController()),
-        WageCoordinator(navigationController: BaseNavigationController()),
+        WageCoordinator(userIdProvider: { () in
+            UserSettingsService.shared.userId
+        }, navigationController: UINavigationController()),
         UserProfileCoordinator(userIdProvider: { () in
             UserSettingsService.shared.userId
         }, navigationController: UINavigationController())

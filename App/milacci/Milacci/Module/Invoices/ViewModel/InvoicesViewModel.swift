@@ -147,7 +147,7 @@ private extension InvoicesViewModel {
     }
 
     func load(page: Int) -> Observable<InvoicesResponse> {
-        return self.api.fetchInvoices(page: page)
+        return self.api.fetchInvoices(page: page, userId: UserSettingsService.shared.userId)
             .asObservable()
     }
 

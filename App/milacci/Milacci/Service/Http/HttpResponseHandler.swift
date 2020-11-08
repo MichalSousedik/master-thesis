@@ -62,6 +62,7 @@ class HttpResponseHandler {
         do {
             return try expression()
         } catch {
+            print(error)
             throw errorTransform(error)
         }
     }

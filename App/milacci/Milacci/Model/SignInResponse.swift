@@ -16,6 +16,34 @@ struct User: Codable {
     let roles: [Role]?
 }
 
+struct HourRate: Codable {
+    let id: Int
+    let since: String
+    let validTo: String?
+    let type: HourRateType
+    let value: Double
+    let percentageIncrease: Double
+}
+
+extension HourRate {
+    var sinceDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        return dateFormatter.date(from: self.since)
+    }
+}
+
+extension HourRate: Equatable {
+
+}
+
+enum HourRateType: String, Codable {
+    case original = "original"
+    case virtual = "virtual"
+}
+
 struct UserDetail: Codable {
     let name: String?
     let surname: String?
@@ -26,6 +54,7 @@ struct UserDetail: Codable {
     let phoneNumber: String?
     let contactEmail: String?
     let workType: WorkType?
+    let hourRates: [HourRate]?
 }
 
 extension UserDetail {
@@ -37,6 +66,37 @@ extension UserDetail {
         let month = parts[1]
         let day = parts[2]
         return "\(day). \(month). \(year)"
+    }
+
+    func currentHourRate() throws -> HourRate? {
+        return try findCurrentHourRate(hourRates: hourRates)
+    }
+
+    private func findCurrentHourRate(hourRates: [HourRate]?) throws ->  HourRate? {
+        guard let hourRates = hourRates else {return nil}
+        if hourRates.count == 0 {
+            return nil
+        }
+        let hourRate = try hourRates.max { (a, b) -> Bool in
+            guard let aSinceDate = a.sinceDate else {
+                throw HourRateError.sinceInWrongFormat(id: a.id)
+            }
+            guard let bSinceDate = b.sinceDate else {
+                throw HourRateError.sinceInWrongFormat(id: b.id)
+            }
+            return aSinceDate < bSinceDate
+        }
+
+        guard let unwrappedHourRate = hourRate else {return nil}
+        if let sinceDate = unwrappedHourRate.sinceDate,
+           sinceDate < Date() {
+            return hourRate
+        } else {
+
+            return try findCurrentHourRate(hourRates: hourRates.filter({[unwrappedHourRate] (hRate) -> Bool in
+                hRate.id != unwrappedHourRate.id
+            }))
+        }
     }
 
 }

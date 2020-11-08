@@ -9,7 +9,7 @@
 import Alamofire
 
 enum InvoiceHttpRouter {
-    case fetch(offset: Int)
+    case fetch(offset: Int, userId: Int? = nil)
     case detail(id: Int)
 }
 
@@ -39,9 +39,11 @@ extension InvoiceHttpRouter: HttpRouter {
 
     var parameters: Parameters? {
         switch self {
-        case .fetch(let offset):
+        case .fetch(let offset, let userId):
             var params = Parameters()
-            params["userId"]=UserSettingsService.shared.userId
+            if let userId = userId {
+                params["userId"] = userId
+            }
             params["limit"]=10
             params["offset"]=offset
             params["order"]="-createdAt"
