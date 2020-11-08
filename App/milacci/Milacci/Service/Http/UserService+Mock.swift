@@ -88,7 +88,7 @@ extension UserService {
                   ],
             ] as [String: Any]
 
-        return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 500, headers: nil)
+        return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 200, headers: nil)
             .requestTime(1.0, responseTime: 3.0)
     }
 }

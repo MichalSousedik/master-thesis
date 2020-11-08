@@ -37,6 +37,12 @@
 		37EEE7DA255790E700BC3C50 /* HourRateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7D9255790E700BC3C50 /* HourRateTests.swift */; };
 		37EEE7E5255809D800BC3C50 /* UserDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7E4255809D800BC3C50 /* UserDetailTests.swift */; };
 		37EEE7E92558584700BC3C50 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7E82558584600BC3C50 /* ErrorResponse.swift */; };
+		37EEE7EC25587DD400BC3C50 /* AdminTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7EB25587DD400BC3C50 /* AdminTabBarController.swift */; };
+		37EEE7EF25587E0C00BC3C50 /* TeamLeaderTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7EE25587E0C00BC3C50 /* TeamLeaderTabBarController.swift */; };
+		37EEE7F22558846A00BC3C50 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7F12558846A00BC3C50 /* UserDetail.swift */; };
+		37EEE7F52558848C00BC3C50 /* JobTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7F42558848C00BC3C50 /* JobTitle.swift */; };
+		37EEE7F8255884A600BC3C50 /* HourRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7F7255884A600BC3C50 /* HourRate.swift */; };
+		37EEE7FE255884F100BC3C50 /* String+UniversalDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7FD255884F100BC3C50 /* String+UniversalDate.swift */; };
 		37F70AE125439AA2001E9D07 /* InvoicesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */; };
 		37F70AE625444ADC001E9D07 /* WageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE525444ADC001E9D07 /* WageCoordinator.swift */; };
 		37F70AE825444BB9001E9D07 /* WageChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE725444BB9001E9D07 /* WageChartViewController.swift */; };
@@ -153,6 +159,12 @@
 		37EEE7DB255790E700BC3C50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37EEE7E4255809D800BC3C50 /* UserDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailTests.swift; sourceTree = "<group>"; };
 		37EEE7E82558584600BC3C50 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		37EEE7EB25587DD400BC3C50 /* AdminTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabBarController.swift; sourceTree = "<group>"; };
+		37EEE7EE25587E0C00BC3C50 /* TeamLeaderTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLeaderTabBarController.swift; sourceTree = "<group>"; };
+		37EEE7F12558846A00BC3C50 /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
+		37EEE7F42558848C00BC3C50 /* JobTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTitle.swift; sourceTree = "<group>"; };
+		37EEE7F7255884A600BC3C50 /* HourRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourRate.swift; sourceTree = "<group>"; };
+		37EEE7FD255884F100BC3C50 /* String+UniversalDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UniversalDate.swift"; sourceTree = "<group>"; };
 		37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesResponse.swift; sourceTree = "<group>"; };
 		37F70AE525444ADC001E9D07 /* WageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageCoordinator.swift; sourceTree = "<group>"; };
 		37F70AE725444BB9001E9D07 /* WageChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageChartViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +294,7 @@
 				37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */,
 				37F70B0E2545B7FA001E9D07 /* UIViewController+ChildViewController.swift */,
 				37F70B1025474DF9001E9D07 /* UIViewController+FrontmostController.swift */,
+				37EEE7FD255884F100BC3C50 /* String+UniversalDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -335,6 +348,16 @@
 				37EEE7DB255790E700BC3C50 /* Info.plist */,
 			);
 			path = MilacciTests;
+			sourceTree = "<group>";
+		};
+		37EEE8002558852F00BC3C50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				37EEE7F12558846A00BC3C50 /* UserDetail.swift */,
+				37EEE7F42558848C00BC3C50 /* JobTitle.swift */,
+				37EEE7F7255884A600BC3C50 /* HourRate.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		37F70AE225444A47001E9D07 /* Wage */ = {
@@ -394,6 +417,8 @@
 				C0E1B250248430FE00F68394 /* BaseTabBarController.swift */,
 				37F70AE925444D1D001E9D07 /* WorkerTabBarController.swift */,
 				37F70AEB254451D0001E9D07 /* TabBarControllerFactory.swift */,
+				37EEE7EB25587DD400BC3C50 /* AdminTabBarController.swift */,
+				37EEE7EE25587E0C00BC3C50 /* TeamLeaderTabBarController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -551,6 +576,7 @@
 		C0E342DA251A85DC00860E44 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				37EEE8002558852F00BC3C50 /* Model */,
 				37C374B5254F886300480D2C /* ViewModel */,
 				C0E342DC251A85FE00860E44 /* Coordinator */,
 				C0E342DB251A85F000860E44 /* ViewController */,
@@ -906,6 +932,7 @@
 				C0E8E11A25195F0E00A21F9E /* SignInCoordinator.swift in Sources */,
 				37F70B1F2548A99A001E9D07 /* AuthHttpRouter.swift in Sources */,
 				37F70B052545B3CF001E9D07 /* AppDelegate+ErrorHandler.swift in Sources */,
+				37EEE7F52558848C00BC3C50 /* JobTitle.swift in Sources */,
 				37F70AFC254460D1001E9D07 /* HttpErrorResponse.swift in Sources */,
 				C054EAFE2479DFA800C11F16 /* InvoicesViewController.swift in Sources */,
 				37093A70253CE51E00E87BA4 /* UserSettingsService.swift in Sources */,
@@ -916,6 +943,7 @@
 				37CCBC212556B9A100250F08 /* HourlyRateViewController.swift in Sources */,
 				C058335F248051E7004CA055 /* HalfCircleView.swift in Sources */,
 				37F70B212548AF0B001E9D07 /* AuthService.swift in Sources */,
+				37EEE7EF25587E0C00BC3C50 /* TeamLeaderTabBarController.swift in Sources */,
 				C040DDE4251953F200822300 /* InvoicesCoordinator.swift in Sources */,
 				37A9037F25362647006251EE /* PaginationNetworkLogic.swift in Sources */,
 				37093A72253CE9B200E87BA4 /* SignInResponse.swift in Sources */,
@@ -923,12 +951,14 @@
 				C0574571251AA0CF00051D12 /* InvoiceService.swift in Sources */,
 				37F70B072545B40B001E9D07 /* Error+ResolveCategory.swift in Sources */,
 				37C374AF254F19CF00480D2C /* InvoiceService+Mock.swift in Sources */,
+				37EEE7EC25587DD400BC3C50 /* AdminTabBarController.swift in Sources */,
 				3711806F254A2D18000DFFFA /* Strings.swift in Sources */,
 				C0B9350C247DA59400A457AD /* InvoiceDetailViewController.swift in Sources */,
 				C0E1B251248430FE00F68394 /* BaseTabBarController.swift in Sources */,
 				C0E342DE251A861700860E44 /* UserProfileCoordinator.swift in Sources */,
 				37F70B092545B432001E9D07 /* ErrorCategory.swift in Sources */,
 				37A9038F2538F85C006251EE /* FileAction.swift in Sources */,
+				37EEE7F22558846A00BC3C50 /* UserDetail.swift in Sources */,
 				37B465EC2550C3F400B245AB /* UserService+Mock.swift in Sources */,
 				C0AF73A8250948D000B7CA0F /* InvoicesViewModel.swift in Sources */,
 				C0553582251955D100B04A18 /* BaseCoordinator.swift in Sources */,
@@ -937,6 +967,7 @@
 				C0455E5F2479BF8500D96F53 /* SceneDelegate.swift in Sources */,
 				37C374BB2550B81100480D2C /* UserHttpRouter.swift in Sources */,
 				37F70B0F2545B7FA001E9D07 /* UIViewController+ChildViewController.swift in Sources */,
+				37EEE7FE255884F100BC3C50 /* String+UniversalDate.swift in Sources */,
 				C00D050E251BEC6D004D42E8 /* NetworkingError.swift in Sources */,
 				37A9037D2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift in Sources */,
 				C057456F251A9D6600051D12 /* InvoiceHttpRouter.swift in Sources */,
@@ -955,6 +986,7 @@
 				37C374A2254ED85600480D2C /* AccessTokenInterceptor.swift in Sources */,
 				37F70AE125439AA2001E9D07 /* InvoicesResponse.swift in Sources */,
 				C05833622481477C004CA055 /* BaseNavigationController.swift in Sources */,
+				37EEE7F8255884A600BC3C50 /* HourRate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

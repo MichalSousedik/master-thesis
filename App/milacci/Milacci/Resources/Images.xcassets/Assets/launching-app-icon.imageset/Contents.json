@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "milacek.pdf",
+      "filename" : "primary-light.pdf",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "launching-app-icon-white.pdf",
+      "filename" : "primary-dark.pdf",
       "idiom" : "universal"
     }
   ],

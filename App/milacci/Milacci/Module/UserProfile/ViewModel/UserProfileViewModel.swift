@@ -99,7 +99,10 @@ private extension UserProfileViewModel {
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let dateOfBirth = state.userDetail.asObservable()
             .map { (userDetail) in
-                userDetail.formattedDateOfBirth ?? EMPTY_SYMBOL
+                guard let date = userDetail.dateOfBirth?.universalDate else {return EMPTY_SYMBOL}
+                let dateFormatterPrint = DateFormatter()
+                dateFormatterPrint.dateFormat = "dd. MM. yyyy"
+                return dateFormatterPrint.string(from: date)
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let hourlyCapacity = state.userDetail.asObservable()
             .map { (userDetail) in

@@ -141,8 +141,7 @@ private extension SceneDelegate {
 
     func createOfflineView(frame: CGRect) -> UIView {
         let label = UILabel(frame: frame)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = UIColor.red
+        label.backgroundColor = Asset.Colors.primary.color
         label.textAlignment = .center
         label.text = L10n.noInternetConnection
         self.labels.append(label)

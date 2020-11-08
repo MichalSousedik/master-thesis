@@ -52,7 +52,7 @@ extension InvoiceService {
                      "value": "33000.00"]
                 ]
             }
-            return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 500, headers: nil)
+            return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 200, headers: nil)
                 .requestTime(1.0, responseTime: 3.0)
         }
     }

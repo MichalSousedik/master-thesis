@@ -32,11 +32,8 @@ internal enum Asset {
     internal static let secondary = ColorAsset(name: "secondary")
   }
   internal enum Images {
-    internal static let invoiceIcon = ImageAsset(name: "invoice-icon")
     internal static let invoiceMinimalistIcon = ImageAsset(name: "invoice-minimalist-icon")
-    internal static let launchingAppIcon1 = ImageAsset(name: "launching-app-icon-1")
     internal static let launchingAppIcon = ImageAsset(name: "launching-app-icon")
-    internal static let userIcon = ImageAsset(name: "user-icon")
     internal static let wageIcon = ImageAsset(name: "wage-icon")
   }
 }

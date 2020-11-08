@@ -18,6 +18,7 @@ class InvoicesViewController: UIViewController, Storyboardable {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var tableViewFooter: UIView!
+    @IBOutlet weak var loadingIndicatorView: UIView!
     @IBOutlet weak var loadMoreActivityIndicator: UIActivityIndicatorView!
 
     private var viewModel: InvoicesViewPresentable!
@@ -47,8 +48,8 @@ class InvoicesViewController: UIViewController, Storyboardable {
         setupUI()
         setupViewModelBinding()
         setupViewBinding()
-        refreshInvoices()
         showLoadingIndicator()
+        refreshInvoices()
     }
 }
 
@@ -128,6 +129,7 @@ private extension InvoicesViewController {
 
     func setupUI() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
+
         self.tableView.refreshControl = refreshControl
         self.refreshControl.tintColor = .label
         self.tableView.tableFooterView = self.tableViewFooter
@@ -161,16 +163,11 @@ private extension InvoicesViewController {
     }
 
     func showLoadingIndicator() {
-        if self.loadingViewController == nil {
-            let loadingViewController = LoadingViewController()
-            self.loadingViewController = loadingViewController
-            self.add(loadingViewController)
-        }
+        self.loadingIndicatorView.isHidden = false
     }
 
     func removeLoadingIndicator() {
-        self.loadingViewController?.remove()
-        self.loadingViewController = nil
+        self.loadingIndicatorView.isHidden = true
     }
 
 }

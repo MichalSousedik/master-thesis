@@ -66,19 +66,6 @@ private extension HourlyRateViewModel {
 
 }
 
-enum HourRateError: Error {
-    case sinceInWrongFormat(id: Int)
-}
-
-extension HourRateError: LocalizedError {
-    public var errorDescription: String? {
-        switch self {
-        case .sinceInWrongFormat(let id):
-            return "Hour rate with id \(id) contains 'since' date in a wrong format"
-        }
-    }
-}
-
 private extension HourlyRateViewModel {
 
     static func output(dependencies: HourlyRateViewPresentable.Dependencies, state: State) -> HourlyRateViewPresentable.Output {
