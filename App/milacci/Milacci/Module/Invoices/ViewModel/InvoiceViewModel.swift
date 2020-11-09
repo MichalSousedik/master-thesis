@@ -36,11 +36,11 @@ extension InvoiceViewModel {
         self.invoice = invoice
         self.state = invoice.state.description
         self.date = invoice.formattedPeriodOfIssue
-        self.canDownloadFile = invoice.filename != nil
-        self.canUploadFile = invoice.filename == nil
+        self.canDownloadFile = invoice.filename != nil && invoice.filename != ""
+        self.canUploadFile = (invoice.filename == nil || invoice.filename == "")
             && invoice.userWorkType != WorkType.agreement
             && (invoice.state == InvoiceState.notIssued || invoice.state == InvoiceState.waiting)
-        if invoice.filename == nil {
+        if invoice.filename == nil || invoice.filename == "" {
             if invoice.userWorkType == WorkType.agreement {
                 self.infoMessage = L10n.userWorkTypeIsAgreement
             }

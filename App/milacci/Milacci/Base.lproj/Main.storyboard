@@ -584,41 +584,6 @@
             </objects>
             <point key="canvasLocation" x="4529" y="1194"/>
         </scene>
-        <!--Error View Controller-->
-        <scene sceneID="jFO-Pq-OFr">
-            <objects>
-                <viewController storyboardIdentifier="ErrorViewController" id="zCE-nn-euu" customClass="ErrorViewController" customModule="Milacci" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="m2B-X4-CR5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in error occured" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cw1-Vo-hCV">
-                                <rect key="frame" x="95.5" y="434" width="223" height="28"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <color key="textColor" name="Title text"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try it again later" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsN-yK-jEE">
-                                <rect key="frame" x="146" y="470" width="122" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="Title text"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="4gN-Zh-ZIE"/>
-                        <color key="backgroundColor" name="secondary"/>
-                        <constraints>
-                            <constraint firstItem="BsN-yK-jEE" firstAttribute="top" secondItem="cw1-Vo-hCV" secondAttribute="bottom" constant="8" id="Bdr-aY-IFx"/>
-                            <constraint firstItem="cw1-Vo-hCV" firstAttribute="centerY" secondItem="m2B-X4-CR5" secondAttribute="centerY" id="NpH-Vs-IdP"/>
-                            <constraint firstItem="cw1-Vo-hCV" firstAttribute="centerX" secondItem="m2B-X4-CR5" secondAttribute="centerX" id="YjQ-yR-dyB"/>
-                            <constraint firstItem="BsN-yK-jEE" firstAttribute="centerX" secondItem="m2B-X4-CR5" secondAttribute="centerX" id="Zuv-Jz-Vd0"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9xl-KV-2KW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2630" y="100"/>
-        </scene>
         <!--Initiating-->
         <scene sceneID="yMh-4r-EoN">
             <objects>
@@ -760,17 +725,11 @@
         <image name="launching-app-icon" width="186" height="237"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <namedColor name="Title text">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="primary">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary-1">
             <color red="0.0" green="0.0" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="secondary">
-            <color red="0.68199998140335083" green="0.68199998140335083" blue="0.69800001382827759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

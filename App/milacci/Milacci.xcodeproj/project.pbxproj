@@ -57,7 +57,6 @@
 		37F70B0D2545B7C3001E9D07 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70B0C2545B7C3001E9D07 /* LoadingViewController.swift */; };
 		37F70B0F2545B7FA001E9D07 /* UIViewController+ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70B0E2545B7FA001E9D07 /* UIViewController+ChildViewController.swift */; };
 		37F70B1125474DFA001E9D07 /* UIViewController+FrontmostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70B1025474DF9001E9D07 /* UIViewController+FrontmostController.swift */; };
-		37F70B1325474F49001E9D07 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70B1225474F49001E9D07 /* ErrorViewController.swift */; };
 		37F70B1F2548A99A001E9D07 /* AuthHttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70B1E2548A999001E9D07 /* AuthHttpRouter.swift */; };
 		37F70B212548AF0B001E9D07 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70B202548AF0B001E9D07 /* AuthService.swift */; };
 		37F70B232548AFA2001E9D07 /* AuthHttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70B222548AFA2001E9D07 /* AuthHttpService.swift */; };
@@ -83,7 +82,6 @@
 		C058335F248051E7004CA055 /* HalfCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C058335E248051E7004CA055 /* HalfCircleView.swift */; };
 		C05833622481477C004CA055 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05833612481477C004CA055 /* BaseNavigationController.swift */; };
 		C05B59F624E333BF003009AC /* Pods_Milacci.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05B59F224E33397003009AC /* Pods_Milacci.framework */; };
-		C05B59F724E333BF003009AC /* Pods_Milacci.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C05B59F224E33397003009AC /* Pods_Milacci.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C079A551251D36FA00331E17 /* InvoiceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079A550251D36FA00331E17 /* InvoiceDetailViewModel.swift */; };
 		C079A553251D4E4A00331E17 /* InvoiceDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079A552251D4E4A00331E17 /* InvoiceDetailCoordinator.swift */; };
 		C0ACCB5E247AAD54002F7263 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ACCB5D247AAD54002F7263 /* UserProfileViewController.swift */; };
@@ -106,20 +104,6 @@
 			remoteInfo = Milacci;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		C05B59F824E333BF003009AC /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C05B59F724E333BF003009AC /* Pods_Milacci.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		37093A6F253CE51E00E87BA4 /* UserSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsService.swift; sourceTree = "<group>"; };
@@ -179,7 +163,6 @@
 		37F70B0C2545B7C3001E9D07 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		37F70B0E2545B7FA001E9D07 /* UIViewController+ChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ChildViewController.swift"; sourceTree = "<group>"; };
 		37F70B1025474DF9001E9D07 /* UIViewController+FrontmostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+FrontmostController.swift"; sourceTree = "<group>"; };
-		37F70B1225474F49001E9D07 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		37F70B1E2548A999001E9D07 /* AuthHttpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHttpRouter.swift; sourceTree = "<group>"; };
 		37F70B202548AF0B001E9D07 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		37F70B222548AFA2001E9D07 /* AuthHttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHttpService.swift; sourceTree = "<group>"; };
@@ -549,7 +532,6 @@
 				37F70B0B2545B7A2001E9D07 /* TabBar */,
 				C05833612481477C004CA055 /* BaseNavigationController.swift */,
 				37F70B0C2545B7C3001E9D07 /* LoadingViewController.swift */,
-				37F70B1225474F49001E9D07 /* ErrorViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -726,7 +708,6 @@
 				C0455E562479BF8500D96F53 /* Frameworks */,
 				C0455E572479BF8500D96F53 /* Resources */,
 				8360822F8D53CC5EAD3E1E98 /* [CP] Embed Pods Frameworks */,
-				C05B59F824E333BF003009AC /* Embed Frameworks */,
 				8708CC3633161DACFD80B1AB /* [CP] Copy Pods Resources */,
 				37F70B642548F422001E9D07 /* SwiftLint */,
 			);
@@ -962,7 +943,6 @@
 				37B465EC2550C3F400B245AB /* UserService+Mock.swift in Sources */,
 				C0AF73A8250948D000B7CA0F /* InvoicesViewModel.swift in Sources */,
 				C0553582251955D100B04A18 /* BaseCoordinator.swift in Sources */,
-				37F70B1325474F49001E9D07 /* ErrorViewController.swift in Sources */,
 				C05535852519567200B04A18 /* Storyboardable.swift in Sources */,
 				C0455E5F2479BF8500D96F53 /* SceneDelegate.swift in Sources */,
 				37C374BB2550B81100480D2C /* UserHttpRouter.swift in Sources */,
@@ -1201,6 +1181,7 @@
 				CODE_SIGN_ENTITLEMENTS = Milacci/MilacciDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "Milacci/Resources/Images.xcassets Milacci/Resources/Colors.xcassets";
 				DEVELOPMENT_TEAM = FRYD8HMFR6;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1229,6 +1210,7 @@
 				CODE_SIGN_ENTITLEMENTS = Milacci/Milacci.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "Milacci/Resources/Images.xcassets Milacci/Resources/Colors.xcassets";
 				DEVELOPMENT_TEAM = FRYD8HMFR6;
 				FRAMEWORK_SEARCH_PATHS = (

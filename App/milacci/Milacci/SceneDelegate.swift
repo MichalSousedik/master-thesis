@@ -110,7 +110,8 @@ private extension SceneDelegate {
                 self?.userSettingsApi.saveUser(user: signInModel.user)
                 self?.appCoordinator?.reload()
             } onError: { [weak self] error in
-                self?.displayError(error: error, window: self?.window, retryHandler: { [weak self] in
+                self?.appCoordinator?.reload()
+                self?.window?.rootViewController?.frontmostController.handle(error, retryHandler: {[weak self] in
                     self?.signIn(accessToken: accessToken)
                 })
             }.disposed(by: bag)
@@ -146,14 +147,6 @@ private extension SceneDelegate {
         label.text = L10n.noInternetConnection
         self.labels.append(label)
         return label
-    }
-
-    func displayError(error: Error, window: UIWindow?, retryHandler: (() -> Void)?) {
-        guard let window = window else { print("No window found"); return }
-        let vc = ErrorViewController.instantiate()
-        window.rootViewController = vc
-        window.makeKeyAndVisible()
-        vc.handle(error, from: vc, retryHandler: retryHandler)
     }
 
 }
