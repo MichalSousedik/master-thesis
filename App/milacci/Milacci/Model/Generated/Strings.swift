@@ -78,6 +78,8 @@ internal enum L10n {
   internal static let marketing = L10n.tr("Localizable", "Marketing")
   /// May
   internal static let may = L10n.tr("Localizable", "May")
+  /// My Team
+  internal static let myTeam = L10n.tr("Localizable", "My Team")
   /// New
   internal static let new = L10n.tr("Localizable", "New")
   /// Uploading document is not permited

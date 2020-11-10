@@ -11,6 +11,7 @@ import Alamofire
 
 protocol UserAPI {
     func fetchDetail(id: Int) -> Single<UserDetail>
+    func fetch(page: Int, teamLeaderId: Int?, searchedText: String?) -> Single<EmployeesResponse>
 }
 
 class UserService: UserAPI {
@@ -33,6 +34,29 @@ class UserService: UserAPI {
                             }
                         }, type: UserDetail.self)
                 }
+            } catch {
+                single(.error(NetworkingError.serverError(error)))
+            }
+
+            return Disposables.create()
+        }
+    }
+
+    func fetch(page: Int, teamLeaderId: Int?, searchedText: String?) -> Single<EmployeesResponse> {
+//        self.mockEmployeesEndpoint()
+        return Single.create{ [httpService] (single) -> Disposable in
+            do {
+                try UserHttpRouter.fetch(offset: (page - 1)*10, teamLeaderId: teamLeaderId, searchedText: searchedText)
+                    .request(usingHttpService: httpService)
+                    .responseJSON { result in
+                        HttpResponseHandler.handle(result: result, completion: { (items, error) in
+                            if let error = error {
+                                single(.error(error))
+                            } else if let items = items {
+                                single(.success(items))
+                            }
+                        }, type: EmployeesResponse.self)
+                    }
             } catch {
                 single(.error(NetworkingError.serverError(error)))
             }

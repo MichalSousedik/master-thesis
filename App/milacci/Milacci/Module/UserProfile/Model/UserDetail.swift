@@ -8,9 +8,13 @@
 
 import Foundation
 
+typealias EmployeesResponse = [UserDetail]
+typealias Employee = UserDetail
+
 struct UserDetail: Codable {
-    let name: String?
-    let surname: String?
+    let id: Int
+    let name: String
+    let surname: String
     let jobTitle: JobTitle?
     let degree: String?
     let dateOfBirth: String?

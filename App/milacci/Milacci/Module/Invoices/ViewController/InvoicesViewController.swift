@@ -10,7 +10,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxDataSources
-import Alamofire
 import MobileCoreServices
 import SafariServices
 
@@ -21,13 +20,12 @@ class InvoicesViewController: UIViewController, Storyboardable {
     @IBOutlet weak var loadingIndicatorView: UIView!
     @IBOutlet weak var loadMoreActivityIndicator: UIActivityIndicatorView!
 
-    private var viewModel: InvoicesViewPresentable!
     private let refreshControl = UIRefreshControl()
     private let refreshSubject = PublishSubject<Void>()
-    private var loadingViewController: LoadingViewController?
     private let resetReachedBottom = PublishSubject<Void>()
     private let filePick = PublishSubject<URL>()
 
+    private var viewModel: InvoicesViewPresentable!
     var viewModelBuilder: InvoicesViewPresentable.ViewModelBuilder!
     private let bag = DisposeBag()
 

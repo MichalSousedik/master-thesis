@@ -103,7 +103,7 @@ private extension InvoicesViewModel {
     }
 
     static func output(state: State) -> InvoicesViewPresentable.Output {
-        let sections = state.invoices.asObservable()
+        let sections = state.invoices
             .map({
                 $0.compactMap({
                     InvoiceViewModel(withInvoice: $0)

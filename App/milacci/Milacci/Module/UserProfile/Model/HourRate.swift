@@ -12,9 +12,9 @@ struct HourRate: Codable {
     let id: Int
     let since: String
     let validTo: String?
-    let type: HourRateType
+    let type: HourRateType?
     let value: Double
-    let percentageIncrease: Double
+    let percentageIncrease: Double?
 }
 
 enum HourRateType: String, Codable {

@@ -17,6 +17,7 @@ class TeamLeaderTabBarController: BaseTabBarController {
         }, navigationController: UINavigationController()),
         UserProfileCoordinator(userIdProvider: { () in
             UserSettingsService.shared.userId
-        }, navigationController: UINavigationController())
+        }, navigationController: UINavigationController()),
+        EmployeesCoordinator(navigationController: BaseNavigationController())
     ]}
 }

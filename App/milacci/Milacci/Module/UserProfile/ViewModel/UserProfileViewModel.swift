@@ -91,7 +91,7 @@ private extension UserProfileViewModel {
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let name = state.userDetail.asObservable()
             .map { (userDetail) in
-                "\(userDetail.name ?? "") \(userDetail.surname ?? "")"
+                "\(userDetail.name) \(userDetail.surname)"
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let jobTitle = state.userDetail.asObservable()
             .map { (userDetail) in
