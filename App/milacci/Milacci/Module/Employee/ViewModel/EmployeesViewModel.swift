@@ -18,12 +18,15 @@ protocol EmployeesViewPresentable {
         employeeSelect: Driver<EmployeeViewModel>,
         refreshTrigger: Driver<Void>,
         loadNextPageTrigger: Driver<Void>,
-        searchedText: Driver<String>
+        searchTextTrigger: Driver<String>,
+        loadingTrigger: Driver<Void>
     )
 
     typealias Output = (
         employees: Driver<[EmployeeViewModel]>,
         isLoading: Driver<Bool>,
+        isRefreshing: Driver<Bool>,
+        isLoadingMore: Driver<Bool>,
         errorOccured: Driver<Error>
     )
 
@@ -42,9 +45,13 @@ class EmployeesViewModel: EmployeesViewPresentable{
     private let bag = DisposeBag()
 
     typealias State = (employees: BehaviorRelay<[Employee]>,
+                       isRefreshing: PublishRelay<Bool>,
+                       isLoadingMore: PublishRelay<Bool>,
                        isLoading: PublishRelay<Bool>,
                        errorOccured: PublishRelay<Error>)
     private let state: State = (employees: BehaviorRelay<[Employee]>(value: []),
+                                isRefreshing: PublishRelay<Bool>(),
+                                isLoadingMore: PublishRelay<Bool>(),
                                 isLoading: PublishRelay<Bool>(),
                                 errorOccured: PublishRelay<Error>())
 
@@ -67,14 +74,31 @@ private extension EmployeesViewModel {
     func processInput() {
         self.handleEmployeeSelect()
 
-        let source = PaginationUISource(refresh: self.input.refreshTrigger.debug().asObservable(),
-                                        loadNextPage: self.input.loadNextPageTrigger.asObservable())
-        let sink = PaginationSink(uiSource: source, loadData: ({[load] in
-            return load($0, 97, nil)
+        let source = PaginationWithSearchUISource(refresh: Observable.merge(self.input.refreshTrigger.asObservable(), self.input.loadingTrigger.asObservable()),
+                                        loadNextPage: self.input.loadNextPageTrigger.asObservable(),
+                                        searchText: self.input.searchTextTrigger.asObservable())
+        let sink = PaginationWithSearchSink(uiSource: source, loadData: ({[load] in
+            return load($0, UserSettingsService.shared.userId, $1)
         }) )
 
-        sink.isLoading.bind(to: state.isLoading)
-            .disposed(by: bag)
+        input.refreshTrigger.drive {[state] _ in
+            state.isRefreshing.accept(true)
+        }.disposed(by: bag)
+        input.loadNextPageTrigger.drive {[state] _ in
+            state.isLoadingMore.accept(true)
+        }.disposed(by: bag)
+        input.searchTextTrigger.drive {[state] _ in
+            state.isLoading.accept(true)
+        }.disposed(by: bag)
+        input.loadingTrigger.drive {[state] _ in
+            state.isLoading.accept(true)
+        }.disposed(by: bag)
+
+        sink.isLoading.filter{!$0}.bind {[state] _ in
+            state.isLoading.accept(false)
+            state.isRefreshing.accept(false)
+            state.isLoadingMore.accept(false)
+        }.disposed(by: bag)
         sink.elements.bind(to: state.employees)
             .disposed(by: bag)
         sink.error.bind(to: state.errorOccured)
@@ -96,6 +120,8 @@ private extension EmployeesViewModel {
         return (
             employees: employeesViewModels,
             isLoading: state.isLoading.asDriver(onErrorJustReturn: false),
+            isRefreshing: state.isRefreshing.asDriver(onErrorJustReturn: false),
+            isLoadingMore: state.isLoadingMore.asDriver(onErrorJustReturn: false),
             errorOccured: state.errorOccured.asDriver(onErrorRecover: {
                 .just($0)
             })

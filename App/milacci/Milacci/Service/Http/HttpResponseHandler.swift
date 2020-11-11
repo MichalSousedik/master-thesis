@@ -33,6 +33,10 @@ class HttpResponseHandler {
             default: break
             }}
 
+          return HttpResponseHandler.handleErrorStatusCodes(error: error, result: result)
+    }
+
+    private static func handleErrorStatusCodes(error: AFError, result: AFDataResponse<Any>) -> NetworkingError {
         switch error.responseCode {
         case 400:
             if let errorResponse = try? HttpResponseHandler.parse(result: result, type: ErrorResponse.self) {

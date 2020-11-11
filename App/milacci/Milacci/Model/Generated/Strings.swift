@@ -110,6 +110,8 @@ internal enum L10n {
   internal static let retry = L10n.tr("Localizable", "Retry")
   /// Sales
   internal static let sales = L10n.tr("Localizable", "Sales")
+  /// Search Team Member
+  internal static let searchTeamMember = L10n.tr("Localizable", "Search Team Member")
   /// Searched data couldn't be located
   internal static let searchedDataCouldnTBeLocated = L10n.tr("Localizable", "Searched data couldn't be located")
   /// Selected URL is not accessible

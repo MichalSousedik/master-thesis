@@ -43,10 +43,12 @@ class UserService: UserAPI {
     }
 
     func fetch(page: Int, teamLeaderId: Int?, searchedText: String?) -> Single<EmployeesResponse> {
-//        self.mockEmployeesEndpoint()
+        self.mockFetch()
+        let encodedText = searchedText?.addingPercentEncoding(withAllowedCharacters:
+                                                               CharacterSet.urlQueryAllowed)
         return Single.create{ [httpService] (single) -> Disposable in
             do {
-                try UserHttpRouter.fetch(offset: (page - 1)*10, teamLeaderId: teamLeaderId, searchedText: searchedText)
+                try UserHttpRouter.fetch(offset: (page - 1)*10, teamLeaderId: teamLeaderId, searchedText: encodedText)
                     .request(usingHttpService: httpService)
                     .responseJSON { result in
                         HttpResponseHandler.handle(result: result, completion: { (items, error) in

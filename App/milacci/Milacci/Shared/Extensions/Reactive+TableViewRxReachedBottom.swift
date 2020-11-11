@@ -11,7 +11,7 @@ import RxCocoa
 
 extension Reactive where Base: UIScrollView {
 
-    func reachedBottom(reset: Observable<Void>) -> Driver<Void> {
+    func reachedBottom(reset: Observable<Void> = .empty()) -> Driver<Void> {
         return Observable.of(reset, (contentOffset
                                         .flatMap { [weak base] contentOffset -> Observable<CGFloat> in
                                             guard let scrollView = base else {

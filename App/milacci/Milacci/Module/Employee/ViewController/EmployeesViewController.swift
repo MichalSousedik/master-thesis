@@ -17,60 +17,43 @@ class EmployeesViewController: UIViewController, Storyboardable {
     @IBOutlet weak var loadingIndicatorView: UIView!
     @IBOutlet weak var loadMoreActivityIndicator: UIActivityIndicatorView!
 
+    let searchController = UISearchController(searchResultsController: nil)
     private let refreshControl = UIRefreshControl()
-    private let refreshSubject = PublishSubject<Void>()
-    private let resetReachedBottom = PublishSubject<Void>()
+    private let loadingSubject = PublishSubject<Void>()
 
     private var viewModel: EmployeesViewPresentable!
     var viewModelBuilder: EmployeesViewPresentable.ViewModelBuilder!
     private let bag = DisposeBag()
 
     var items: [EmployeeViewPresentable] = []
-
-    struct FirstLetterGroup: Comparable {
-        static func < (lhs: EmployeesViewController.FirstLetterGroup, rhs: EmployeesViewController.FirstLetterGroup) -> Bool {
-            return lhs.firstLetter < rhs.firstLetter
-        }
-
-        static func == (lhs: EmployeesViewController.FirstLetterGroup, rhs: EmployeesViewController.FirstLetterGroup) -> Bool {
-            return lhs.firstLetter == rhs.firstLetter
-        }
-
-        var firstLetter: String
-        var employees: [EmployeeViewModel]
-    }
-
     var sections = [FirstLetterGroup]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = self.viewModelBuilder(
             (
-                employeeSelect: tableView.rx.modelSelected(EmployeeViewModel.self).asDriver(),
-                refreshTrigger: refreshSubject.asDriver(onErrorJustReturn: ()),
-                loadNextPageTrigger: tableView.rx.reachedBottom(reset: resetReachedBottom),
-                searchedText: .empty()
+                employeeSelect: .empty(),
+                refreshTrigger: refreshControl.rx.controlEvent(.valueChanged).debug().asDriver(onErrorJustReturn: ()),
+                loadNextPageTrigger: tableView.rx.reachedBottom(),
+                searchTextTrigger: searchController.searchBar.rx.text.orEmpty
+                    .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+                    .distinctUntilChanged()
+                    .asDriver(onErrorDriveWith: .empty()),
+                loadingTrigger: loadingSubject.asDriver(onErrorJustReturn: ())
             )
         )
         self.setupUI()
         self.setupBinding()
         self.setupViewBinding()
-        showLoadingIndicator()
-        refresh()
     }
 
     func setupViewBinding() {
-        refreshControl.rx.controlEvent(.valueChanged)
-            .subscribe({[weak self] _ in
-                self?.refresh()
-            }).disposed(by: bag)
-        tableView.rx.reachedBottom(reset: resetReachedBottom).drive(onNext: { [weak self] in
+        tableView.rx.reachedBottom().drive(onNext: { [weak self] in
             self?.tableView.tableFooterView?.isHidden = false
         }).disposed(by: bag)
     }
 
     func setupUI() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
@@ -79,6 +62,8 @@ class EmployeesViewController: UIViewController, Storyboardable {
         self.tableView.tableFooterView = self.tableViewFooter
         self.tableView.tableFooterView?.isHidden = true
         self.loadMoreActivityIndicator.startAnimating()
+        self.setupSearchController()
+        self.handleTableViewSizeOnKeyboard()
     }
 
     func setupBinding() {
@@ -93,8 +78,22 @@ class EmployeesViewController: UIViewController, Storyboardable {
         }.disposed(by: bag)
 
         self.viewModel.output.isLoading.drive(onNext: { [weak self] isLoading in
+            if(isLoading) {
+                self?.showLoadingIndicator()
+            } else {
+                self?.removeLoadingIndicator()
+            }
+        }).disposed(by: bag)
+
+        self.viewModel.output.isRefreshing.drive(onNext: { [weak self] isLoading in
             if(!isLoading) {
-                self?.hideLoadingIndicator()
+                self?.refreshControl.endRefreshing()
+            }
+        }).disposed(by: bag)
+
+        self.viewModel.output.isLoadingMore.drive(onNext: { [weak self] isLoading in
+            if(!isLoading) {
+                self?.tableView.tableFooterView?.isHidden = true
             }
         }).disposed(by: bag)
 
@@ -103,10 +102,19 @@ class EmployeesViewController: UIViewController, Storyboardable {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.handle(error, retryHandler: { [weak self] in
-                    self?.refresh()
+                    self?.loadingSubject.onNext(())
                 })                }
         }).disposed(by: bag)
 
+    }
+
+    func setupSearchController() {
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = L10n.searchTeamMember
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        searchController.searchBar.tintColor = Asset.Colors.primary1.color
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
 }
@@ -129,8 +137,7 @@ extension EmployeesViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell  = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.identifier, for: indexPath) as? EmployeeTableViewCell
-        let section = self.sections[indexPath.section]
-        let employee = section.employees[indexPath.row]
+        let employee = sections[indexPath.section].employees[indexPath.row]
 
         cell?.configure(usingViewModel: employee)
         return cell!
@@ -140,16 +147,6 @@ extension EmployeesViewController: UITableViewDataSource, UITableViewDelegate {
 
 private extension EmployeesViewController {
 
-    func refresh(){
-        self.refreshSubject.onNext(())
-    }
-
-    func hideLoadingIndicator(){
-        self.removeLoadingIndicator()
-        self.refreshControl.endRefreshing()
-        self.tableView.tableFooterView?.isHidden = true
-    }
-
     func showLoadingIndicator() {
         self.loadingIndicatorView.isHidden = false
     }
@@ -158,4 +155,28 @@ private extension EmployeesViewController {
         self.loadingIndicatorView.isHidden = true
     }
 
+}
+
+private extension EmployeesViewController {
+
+    func handleTableViewSizeOnKeyboard() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            tableView.contentInset = .zero
+        } else {
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+
+        tableView.scrollIndicatorInsets = tableView.contentInset
+    }
 }

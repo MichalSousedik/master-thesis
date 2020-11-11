@@ -23,20 +23,13 @@ class EmployeesCoordinator: BaseCoordinator {
     override func start(){
         let view = EmployeesViewController.instantiate()
         let service = UserService.shared
-        view.viewModelBuilder = { [bag] in
-            let viewModel = EmployeesViewModel(input: $0, api: service)
-
-//            viewModel.routing.map { [weak self] (invoice) in
-//                self?.showInvoiceDetail(usingModel: invoice)
-//            }
-//            .drive()
-//            .disposed(by: bag)
-
-            return viewModel
+        view.viewModelBuilder = {
+            return EmployeesViewModel(input: $0, api: service)
         }
         view.tabBarItem = UITabBarItem(title: L10n.myTeam, image: UIImage(systemSymbol: .person3Fill), tag: 0)
         view.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: 9, right: 0)
         navigationController.pushViewController(view, animated: true)
+        navigationController.navigationBar.prefersLargeTitles = true
     }
 
 }
