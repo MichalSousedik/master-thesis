@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class EmployeesViewController: UIViewController, Storyboardable {
 
@@ -25,15 +26,14 @@ class EmployeesViewController: UIViewController, Storyboardable {
     var viewModelBuilder: EmployeesViewPresentable.ViewModelBuilder!
     private let bag = DisposeBag()
 
-    var items: [EmployeeViewPresentable] = []
-    var sections = [FirstLetterGroup]()
+    var dataSource: RxTableViewSectionedAnimatedDataSource<EmployeeItemsSection>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = self.viewModelBuilder(
             (
                 employeeSelect: .empty(),
-                refreshTrigger: refreshControl.rx.controlEvent(.valueChanged).debug().asDriver(onErrorJustReturn: ()),
+                refreshTrigger: refreshControl.rx.controlEvent(.valueChanged).asDriver(),
                 loadNextPageTrigger: tableView.rx.reachedBottom(),
                 searchTextTrigger: searchController.searchBar.rx.text.orEmpty
                     .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
@@ -42,6 +42,7 @@ class EmployeesViewController: UIViewController, Storyboardable {
                 loadingTrigger: loadingSubject.asDriver(onErrorJustReturn: ())
             )
         )
+        self.setupDataSource()
         self.setupUI()
         self.setupBinding()
         self.setupViewBinding()
@@ -54,11 +55,8 @@ class EmployeesViewController: UIViewController, Storyboardable {
     }
 
     func setupUI() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-
         self.tableView.refreshControl = refreshControl
-        self.refreshControl.tintColor = .label
+        self.refreshControl.tintColor = .black
         self.tableView.tableFooterView = self.tableViewFooter
         self.tableView.tableFooterView?.isHidden = true
         self.loadMoreActivityIndicator.startAnimating()
@@ -67,15 +65,9 @@ class EmployeesViewController: UIViewController, Storyboardable {
     }
 
     func setupBinding() {
-        self.viewModel.output.employees.drive { [weak self] (employees) in
-            self?.sections = Dictionary(grouping: employees) { (employee) in
-                return String(Array(employee.lastName)[0]).uppercased()
-            }.map({ (firstLetter, employees) in
-                return FirstLetterGroup(firstLetter: firstLetter, employees: employees)
-            }).sorted()
-            self?.items = employees
-            self?.tableView.reloadData()
-        }.disposed(by: bag)
+        self.viewModel.output.employees
+            .drive(tableView.rx.items(dataSource: self.dataSource))
+            .disposed(by: bag)
 
         self.viewModel.output.isLoading.drive(onNext: { [weak self] isLoading in
             if(isLoading) {
@@ -119,32 +111,6 @@ class EmployeesViewController: UIViewController, Storyboardable {
 
 }
 
-extension EmployeesViewController: UITableViewDataSource, UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let section = self.sections[section]
-        return section.firstLetter
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sections.count
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let section = self.sections[section]
-        return section.employees.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell  = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.identifier, for: indexPath) as? EmployeeTableViewCell
-        let employee = sections[indexPath.section].employees[indexPath.row]
-
-        cell?.configure(usingViewModel: employee)
-        return cell!
-    }
-
-}
-
 private extension EmployeesViewController {
 
     func showLoadingIndicator() {
@@ -158,6 +124,27 @@ private extension EmployeesViewController {
 }
 
 private extension EmployeesViewController {
+
+    func setupDataSource() {
+        dataSource = RxTableViewSectionedAnimatedDataSource<EmployeeItemsSection>(
+            animationConfiguration: AnimationConfiguration(insertAnimation: .automatic,
+                                                           reloadAnimation: .none,
+                                                           deleteAnimation: .fade),
+            configureCell: configureCell
+        )
+
+        dataSource.titleForHeaderInSection = { (datasource, index) in
+            let section = datasource[index]
+            return section.model
+        }
+    }
+    private var configureCell: RxTableViewSectionedAnimatedDataSource<EmployeeItemsSection>.ConfigureCell {
+        return { _, tableView, indexPath, item in
+            let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.identifier, for: indexPath) as!  EmployeeTableViewCell
+            cell.configure(usingViewModel: item)
+            return cell
+        }
+    }
 
     func handleTableViewSizeOnKeyboard() {
         let notificationCenter = NotificationCenter.default

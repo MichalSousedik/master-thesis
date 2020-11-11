@@ -59,8 +59,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Ws-aLU">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mfd-Ws-aLU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmployeeTableViewCell" id="HfH-2z-TTP" customClass="EmployeeTableViewCell" customModule="Milacci" customModuleProvider="target">
@@ -126,11 +127,7 @@
                         <viewLayoutGuide key="safeArea" id="UhZ-KJ-SzI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Mfd-Ws-aLU" firstAttribute="top" secondItem="UhZ-KJ-SzI" secondAttribute="top" id="0A1-cG-onP"/>
-                            <constraint firstItem="UhZ-KJ-SzI" firstAttribute="trailing" secondItem="Mfd-Ws-aLU" secondAttribute="trailing" id="15n-gZ-AoT"/>
                             <constraint firstItem="Frk-qU-iiB" firstAttribute="trailing" secondItem="UhZ-KJ-SzI" secondAttribute="trailing" id="BLn-Iu-Eh4"/>
-                            <constraint firstItem="Mfd-Ws-aLU" firstAttribute="bottom" secondItem="UhZ-KJ-SzI" secondAttribute="bottom" id="kVh-vU-pZb"/>
-                            <constraint firstItem="Mfd-Ws-aLU" firstAttribute="leading" secondItem="UhZ-KJ-SzI" secondAttribute="leading" id="ty3-tk-H0R"/>
                             <constraint firstItem="Frk-qU-iiB" firstAttribute="leading" secondItem="UhZ-KJ-SzI" secondAttribute="leading" id="uJA-va-zar"/>
                             <constraint firstItem="Frk-qU-iiB" firstAttribute="top" secondItem="UhZ-KJ-SzI" secondAttribute="top" id="vg6-Nh-FXX"/>
                         </constraints>

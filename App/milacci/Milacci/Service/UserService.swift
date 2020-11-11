@@ -43,7 +43,7 @@ class UserService: UserAPI {
     }
 
     func fetch(page: Int, teamLeaderId: Int?, searchedText: String?) -> Single<EmployeesResponse> {
-        self.mockFetch()
+//        self.mockFetch()
         let encodedText = searchedText?.addingPercentEncoding(withAllowedCharacters:
                                                                CharacterSet.urlQueryAllowed)
         return Single.create{ [httpService] (single) -> Disposable in

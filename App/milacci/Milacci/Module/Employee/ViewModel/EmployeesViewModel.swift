@@ -23,7 +23,7 @@ protocol EmployeesViewPresentable {
     )
 
     typealias Output = (
-        employees: Driver<[EmployeeViewModel]>,
+        employees: Driver<[EmployeeItemsSection]>,
         isLoading: Driver<Bool>,
         isRefreshing: Driver<Bool>,
         isLoadingMore: Driver<Bool>,
@@ -47,12 +47,12 @@ class EmployeesViewModel: EmployeesViewPresentable{
     typealias State = (employees: BehaviorRelay<[Employee]>,
                        isRefreshing: PublishRelay<Bool>,
                        isLoadingMore: PublishRelay<Bool>,
-                       isLoading: PublishRelay<Bool>,
+                       isLoading: BehaviorRelay<Bool>,
                        errorOccured: PublishRelay<Error>)
     private let state: State = (employees: BehaviorRelay<[Employee]>(value: []),
                                 isRefreshing: PublishRelay<Bool>(),
                                 isLoadingMore: PublishRelay<Bool>(),
-                                isLoading: PublishRelay<Bool>(),
+                                isLoading: BehaviorRelay<Bool>(value: false),
                                 errorOccured: PublishRelay<Error>())
 
     typealias RoutingAction = PublishRelay<UserDetail>
@@ -75,8 +75,8 @@ private extension EmployeesViewModel {
         self.handleEmployeeSelect()
 
         let source = PaginationWithSearchUISource(refresh: Observable.merge(self.input.refreshTrigger.asObservable(), self.input.loadingTrigger.asObservable()),
-                                        loadNextPage: self.input.loadNextPageTrigger.asObservable(),
-                                        searchText: self.input.searchTextTrigger.asObservable())
+                                                  loadNextPage: self.input.loadNextPageTrigger.asObservable(),
+                                                  searchText: self.input.searchTextTrigger.asObservable())
         let sink = PaginationWithSearchSink(uiSource: source, loadData: ({[load] in
             return load($0, UserSettingsService.shared.userId, $1)
         }) )
@@ -111,14 +111,28 @@ private extension EmployeesViewModel {
     }
 
     static func output(state: State) -> EmployeesViewPresentable.Output {
-        let employeesViewModels = state.employees
-            .map ({
-                $0.compactMap { (employee) in
-                    EmployeeViewModel(withEmployee: employee)
+        let sections = state.employees
+            .map({
+                $0.compactMap({
+                    EmployeeViewModel(withEmployee: $0)
+                })
+            })
+            .map{
+                return Dictionary(grouping: $0) { (employee) in
+                    return String(Array(employee.lastName)[0]).uppercased()
+                }.map({ (firstLetter, employees) in
+                    return FirstLetterGroup(firstLetter: firstLetter, employees: employees)
+                }).sorted()
             }
-        }).asDriver(onErrorJustReturn: [])
+            .map({ (firstLetterGroups) in
+                firstLetterGroups.map { (firstLetterGroup) in
+                    EmployeeItemsSection(model: firstLetterGroup.firstLetter, items: firstLetterGroup.employees)
+                }
+            })
+            .asDriver(onErrorJustReturn: [])
+
         return (
-            employees: employeesViewModels,
+            employees: sections,
             isLoading: state.isLoading.asDriver(onErrorJustReturn: false),
             isRefreshing: state.isRefreshing.asDriver(onErrorJustReturn: false),
             isLoadingMore: state.isLoadingMore.asDriver(onErrorJustReturn: false),

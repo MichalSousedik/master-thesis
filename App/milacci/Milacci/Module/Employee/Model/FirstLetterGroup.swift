@@ -18,5 +18,5 @@ struct FirstLetterGroup: Comparable {
     }
 
     var firstLetter: String
-    var employees: [EmployeeViewPresentable]
+    var employees: [EmployeeViewModel]
 }

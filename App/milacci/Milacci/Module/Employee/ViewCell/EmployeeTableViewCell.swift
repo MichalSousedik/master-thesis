@@ -15,7 +15,7 @@ class EmployeeTableViewCell: UITableViewCell {
     @IBOutlet weak var firstName: UILabel!
     @IBOutlet weak var lastName: UILabel!
 
-    func configure(usingViewModel viewModel: EmployeeViewPresentable) {
+    func configure(usingViewModel viewModel: EmployeeViewModel) {
         self.firstName.text = viewModel.firstName
         self.lastName.text = viewModel.lastName
     }
