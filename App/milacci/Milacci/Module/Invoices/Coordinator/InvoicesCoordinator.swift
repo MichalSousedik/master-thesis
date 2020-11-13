@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import RxSwift
 
 class InvoicesCoordinator: BaseCoordinator {
-
-    private let bag = DisposeBag()
 
     init(navigationController: UINavigationController) {
         super.init()
@@ -21,26 +18,11 @@ class InvoicesCoordinator: BaseCoordinator {
     override func start(){
         let view = InvoicesViewController.instantiate()
         let service = InvoiceService.shared
-        view.viewModelBuilder = { [bag] in
-            let viewModel = InvoicesViewModel(input: $0, api: service)
-
-            viewModel.routing.map { [weak self] (invoice) in
-                self?.showInvoiceDetail(usingModel: invoice)
-            }
-            .drive()
-            .disposed(by: bag)
-
-            return viewModel
+        view.viewModelBuilder = {
+            InvoicesViewModel(input: $0, api: service)
         }
         view.tabBarItem = UITabBarItem(title: L10n.invoices, image: Asset.Images.invoiceMinimalistIcon.image, tag: 0)
         navigationController.pushViewController(view, animated: true)
-    }
-
-    func showInvoiceDetail(usingModel model: Invoice){
-        let invoiceDetailCoordinator = InvoiceDetailCoordinator(model: model, navigationController: navigationController)
-        self.add(coordinator: invoiceDetailCoordinator)
-        invoiceDetailCoordinator.start()
-
     }
 
 }

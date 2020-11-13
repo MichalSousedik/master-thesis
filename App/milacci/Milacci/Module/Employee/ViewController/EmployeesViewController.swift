@@ -32,7 +32,7 @@ class EmployeesViewController: UIViewController, Storyboardable {
         super.viewDidLoad()
         self.viewModel = self.viewModelBuilder(
             (
-                employeeSelect: .empty(),
+                employeeSelect: tableView.rx.modelSelected(EmployeeViewModel.self).asDriver(),
                 refreshTrigger: refreshControl.rx.controlEvent(.valueChanged).asDriver(),
                 loadNextPageTrigger: tableView.rx.reachedBottom(),
                 searchTextTrigger: searchController.searchBar.rx.text.orEmpty
@@ -55,6 +55,7 @@ class EmployeesViewController: UIViewController, Storyboardable {
     }
 
     func setupUI() {
+        self.navigationItem.largeTitleDisplayMode = .always
         self.tableView.refreshControl = refreshControl
         self.refreshControl.tintColor = .black
         self.tableView.tableFooterView = self.tableViewFooter

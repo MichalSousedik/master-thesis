@@ -22,11 +22,19 @@ class UserProfileCoordinator: BaseCoordinator {
 
     override func start(){
         let view = UserProfileViewController.instantiate()
-    view.viewModelBuilder = { [userIdProvider] in
+        view.viewModelBuilder = { [userIdProvider] in
             return UserProfileViewModel(input: $0,
                                         dependencies: (
                                             api: UserService.shared,
-                                            userIdProvider: userIdProvider))
+                                            userIdProvider: userIdProvider,
+                                            userDetail: nil
+                                        )
+            )
+        }
+        view.userProfileHeaderViewController = UserProfileHeaderViewController.instantiate()
+        view.userProfileDetailViewController = UserProfileDetailViewController.instantiate()
+        view.userProfileDetailViewController.modifyController = { (vc: UserProfileDetailViewController) in
+            vc.hourlyRateStackView.isHidden = true
         }
         view.tabBarItem = UITabBarItem(title: L10n.profile, image: UIImage(systemSymbol: .personFill), tag: 0)
         view.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: 9, right: 0)

@@ -18,12 +18,8 @@ class BaseNavigationController: UINavigationController {
         navigationBarAppearence.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Asset.Colors.primary1.color]
         self.navigationBar.standardAppearance = navigationBarAppearence
 
-        self.navigationBar.tintColor = .white
         self.navigationBar.barStyle = .black
-
-        // when the navigation bar has a neighbouring scroll view item (eg: scroll view, table view etc)
-        // the "scrollEdgeAppearance" will be used
-        // by default, scrollEdgeAppearance will have a transparent background
+        self.navigationBar.tintColor = Asset.Colors.primary1.color
         self.navigationBar.scrollEdgeAppearance = navigationBarAppearence
     }
 

@@ -9,8 +9,6 @@
 import RxSwift
 import RxRelay
 import RxCocoa
-import RxDataSources
-import Alamofire
 
 protocol InvoicesViewPresentable {
 
@@ -64,11 +62,6 @@ class InvoicesViewModel: InvoicesViewPresentable{
                                 fileToBeDisplayed: PublishSubject<URL>(),
                                 isUploadingInvoice: PublishSubject<Uploading>(),
                                 info: PublishRelay())
-
-    typealias RoutingAction = PublishRelay<Invoice>
-    private let router: RoutingAction = PublishRelay()
-    typealias Routing = Driver<Invoice>
-    lazy var routing: Routing = router.asDriver(onErrorDriveWith: .empty())
 
     init(input: InvoicesViewPresentable.Input, api: InvoicesAPI){
         self.input = input

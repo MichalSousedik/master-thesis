@@ -14,6 +14,7 @@ protocol UserProfileViewPresentable {
 
     typealias Input = (signOut: Driver<Void>, refresh: Driver<Void>)
     typealias Output = (
+        hourlyRate: Driver<String>,
         name: Driver<String>,
         jobTitle: Driver<String>,
         degree: Driver<String>,
@@ -28,7 +29,7 @@ protocol UserProfileViewPresentable {
     )
 
     typealias UserIdProvider = (() -> Int)
-    typealias Dependencies = (api: UserAPI, userIdProvider: UserIdProvider)
+    typealias Dependencies = (api: UserAPI, userIdProvider: UserIdProvider, userDetail: UserDetail?)
 
     typealias ViewModelBuilder = (Input) -> UserProfileViewPresentable
     var input: Input {get}
@@ -42,9 +43,9 @@ class UserProfileViewModel: UserProfileViewPresentable {
 
     var input: UserProfileViewPresentable.Input
     var output: UserProfileViewPresentable.Output
-    typealias State = (userDetail: PublishRelay<UserDetail>, error: PublishRelay<Error>,
+    typealias State = (userDetail: BehaviorRelay<UserDetail?>, error: PublishRelay<Error>,
                        isLoading: PublishRelay<Bool>)
-    private let state: State = (userDetail: PublishRelay(), error: PublishRelay(),
+    private let state: State = (userDetail: BehaviorRelay(value: nil), error: PublishRelay(),
                                 isLoading: PublishRelay())
     private let bag = DisposeBag()
 
@@ -60,7 +61,11 @@ class UserProfileViewModel: UserProfileViewPresentable {
             self?.load(api: dependencies.api, userIdProvider: dependencies.userIdProvider)
         }).disposed(by: bag)
 
-        self.load(api: dependencies.api, userIdProvider: dependencies.userIdProvider)
+        if let userDetail = dependencies.userDetail {
+            self.state.userDetail.accept(userDetail)
+        } else {
+            self.load(api: dependencies.api, userIdProvider: dependencies.userIdProvider)
+        }
     }
 
 }
@@ -85,26 +90,33 @@ private extension UserProfileViewModel {
 private extension UserProfileViewModel {
 
     static func output(dependencies: UserProfileViewPresentable.Dependencies, state: State) -> UserProfileViewPresentable.Output {
-        let degree = state.userDetail.asObservable()
+        let userDetail = state.userDetail.asObservable()
+            .compactMap{$0}
+        let hourlyRate = userDetail
+            .map { (userDetail) in
+                (try? userDetail.currentHourRate()?.value.toCzechCrowns) ?? EMPTY_SYMBOL
+            }
+            .asDriver(onErrorJustReturn: EMPTY_SYMBOL)
+        let degree = userDetail
             .map { (userDetail) in
                 userDetail.degree ?? EMPTY_SYMBOL
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
-        let name = state.userDetail.asObservable()
+        let name = userDetail
             .map { (userDetail) in
                 "\(userDetail.name) \(userDetail.surname)"
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
-        let jobTitle = state.userDetail.asObservable()
+        let jobTitle = userDetail
             .map { (userDetail) in
                 userDetail.jobTitle?.description ?? EMPTY_SYMBOL
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
-        let dateOfBirth = state.userDetail.asObservable()
+        let dateOfBirth = userDetail
             .map { (userDetail) in
                 guard let date = userDetail.dateOfBirth?.universalDate else {return EMPTY_SYMBOL}
                 let dateFormatterPrint = DateFormatter()
                 dateFormatterPrint.dateFormat = "dd. MM. yyyy"
                 return dateFormatterPrint.string(from: date)
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
-        let hourlyCapacity = state.userDetail.asObservable()
+        let hourlyCapacity = userDetail
             .map { (userDetail) in
                 if let cap = userDetail.hourlyCapacity {
                     return String(cap)
@@ -112,19 +124,20 @@ private extension UserProfileViewModel {
                     return EMPTY_SYMBOL
                 }
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
-        let phoneNumber = state.userDetail.asObservable()
+        let phoneNumber = userDetail
             .map { (userDetail) in
                 userDetail.phoneNumber ?? EMPTY_SYMBOL
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
-        let contactEmail = state.userDetail.asObservable()
+        let contactEmail = userDetail
             .map { (userDetail) in
                 userDetail.contactEmail ?? EMPTY_SYMBOL
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
-        let workType = state.userDetail.asObservable()
+        let workType = userDetail
             .map { (userDetail) in
                 userDetail.workType?.description ?? EMPTY_SYMBOL
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         return (
+            hourlyRate: hourlyRate,
             name: name,
             jobTitle: jobTitle,
             degree: degree,

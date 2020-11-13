@@ -146,12 +146,10 @@ private extension EmployeesViewModel {
 private extension EmployeesViewModel {
 
     func handleEmployeeSelect() {
-        self.input.employeeSelect
-            .map { _ in
-                print("Invoice selected")
-            }
-            .drive()
-            .disposed(by: bag)
+        self.input.employeeSelect.drive {[router] (employeeViewModel) in
+            router.accept(employeeViewModel.employee)
+        }.disposed(by: bag)
+
     }
 
 }

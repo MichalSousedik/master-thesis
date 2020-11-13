@@ -23,13 +23,25 @@ class EmployeesCoordinator: BaseCoordinator {
     override func start(){
         let view = EmployeesViewController.instantiate()
         let service = UserService.shared
-        view.viewModelBuilder = {
-            return EmployeesViewModel(input: $0, api: service)
+        view.viewModelBuilder = { [bag] in
+            let viewModel = EmployeesViewModel(input: $0, api: service)
+            viewModel.routing.map { [weak self] (userDetail) in
+                self?.showEmployeeDetail(usingModel: userDetail)
+            }
+            .drive()
+            .disposed(by: bag)
+            return viewModel
         }
         view.tabBarItem = UITabBarItem(title: L10n.myTeam, image: UIImage(systemSymbol: .person3Fill), tag: 0)
         view.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: 9, right: 0)
         navigationController.pushViewController(view, animated: true)
         navigationController.navigationBar.prefersLargeTitles = true
+    }
+
+    func showEmployeeDetail(usingModel model: UserDetail){
+        let employeeDetailCoordinator = EmployeeDetailCoordinator(userDetail: model, navigationController: navigationController)
+        self.add(coordinator: employeeDetailCoordinator)
+        employeeDetailCoordinator.start()
     }
 
 }
