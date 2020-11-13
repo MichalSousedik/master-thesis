@@ -27,7 +27,6 @@
 		377E751925560001003B557A /* InvoiceChartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E751825560001003B557A /* InvoiceChartEntry.swift */; };
 		379FE8B2255B61D5004CEEAA /* FirstLetterGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FE8B1255B61D5004CEEAA /* FirstLetterGroup.swift */; };
 		379FE8BC255CA83D004CEEAA /* UserProfileHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FE8BB255CA83D004CEEAA /* UserProfileHeaderViewController.swift */; };
-		379FE8C6255CB5A5004CEEAA /* UserProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FE8C5255CB5A5004CEEAA /* UserProfileDetailViewController.swift */; };
 		379FE8CA255CBDC6004CEEAA /* EmployeeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FE8C9255CBDC6004CEEAA /* EmployeeDetailViewController.swift */; };
 		379FE8CE255CBE64004CEEAA /* EmployeeDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FE8CD255CBE64004CEEAA /* EmployeeDetailCoordinator.swift */; };
 		37A9037D2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */; };
@@ -44,6 +43,7 @@
 		37C374BB2550B81100480D2C /* UserHttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C374BA2550B81100480D2C /* UserHttpRouter.swift */; };
 		37CCBC1F2556B91300250F08 /* WageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CCBC1E2556B91300250F08 /* WageViewController.swift */; };
 		37CCBC212556B9A100250F08 /* HourlyRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CCBC202556B9A100250F08 /* HourlyRateViewController.swift */; };
+		37D28343255E0F86002FB349 /* UserProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D28342255E0F86002FB349 /* UserProfileDetailViewController.swift */; };
 		37EEE7D2255779F600BC3C50 /* HourlyRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7D1255779F600BC3C50 /* HourlyRateViewModel.swift */; };
 		37EEE7DA255790E700BC3C50 /* HourRateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7D9255790E700BC3C50 /* HourRateTests.swift */; };
 		37EEE7E5255809D800BC3C50 /* UserDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7E4255809D800BC3C50 /* UserDetailTests.swift */; };
@@ -138,7 +138,6 @@
 		377E751825560001003B557A /* InvoiceChartEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceChartEntry.swift; sourceTree = "<group>"; };
 		379FE8B1255B61D5004CEEAA /* FirstLetterGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLetterGroup.swift; sourceTree = "<group>"; };
 		379FE8BB255CA83D004CEEAA /* UserProfileHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderViewController.swift; sourceTree = "<group>"; };
-		379FE8C5255CB5A5004CEEAA /* UserProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDetailViewController.swift; sourceTree = "<group>"; };
 		379FE8C9255CBDC6004CEEAA /* EmployeeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailViewController.swift; sourceTree = "<group>"; };
 		379FE8CD255CBE64004CEEAA /* EmployeeDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailCoordinator.swift; sourceTree = "<group>"; };
 		37A9037C2533AF4D006251EE /* Reactive+TableViewRxReachedBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+TableViewRxReachedBottom.swift"; sourceTree = "<group>"; };
@@ -159,6 +158,7 @@
 		37CA024F25250F8100948444 /* Milacci.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Milacci.entitlements; sourceTree = "<group>"; };
 		37CCBC1E2556B91300250F08 /* WageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageViewController.swift; sourceTree = "<group>"; };
 		37CCBC202556B9A100250F08 /* HourlyRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyRateViewController.swift; sourceTree = "<group>"; };
+		37D28342255E0F86002FB349 /* UserProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDetailViewController.swift; sourceTree = "<group>"; };
 		37EEE7D1255779F600BC3C50 /* HourlyRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyRateViewModel.swift; sourceTree = "<group>"; };
 		37EEE7D7255790E700BC3C50 /* MilacciTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilacciTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37EEE7D9255790E700BC3C50 /* HourRateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourRateTests.swift; sourceTree = "<group>"; };
@@ -649,7 +649,7 @@
 			children = (
 				C0ACCB5D247AAD54002F7263 /* UserProfileViewController.swift */,
 				379FE8BB255CA83D004CEEAA /* UserProfileHeaderViewController.swift */,
-				379FE8C5255CB5A5004CEEAA /* UserProfileDetailViewController.swift */,
+				37D28342255E0F86002FB349 /* UserProfileDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -999,7 +999,6 @@
 				37EEE7F52558848C00BC3C50 /* JobTitle.swift in Sources */,
 				37F70AFC254460D1001E9D07 /* HttpErrorResponse.swift in Sources */,
 				C054EAFE2479DFA800C11F16 /* InvoicesViewController.swift in Sources */,
-				379FE8C6255CB5A5004CEEAA /* UserProfileDetailViewController.swift in Sources */,
 				379FE8CA255CBDC6004CEEAA /* EmployeeDetailViewController.swift in Sources */,
 				37093A70253CE51E00E87BA4 /* UserSettingsService.swift in Sources */,
 				C079A553251D4E4A00331E17 /* InvoiceDetailCoordinator.swift in Sources */,
@@ -1022,6 +1021,7 @@
 				371D168E2559E00C007F6449 /* EmployeesViewModel.swift in Sources */,
 				3711806F254A2D18000DFFFA /* Strings.swift in Sources */,
 				C0B9350C247DA59400A457AD /* InvoiceDetailViewController.swift in Sources */,
+				37D28343255E0F86002FB349 /* UserProfileDetailViewController.swift in Sources */,
 				C0E1B251248430FE00F68394 /* BaseTabBarController.swift in Sources */,
 				C0E342DE251A861700860E44 /* UserProfileCoordinator.swift in Sources */,
 				37F70B092545B432001E9D07 /* ErrorCategory.swift in Sources */,
