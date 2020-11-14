@@ -19,32 +19,108 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="eb5-kV-8Ux">
-                                <rect key="frame" x="114" y="307" width="186" height="282"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="eb5-kV-8Ux">
+                                <rect key="frame" x="15" y="312.5" width="384" height="271.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launching-app-icon" translatesAutoresizingMaskIntoConstraints="NO" id="whj-RB-YAY">
-                                        <rect key="frame" x="0.0" y="0.0" width="186" height="237"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thZ-5Z-k1h" customClass="GIDSignInButton">
-                                        <rect key="frame" x="0.0" y="252" width="186" height="30"/>
-                                        <state key="normal" title="Sign in with Google"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miláčci" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aR-bm-ZXB">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="39.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-ms-88x">
+                                        <rect key="frame" x="0.0" y="54.5" width="384" height="130"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-vP-swe">
+                                                <rect key="frame" x="0.0" y="0.0" width="384" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jbi-WI-OAf">
+                                                <rect key="frame" x="0.0" y="45" width="384" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            </textField>
+                                            <button contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfK-Fj-RUe" customClass="AckeeButton" customModule="Milacci" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="90" width="384" height="40"/>
+                                                <color key="backgroundColor" name="primary-1"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="Sign In With Ackee">
+                                                    <color key="titleColor" name="primary"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="signInWithAckee:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f1r-3w-6Yo"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="gfK-Fj-RUe" firstAttribute="height" secondItem="Jbi-WI-OAf" secondAttribute="height" id="qLY-cf-IKV"/>
+                                            <constraint firstItem="R9a-vP-swe" firstAttribute="height" secondItem="gfK-Fj-RUe" secondAttribute="height" id="xnr-cA-sZJ"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eHF-E0-IsA">
+                                        <rect key="frame" x="0.0" y="199.5" width="384" height="17"/>
+                                        <subviews>
+                                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dV6-Ln-xvi">
+                                                <rect key="frame" x="0.0" y="8" width="128" height="0.5"/>
+                                                <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="0.5" id="pEq-fg-YCw"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NI-e8-JKF">
+                                                <rect key="frame" x="128" y="0.0" width="128" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2iM-XV-C74">
+                                                <rect key="frame" x="256" y="8" width="128" height="0.5"/>
+                                                <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="0.5" id="Kt6-cT-7tP"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guK-ku-yfi">
+                                        <rect key="frame" x="0.0" y="231.5" width="384" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="VRB-eU-pI2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="contentEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
+                                        <state key="normal" title="Sign In With Google" image="icons8-google-30">
+                                            <color key="titleColor" systemColor="secondaryLabelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInWithGoogle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h2j-Vz-PUr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="thZ-5Z-k1h" firstAttribute="leading" secondItem="eb5-kV-8Ux" secondAttribute="leading" id="4kN-w8-Low"/>
-                                    <constraint firstAttribute="trailing" secondItem="thZ-5Z-k1h" secondAttribute="trailing" id="B1d-wU-a37"/>
+                                    <constraint firstItem="guK-ku-yfi" firstAttribute="height" secondItem="gfK-Fj-RUe" secondAttribute="height" id="dxH-7T-ZEK"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="eb5-kV-8Ux" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="YtK-79-M1i"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eb5-kV-8Ux" secondAttribute="trailing" constant="15" id="rXd-7v-1Ah"/>
                             <constraint firstItem="eb5-kV-8Ux" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sHX-te-StY"/>
                             <constraint firstItem="eb5-kV-8Ux" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xiQ-no-z2t"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="signInButton" destination="thZ-5Z-k1h" id="1oR-2J-3XN"/>
+                        <outlet property="authStackView" destination="RqQ-ms-88x" id="9VD-hS-rtM"/>
+                        <outlet property="passwordLabel" destination="Jbi-WI-OAf" id="jIA-zW-nT2"/>
+                        <outlet property="signInWithAckeeButton" destination="gfK-Fj-RUe" id="1EI-Dl-4ta"/>
+                        <outlet property="signInWithGoogleButton" destination="guK-ku-yfi" id="4lg-dR-9Pn"/>
+                        <outlet property="usernameLabel" destination="R9a-vP-swe" id="6pB-aB-l5X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -957,6 +1033,7 @@
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="escape" catalog="system" width="128" height="121"/>
+        <image name="icons8-google-30" width="15" height="15"/>
         <image name="launching-app-icon" width="186" height="237"/>
         <image name="paperclip" catalog="system" width="121" height="128"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
