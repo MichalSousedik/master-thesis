@@ -55,7 +55,7 @@ extension UserSettingsService: UserSettingsAPI {
 
         let expiresIn: Int = UserDefaults.standard.integer(forKey: Keys.expiresIn)
 
-        guard let accessToken = accessToken ?? "",
+        guard let accessToken = accessToken,
               let refreshToken = refreshToken,
               expiresIn != 0,
               let rolesData = UserDefaults.standard.data(forKey: Keys.roles),

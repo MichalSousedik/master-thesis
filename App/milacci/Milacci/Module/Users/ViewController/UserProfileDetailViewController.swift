@@ -11,6 +11,9 @@ import RxCocoa
 
 class UserProfileDetailViewController: UIViewController, Storyboardable {
 
+    @IBOutlet weak var editPersonalInfoButton: UIButton!
+    @IBOutlet weak var personalInfoHeaderStackView: UIStackView!
+    @IBOutlet weak var editHourlyRateButton: UIButton!
     @IBOutlet weak var hourlyRateStackView: UIStackView!
     @IBOutlet weak var hourlyRateLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!

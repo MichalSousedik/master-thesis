@@ -43,8 +43,6 @@
 
 "Vdt-OX-tHq.title" = "Faktury";
 
-"z27-TN-bAt.title" = "Můj tým";
-
 /* Class = "UIButton"; normalTitle = "Sign in with Google"; ObjectID = "thZ-5Z-k1h"; */
 "thZ-5Z-k1h.normalTitle" = "Přihlásit se pomocí Google účtu";
 
@@ -54,18 +52,24 @@
 /* Class = "UILabel"; text = "200 000 000 Kč"; ObjectID = "zIq-yo-WeM"; */
 "zIq-yo-WeM.text" = "200 000 000 Kč";
 
-"GTM-Y3-7Bd.text" = "Pracovní poměr";
+"Qza-vz-AL0.text" = "Pracovní poměr";
 
-"pQg-jh-xOM.text" = "Email";
+"cwl-kw-x17.text" = "Email";
 
-"fU0-m9-NuG.text" = "Telefonní číslo";
+"goe-ee-WMI.text" = "Telefonní číslo";
 
-"gzi-iz-037.text" = "Hodinová kapacita";
+"f7q-CZ-RZ4.text" = "Hodinová kapacita";
 
-"A9w-wH-NeM.text" = "Datum narození";
+"fPN-JE-qcB.text" = "Datum narození";
 
-"ePP-Zw-3Gl.text" = "Titul";
+"0VY-Qe-FzB.text" = "Titul";
 
 "XzV-mQ-CR1.text" = "Měsíční mzda";
 
-"Ef5-hk-MeB.text" = "Aktuální hodinová sazba";
+"3vW-J8-2Sk.text" = "Aktuální hodinová sazba";
+
+"iID-n5-5oN" = "Upravit";
+
+"COH-Bx-pBf" = "Upravit";
+
+"tbl-Z5-R6K" = "Osobní údaje";

@@ -13,8 +13,8 @@ typealias Employee = UserDetail
 
 struct UserDetail: Codable {
     let id: Int
-    let name: String
-    let surname: String
+    let name: String?
+    let surname: String?
     let jobTitle: JobTitle?
     let degree: String?
     let dateOfBirth: String?

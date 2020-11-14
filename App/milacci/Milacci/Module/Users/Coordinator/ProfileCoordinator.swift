@@ -2,7 +2,7 @@
 //  ProfileCoordinator.swift
 //  Milacci
 //
-//  Created by Michal Sousedik on 22/09/2020.
+//  Created by Michal Sousedik on 14/11/2020.
 //  Copyright © 2020 Michal Sousedik. All rights reserved.
 //
 
@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 import SFSafeSymbols
 
-class UserProfileCoordinator: BaseCoordinator {
+class ProfileCoordinator: BaseCoordinator {
 
-    private let userIdProvider: UserProfileViewPresentable.UserIdProvider
+    typealias ModifyDetailViewController = ((UserProfileDetailViewController) -> Void)
+    let userIdProvider: UserProfileViewPresentable.UserIdProvider
 
     init(userIdProvider: @escaping UserProfileViewPresentable.UserIdProvider, navigationController: UINavigationController) {
         self.userIdProvider = userIdProvider
@@ -21,23 +22,12 @@ class UserProfileCoordinator: BaseCoordinator {
     }
 
     override func start(){
-        let view = UserProfileViewController.instantiate()
-        view.viewModelBuilder = { [userIdProvider] in
-            return UserProfileViewModel(input: $0,
-                                        dependencies: (
-                                            api: UserService.shared,
-                                            userIdProvider: userIdProvider,
-                                            userDetail: nil
-                                        )
-            )
-        }
+        let view = createViewController()
+        view.viewModelBuilder = self.provideViewModelBuilder()
         view.userProfileHeaderViewController = UserProfileHeaderViewController.instantiate()
         view.userProfileDetailViewController = UserProfileDetailViewController.instantiate()
-        view.userProfileDetailViewController.modifyController = { (vc: UserProfileDetailViewController) in
-            vc.hourlyRateStackView.isHidden = true
-        }
-        view.tabBarItem = UITabBarItem(title: L10n.profile, image: UIImage(systemSymbol: .personFill), tag: 0)
-        view.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: 9, right: 0)
+        view.userProfileDetailViewController.modifyController = self.modifyDetailViewController()
+        self.setupTabBar(vc: view)
         navigationController.pushViewController(view, animated: true)
         self.setupNavigationBar()
     }
@@ -47,7 +37,21 @@ class UserProfileCoordinator: BaseCoordinator {
         navigationBarAppearence.shadowColor = .none
         navigationBarAppearence.backgroundColor = Asset.Colors.primary.color
         navigationController.navigationBar.standardAppearance = navigationBarAppearence
+    }
 
+    func setupTabBar(vc: UIViewController){
+    }
+
+    func provideViewModelBuilder() -> UserProfileViewPresentable.ViewModelBuilder {
+        fatalError("Not implemented")
+    }
+
+    func modifyDetailViewController() -> ModifyDetailViewController {
+        {_ in}
+    }
+
+    func createViewController() -> ProfileViewController {
+        fatalError("Not implemented")
     }
 
 }

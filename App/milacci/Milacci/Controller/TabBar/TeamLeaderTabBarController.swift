@@ -15,9 +15,9 @@ class TeamLeaderTabBarController: BaseTabBarController {
         WageCoordinator(userIdProvider: { () in
             UserSettingsService.shared.userId
         }, navigationController: UINavigationController()),
+        MyTeamCoordinator(navigationController: BaseNavigationController()),
         UserProfileCoordinator(userIdProvider: { () in
             UserSettingsService.shared.userId
-        }, navigationController: UINavigationController()),
-        EmployeesCoordinator(navigationController: BaseNavigationController())
+        }, navigationController: UINavigationController())
     ]}
 }

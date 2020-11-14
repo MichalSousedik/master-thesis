@@ -12,10 +12,10 @@ import RxCocoa
 import RxDataSources
 import Alamofire
 
-protocol EmployeesViewPresentable {
+protocol UsersViewPresentable {
 
     typealias Input = (
-        employeeSelect: Driver<EmployeeViewModel>,
+        employeeSelect: Driver<UserViewModel>,
         refreshTrigger: Driver<Void>,
         loadNextPageTrigger: Driver<Void>,
         searchTextTrigger: Driver<String>,
@@ -23,25 +23,25 @@ protocol EmployeesViewPresentable {
     )
 
     typealias Output = (
-        employees: Driver<[EmployeeItemsSection]>,
+        employees: Driver<[UserItemsSection]>,
         isLoading: Driver<Bool>,
         isRefreshing: Driver<Bool>,
         isLoadingMore: Driver<Bool>,
         errorOccured: Driver<Error>
     )
 
-    typealias ViewModelBuilder = (EmployeesViewPresentable.Input) -> EmployeesViewPresentable
+    typealias ViewModelBuilder = (UsersViewPresentable.Input) -> UsersViewPresentable
 
     var input: Input { get }
     var output: Output { get }
 
 }
 
-class EmployeesViewModel: EmployeesViewPresentable{
+class UsersViewModel: UsersViewPresentable{
 
     var input: Input
     var output: Output
-    private let api: UserAPI
+    let api: UserAPI
     private let bag = DisposeBag()
 
     typealias State = (employees: BehaviorRelay<[Employee]>,
@@ -60,16 +60,20 @@ class EmployeesViewModel: EmployeesViewPresentable{
     typealias Routing = Driver<UserDetail>
     lazy var routing: Routing = router.asDriver(onErrorDriveWith: .empty())
 
-    init(input: EmployeesViewPresentable.Input, api: UserAPI){
+    init(input: UsersViewPresentable.Input, api: UserAPI){
         self.input = input
-        self.output = EmployeesViewModel.output(state: self.state)
+        self.output = UsersViewModel.output(state: self.state)
         self.api = api
         self.processInput()
     }
 
+    func load(page: Int, searchedText: String?) -> Observable<[Employee]> {
+        fatalError("Not implemented")
+    }
+
 }
 
-private extension EmployeesViewModel {
+private extension UsersViewModel {
 
     func processInput() {
         self.handleEmployeeSelect()
@@ -78,7 +82,7 @@ private extension EmployeesViewModel {
                                                   loadNextPage: self.input.loadNextPageTrigger.asObservable(),
                                                   searchText: self.input.searchTextTrigger.asObservable())
         let sink = PaginationWithSearchSink(uiSource: source, loadData: ({[load] in
-            return load($0, UserSettingsService.shared.userId, $1)
+            return load($0, $1)
         }) )
 
         input.refreshTrigger.drive {[state] _ in
@@ -105,16 +109,11 @@ private extension EmployeesViewModel {
             .disposed(by: bag)
     }
 
-    func load(page: Int, teamLeader: Int?, searchedText: String?) -> Observable<[Employee]> {
-        return self.api.fetch(page: page, teamLeaderId: teamLeader, searchedText: searchedText)
-            .asObservable()
-    }
-
-    static func output(state: State) -> EmployeesViewPresentable.Output {
+    static func output(state: State) -> UsersViewPresentable.Output {
         let sections = state.employees
             .map({
                 $0.compactMap({
-                    EmployeeViewModel(withEmployee: $0)
+                    UserViewModel(withEmployee: $0)
                 })
             })
             .map{
@@ -126,7 +125,7 @@ private extension EmployeesViewModel {
             }
             .map({ (firstLetterGroups) in
                 firstLetterGroups.map { (firstLetterGroup) in
-                    EmployeeItemsSection(model: firstLetterGroup.firstLetter, items: firstLetterGroup.employees)
+                    UserItemsSection(model: firstLetterGroup.firstLetter, items: firstLetterGroup.employees)
                 }
             })
             .asDriver(onErrorJustReturn: [])
@@ -143,7 +142,7 @@ private extension EmployeesViewModel {
     }
 }
 
-private extension EmployeesViewModel {
+private extension UsersViewModel {
 
     func handleEmployeeSelect() {
         self.input.employeeSelect.drive {[router] (employeeViewModel) in

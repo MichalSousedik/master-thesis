@@ -103,7 +103,7 @@ private extension UserProfileViewModel {
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let name = userDetail
             .map { (userDetail) in
-                "\(userDetail.name) \(userDetail.surname)"
+                "\(userDetail.name ?? "") \(userDetail.surname ?? "")"
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let jobTitle = userDetail
             .map { (userDetail) in

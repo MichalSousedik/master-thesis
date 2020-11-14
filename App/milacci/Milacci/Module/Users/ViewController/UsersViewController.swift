@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class EmployeesViewController: UIViewController, Storyboardable {
+class UsersViewController: UIViewController, Storyboardable {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var tableViewFooter: UIView!
@@ -22,17 +22,19 @@ class EmployeesViewController: UIViewController, Storyboardable {
     private let refreshControl = UIRefreshControl()
     private let loadingSubject = PublishSubject<Void>()
 
-    private var viewModel: EmployeesViewPresentable!
-    var viewModelBuilder: EmployeesViewPresentable.ViewModelBuilder!
+    private var viewModel: UsersViewPresentable!
+    var viewModelBuilder: UsersViewPresentable.ViewModelBuilder!
     private let bag = DisposeBag()
+    var titleText: String!
+    var searchFieldText: String!
 
-    var dataSource: RxTableViewSectionedAnimatedDataSource<EmployeeItemsSection>!
+    var dataSource: RxTableViewSectionedAnimatedDataSource<UserItemsSection>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = self.viewModelBuilder(
             (
-                employeeSelect: tableView.rx.modelSelected(EmployeeViewModel.self).asDriver(),
+                employeeSelect: tableView.rx.modelSelected(UserViewModel.self).asDriver(),
                 refreshTrigger: refreshControl.rx.controlEvent(.valueChanged).asDriver(),
                 loadNextPageTrigger: tableView.rx.reachedBottom(),
                 searchTextTrigger: searchController.searchBar.rx.text.orEmpty
@@ -56,6 +58,7 @@ class EmployeesViewController: UIViewController, Storyboardable {
 
     func setupUI() {
         self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.title = titleText
         self.tableView.refreshControl = refreshControl
         self.refreshControl.tintColor = .black
         self.tableView.tableFooterView = self.tableViewFooter
@@ -103,7 +106,7 @@ class EmployeesViewController: UIViewController, Storyboardable {
 
     func setupSearchController() {
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = L10n.searchTeamMember
+        searchController.searchBar.placeholder = searchFieldText
         navigationItem.searchController = searchController
         definesPresentationContext = true
         searchController.searchBar.tintColor = Asset.Colors.primary1.color
@@ -112,7 +115,7 @@ class EmployeesViewController: UIViewController, Storyboardable {
 
 }
 
-private extension EmployeesViewController {
+private extension UsersViewController {
 
     func showLoadingIndicator() {
         self.loadingIndicatorView.isHidden = false
@@ -124,10 +127,10 @@ private extension EmployeesViewController {
 
 }
 
-private extension EmployeesViewController {
+private extension UsersViewController {
 
     func setupDataSource() {
-        dataSource = RxTableViewSectionedAnimatedDataSource<EmployeeItemsSection>(
+        dataSource = RxTableViewSectionedAnimatedDataSource<UserItemsSection>(
             animationConfiguration: AnimationConfiguration(insertAnimation: .automatic,
                                                            reloadAnimation: .none,
                                                            deleteAnimation: .fade),
@@ -139,9 +142,9 @@ private extension EmployeesViewController {
             return section.model
         }
     }
-    private var configureCell: RxTableViewSectionedAnimatedDataSource<EmployeeItemsSection>.ConfigureCell {
+    private var configureCell: RxTableViewSectionedAnimatedDataSource<UserItemsSection>.ConfigureCell {
         return { _, tableView, indexPath, item in
-            let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.identifier, for: indexPath) as!  EmployeeTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier, for: indexPath) as!  UserTableViewCell
             cell.configure(usingViewModel: item)
             return cell
         }

@@ -8,16 +8,16 @@
 
 import RxDataSources
 
-typealias EmployeeItemsSection = AnimatableSectionModel<String, EmployeeViewModel>
+typealias UserItemsSection = AnimatableSectionModel<String, UserViewModel>
 
-protocol EmployeeViewPresentable: IdentifiableType, Equatable {
+protocol UserViewPresentable: IdentifiableType, Equatable {
     var firstName: String { get }
     var lastName: String { get }
     var employee: Employee { get }
 }
 
-struct EmployeeViewModel: EmployeeViewPresentable {
-    static func == (lhs: EmployeeViewModel, rhs: EmployeeViewModel) -> Bool {
+struct UserViewModel: UserViewPresentable {
+    static func == (lhs: UserViewModel, rhs: UserViewModel) -> Bool {
         return lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName && lhs.employee.id == rhs.employee.id
     }
 
@@ -32,12 +32,12 @@ struct EmployeeViewModel: EmployeeViewPresentable {
     var employee: Employee
 }
 
-extension EmployeeViewModel {
+extension UserViewModel {
 
     init(withEmployee employee: Employee){
         self.employee = employee
-        self.firstName = employee.name
-        self.lastName = employee.surname
+        self.firstName = employee.name ?? "-"
+        self.lastName = employee.surname ?? "-"
     }
 
 }

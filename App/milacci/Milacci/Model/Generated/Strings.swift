@@ -44,6 +44,8 @@ internal enum L10n {
   internal static let deviceIsOffline = L10n.tr("Localizable", "Device is offline")
   /// DevOps
   internal static let devops = L10n.tr("Localizable", "Devops")
+  /// Employees
+  internal static let employees = L10n.tr("Localizable", "Employees")
   /// Employment Contract
   internal static let employmentContract = L10n.tr("Localizable", "Employment Contract")
   /// Error occured
@@ -52,6 +54,8 @@ internal enum L10n {
   internal static let february = L10n.tr("Localizable", "February")
   /// Request coudn't be completed:
   internal static let fetchingDataResultedInError = L10n.tr("Localizable", "Fetching data resulted in error")
+  /// Find Employee
+  internal static let findEmployee = L10n.tr("Localizable", "Find Employee")
   /// Access forbidden
   internal static let forbidden = L10n.tr("Localizable", "Forbidden")
   /// Frontend Developer

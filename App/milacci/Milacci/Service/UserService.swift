@@ -42,7 +42,7 @@ class UserService: UserAPI {
         }
     }
 
-    func fetch(page: Int, teamLeaderId: Int?, searchedText: String?) -> Single<EmployeesResponse> {
+    func fetch(page: Int, teamLeaderId: Int? = nil, searchedText: String?) -> Single<EmployeesResponse> {
 //        self.mockFetch()
         return Single.create{ [httpService] (single) -> Disposable in
             do {

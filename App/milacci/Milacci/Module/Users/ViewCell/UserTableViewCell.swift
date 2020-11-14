@@ -8,14 +8,14 @@
 
 import UIKit
 
-class EmployeeTableViewCell: UITableViewCell {
+class UserTableViewCell: UITableViewCell {
 
-    static let identifier: String = "EmployeeTableViewCell"
+    static let identifier: String = "UserTableViewCell"
 
     @IBOutlet weak var firstName: UILabel!
     @IBOutlet weak var lastName: UILabel!
 
-    func configure(usingViewModel viewModel: EmployeeViewModel) {
+    func configure(usingViewModel viewModel: UserViewModel) {
         self.firstName.text = viewModel.firstName
         self.lastName.text = viewModel.lastName
     }
