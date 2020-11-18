@@ -11,7 +11,7 @@ import UIKit
 
 class EmployeeProfileCoordinator: ProfileCoordinator {
 
-    private let userDetail: UserDetail
+    let userDetail: UserDetail
 
     init(userDetail: UserDetail, navigationController: UINavigationController) {
         self.userDetail = userDetail
@@ -31,8 +31,8 @@ class EmployeeProfileCoordinator: ProfileCoordinator {
     }
 
     override func provideViewModelBuilder() -> UserProfileViewPresentable.ViewModelBuilder {
-        { [userIdProvider, userDetail] in
-            return UserProfileViewModel(input: $0,
+        { [userIdProvider, userDetail] (input, editInput) in
+            return UserProfileViewModel(input: input,
                                         dependencies: (
                                             api: UserService.shared,
                                             userIdProvider: userIdProvider,

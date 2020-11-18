@@ -13,14 +13,16 @@ class LoadingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
+        view.alpha = 0.5
 
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.color = .label
+        activityIndicator.color = .white
         view.addSubview(activityIndicator)
 
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 30)
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 

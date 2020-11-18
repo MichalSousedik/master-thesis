@@ -13,7 +13,9 @@ import GoogleSignIn
 protocol UserProfileViewPresentable {
 
     typealias Input = (signOut: Driver<Void>, refresh: Driver<Void>)
+    typealias EditableInput = (hourRateEditTrigger: Driver<Void>, personalInfoEditTrigger: Driver<Void>)
     typealias Output = (
+        upcommingRate: Driver<String>,
         hourlyRate: Driver<String>,
         name: Driver<String>,
         jobTitle: Driver<String>,
@@ -31,10 +33,32 @@ protocol UserProfileViewPresentable {
     typealias UserIdProvider = (() -> Int)
     typealias Dependencies = (api: UserAPI, userIdProvider: UserIdProvider, userDetail: UserDetail?)
 
-    typealias ViewModelBuilder = (Input) -> UserProfileViewPresentable
+    typealias ViewModelBuilder = (Input, EditableInput) -> UserProfileViewPresentable
     var input: Input {get}
+    var editableInput: EditableInput? {get}
     var output: Output {get}
 
+}
+
+class EditableUserProfileViewModel: UserProfileViewModel {
+
+    typealias HourRateRoutingAction = PublishRelay<UserDetail>
+    let hourRateRouter: HourRateRoutingAction = PublishRelay()
+
+    init(input: UserProfileViewPresentable.Input, editableInput: UserProfileViewPresentable.EditableInput, dependencies: UserProfileViewPresentable.Dependencies) {
+        super.init(input: input, dependencies: dependencies)
+        self.editableInput = editableInput
+
+        self.editableInput?.hourRateEditTrigger.asObservable()
+            .withLatestFrom(state.userDetail){
+                $1
+            }.subscribe(onNext: {[hourRateRouter] (userDetail) in
+                if let userDetail = userDetail {
+                    hourRateRouter.accept(userDetail)
+                }
+            }).disposed(by: bag)
+
+    }
 }
 
 class UserProfileViewModel: UserProfileViewPresentable {
@@ -42,23 +66,28 @@ class UserProfileViewModel: UserProfileViewPresentable {
     private static let EMPTY_SYMBOL = "-"
 
     var input: UserProfileViewPresentable.Input
+    var editableInput: UserProfileViewPresentable.EditableInput? = nil
     var output: UserProfileViewPresentable.Output
     typealias State = (userDetail: BehaviorRelay<UserDetail?>, error: PublishRelay<Error>,
                        isLoading: PublishRelay<Bool>)
-    private let state: State = (userDetail: BehaviorRelay(value: nil), error: PublishRelay(),
-                                isLoading: PublishRelay())
-    private let bag = DisposeBag()
+    let state: State = (userDetail: BehaviorRelay(value: nil), error: PublishRelay(),
+                        isLoading: PublishRelay())
+    let bag = DisposeBag()
+    let api: UserAPI
+    let userIdProvider: UserProfileViewPresentable.UserIdProvider
 
     init(input: UserProfileViewPresentable.Input, dependencies: UserProfileViewPresentable.Dependencies) {
         self.input = input
         self.output = UserProfileViewModel.output(dependencies: dependencies, state: state)
+        self.api = dependencies.api
+        self.userIdProvider = dependencies.userIdProvider
 
         self.input.signOut.drive(onNext: { _ in
             GIDSignIn.sharedInstance()?.disconnect()
         }).disposed(by: bag)
 
-        self.input.refresh.drive(onNext: { [weak self, dependencies] _ in
-            self?.load(api: dependencies.api, userIdProvider: dependencies.userIdProvider)
+        self.input.refresh.drive(onNext: { [weak self] _ in
+            self?.refresh()
         }).disposed(by: bag)
 
         if let userDetail = dependencies.userDetail {
@@ -66,6 +95,10 @@ class UserProfileViewModel: UserProfileViewPresentable {
         } else {
             self.load(api: dependencies.api, userIdProvider: dependencies.userIdProvider)
         }
+    }
+
+    func refresh() {
+        self.load(api: api, userIdProvider: userIdProvider)
     }
 
 }
@@ -92,6 +125,25 @@ private extension UserProfileViewModel {
     static func output(dependencies: UserProfileViewPresentable.Dependencies, state: State) -> UserProfileViewPresentable.Output {
         let userDetail = state.userDetail.asObservable()
             .compactMap{$0}
+
+        let upcommingRate = userDetail
+            .map { (userDetail) in
+                if let upcommingRate = try? userDetail.upcommingHourRate(),
+                   let since = upcommingRate.since.universalDate {
+                    let calendar = Calendar.current
+
+                    // Replace the hour (time) of both dates with 00:00
+                    let date1 = calendar.startOfDay(for: Date())
+                    let date2 = calendar.startOfDay(for: since)
+
+                    if let days = calendar.dateComponents([.day], from: date1, to: date2).day {
+                        return "In \(days) \(days == 1 || days == 0 ? "day" : "days"): \(upcommingRate.value.toCzechCrowns)"
+                    }
+
+                }
+                return ""
+            }
+            .asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let hourlyRate = userDetail
             .map { (userDetail) in
                 (try? userDetail.currentHourRate()?.value.toCzechCrowns) ?? EMPTY_SYMBOL
@@ -137,6 +189,7 @@ private extension UserProfileViewModel {
                 userDetail.workType?.description ?? EMPTY_SYMBOL
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         return (
+            upcommingRate: upcommingRate,
             hourlyRate: hourlyRate,
             name: name,
             jobTitle: jobTitle,

@@ -27,8 +27,8 @@ class UserProfileCoordinator: ProfileCoordinator {
     }
 
     override func provideViewModelBuilder() -> UserProfileViewPresentable.ViewModelBuilder {
-        { [userIdProvider] in
-            return UserProfileViewModel(input: $0,
+        { [userIdProvider] (input, editInput) in
+            return UserProfileViewModel(input: input,
                                         dependencies: (
                                             api: UserService.shared,
                                             userIdProvider: userIdProvider,

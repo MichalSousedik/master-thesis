@@ -20,6 +20,7 @@ target 'Milacci' do
   pod 'SwiftGen', '~> 6.0'
   pod 'SFSafeSymbols', '~> 2.0.1'
   pod 'Charts'
+  pod 'IQKeyboardManagerSwift'
   
 end
 

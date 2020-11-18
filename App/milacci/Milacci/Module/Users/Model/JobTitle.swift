@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum JobTitle: String, Codable {
+enum JobTitle: String, Codable, CaseIterable  {
     case backend = "backend"
     case frontend = "frontend"
     case android = "android"

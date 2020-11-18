@@ -24,6 +24,7 @@ class UserProfileDetailViewController: UIViewController, Storyboardable {
     @IBOutlet weak var workTypeLabel: UILabel!
     @IBOutlet weak var signOutBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var upcommingRateLabel: UILabel!
 
     private let refreshControl = UIRefreshControl()
     var viewModel: UserProfileViewPresentable!
@@ -60,6 +61,12 @@ class UserProfileDetailViewController: UIViewController, Storyboardable {
     }
 
     func setupBinding() {
+        self.viewModel.output.upcommingRate.drive(onNext: { [upcommingRateLabel] in
+            if !$0.isEmpty {
+                upcommingRateLabel?.text = $0
+                upcommingRateLabel?.isHidden = false
+            }
+        }).disposed(by: bag)
         self.viewModel.output.hourlyRate.drive(onNext: { [hourlyRateLabel] in
             hourlyRateLabel?.text = $0
             hourlyRateLabel?.hideSkeleton()
@@ -100,4 +107,4 @@ class UserProfileDetailViewController: UIViewController, Storyboardable {
         }).disposed(by: bag)
     }
 
-    }
+}

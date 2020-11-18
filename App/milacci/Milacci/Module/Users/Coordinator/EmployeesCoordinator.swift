@@ -13,7 +13,7 @@ class EmployeesCoordinator: UsersCoordinator {
     override func provideViewModelBuilder() -> ((UsersViewPresentable.Input) -> UsersViewPresentable) {
         { [bag] in
             let providedViewModel = EmployeesViewModel(input: $0, api: UserService.shared)
-                providedViewModel.routing.map { [weak self] (userDetail) in
+            providedViewModel.routing.map { [weak self] (userDetail) in
                 self?.showDetail(usingModel: userDetail)
             }
             .drive()
