@@ -16,7 +16,7 @@ struct User: Codable {
     let roles: [Role]?
 }
 
-enum WorkType: String, Codable {
+enum WorkType: String, Codable, CaseIterable {
     case registrationNumber = "registrationNumber"
     case agreement = "agreement"
     case employmentContract = "employmentContract"

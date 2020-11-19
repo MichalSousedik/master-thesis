@@ -34,8 +34,14 @@ internal enum L10n {
   internal static let cancel = L10n.tr("Localizable", "Cancel")
   /// Kč
   internal static let crowns = L10n.tr("Localizable", "Crowns")
+  /// Current
+  internal static let current = L10n.tr("Localizable", "Current")
   /// Data couldn't be extracted from result
   internal static let dataCouldnTBeExtractedFromResult = L10n.tr("Localizable", "Data couldn't be extracted from result")
+  /// Day
+  internal static let day = L10n.tr("Localizable", "Day")
+  /// Days
+  internal static let days = L10n.tr("Localizable", "Days")
   /// December
   internal static let december = L10n.tr("Localizable", "December")
   /// Designer
@@ -62,6 +68,8 @@ internal enum L10n {
   internal static let frontend = L10n.tr("Localizable", "Frontend")
   /// Human Resources
   internal static let hr = L10n.tr("Localizable", "HR")
+  /// In
+  internal static let `in` = L10n.tr("Localizable", "In")
   /// Invoice is already approved
   internal static let invoiceIsAlreadyApproved = L10n.tr("Localizable", "Invoice is already approved")
   /// Invoice is already paid
@@ -126,6 +134,8 @@ internal enum L10n {
   internal static let serverGotIntoTrouble = L10n.tr("Localizable", "Server got into trouble")
   /// Tester
   internal static let tester = L10n.tr("Localizable", "Tester")
+  /// Days
+  internal static let twoToFourDays = L10n.tr("Localizable", "Two To Four Days")
   /// Unknown month
   internal static let unknownMonth = L10n.tr("Localizable", "Unknown month")
   /// User's work type for selected month is 'agreement'

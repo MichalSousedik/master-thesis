@@ -118,7 +118,8 @@ private extension UsersViewModel {
             })
             .map{
                 return Dictionary(grouping: $0) { (employee) in
-                    return String(Array(employee.lastName)[0]).uppercased()
+                    let lastName = employee.lastName.isEmpty ? "-" : employee.lastName
+                    return String(Array(lastName)[0]).uppercased()
                 }.map({ (firstLetter, employees) in
                     return FirstLetterGroup(firstLetter: firstLetter, employees: employees)
                 }).sorted()

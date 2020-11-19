@@ -80,11 +80,11 @@ extension EditHourlyRateViewController {
 
     func setupViewModelBinding() {
         self.viewModel.output.currentHourlyRate.drive {[weak self] in
-            self?.currentHourlyRateLabel?.text = "Current: \($0?.toCzechCrowns ?? "-")"
+            self?.currentHourlyRateLabel?.text = "\(L10n.current): \($0?.toCzechCrowns ?? "-")"
             self?.currentHourlyRate = $0
         }.disposed(by: bag)
         self.viewModel.output.since.drive {[validFromTextField, datePicker] (date) in
-            validFromTextField?.text = EditHourlyRateViewController.format(date: date)
+            validFromTextField?.text = date.localFormat
             datePicker.date = date
         }.disposed(by: bag)
         self.viewModel.output.errorOccured.drive{ [weak self] in
@@ -127,17 +127,14 @@ extension EditHourlyRateViewController {
     func setupDatePicker() {
         datePicker.datePickerMode = .date
         datePicker.minimumDate = Date()
+        if #available(iOS 13.4, *) {
+            datePicker.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250.0)
+            datePicker.preferredDatePickerStyle = .wheels
+        }
         validFromTextField.inputView = datePicker
         datePicker.rx.controlEvent(.valueChanged).bind { [validFromTextField, datePicker] in
-            validFromTextField?.text = EditHourlyRateViewController.format(date: datePicker.date)
+            validFromTextField?.text = datePicker.date.localFormat
         }.disposed(by: bag)
-
-    }
-
-    static func format(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd. MM. yyyy"
-        return formatter.string(from: date)
 
     }
 }

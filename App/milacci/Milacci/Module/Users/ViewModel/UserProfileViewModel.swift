@@ -27,7 +27,6 @@ protocol UserProfileViewPresentable {
         workType: Driver<String>,
         error: Driver<Error>,
         isLoading: Driver<Bool>
-
     )
 
     typealias UserIdProvider = (() -> Int)
@@ -45,6 +44,9 @@ class EditableUserProfileViewModel: UserProfileViewModel {
     typealias HourRateRoutingAction = PublishRelay<UserDetail>
     let hourRateRouter: HourRateRoutingAction = PublishRelay()
 
+    typealias PersonalInfoRoutingAction = PublishRelay<UserDetail>
+    let personalInfoRouter: PersonalInfoRoutingAction = PublishRelay()
+
     init(input: UserProfileViewPresentable.Input, editableInput: UserProfileViewPresentable.EditableInput, dependencies: UserProfileViewPresentable.Dependencies) {
         super.init(input: input, dependencies: dependencies)
         self.editableInput = editableInput
@@ -55,6 +57,15 @@ class EditableUserProfileViewModel: UserProfileViewModel {
             }.subscribe(onNext: {[hourRateRouter] (userDetail) in
                 if let userDetail = userDetail {
                     hourRateRouter.accept(userDetail)
+                }
+            }).disposed(by: bag)
+
+        self.editableInput?.personalInfoEditTrigger.asObservable()
+            .withLatestFrom(state.userDetail){
+                $1
+            }.subscribe(onNext: {[personalInfoRouter] (userDetail) in
+                if let userDetail = userDetail {
+                    personalInfoRouter.accept(userDetail)
                 }
             }).disposed(by: bag)
 
@@ -122,6 +133,14 @@ private extension UserProfileViewModel {
 
 private extension UserProfileViewModel {
 
+    static func dayFormat(numberOfDays: Int) -> String {
+        switch numberOfDays {
+        case 1: return L10n.day
+        case 2...4: return L10n.twoToFourDays
+        default: return L10n.days
+        }
+    }
+
     static func output(dependencies: UserProfileViewPresentable.Dependencies, state: State) -> UserProfileViewPresentable.Output {
         let userDetail = state.userDetail.asObservable()
             .compactMap{$0}
@@ -131,13 +150,11 @@ private extension UserProfileViewModel {
                 if let upcommingRate = try? userDetail.upcommingHourRate(),
                    let since = upcommingRate.since.universalDate {
                     let calendar = Calendar.current
-
-                    // Replace the hour (time) of both dates with 00:00
                     let date1 = calendar.startOfDay(for: Date())
                     let date2 = calendar.startOfDay(for: since)
 
                     if let days = calendar.dateComponents([.day], from: date1, to: date2).day {
-                        return "In \(days) \(days == 1 || days == 0 ? "day" : "days"): \(upcommingRate.value.toCzechCrowns)"
+                        return "\(L10n.in) \(days) \(UserProfileViewModel.dayFormat(numberOfDays: days)): \(upcommingRate.value.toCzechCrowns)"
                     }
 
                 }
@@ -151,7 +168,7 @@ private extension UserProfileViewModel {
             .asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let degree = userDetail
             .map { (userDetail) in
-                userDetail.degree ?? EMPTY_SYMBOL
+                return UserProfileViewModel.valueOrEmpty(value: userDetail.degree)
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let name = userDetail
             .map { (userDetail) in
@@ -164,9 +181,7 @@ private extension UserProfileViewModel {
         let dateOfBirth = userDetail
             .map { (userDetail) in
                 guard let date = userDetail.dateOfBirth?.universalDate else {return EMPTY_SYMBOL}
-                let dateFormatterPrint = DateFormatter()
-                dateFormatterPrint.dateFormat = "dd. MM. yyyy"
-                return dateFormatterPrint.string(from: date)
+                return date.localFormat
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let hourlyCapacity = userDetail
             .map { (userDetail) in
@@ -178,11 +193,11 @@ private extension UserProfileViewModel {
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let phoneNumber = userDetail
             .map { (userDetail) in
-                userDetail.phoneNumber ?? EMPTY_SYMBOL
+                return UserProfileViewModel.valueOrEmpty(value: userDetail.phoneNumber)
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let contactEmail = userDetail
             .map { (userDetail) in
-                userDetail.contactEmail ?? EMPTY_SYMBOL
+                return UserProfileViewModel.valueOrEmpty(value: userDetail.contactEmail)
             }.asDriver(onErrorJustReturn: EMPTY_SYMBOL)
         let workType = userDetail
             .map { (userDetail) in
@@ -203,6 +218,15 @@ private extension UserProfileViewModel {
             isLoading: state.isLoading.asDriver(onErrorJustReturn: false)
         )
 
+    }
+
+    static func valueOrEmpty(value: String?) -> String {
+        if let value = value,
+           !value.isEmpty {
+            return value
+        } else {
+            return EMPTY_SYMBOL
+        }
     }
 
 }

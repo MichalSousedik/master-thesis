@@ -11,6 +11,7 @@ import Alamofire
 enum UserHttpRouter {
     case fetch(offset: Int, teamLeaderId: Int? = nil, searchedText: String? = nil)
     case detail(id: Int)
+    case update(userDetail: UserDetail)
 }
 
 extension UserHttpRouter: HttpRouter {
@@ -21,6 +22,8 @@ extension UserHttpRouter: HttpRouter {
             return "users"
         case .detail(let id):
             return "users/\(id)"
+        case .update(let userDetail):
+            return "users/\(userDetail.id)"
         }
     }
 
@@ -28,6 +31,7 @@ extension UserHttpRouter: HttpRouter {
         switch self {
         case .fetch: return .get
         case .detail: return .get
+        case .update: return .put
         }
     }
 
@@ -50,6 +54,15 @@ extension UserHttpRouter: HttpRouter {
             params["offset"]=offset
             params["order"]="surname"
             return params
+        default:
+            return nil
+        }
+    }
+
+    func body() throws -> Data? {
+        switch self {
+        case .update(let userDetail):
+            return try? JSONEncoder().encode(userDetail)
         default:
             return nil
         }
