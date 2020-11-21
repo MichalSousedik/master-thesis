@@ -25,6 +25,7 @@ PODS:
     - GTMSessionFetcher/Core (= 1.5.0)
   - IQKeyboardManagerSwift (6.5.6)
   - KeychainSwift (19.0.0)
+  - MonthYearPicker (4.0.2)
   - OHHTTPStubs/Core (9.0.0)
   - OHHTTPStubs/Default (9.0.0):
     - OHHTTPStubs/Core
@@ -60,6 +61,7 @@ DEPENDENCIES:
   - GoogleSignIn (~> 5.0)
   - IQKeyboardManagerSwift
   - KeychainSwift (~> 19.0)
+  - MonthYearPicker (~> 4.0.2)
   - OHHTTPStubs/Swift
   - RxCocoa (~> 5)
   - RxDataSources (~> 4.0)
@@ -81,6 +83,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - IQKeyboardManagerSwift
     - KeychainSwift
+    - MonthYearPicker
     - OHHTTPStubs
     - RxCocoa
     - RxDataSources
@@ -102,6 +105,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
+  MonthYearPicker: 91f77106e6806d8c93c69e943ab0795fd420657f
   OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
@@ -112,6 +116,6 @@ SPEC CHECKSUMS:
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 32753047b720b86d444dae84b289a0ccb1346734
+PODFILE CHECKSUM: 86244341f3474b330c859c42c0b2119284b863af
 
 COCOAPODS: 1.9.3

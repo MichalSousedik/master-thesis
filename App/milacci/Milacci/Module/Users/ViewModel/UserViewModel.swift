@@ -21,15 +21,16 @@ struct UserViewModel: UserViewPresentable {
         return lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName && lhs.employee.id == rhs.employee.id
     }
 
-    var identity: Int {
-        return employee.id
-    }
-
     typealias Identity = Int
 
     var firstName: String
     var lastName: String
     var employee: Employee
+
+    var identity: Int {
+        return employee.id
+    }
+
 }
 
 extension UserViewModel {

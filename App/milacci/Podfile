@@ -21,6 +21,7 @@ target 'Milacci' do
   pod 'SFSafeSymbols', '~> 2.0.1'
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
+  pod "MonthYearPicker", '~> 4.0.2'
   
 end
 

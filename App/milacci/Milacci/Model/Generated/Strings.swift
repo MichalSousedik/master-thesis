@@ -66,6 +66,8 @@ internal enum L10n {
   internal static let forbidden = L10n.tr("Localizable", "Forbidden")
   /// Frontend Developer
   internal static let frontend = L10n.tr("Localizable", "Frontend")
+  /// Hour Rate Statistics
+  internal static let hourRateStatistics = L10n.tr("Localizable", "Hour Rate Statistics")
   /// Human Resources
   internal static let hr = L10n.tr("Localizable", "HR")
   /// In

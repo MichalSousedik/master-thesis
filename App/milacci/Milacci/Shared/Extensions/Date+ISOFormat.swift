@@ -9,7 +9,7 @@
 import Foundation
 
 extension ISO8601DateFormatter {
-    convenience init(_ formatOptions: Options, timeZone: TimeZone = TimeZone(secondsFromGMT: 0)!) {
+    convenience init(_ formatOptions: Options, timeZone: TimeZone = TimeZone(secondsFromGMT: 0) ?? TimeZone.current) {
         self.init()
         self.formatOptions = formatOptions
         self.timeZone = timeZone

@@ -20,3 +20,16 @@ struct FirstLetterGroup: Comparable {
     var firstLetter: String
     var employees: [UserViewModel]
 }
+
+struct FirstLetterGroupWithHourRate: Comparable {
+    static func < (lhs: FirstLetterGroupWithHourRate, rhs: FirstLetterGroupWithHourRate) -> Bool {
+        return lhs.firstLetter < rhs.firstLetter
+    }
+
+    static func == (lhs: FirstLetterGroupWithHourRate, rhs: FirstLetterGroupWithHourRate) -> Bool {
+        return lhs.firstLetter == rhs.firstLetter
+    }
+
+    var firstLetter: String
+    var employees: [UserHourRateViewModel]
+}

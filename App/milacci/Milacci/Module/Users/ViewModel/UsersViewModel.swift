@@ -10,7 +10,6 @@ import RxSwift
 import RxRelay
 import RxCocoa
 import RxDataSources
-import Alamofire
 
 protocol UsersViewPresentable {
 

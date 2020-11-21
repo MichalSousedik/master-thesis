@@ -16,4 +16,16 @@ extension Date {
         return formatter.string(from: self)
     }
 
+    var monthYearFormat: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-yyyy"
+        return formatter.string(from: self)
+    }
+
+    var periodFormat: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM"
+        return formatter.string(from: self)
+    }
+
 }

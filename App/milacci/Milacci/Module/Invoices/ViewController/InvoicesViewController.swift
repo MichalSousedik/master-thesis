@@ -126,7 +126,6 @@ private extension InvoicesViewController {
     }
 
     func setupUI() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
 
         self.tableView.refreshControl = refreshControl
         self.refreshControl.tintColor = .label

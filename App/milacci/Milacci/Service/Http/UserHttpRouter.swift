@@ -50,7 +50,7 @@ extension UserHttpRouter: HttpRouter {
             if let searchedText = searchedText {
                 params["fullName"] = searchedText
             }
-            params["limit"]=10
+            params["limit"]=15
             params["offset"]=offset
             params["order"]="surname"
             return params

@@ -23,6 +23,7 @@ class InvoicesCoordinator: BaseCoordinator {
         }
         view.tabBarItem = UITabBarItem(title: L10n.invoices, image: Asset.Images.invoiceMinimalistIcon.image, tag: 0)
         navigationController.pushViewController(view, animated: true)
+        navigationController.navigationBar.prefersLargeTitles = true
     }
 
 }

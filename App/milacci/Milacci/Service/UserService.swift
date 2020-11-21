@@ -47,7 +47,7 @@ class UserService: UserAPI {
 //        self.mockFetch()
         return Single.create{ [httpService] (single) -> Disposable in
             do {
-                try UserHttpRouter.fetch(offset: (page - 1)*10, teamLeaderId: teamLeaderId, searchedText: searchedText)
+                try UserHttpRouter.fetch(offset: (page - 1)*15, teamLeaderId: teamLeaderId, searchedText: searchedText)
                     .request(usingHttpService: httpService)
                     .responseJSON { result in
                         HttpResponseHandler.handle(result: result, completion: { (items, error) in

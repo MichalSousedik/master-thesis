@@ -14,7 +14,7 @@ import RxDataSources
 class UsersViewController: UIViewController, Storyboardable {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var tableViewFooter: UIView!
+    @IBOutlet weak var tableViewFooter: UIView!
     @IBOutlet weak var loadingIndicatorView: UIView!
     @IBOutlet weak var loadMoreActivityIndicator: UIActivityIndicatorView!
 
