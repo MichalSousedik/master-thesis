@@ -10,7 +10,6 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-
 protocol HourRateStatsViewPresentable {
 
     typealias Input = (

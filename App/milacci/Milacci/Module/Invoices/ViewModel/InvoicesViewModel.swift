@@ -91,7 +91,7 @@ private extension InvoicesViewModel {
     }
 
     func load(page: Int) -> Observable<InvoicesResponse> {
-        return self.api.fetchInvoices(page: page, userId: UserSettingsService.shared.userId)
+        return self.api.fetchInvoices(page: page, userId: UserSettingsService.shared.userId, periodOfIssue: nil, state: nil)
             .asObservable()
     }
 
@@ -99,7 +99,7 @@ private extension InvoicesViewModel {
         let sections = state.invoices
             .map({
                 $0.compactMap({
-                    InvoiceViewModel(withInvoice: $0)
+                    MyInvoiceViewModel(withInvoice: $0)
                 })
             })
             .map({[InvoiceItemsSection(model: 0, items: $0)]})

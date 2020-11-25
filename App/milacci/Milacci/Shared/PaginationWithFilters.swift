@@ -1,23 +1,24 @@
 //
-//  PaginationNetworkLogic.swift
+//  PaginationWithFilters.swift
 //  Milacci
 //
-//  Created by Michal Sousedik on 13/10/2020.
+//  Created by Michal Sousedik on 24/11/2020.
 //  Copyright © 2020 Michal Sousedik. All rights reserved.
 //
 
 import RxSwift
 
-struct PaginationWithSearchUISource {
+struct PaginationWithFiltersUISource {
     /// reloads first page and dumps all other cached pages.
     let refresh: Observable<Void>
     /// loads next page
     let loadNextPage: Observable<Void>
 
-    let searchText: Observable<String>
+    let periodOfIssue: Observable<Date>
+    let state: Observable<InvoiceState>
 }
 
-struct PaginationWithSearchSink<T> {
+struct PaginationWithFiltersSink<T> {
     /// true if network loading is in progress.
     let isLoading: Observable<Bool>
     /// elements from all loaded pages
@@ -26,14 +27,19 @@ struct PaginationWithSearchSink<T> {
     let error: Observable<Error>
 }
 
-extension PaginationWithSearchSink {
+extension PaginationWithFiltersSink {
 
-    init(uiSource: PaginationWithSearchUISource, loadData: @escaping (Int, String) -> Observable<[T]>) {
+    init(uiSource: PaginationWithFiltersUISource, loadData: @escaping (Int, Date, InvoiceState) -> Observable<[T]>) {
         let loadResults = BehaviorSubject<[Int: [T]]>(value: [:])
 
-        let searchTrigger = uiSource.searchText
-            .map {
-                (page: -1, searchText: $0)
+        let periodOfIssueTrigger = uiSource.periodOfIssue
+            .withLatestFrom(uiSource.state) { (periodOfIssue, state) in
+                return (page: -1, periodOfIssue: periodOfIssue, state: state)
+            }
+
+        let stateTrigger = uiSource.state
+            .withLatestFrom(uiSource.periodOfIssue) { (state, periodOfIssue) in
+                return (page: -1, periodOfIssue: periodOfIssue, state: state)
             }
 
         let maxPage = loadResults
@@ -41,29 +47,29 @@ extension PaginationWithSearchSink {
             .map { $0.max() ?? 1 }
 
         let reload = uiSource.refresh
-            .withLatestFrom(uiSource.searchText) { (page, searchText) in
-                return searchText
-            }.map { (searchText) in
-                return (page: -1, searchText: searchText)
+            .withLatestFrom(uiSource.state) { (page, state) in
+                return (page: -1, state: state)
+            }.withLatestFrom(uiSource.periodOfIssue) { (complex, periodOfIssue) in
+                return (page: complex.page, periodOfIssue: periodOfIssue, state: complex.state)
             }
 
         let loadNext = uiSource.loadNextPage
             .withLatestFrom(maxPage)
-            .withLatestFrom(uiSource.searchText) { (page, searchText) in
-                return (page, searchText)
-            }.map { (page, searchText) in
-                return (page: page, searchText: searchText)
+            .withLatestFrom(uiSource.state) { (page, state) in
+                return (page: page, state: state)
+            }.withLatestFrom(uiSource.periodOfIssue) { (complex, periodOfIssue) in
+                return (page: complex.page, periodOfIssue: periodOfIssue, state: complex.state)
             }
-            .map { (page: $0 + 1, searchText: $1) }
+            .map { (page: $0 + 1, periodOfIssue: $1, state: $2) }
 
-                let start = Observable.merge(reload, loadNext, searchTrigger)
+            let start = Observable.merge(reload, loadNext, stateTrigger, periodOfIssueTrigger)
 
         let page = start
-            .map({ (page: Int, searchText: String) in
-                return (page, searchText)
+            .map({ (page: Int, periodOfIssue: Date, state: InvoiceState) in
+                return (page, periodOfIssue, state)
             })
-            .flatMap { (page, searchText) in
-                Observable.combineLatest(Observable.just(page), loadData(page == -1 ? 1 : page, searchText)){
+            .flatMap { (page, periodOfIssue, state) in
+                Observable.combineLatest(Observable.just(page), loadData(page == -1 ? 1 : page, periodOfIssue, state)){
                     (pageNumber: $0, items: $1)
 
                 }

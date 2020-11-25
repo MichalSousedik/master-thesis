@@ -12,7 +12,6 @@ import RxSwift
 class UsersCoordinator: BaseCoordinator {
 
     let bag = DisposeBag()
-
     init(navigationController: UINavigationController) {
         super.init()
         self.navigationController = navigationController

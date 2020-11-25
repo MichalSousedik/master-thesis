@@ -13,10 +13,11 @@ struct Invoice: Codable {
     let id: Int
     let periodOfIssue: String
     let state: InvoiceState
-    let totalHours: Int?
+    let totalHours: Double?
     let value: String?
     var filename: String?
     var userWorkType: WorkType?
+    let user: UserDetail?
 }
 
 extension Invoice {
@@ -24,7 +25,7 @@ extension Invoice {
     var formattedPeriodOfIssue: String {
         let parts = periodOfIssue.components(separatedBy: "-")
         let year = parts[0]
-        let month = self.numberToMonth(parts[1])
+        let month = parts[1].month
         return "\(month) \(year)"
     }
 
@@ -35,23 +36,21 @@ extension Invoice {
         return "\(month)-\(year)"
     }
 
-    func numberToMonth(_ monthNumber: String) -> String {
-        switch(monthNumber){
-        case "01" : return L10n.january
-        case "02" : return L10n.february
-        case "03" : return L10n.march
-        case "04" : return L10n.april
-        case "05" : return L10n.may
-        case "06" : return L10n.june
-        case "07" : return L10n.july
-        case "08" : return L10n.august
-        case "09" : return L10n.september
-        case "10" : return L10n.october
-        case "11" : return L10n.november
-        case "12" : return L10n.december
-        default: return L10n.unknownMonth
+}
+
+extension Invoice {
+    init(_ invoice: Invoice, state: InvoiceState? = nil) {
+            self = Invoice(
+                id: invoice.id,
+                periodOfIssue: invoice.periodOfIssue,
+                state: state ?? invoice.state,
+                totalHours: invoice.totalHours,
+                value: invoice.value,
+                filename: invoice.filename,
+                userWorkType: invoice.userWorkType,
+                user: invoice.user
+            )
         }
-    }
 }
 
 extension Invoice: Hashable {
@@ -66,7 +65,7 @@ extension Invoice: Equatable {
     }
 }
 
-enum InvoiceState: String, Codable {
+enum InvoiceState: String, Codable, CaseIterable {
     case notIssued = "notIssued"
     case paid = "paid"
     case waiting = "waiting"
@@ -76,11 +75,38 @@ enum InvoiceState: String, Codable {
 extension InvoiceState {
 
     var description: String {
-        switch self{
+        switch self {
         case .notIssued: return L10n.new
         case .paid: return L10n.paid
         case .approved:return L10n.approved
         case .waiting: return L10n.waiting
+        }
+    }
+
+    var allowedTransitions: [InvoiceState] {
+        switch self {
+        case .notIssued: return []
+        case .paid: return [.approved, .notIssued]
+        case .approved:return [.paid, .notIssued]
+        case .waiting: return [.approved, .paid, .notIssued]
+        }
+    }
+
+    var backgroundColor: UIColor {
+        switch self {
+        case .notIssued: return UIColor.gray
+        case .paid: return Asset.Colors.chartBarDefault.color
+        case .approved: return Asset.Colors.primary1.color
+        case .waiting: return UIColor.white
+        }
+    }
+
+    var segmentedControlOrder: Int {
+        switch self {
+        case .notIssued: return 2
+        case .paid: return 3
+        case .approved: return 1
+        case .waiting: return 0
         }
     }
 

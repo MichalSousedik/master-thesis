@@ -9,7 +9,7 @@
 import Alamofire
 
 enum InvoiceHttpRouter {
-    case fetch(offset: Int, userId: Int? = nil)
+    case fetch(offset: Int, userId: Int? = nil, periodOfIssue: Date?, state: InvoiceState?)
     case detail(id: Int)
     case update(invoice: Invoice, url: URL? = nil)
 }
@@ -51,7 +51,7 @@ extension InvoiceHttpRouter: HttpRouter {
 
     var parameters: Parameters? {
         switch self {
-        case .fetch(let offset, let userId):
+        case .fetch(let offset, let userId, let periodOfIssue, let state):
             var params = Parameters()
             if let userId = userId {
                 params["userId"] = userId
@@ -59,6 +59,13 @@ extension InvoiceHttpRouter: HttpRouter {
             params["limit"]=10
             params["offset"]=offset
             params["order"]="-createdAt"
+            if let periodOfIssue = periodOfIssue {
+                params["periodOfIssue"]=periodOfIssue.periodFormat
+            }
+            if let state = state {
+                params["state"]=state
+            }
+            params["limit"]=10
             return params
         default:
             return nil
@@ -70,7 +77,7 @@ extension InvoiceHttpRouter: HttpRouter {
         case .fetch: return [:]
         case .detail: return [:]
         case .update(let invoice, let url):
-            var params = ["state": invoice.state] as [String: Any]
+            var params = ["state": invoice.state.rawValue] as [String: Any]
             if let url = url {
                 params["file"] = url
             }

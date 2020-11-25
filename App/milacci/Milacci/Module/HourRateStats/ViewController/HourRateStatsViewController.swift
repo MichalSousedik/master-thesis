@@ -102,6 +102,7 @@ private extension HourRateStatsViewController {
             periodTextField?.text = datePicker?.date.monthYearFormat
         }.disposed(by: bag)
         periodTextField.text = Date().monthYearFormat
+        periodTextField.setRightIcon(image: UIImage(systemSymbol: .chevronDown))
     }
 
     func setupViewBinding() {

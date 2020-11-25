@@ -52,6 +52,8 @@ internal enum L10n {
   internal static let devops = L10n.tr("Localizable", "Devops")
   /// Employees
   internal static let employees = L10n.tr("Localizable", "Employees")
+  /// Employees Invoices
+  internal static let employeesInvoices = L10n.tr("Localizable", "Employees Invoices")
   /// Employment Contract
   internal static let employmentContract = L10n.tr("Localizable", "Employment Contract")
   /// Error occured

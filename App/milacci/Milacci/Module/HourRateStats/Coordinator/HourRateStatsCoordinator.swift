@@ -31,7 +31,7 @@ class HourRateStatsCoordinator: BaseCoordinator {
     }
 
     func setupNavigationBar(){
-        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.prefersLargeTitles = false
     }
 
 }

@@ -12,14 +12,14 @@ class InvoiceTableViewCell: UITableViewCell {
 
     static let identifier: String = "InvoiceTableViewCell"
 
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var clipImageView: UIImageView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var rowActionImageView: UIImageView!
-    func configure(usingViewModel viewModel: InvoiceViewPresentable) {
-        dateLabel.text = viewModel.date
+    func configure(usingViewModel viewModel: InvoiceViewModel) {
+        titleLabel.text = viewModel.title
         amountLabel.text = viewModel.value
         stateLabel.text = viewModel.state
         clipImageView.tintColor = viewModel.canDownloadFile ? UIColor.label : UIColor.clear

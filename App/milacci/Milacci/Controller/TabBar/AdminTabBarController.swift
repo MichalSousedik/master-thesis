@@ -9,6 +9,7 @@ import UIKit
 
 class AdminTabBarControoler: BaseTabBarController {
     override var coordinators: [Coordinator] {[
+        EmployeesInvoicesCoordinator(navigationController: BaseNavigationController()),
         HourRateStatsCoordinator(navigationController: BaseNavigationController()),
         EmployeesCoordinator(navigationController: BaseNavigationController()),
         UserProfileCoordinator(userIdProvider: { () in

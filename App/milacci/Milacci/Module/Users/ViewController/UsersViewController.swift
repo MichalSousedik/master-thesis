@@ -60,7 +60,7 @@ class UsersViewController: UIViewController, Storyboardable {
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.title = titleText
         self.tableView.refreshControl = refreshControl
-        self.refreshControl.tintColor = .black
+        self.refreshControl.tintColor = .label
         self.tableView.tableFooterView = self.tableViewFooter
         self.tableView.tableFooterView?.isHidden = true
         self.loadMoreActivityIndicator.startAnimating()
