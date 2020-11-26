@@ -40,7 +40,7 @@ extension PaginationSink {
             .withLatestFrom(maxPage)
             .map { $0 + 1 }
 
-                let start = Observable.merge(reload, loadNext)
+        let start = Observable.merge(reload, loadNext, .just(-1))
 
         let page = start
             .flatMap { page in

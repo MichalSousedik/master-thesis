@@ -30,11 +30,12 @@ class EmployeesInvoicesViewController: UIViewController, Storyboardable {
     var viewModelBuilder: EmployeesInvoicesViewPresentable.ViewModelBuilder!
     var actionViewModel: InvoiceActionViewPresentable!
     var actionViewModelBuilder: InvoiceActionViewPresentable.ViewModelBuilder!
-    var datePicker: MonthYearPickerView?
     private let bag = DisposeBag()
+
+    var datePicker: MonthYearPickerView?
     var invoiceViewModels: [InvoiceViewModel]?
 
-    private lazy var dataSource = RxTableViewSectionedReloadDataSource<InvoiceItemsSection>(configureCell: { _, tableView, indexPath, item in
+    private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<InvoiceItemsSection>(configureCell: { _, tableView, indexPath, item in
         let invoiceCell = tableView.dequeueReusableCell(withIdentifier: InvoiceTableViewCell.identifier, for: indexPath) as! InvoiceTableViewCell
         invoiceCell.configure(usingViewModel: item)
         return invoiceCell
@@ -183,7 +184,10 @@ private extension EmployeesInvoicesViewController {
         self.tableView.tableFooterView?.isHidden = true
         self.handleTableViewSizeOnKeyboard()
         setupMonthYearPicker()
+        setupSegmentedControl()
+    }
 
+    func setupSegmentedControl() {
         InvoiceState.allCases.forEach{[invoiceStateSegmentedControl] state in
             invoiceStateSegmentedControl?.setTitle(state.description, forSegmentAt: state.segmentedControlOrder)
         }

@@ -299,7 +299,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Invoices" id="Vdt-OX-tHq"/>
                     <connections>
-                        <outlet property="loadMoreActivityIndicator" destination="HA3-1v-wzz" id="MiL-Bo-cRs"/>
                         <outlet property="loadingIndicatorView" destination="LPl-WL-zSK" id="jXc-hV-jQD"/>
                         <outlet property="tableView" destination="1X2-od-dgs" id="w2U-ai-tSq"/>
                         <outlet property="tableViewFooter" destination="VxG-oB-D14" id="5xw-s4-pvq"/>
@@ -309,7 +308,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="HA3-1v-wzz">
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="HA3-1v-wzz">
                             <rect key="frame" x="188.5" y="16.5" width="37" height="37"/>
                             <color key="tintColor" systemColor="labelColor"/>
                             <color key="color" systemColor="labelColor"/>

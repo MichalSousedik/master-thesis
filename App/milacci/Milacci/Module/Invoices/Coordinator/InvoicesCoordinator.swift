@@ -16,13 +16,16 @@ class InvoicesCoordinator: BaseCoordinator {
     }
 
     override func start(){
-        let view = InvoicesViewController.instantiate()
-        let service = InvoiceService.shared
-        view.viewModelBuilder = {
-            InvoicesViewModel(input: $0, api: service)
+        let vc = InvoicesViewController.instantiate()
+        vc.actionViewModelBuilder = {
+            InvoiceActionViewModel(input: $0, api: InvoiceService.shared)
         }
-        view.tabBarItem = UITabBarItem(title: L10n.invoices, image: Asset.Images.invoiceMinimalistIcon.image, tag: 0)
-        navigationController.pushViewController(view, animated: true)
+        vc.viewModelBuilder = {
+            InvoicesViewModel(input: $0,
+                              api: InvoiceService.shared)
+        }
+        vc.tabBarItem = UITabBarItem(title: L10n.invoices, image: Asset.Images.invoiceMinimalistIcon.image, tag: 0)
+        navigationController.pushViewController(vc, animated: true)
         navigationController.navigationBar.prefersLargeTitles = true
     }
 

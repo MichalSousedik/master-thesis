@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SkeletonView
 
 class HourlyRateViewController: UIViewController, Storyboardable {
 

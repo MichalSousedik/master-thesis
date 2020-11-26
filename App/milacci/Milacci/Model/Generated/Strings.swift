@@ -124,6 +124,8 @@ internal enum L10n {
   internal static let resourceWasNotFound = L10n.tr("Localizable", "Resource was not found")
   /// Retry
   internal static let retry = L10n.tr("Localizable", "Retry")
+  /// Reupload Invoice
+  internal static let reuploadInvoice = L10n.tr("Localizable", "Reupload Invoice")
   /// Sales
   internal static let sales = L10n.tr("Localizable", "Sales")
   /// Search Team Member

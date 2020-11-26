@@ -18,18 +18,20 @@ class InvoicesViewController: UIViewController, Storyboardable {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var tableViewFooter: UIView!
     @IBOutlet weak var loadingIndicatorView: UIView!
-    @IBOutlet weak var loadMoreActivityIndicator: UIActivityIndicatorView!
 
     private let refreshControl = UIRefreshControl()
-    private let refreshSubject = PublishSubject<Void>()
-    private let resetReachedBottom = PublishSubject<Void>()
+    private let loadingSubject = PublishSubject<Void>()
     private let filePick = PublishSubject<URL>()
 
     private var viewModel: InvoicesViewPresentable!
     var viewModelBuilder: InvoicesViewPresentable.ViewModelBuilder!
+    var actionViewModel: InvoiceActionViewPresentable!
+    var actionViewModelBuilder: InvoiceActionViewPresentable.ViewModelBuilder!
     private let bag = DisposeBag()
 
-    private lazy var dataSource = RxTableViewSectionedReloadDataSource<InvoiceItemsSection>(configureCell: { _, tableView, indexPath, item in
+    var invoiceViewModels: [InvoiceViewModel]?
+
+    private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<InvoiceItemsSection>(configureCell: { _, tableView, indexPath, item in
         let invoiceCell = tableView.dequeueReusableCell(withIdentifier: InvoiceTableViewCell.identifier, for: indexPath) as!  InvoiceTableViewCell
         invoiceCell.configure(usingViewModel: item)
         return invoiceCell
@@ -37,18 +39,56 @@ class InvoicesViewController: UIViewController, Storyboardable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = viewModelBuilder((
+
+        actionViewModel = actionViewModelBuilder((
             invoiceSelect: tableView.rx.modelSelected(InvoiceViewModel.self).asDriver(),
-            refreshTrigger: refreshSubject.asDriver(onErrorJustReturn: ()),
-            loadNextPageTrigger: tableView.rx.reachedBottom(reset: resetReachedBottom),
+            invoiceActionTrigger: .empty(),
             filePick: filePick.asDriver(onErrorDriveWith: .empty())
         ))
+
+        viewModel = viewModelBuilder((
+            refreshTrigger: refreshControl.rx.controlEvent(.valueChanged).asDriver(),
+            loadNextPageTrigger: tableView.rx.reachedBottom(),
+            loadingTrigger: loadingSubject.asDriver(onErrorJustReturn: ()),
+            invoiceChanged: actionViewModel.output.invoiceChanged
+        ))
+
+        dataSource.canEditRowAtIndexPath = { _, _ in
+            return true
+        }
+        tableView.rx.setDelegate(self).disposed(by: bag)
+
         setupUI()
         setupViewModelBinding()
         setupViewBinding()
         showLoadingIndicator()
-        refreshInvoices()
     }
+}
+
+extension InvoicesViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        var actions: [UIContextualAction] = []
+        if let invoiceViewModels = invoiceViewModels {
+
+            let invoiceViewModel = invoiceViewModels[indexPath.row]
+
+            if (invoiceViewModel.invoice.state == .notIssued ||
+                    invoiceViewModel.invoice.state == .waiting) && invoiceViewModel.canDownloadFile {
+                let action = UIContextualAction(style: .normal, title: L10n.reuploadInvoice) { (_, _, success: (Bool)->Void) in
+                    self.pickFile()
+                    success(true)
+                }
+                action.backgroundColor = Asset.Colors.primary1.color
+                actions.append(action)
+            }
+        }
+
+        let configuration = UISwipeActionsConfiguration(actions: actions)
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
+    }
+
 }
 
 private extension InvoicesViewController {
@@ -58,9 +98,29 @@ private extension InvoicesViewController {
             .drive(tableView.rx.items(dataSource: self.dataSource))
             .disposed(by: bag)
 
+        self.viewModel.output.invoices.drive { [weak self] in
+            self?.invoiceViewModels = $0.flatMap({ (sectionModel) in
+                sectionModel.items
+            })
+        }.disposed(by: bag)
+
         self.viewModel.output.isLoading.drive(onNext: { [weak self] isLoading in
+            if(isLoading) {
+                self?.showLoadingIndicator()
+            } else {
+                self?.removeLoadingIndicator()
+            }
+        }).disposed(by: bag)
+
+        self.viewModel.output.isRefreshing.drive(onNext: { [weak self] isLoading in
             if(!isLoading) {
-                self?.hideLoadingIndicator()
+                self?.refreshControl.endRefreshing()
+            }
+        }).disposed(by: bag)
+
+        self.viewModel.output.isLoadingMore.drive(onNext: { [weak self] isLoading in
+            if(!isLoading) {
+                self?.tableView.tableFooterView?.isHidden = true
             }
         }).disposed(by: bag)
 
@@ -69,11 +129,11 @@ private extension InvoicesViewController {
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.handle(error, retryHandler: { [weak self] in
-                    self?.refreshInvoices()
+                    self?.loadingSubject.onNext(())
                 })                }
         }).disposed(by: bag)
 
-        self.viewModel.output.showUrl.drive(onNext: { [weak self] url in
+        self.actionViewModel.output.showUrl.drive(onNext: { [weak self] url in
             guard let self = self else { return }
             let config = SFSafariViewController.Configuration()
             config.entersReaderIfAvailable = true
@@ -82,24 +142,20 @@ private extension InvoicesViewController {
             self.present(vc, animated: true)
         }).disposed(by: bag)
 
-        self.viewModel.output.pickFile.drive(onNext: { [weak self] invoiceViewModel in
+        self.actionViewModel.output.pickFile.drive(onNext: { [weak self] invoiceViewModel in
             guard let self = self else { return }
-            let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .open)
-            documentPicker.delegate = self
-            documentPicker.allowsMultipleSelection = false
-            documentPicker.modalPresentationStyle = .formSheet
-            self.present(documentPicker, animated: true)
+            self.pickFile()
         }).disposed(by: bag)
 
-        self.viewModel.output.isUploadingFile.drive(onNext: {[weak self] uploading in
-            if uploading.isUploading {
+        self.actionViewModel.output.isProcessingInvoice.drive(onNext: {[weak self] uploading in
+            if uploading.isProcessing {
                 self?.showLoadingIndicator()
             } else {
                 self?.removeLoadingIndicator()
             }
         }).disposed(by: bag)
 
-        self.viewModel.output.info.drive(onNext: {[weak self] (message) in
+        self.actionViewModel.output.info.drive(onNext: {[weak self] (message) in
             let alert = UIAlertController(
                 title: L10n.noActionAvailable,
                 message: message,
@@ -116,24 +172,25 @@ private extension InvoicesViewController {
     }
 
     func setupViewBinding() {
-        refreshControl.rx.controlEvent(.valueChanged)
-            .subscribe({[weak self] _ in
-                self?.refreshInvoices()
-            }).disposed(by: bag)
-        tableView.rx.reachedBottom(reset: resetReachedBottom).drive(onNext: { [weak self] in
+        tableView.rx.reachedBottom().drive(onNext: { [weak self] in
             self?.tableView.tableFooterView?.isHidden = false
         }).disposed(by: bag)
     }
 
     func setupUI() {
-
         self.tableView.refreshControl = refreshControl
         self.refreshControl.tintColor = .label
         self.tableView.tableFooterView = self.tableViewFooter
         self.tableView.tableFooterView?.isHidden = true
-        self.loadMoreActivityIndicator.startAnimating()
     }
 
+    func pickFile() {
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .open)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        documentPicker.modalPresentationStyle = .formSheet
+        self.present(documentPicker, animated: true)
+    }
 }
 
 extension InvoicesViewController: UIDocumentPickerDelegate {
@@ -148,16 +205,6 @@ extension InvoicesViewController: UIDocumentPickerDelegate {
 }
 
 private extension InvoicesViewController {
-
-    func refreshInvoices(){
-        self.refreshSubject.onNext(())
-    }
-
-    func hideLoadingIndicator(){
-        self.removeLoadingIndicator()
-        self.refreshControl.endRefreshing()
-        self.tableView.tableFooterView?.isHidden = true
-    }
 
     func showLoadingIndicator() {
         self.loadingIndicatorView.isHidden = false
