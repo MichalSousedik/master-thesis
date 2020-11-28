@@ -8,7 +8,7 @@
 
 import OHHTTPStubs
 
-extension UserService {
+struct UserServiceMock {
 
     func mockDetailEndpoint(){
         stub(condition: {(urlRequest) -> Bool in
@@ -94,13 +94,25 @@ extension UserService {
 
     }
 
-    func mockFetch(){
+    static var count = 0
+    static func mockFetch(){
         stub(condition: {(urlRequest) -> Bool in
             return urlRequest.url?.absoluteString.contains("users") ?? false
         }) { (urlRequest) -> HTTPStubsResponse in
             let jsonObject: [String: Any] = [:]
+            if count == 0 {
+                count+=1
         return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 500, headers: nil)
             .requestTime(1.0, responseTime: 3.0)
+            } else {
+                let jsonMate = [
+                    "id": 12,
+                    "name": "Mate",
+                    "surname": "Dragon"
+                ] as [String: Any]
+                return HTTPStubsResponse(jsonObject: [jsonMate], statusCode: 200, headers: nil)
+                    .requestTime(1.0, responseTime: 3.0)
+            }
     }
 
 }

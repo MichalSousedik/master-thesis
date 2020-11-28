@@ -97,7 +97,6 @@ extension EmployeesInvoicesViewController: UITableViewDelegate {
                     stateChageSubject.onNext(Invoice(invoiceViewModel.invoice, state: state))
                     success(true)
                 }
-//                action.image = state.image
                 action.backgroundColor = state.backgroundColor
                 return action
             }

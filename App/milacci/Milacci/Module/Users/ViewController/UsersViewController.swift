@@ -21,6 +21,7 @@ class UsersViewController: UIViewController, Storyboardable {
     let searchController = UISearchController(searchResultsController: nil)
     private let refreshControl = UIRefreshControl()
     private let loadingSubject = PublishSubject<Void>()
+    private let loadNextSubject = PublishSubject<Void>()
 
     private var viewModel: UsersViewPresentable!
     var viewModelBuilder: UsersViewPresentable.ViewModelBuilder!
@@ -36,7 +37,7 @@ class UsersViewController: UIViewController, Storyboardable {
             (
                 employeeSelect: tableView.rx.modelSelected(UserViewModel.self).asDriver(),
                 refreshTrigger: refreshControl.rx.controlEvent(.valueChanged).asDriver(),
-                loadNextPageTrigger: tableView.rx.reachedBottom(),
+                loadNextPageTrigger: loadNextSubject.asDriver(onErrorDriveWith: .empty()),
                 searchTextTrigger: searchController.searchBar.rx.text.orEmpty
                     .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
                     .distinctUntilChanged()
@@ -51,9 +52,13 @@ class UsersViewController: UIViewController, Storyboardable {
     }
 
     func setupViewBinding() {
-        tableView.rx.reachedBottom().drive(onNext: { [weak self] in
-            self?.tableView.tableFooterView?.isHidden = false
-        }).disposed(by: bag)
+        tableView.rx.willDisplayCell.bind {[loadNextSubject, tableView] (cell, indexPath) in
+            if let tableView = tableView,
+               indexPath.section == tableView.numberOfSections - 1 &&
+                indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+                loadNextSubject.onNext(())
+            }
+        }.disposed(by: bag)
     }
 
     func setupUI() {
@@ -90,6 +95,8 @@ class UsersViewController: UIViewController, Storyboardable {
         self.viewModel.output.isLoadingMore.drive(onNext: { [weak self] isLoading in
             if(!isLoading) {
                 self?.tableView.tableFooterView?.isHidden = true
+            } else {
+                self?.tableView.tableFooterView?.isHidden = false
             }
         }).disposed(by: bag)
 

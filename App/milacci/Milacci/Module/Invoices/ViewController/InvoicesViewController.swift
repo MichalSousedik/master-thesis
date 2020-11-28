@@ -21,6 +21,7 @@ class InvoicesViewController: UIViewController, Storyboardable {
 
     private let refreshControl = UIRefreshControl()
     private let loadingSubject = PublishSubject<Void>()
+    private let loadNextSubject = PublishSubject<Void>()
     private let filePick = PublishSubject<URL>()
 
     private var viewModel: InvoicesViewPresentable!
@@ -48,19 +49,13 @@ class InvoicesViewController: UIViewController, Storyboardable {
 
         viewModel = viewModelBuilder((
             refreshTrigger: refreshControl.rx.controlEvent(.valueChanged).asDriver(),
-            loadNextPageTrigger: tableView.rx.reachedBottom(),
+            loadNextPageTrigger: loadNextSubject.asDriver(onErrorDriveWith: .empty()),
             loadingTrigger: loadingSubject.asDriver(onErrorJustReturn: ()),
             invoiceChanged: actionViewModel.output.invoiceChanged
         ))
 
-        dataSource.canEditRowAtIndexPath = { _, _ in
-            return true
-        }
-        tableView.rx.setDelegate(self).disposed(by: bag)
-
         setupUI()
         setupViewModelBinding()
-        setupViewBinding()
         showLoadingIndicator()
     }
 }
@@ -171,17 +166,24 @@ private extension InvoicesViewController {
 
     }
 
-    func setupViewBinding() {
-        tableView.rx.reachedBottom().drive(onNext: { [weak self] in
-            self?.tableView.tableFooterView?.isHidden = false
-        }).disposed(by: bag)
-    }
-
     func setupUI() {
         self.tableView.refreshControl = refreshControl
         self.refreshControl.tintColor = .label
         self.tableView.tableFooterView = self.tableViewFooter
         self.tableView.tableFooterView?.isHidden = true
+
+        dataSource.canEditRowAtIndexPath = { _, _ in
+            return true
+        }
+        tableView.rx.setDelegate(self).disposed(by: bag)
+
+        tableView.rx.willDisplayCell.bind {[loadNextSubject, tableView] (cell, indexPath) in
+            if let tableView = tableView,
+               indexPath.section == tableView.numberOfSections - 1 &&
+                indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+                loadNextSubject.onNext(())
+            }
+        }.disposed(by: bag)
     }
 
     func pickFile() {

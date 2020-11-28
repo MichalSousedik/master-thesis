@@ -18,6 +18,7 @@ protocol UserAPI {
 class UserService: UserAPI {
 
     static let shared: UserAPI = UserService()
+    static let limit = 15
     private lazy var httpService = SecuredHttpService()
 
     func fetchDetail(id: Int) -> Single<UserDetail> {
@@ -44,10 +45,10 @@ class UserService: UserAPI {
     }
 
     func fetch(page: Int, teamLeaderId: Int? = nil, searchedText: String?) -> Single<EmployeesResponse> {
-//        self.mockFetch()
+//        UserServiceMock.mockFetch()
         return Single.create{ [httpService] (single) -> Disposable in
             do {
-                try UserHttpRouter.fetch(offset: (page - 1)*15, teamLeaderId: teamLeaderId, searchedText: searchedText)
+                try UserHttpRouter.fetch(offset: (page - 1)*UserService.limit, teamLeaderId: teamLeaderId, searchedText: searchedText)
                     .request(usingHttpService: httpService)
                     .responseJSON { result in
                         HttpResponseHandler.handle(result: result, completion: { (items, error) in
