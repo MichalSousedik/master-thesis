@@ -14,6 +14,7 @@ import SkeletonView
 class HourlyRateViewController: UIViewController, Storyboardable {
 
     @IBOutlet weak var hourlyRateLabel: UILabel!
+    @IBOutlet weak var upcommingHourlyRateLabel: UILabel!
 
     private var viewModel: HourlyRateViewPresentable!
     var viewModelBuilder: HourlyRateViewPresentable.ViewModelBuilder!
@@ -39,6 +40,7 @@ extension HourlyRateViewController {
 
     func setupUI() {
         hourlyRateLabel?.showAnimatedSkeleton()
+        upcommingHourlyRateLabel?.isHidden = true
     }
 
     func setupBinding() {
@@ -50,9 +52,14 @@ extension HourlyRateViewController {
             })
         }.disposed(by: bag)
 
-        self.viewModel.output.hourlyRate.drive { [hourlyRateLabel] (hourlyRate) in
-            hourlyRateLabel?.text = hourlyRate
+        self.viewModel.output.hourlyRate.drive { [hourlyRateLabel] in
+            hourlyRateLabel?.text = $0
             hourlyRateLabel?.hideSkeleton()
+        }.disposed(by: bag)
+
+        self.viewModel.output.upcommingRate.drive { [upcommingHourlyRateLabel] in
+            upcommingHourlyRateLabel?.text = $0
+            upcommingHourlyRateLabel?.isHidden = false
         }.disposed(by: bag)
 
     }

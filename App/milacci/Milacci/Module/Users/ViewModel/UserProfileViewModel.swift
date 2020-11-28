@@ -133,14 +133,6 @@ private extension UserProfileViewModel {
 
 private extension UserProfileViewModel {
 
-    static func dayFormat(numberOfDays: Int) -> String {
-        switch numberOfDays {
-        case 1: return L10n.day
-        case 2...4: return L10n.twoToFourDays
-        default: return L10n.days
-        }
-    }
-
     static func output(dependencies: UserProfileViewPresentable.Dependencies, state: State) -> UserProfileViewPresentable.Output {
         let userDetail = state.userDetail.asObservable()
             .compactMap{$0}
@@ -154,7 +146,7 @@ private extension UserProfileViewModel {
                     let date2 = calendar.startOfDay(for: since)
 
                     if let days = calendar.dateComponents([.day], from: date1, to: date2).day {
-                        return "\(L10n.in) \(days) \(UserProfileViewModel.dayFormat(numberOfDays: days)): \(upcommingRate.value.toCzechCrowns)"
+                        return "\(L10n.in) \(days) \(HourRate.dayFormat(numberOfDays: days)): \(upcommingRate.value.toCzechCrowns)"
                     }
 
                 }

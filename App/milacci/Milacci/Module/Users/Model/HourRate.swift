@@ -24,6 +24,14 @@ enum HourRateType: String, Codable {
 
 extension HourRate: Equatable {
 
+    static func dayFormat(numberOfDays: Int) -> String {
+        switch numberOfDays {
+        case 1: return L10n.day
+        case 2...4: return L10n.twoToFourDays
+        default: return L10n.days
+        }
+    }
+
 }
 
 enum HourRateError: Error {

@@ -105,8 +105,9 @@ extension WageChartViewController: ChartViewDelegate {
     }
 
     func chartValueNothingSelected(_ chartView: ChartViewBase) {
-        self.monthLabel.textColor = .clear
-        self.monthWageLabel.textColor = .clear
+
+        self.monthLabel.text = "Select month"
+        self.monthWageLabel.text = "- Kč"
     }
 
     func setChart() {
