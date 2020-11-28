@@ -93,10 +93,11 @@ extension EmployeesInvoicesViewController: UITableViewDelegate {
             let invoiceViewModel = invoiceViewModels[indexPath.row]
 
             actions = invoiceViewModel.invoice.state.allowedTransitions.map {[stateChageSubject] (state) in
-                let action = UIContextualAction(style: .normal, title: state.description) { (_, _, success: (Bool)->Void) in
+                let action = UIContextualAction(style: .normal, title: "\(state.icon)\n\(state.description)") { (_, _, success: (Bool)->Void) in
                     stateChageSubject.onNext(Invoice(invoiceViewModel.invoice, state: state))
                     success(true)
                 }
+//                action.image = state.image
                 action.backgroundColor = state.backgroundColor
                 return action
             }

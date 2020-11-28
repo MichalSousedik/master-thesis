@@ -110,10 +110,10 @@ private extension SceneDelegate {
                 self?.userSettingsApi.saveUser(user: signInModel.user)
                 self?.appCoordinator?.reload()
             } onError: { [weak self] error in
-                self?.appCoordinator?.reload()
                 self?.window?.rootViewController?.frontmostController.handle(error, retryHandler: {[weak self] in
                     self?.signIn(accessToken: accessToken)
                 })
+                self?.appCoordinator?.reload()
             }.disposed(by: bag)
     }
 

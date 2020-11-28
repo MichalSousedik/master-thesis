@@ -25,7 +25,7 @@ class HourRateStatsCoordinator: BaseCoordinator {
                                     userAPI: UserService.shared,
                                     hourRateAPI: HourRateService.shared))
         }
-        view.tabBarItem = UITabBarItem(title: L10n.hourRateStatistics, image: UIImage(systemSymbol: .chartBarFill), tag: 0)
+        view.tabBarItem = UITabBarItem(title: L10n.hourRateStatistics, image: Asset.Images.hourRate.image, tag: 0)
         navigationController.pushViewController(view, animated: true)
         setupNavigationBar()
     }

@@ -101,6 +101,24 @@ extension InvoiceState {
         }
     }
 
+    var icon: String {
+        switch self {
+        case .notIssued: return "⏎"
+        case .paid: return "$"
+        case .approved: return "✓"
+        case .waiting: return "⏳"
+        }
+    }
+
+    var image: UIImage {
+        switch self {
+        case .notIssued: return UIImage(systemSymbol: .return)
+        case .paid: return UIImage(systemSymbol: .dollarsignCircle)
+        case .approved: return UIImage(systemSymbol: .checkmark)
+        case .waiting: return UIImage(systemSymbol: .timer)
+        }
+    }
+
     var segmentedControlOrder: Int {
         switch self {
         case .notIssued: return 2

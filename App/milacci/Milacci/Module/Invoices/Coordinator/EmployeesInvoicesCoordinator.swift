@@ -24,7 +24,7 @@ class EmployeesInvoicesCoordinator: BaseCoordinator {
             EmployeesInvoicesViewModel(input: $0,
                                        api: InvoiceService.shared)
         }
-        vc.tabBarItem = UITabBarItem(title: L10n.employeesInvoices, image: UIImage(systemSymbol: .docOnDocFill), tag: 0)
+        vc.tabBarItem = UITabBarItem(title: L10n.employeesInvoices, image: Asset.Images.invoicesIcon.image, tag: 0)
         navigationController.pushViewController(vc, animated: true)
         navigationController.navigationBar.prefersLargeTitles = false
     }
