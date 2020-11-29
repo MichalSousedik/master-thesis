@@ -65,6 +65,8 @@ class UsersViewController: UIViewController, Storyboardable {
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.title = titleText
         self.tableView.refreshControl = refreshControl
+        //https://stackoverflow.com/questions/25902288/detected-a-case-where-constraints-ambiguously-suggest-a-height-of-zero
+        self.tableView.rowHeight = 44
         self.refreshControl.tintColor = .label
         self.tableView.tableFooterView = self.tableViewFooter
         self.tableView.tableFooterView?.isHidden = true

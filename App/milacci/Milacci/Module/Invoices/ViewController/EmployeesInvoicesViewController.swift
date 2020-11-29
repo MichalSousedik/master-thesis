@@ -165,7 +165,9 @@ private extension EmployeesInvoicesViewController {
             config.entersReaderIfAvailable = true
 
             let vc = SFSafariViewController(url: url, configuration: config)
-            self.present(vc, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.present(vc, animated: true)
+            }
         }).disposed(by: bag)
 
     }
