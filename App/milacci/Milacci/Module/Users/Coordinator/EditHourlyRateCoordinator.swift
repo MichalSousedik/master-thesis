@@ -29,7 +29,9 @@ class EditHourlyRateCoordinator: BaseCoordinator {
             let vm = EditHourlyRateViewModel(input: $0, dependecies: (api: HourRateService.shared, userDetail: model))
             vm.router.bind { (hourRate) in
                 self?.router.accept(hourRate)
-                self?.navigationController.popViewController(animated: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self?.navigationController.popViewController(animated: true)
+                }
             }.disposed(by: bag)
             return vm
         }

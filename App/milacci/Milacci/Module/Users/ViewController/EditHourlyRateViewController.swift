@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class EditHourlyRateViewController: UIViewController, Storyboardable {
+class EditHourlyRateViewController: BaseViewController, Storyboardable {
 
     @IBOutlet weak var validFromTextField: UITextField!
     @IBOutlet weak var newHourlyRate: UITextField!
@@ -17,8 +17,6 @@ class EditHourlyRateViewController: UIViewController, Storyboardable {
 
     private var viewModel: EditHourlyRateViewPresentable!
     var viewModelBuilder: EditHourlyRateViewPresentable.ViewModelBuilder!
-
-    private var loadingViewController: LoadingViewController?
 
     private var saveButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemSymbol: .checkmark), style: .plain, target: nil, action: nil)
     var currentHourlyRate: Double?
@@ -92,12 +90,9 @@ extension EditHourlyRateViewController {
         }.disposed(by: bag)
         self.viewModel.output.isLoading.drive{ [weak self] loading in
             if loading {
-                let loadingViewController = LoadingViewController()
-                self?.loadingViewController = loadingViewController
-                self?.add(loadingViewController)
+                self?.startModalLoader()
             } else {
-                self?.loadingViewController?.remove()
-                self?.loadingViewController = nil
+                self?.stopModalLoader()
                 self?.saveButton.isEnabled = true
             }
         }.disposed(by: bag)

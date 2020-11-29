@@ -45,6 +45,8 @@
 		377DD12C256DBB83006B223F /* InvoiceActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377DD12B256DBB83006B223F /* InvoiceActionViewModel.swift */; };
 		377E75162555FF7C003B557A /* WageChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E75152555FF7C003B557A /* WageChartViewModel.swift */; };
 		377E751925560001003B557A /* InvoiceChartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E751825560001003B557A /* InvoiceChartEntry.swift */; };
+		3786CD202573130A007366F6 /* LoadingAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786CD1F2573130A007366F6 /* LoadingAlertController.swift */; };
+		3786CD2625731584007366F6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786CD2525731584007366F6 /* BaseViewController.swift */; };
 		379FE8B2255B61D5004CEEAA /* FirstLetterGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FE8B1255B61D5004CEEAA /* FirstLetterGroup.swift */; };
 		379FE8BC255CA83D004CEEAA /* UserProfileHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FE8BB255CA83D004CEEAA /* UserProfileHeaderViewController.swift */; };
 		379FE8CA255CBDC6004CEEAA /* EmployeeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FE8C9255CBDC6004CEEAA /* EmployeeProfileViewController.swift */; };
@@ -184,6 +186,8 @@
 		377DD12B256DBB83006B223F /* InvoiceActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceActionViewModel.swift; sourceTree = "<group>"; };
 		377E75152555FF7C003B557A /* WageChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageChartViewModel.swift; sourceTree = "<group>"; };
 		377E751825560001003B557A /* InvoiceChartEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceChartEntry.swift; sourceTree = "<group>"; };
+		3786CD1F2573130A007366F6 /* LoadingAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAlertController.swift; sourceTree = "<group>"; };
+		3786CD2525731584007366F6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		379FE8B1255B61D5004CEEAA /* FirstLetterGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLetterGroup.swift; sourceTree = "<group>"; };
 		379FE8BB255CA83D004CEEAA /* UserProfileHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderViewController.swift; sourceTree = "<group>"; };
 		379FE8C9255CBDC6004CEEAA /* EmployeeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileViewController.swift; sourceTree = "<group>"; };
@@ -686,6 +690,7 @@
 				37F70B0B2545B7A2001E9D07 /* TabBar */,
 				C05833612481477C004CA055 /* BaseNavigationController.swift */,
 				37F70B0C2545B7C3001E9D07 /* LoadingViewController.swift */,
+				3786CD2525731584007366F6 /* BaseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -704,6 +709,7 @@
 		C0B93504247D832300A457AD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3786CD1F2573130A007366F6 /* LoadingAlertController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1168,6 +1174,7 @@
 				373E8280254DF84700A93E0D /* UploadResponse.swift in Sources */,
 				37C374B92550B73300480D2C /* UserService.swift in Sources */,
 				37C374A9254F032100480D2C /* InitiatingCoordinator.swift in Sources */,
+				3786CD2625731584007366F6 /* BaseViewController.swift in Sources */,
 				C01CF704251FE9EF00C8CE06 /* Numeric+CurrencyFormatter.swift in Sources */,
 				371D169B2559F5C5007F6449 /* UserTableViewCell.swift in Sources */,
 				377320E2256D112C009C280F /* String+monthName.swift in Sources */,
@@ -1178,6 +1185,7 @@
 				37F70AE125439AA2001E9D07 /* InvoicesResponse.swift in Sources */,
 				C05833622481477C004CA055 /* BaseNavigationController.swift in Sources */,
 				371D16872559DAC6007F6449 /* UsersCoordinator.swift in Sources */,
+				3786CD202573130A007366F6 /* LoadingAlertController.swift in Sources */,
 				37EEE7F8255884A600BC3C50 /* HourRate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

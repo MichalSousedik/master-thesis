@@ -14,7 +14,7 @@ import MobileCoreServices
 import SafariServices
 import MonthYearPicker
 
-class EmployeesInvoicesViewController: UIViewController, Storyboardable {
+class EmployeesInvoicesViewController: BaseViewController, Storyboardable {
 
     @IBOutlet weak var periodOfIssueTextField: UITextField!
     @IBOutlet weak var invoiceStateSegmentedControl: UISegmentedControl!
@@ -153,9 +153,9 @@ private extension EmployeesInvoicesViewController {
 
         self.actionViewModel.output.isProcessingInvoice.drive(onNext: { [weak self] invoiceProcessing in
             if(invoiceProcessing.isProcessing) {
-                self?.showLoadingIndicator()
+                self?.startModalLoader()
             } else {
-                self?.removeLoadingIndicator()
+                self?.stopModalLoader()
             }
         }).disposed(by: bag)
 

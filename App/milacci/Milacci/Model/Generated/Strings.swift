@@ -112,6 +112,8 @@ internal enum L10n {
   internal static let office = L10n.tr("Localizable", "Office")
   /// Paid
   internal static let paid = L10n.tr("Localizable", "Paid")
+  /// Please wait
+  internal static let pleaseWait = L10n.tr("Localizable", "Please wait")
   /// Profile
   internal static let profile = L10n.tr("Localizable", "Profile")
   /// Project Manager

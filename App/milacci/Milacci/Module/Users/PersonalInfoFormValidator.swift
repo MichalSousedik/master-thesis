@@ -13,7 +13,7 @@ import RxCocoa
 class PersonalInfoFormValidator {
 
     func validate(validators: [Observable<Bool>]) -> Observable<Bool> {
-        Observable.combineLatest(validators).debug().map{$0.allSatisfy { $0 }}
+        Observable.combineLatest(validators).map{$0.allSatisfy { $0 }}
     }
 
     static func notEmpty(textField: UITextField) -> Observable<Bool> {

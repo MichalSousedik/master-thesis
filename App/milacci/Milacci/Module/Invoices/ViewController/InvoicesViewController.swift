@@ -13,7 +13,7 @@ import RxDataSources
 import MobileCoreServices
 import SafariServices
 
-class InvoicesViewController: UIViewController, Storyboardable {
+class InvoicesViewController: BaseViewController, Storyboardable {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var tableViewFooter: UIView!
@@ -130,11 +130,14 @@ private extension InvoicesViewController {
 
         self.actionViewModel.output.showUrl.drive(onNext: { [weak self] url in
             guard let self = self else { return }
+
             let config = SFSafariViewController.Configuration()
             config.entersReaderIfAvailable = true
 
             let vc = SFSafariViewController(url: url, configuration: config)
-            self.present(vc, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.present(vc, animated: true)
+            }
         }).disposed(by: bag)
 
         self.actionViewModel.output.pickFile.drive(onNext: { [weak self] invoiceViewModel in
@@ -143,10 +146,13 @@ private extension InvoicesViewController {
         }).disposed(by: bag)
 
         self.actionViewModel.output.isProcessingInvoice.drive(onNext: {[weak self] uploading in
+            guard let self = self else {return}
             if uploading.isProcessing {
-                self?.showLoadingIndicator()
+                self.startModalLoader()
+
             } else {
-                self?.removeLoadingIndicator()
+                self.stopModalLoader()
+
             }
         }).disposed(by: bag)
 

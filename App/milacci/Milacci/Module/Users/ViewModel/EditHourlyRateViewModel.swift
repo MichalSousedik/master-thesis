@@ -87,8 +87,8 @@ private extension EditHourlyRateViewModel {
             state.isLoading.accept(true)
             api.create(value: value, since: since, userId: userDetail.id)
                 .subscribe { [router, state] (hourRate) in
-                    router.accept(hourRate)
                     state.isLoading.accept(false)
+                    router.accept(hourRate)
                 } onError: { [state] (error) in
                     state.error.accept(error)
                     state.isLoading.accept(false)
