@@ -36,22 +36,15 @@ extension UserDetail {
         return "\(day). \(month). \(year)"
     }
 
-    func upcommingHourRate() throws -> HourRate? {
-        return try findUpcommingHourRate(hourRates: hourRates)
+    func upcommingHourRate(today: Date = Date()) throws -> HourRate? {
+        return try findUpcommingHourRate(hourRates: hourRates, today: today)
     }
 
-    private func findUpcommingHourRate(hourRates: [HourRate]?) throws ->  HourRate? {
+    private func findUpcommingHourRate(hourRates: [HourRate]?, today: Date) throws ->  HourRate? {
         guard let hourRates = hourRates else {return nil}
-        if hourRates.count == 0 {
-            return nil
-        }
         let hourRate = try hourRates.max { (a, b) -> Bool in
-            guard let aSinceDate = a.since.universalDate else {
-                throw HourRateError.sinceInWrongFormat(id: a.id)
-            }
-            guard let bSinceDate = b.since.universalDate else {
-                throw HourRateError.sinceInWrongFormat(id: b.id)
-            }
+            let aSinceDate = try findSinceUniversalDate(hourRate: a)
+            let bSinceDate = try findSinceUniversalDate(hourRate: b)
             return aSinceDate < bSinceDate
         }
 
@@ -61,10 +54,9 @@ extension UserDetail {
            unwrappedHourRate.validTo == nil {
             return hourRate
         } else {
-
             return try findUpcommingHourRate(hourRates: hourRates.filter({[unwrappedHourRate] (hRate) -> Bool in
                 hRate.id != unwrappedHourRate.id
-            }))
+            }), today: today)
         }
     }
 
@@ -74,16 +66,9 @@ extension UserDetail {
 
     private func findCurrentHourRate(hourRates: [HourRate]?) throws ->  HourRate? {
         guard let hourRates = hourRates else {return nil}
-        if hourRates.count == 0 {
-            return nil
-        }
         let hourRate = try hourRates.max { (a, b) -> Bool in
-            guard let aSinceDate = a.since.universalDate else {
-                throw HourRateError.sinceInWrongFormat(id: a.id)
-            }
-            guard let bSinceDate = b.since.universalDate else {
-                throw HourRateError.sinceInWrongFormat(id: b.id)
-            }
+            let aSinceDate = try findSinceUniversalDate(hourRate: a)
+            let bSinceDate = try findSinceUniversalDate(hourRate: b)
             return aSinceDate < bSinceDate
         }
 
@@ -92,11 +77,17 @@ extension UserDetail {
            sinceDate < Date() {
             return hourRate
         } else {
-
             return try findCurrentHourRate(hourRates: hourRates.filter({[unwrappedHourRate] (hRate) -> Bool in
                 hRate.id != unwrappedHourRate.id
             }))
         }
+    }
+
+    private func findSinceUniversalDate(hourRate: HourRate) throws -> Date {
+        guard let sinceDate = hourRate.since.universalDate else {
+            throw HourRateError.sinceInWrongFormat(id: hourRate.id)
+        }
+        return sinceDate
     }
 
 }

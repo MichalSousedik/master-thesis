@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		37093A70253CE51E00E87BA4 /* UserSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37093A6F253CE51E00E87BA4 /* UserSettingsService.swift */; };
 		37093A72253CE9B200E87BA4 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37093A71253CE9B200E87BA4 /* SignInResponse.swift */; };
+		370AD556257940960019D367 /* FirstLetterGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370AD555257940960019D367 /* FirstLetterGroupTests.swift */; };
+		370AD55A257963DC0019D367 /* InvoiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370AD559257963DC0019D367 /* InvoiceTests.swift */; };
+		370AD560257994320019D367 /* NumericCurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370AD55F257994320019D367 /* NumericCurrencyFormatterTests.swift */; };
+		370AD564257995640019D367 /* DateLocalFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370AD563257995640019D367 /* DateLocalFormatTests.swift */; };
+		370AD568257999970019D367 /* UserSettingsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370AD567257999970019D367 /* UserSettingsServiceTests.swift */; };
 		3711806E254A2D18000DFFFA /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3711806B254A2D18000DFFFA /* Plist.swift */; };
 		3711806F254A2D18000DFFFA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3711806C254A2D18000DFFFA /* Strings.swift */; };
 		37118071254A2D60000DFFFA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37118070254A2D60000DFFFA /* Images.xcassets */; };
@@ -25,6 +30,7 @@
 		3726F99A255F585B008635E7 /* MyTeamCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726F999255F585B008635E7 /* MyTeamCoordinator.swift */; };
 		3726F99E255F58DA008635E7 /* UsersViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726F99D255F58DA008635E7 /* UsersViewControllerFactory.swift */; };
 		3726F9A4255F5ADD008635E7 /* MyTeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726F9A3255F5ADD008635E7 /* MyTeamViewModel.swift */; };
+		372964D2258AE44E00C310D8 /* MilacciUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372964D1258AE44E00C310D8 /* MilacciUITests.swift */; };
 		3737B1352564652100798E12 /* EditHourlyRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737B1342564652100798E12 /* EditHourlyRateViewModel.swift */; };
 		3737B13B25647FAF00798E12 /* HourRateHttpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737B13A25647FAF00798E12 /* HourRateHttpRouter.swift */; };
 		3737B13F2564815900798E12 /* HourRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737B13E2564815900798E12 /* HourRateService.swift */; };
@@ -37,6 +43,7 @@
 		3737B161256732A600798E12 /* HourRateStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737B160256732A600798E12 /* HourRateStatsViewController.swift */; };
 		3737B166256732CB00798E12 /* HourRateStatsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3737B165256732CB00798E12 /* HourRateStatsCoordinator.swift */; };
 		373931842569DB9E00E0B01E /* UserHourRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373931832569DB9E00E0B01E /* UserHourRateViewModel.swift */; };
+		373C0FA62590FE9F00289914 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373C0FA52590FE9F00289914 /* BaseViewController.swift */; };
 		373E827E254DDABB00A93E0D /* ViewControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373E827D254DDABB00A93E0D /* ViewControllerError.swift */; };
 		373E8280254DF84700A93E0D /* UploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373E827F254DF84700A93E0D /* UploadResponse.swift */; };
 		375B0D582531BCD000C90879 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375B0D572531BCD000C90879 /* CloudKit.framework */; };
@@ -46,7 +53,6 @@
 		377E75162555FF7C003B557A /* WageChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E75152555FF7C003B557A /* WageChartViewModel.swift */; };
 		377E751925560001003B557A /* InvoiceChartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E751825560001003B557A /* InvoiceChartEntry.swift */; };
 		3786CD202573130A007366F6 /* LoadingAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786CD1F2573130A007366F6 /* LoadingAlertController.swift */; };
-		3786CD2625731584007366F6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3786CD2525731584007366F6 /* BaseViewController.swift */; };
 		379FE8B2255B61D5004CEEAA /* FirstLetterGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FE8B1255B61D5004CEEAA /* FirstLetterGroup.swift */; };
 		379FE8BC255CA83D004CEEAA /* UserProfileHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FE8BB255CA83D004CEEAA /* UserProfileHeaderViewController.swift */; };
 		379FE8CA255CBDC6004CEEAA /* EmployeeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FE8C9255CBDC6004CEEAA /* EmployeeProfileViewController.swift */; };
@@ -83,7 +89,7 @@
 		37EEE7F52558848C00BC3C50 /* JobTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7F42558848C00BC3C50 /* JobTitle.swift */; };
 		37EEE7F8255884A600BC3C50 /* HourRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7F7255884A600BC3C50 /* HourRate.swift */; };
 		37EEE7FE255884F100BC3C50 /* String+UniversalDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEE7FD255884F100BC3C50 /* String+UniversalDate.swift */; };
-		37F70AE125439AA2001E9D07 /* InvoicesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */; };
+		37F70AE125439AA2001E9D07 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE025439AA2001E9D07 /* Invoice.swift */; };
 		37F70AE625444ADC001E9D07 /* WageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE525444ADC001E9D07 /* WageCoordinator.swift */; };
 		37F70AE825444BB9001E9D07 /* WageChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE725444BB9001E9D07 /* WageChartViewController.swift */; };
 		37F70AEA25444D1D001E9D07 /* WorkerTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F70AE925444D1D001E9D07 /* WorkerTabBarController.swift */; };
@@ -137,6 +143,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		372964D4258AE44E00C310D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0455E512479BF8500D96F53 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0455E582479BF8500D96F53;
+			remoteInfo = Milacci;
+		};
 		37EEE7DC255790E700BC3C50 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C0455E512479BF8500D96F53 /* Project object */;
@@ -149,6 +162,11 @@
 /* Begin PBXFileReference section */
 		37093A6F253CE51E00E87BA4 /* UserSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsService.swift; sourceTree = "<group>"; };
 		37093A71253CE9B200E87BA4 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
+		370AD555257940960019D367 /* FirstLetterGroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLetterGroupTests.swift; sourceTree = "<group>"; };
+		370AD559257963DC0019D367 /* InvoiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTests.swift; sourceTree = "<group>"; };
+		370AD55F257994320019D367 /* NumericCurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericCurrencyFormatterTests.swift; sourceTree = "<group>"; };
+		370AD563257995640019D367 /* DateLocalFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLocalFormatTests.swift; sourceTree = "<group>"; };
+		370AD567257999970019D367 /* UserSettingsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsServiceTests.swift; sourceTree = "<group>"; };
 		3711806B254A2D18000DFFFA /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		3711806C254A2D18000DFFFA /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		37118070254A2D60000DFFFA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -165,6 +183,9 @@
 		3726F999255F585B008635E7 /* MyTeamCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamCoordinator.swift; sourceTree = "<group>"; };
 		3726F99D255F58DA008635E7 /* UsersViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewControllerFactory.swift; sourceTree = "<group>"; };
 		3726F9A3255F5ADD008635E7 /* MyTeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamViewModel.swift; sourceTree = "<group>"; };
+		372964CF258AE44E00C310D8 /* MilacciUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MilacciUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		372964D1258AE44E00C310D8 /* MilacciUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilacciUITests.swift; sourceTree = "<group>"; };
+		372964D3258AE44E00C310D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3737B1342564652100798E12 /* EditHourlyRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHourlyRateViewModel.swift; sourceTree = "<group>"; };
 		3737B13A25647FAF00798E12 /* HourRateHttpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourRateHttpRouter.swift; sourceTree = "<group>"; };
 		3737B13E2564815900798E12 /* HourRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourRateService.swift; sourceTree = "<group>"; };
@@ -177,6 +198,7 @@
 		3737B160256732A600798E12 /* HourRateStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourRateStatsViewController.swift; sourceTree = "<group>"; };
 		3737B165256732CB00798E12 /* HourRateStatsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourRateStatsCoordinator.swift; sourceTree = "<group>"; };
 		373931832569DB9E00E0B01E /* UserHourRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHourRateViewModel.swift; sourceTree = "<group>"; };
+		373C0FA52590FE9F00289914 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		373E827D254DDABB00A93E0D /* ViewControllerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerError.swift; sourceTree = "<group>"; };
 		373E827F254DF84700A93E0D /* UploadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResponse.swift; sourceTree = "<group>"; };
 		375B0D562531B22B00C90879 /* MilacciDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MilacciDebug.entitlements; sourceTree = "<group>"; };
@@ -187,7 +209,6 @@
 		377E75152555FF7C003B557A /* WageChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageChartViewModel.swift; sourceTree = "<group>"; };
 		377E751825560001003B557A /* InvoiceChartEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceChartEntry.swift; sourceTree = "<group>"; };
 		3786CD1F2573130A007366F6 /* LoadingAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAlertController.swift; sourceTree = "<group>"; };
-		3786CD2525731584007366F6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		379FE8B1255B61D5004CEEAA /* FirstLetterGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLetterGroup.swift; sourceTree = "<group>"; };
 		379FE8BB255CA83D004CEEAA /* UserProfileHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderViewController.swift; sourceTree = "<group>"; };
 		379FE8C9255CBDC6004CEEAA /* EmployeeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileViewController.swift; sourceTree = "<group>"; };
@@ -230,7 +251,7 @@
 		37EEE7F42558848C00BC3C50 /* JobTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTitle.swift; sourceTree = "<group>"; };
 		37EEE7F7255884A600BC3C50 /* HourRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourRate.swift; sourceTree = "<group>"; };
 		37EEE7FD255884F100BC3C50 /* String+UniversalDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UniversalDate.swift"; sourceTree = "<group>"; };
-		37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesResponse.swift; sourceTree = "<group>"; };
+		37F70AE025439AA2001E9D07 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
 		37F70AE525444ADC001E9D07 /* WageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageCoordinator.swift; sourceTree = "<group>"; };
 		37F70AE725444BB9001E9D07 /* WageChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WageChartViewController.swift; sourceTree = "<group>"; };
 		37F70AE925444D1D001E9D07 /* WorkerTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerTabBarController.swift; sourceTree = "<group>"; };
@@ -292,6 +313,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		372964CC258AE44E00C310D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		37EEE7D4255790E700BC3C50 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -344,6 +372,7 @@
 		371FD460256866B2004255D4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				373931832569DB9E00E0B01E /* UserHourRateViewModel.swift */,
 				371FD461256866C8004255D4 /* HourRateStatsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -357,10 +386,18 @@
 			path = ViewCell;
 			sourceTree = "<group>";
 		};
+		372964D0258AE44E00C310D8 /* MilacciUITests */ = {
+			isa = PBXGroup;
+			children = (
+				372964D1258AE44E00C310D8 /* MilacciUITests.swift */,
+				372964D3258AE44E00C310D8 /* Info.plist */,
+			);
+			path = MilacciUITests;
+			sourceTree = "<group>";
+		};
 		3737B15E2567328400798E12 /* HourRateStats */ = {
 			isa = PBXGroup;
 			children = (
-				373931822569DB8F00E0B01E /* Model */,
 				371FD4652568A7C1004255D4 /* ViewCell */,
 				371FD460256866B2004255D4 /* ViewModel */,
 				3737B164256732BF00798E12 /* Coordinator */,
@@ -383,14 +420,6 @@
 				3737B165256732CB00798E12 /* HourRateStatsCoordinator.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		373931822569DB8F00E0B01E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				373931832569DB9E00E0B01E /* UserHourRateViewModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		377E75142555FF6D003B557A /* ViewModel */ = {
@@ -481,6 +510,11 @@
 				37EEE7E4255809D800BC3C50 /* UserDetailTests.swift */,
 				37EEE7D9255790E700BC3C50 /* HourRateTests.swift */,
 				37EEE7DB255790E700BC3C50 /* Info.plist */,
+				370AD555257940960019D367 /* FirstLetterGroupTests.swift */,
+				370AD559257963DC0019D367 /* InvoiceTests.swift */,
+				370AD55F257994320019D367 /* NumericCurrencyFormatterTests.swift */,
+				370AD563257995640019D367 /* DateLocalFormatTests.swift */,
+				370AD567257999970019D367 /* UserSettingsServiceTests.swift */,
 			);
 			path = MilacciTests;
 			sourceTree = "<group>";
@@ -603,6 +637,7 @@
 			children = (
 				C0455E5B2479BF8500D96F53 /* Milacci */,
 				37EEE7D8255790E700BC3C50 /* MilacciTests */,
+				372964D0258AE44E00C310D8 /* MilacciUITests */,
 				C0455E5A2479BF8500D96F53 /* Products */,
 				2881B083111DC7DEB27A82F7 /* Pods */,
 				31583BC1B48A5B6D96EA11AA /* Frameworks */,
@@ -614,6 +649,7 @@
 			children = (
 				C0455E592479BF8500D96F53 /* Milacci.app */,
 				37EEE7D7255790E700BC3C50 /* MilacciTests.xctest */,
+				372964CF258AE44E00C310D8 /* MilacciUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -690,7 +726,7 @@
 				37F70B0B2545B7A2001E9D07 /* TabBar */,
 				C05833612481477C004CA055 /* BaseNavigationController.swift */,
 				37F70B0C2545B7C3001E9D07 /* LoadingViewController.swift */,
-				3786CD2525731584007366F6 /* BaseViewController.swift */,
+				373C0FA52590FE9F00289914 /* BaseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -850,7 +886,7 @@
 		C0E8E121251A804200A21F9E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				37F70AE025439AA2001E9D07 /* InvoicesResponse.swift */,
+				37F70AE025439AA2001E9D07 /* Invoice.swift */,
 				373E827F254DF84700A93E0D /* UploadResponse.swift */,
 			);
 			path = Model;
@@ -859,6 +895,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		372964CE258AE44E00C310D8 /* MilacciUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 372964D8258AE44E00C310D8 /* Build configuration list for PBXNativeTarget "MilacciUITests" */;
+			buildPhases = (
+				372964CB258AE44E00C310D8 /* Sources */,
+				372964CC258AE44E00C310D8 /* Frameworks */,
+				372964CD258AE44E00C310D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				372964D5258AE44E00C310D8 /* PBXTargetDependency */,
+			);
+			name = MilacciUITests;
+			productName = MilacciUITests;
+			productReference = 372964CF258AE44E00C310D8 /* MilacciUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		37EEE7D6255790E700BC3C50 /* MilacciTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 37EEE7DE255790E700BC3C50 /* Build configuration list for PBXNativeTarget "MilacciTests" */;
@@ -905,10 +959,14 @@
 		C0455E512479BF8500D96F53 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1210;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Michal Sousedik";
 				TargetAttributes = {
+					372964CE258AE44E00C310D8 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = C0455E582479BF8500D96F53;
+					};
 					37EEE7D6255790E700BC3C50 = {
 						CreatedOnToolsVersion = 12.1;
 						TestTargetID = C0455E582479BF8500D96F53;
@@ -934,11 +992,19 @@
 			targets = (
 				C0455E582479BF8500D96F53 /* Milacci */,
 				37EEE7D6255790E700BC3C50 /* MilacciTests */,
+				372964CE258AE44E00C310D8 /* MilacciUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		372964CD258AE44E00C310D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		37EEE7D5255790E700BC3C50 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1057,11 +1123,24 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		372964CB258AE44E00C310D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				372964D2258AE44E00C310D8 /* MilacciUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		37EEE7D3255790E700BC3C50 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				370AD564257995640019D367 /* DateLocalFormatTests.swift in Sources */,
+				370AD556257940960019D367 /* FirstLetterGroupTests.swift in Sources */,
+				370AD55A257963DC0019D367 /* InvoiceTests.swift in Sources */,
 				37EEE7DA255790E700BC3C50 /* HourRateTests.swift in Sources */,
+				370AD568257999970019D367 /* UserSettingsServiceTests.swift in Sources */,
+				370AD560257994320019D367 /* NumericCurrencyFormatterTests.swift in Sources */,
 				37EEE7E5255809D800BC3C50 /* UserDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1174,7 +1253,7 @@
 				373E8280254DF84700A93E0D /* UploadResponse.swift in Sources */,
 				37C374B92550B73300480D2C /* UserService.swift in Sources */,
 				37C374A9254F032100480D2C /* InitiatingCoordinator.swift in Sources */,
-				3786CD2625731584007366F6 /* BaseViewController.swift in Sources */,
+				373C0FA62590FE9F00289914 /* BaseViewController.swift in Sources */,
 				C01CF704251FE9EF00C8CE06 /* Numeric+CurrencyFormatter.swift in Sources */,
 				371D169B2559F5C5007F6449 /* UserTableViewCell.swift in Sources */,
 				377320E2256D112C009C280F /* String+monthName.swift in Sources */,
@@ -1182,7 +1261,7 @@
 				3737B166256732CB00798E12 /* HourRateStatsCoordinator.swift in Sources */,
 				37C374A2254ED85600480D2C /* AccessTokenInterceptor.swift in Sources */,
 				373931842569DB9E00E0B01E /* UserHourRateViewModel.swift in Sources */,
-				37F70AE125439AA2001E9D07 /* InvoicesResponse.swift in Sources */,
+				37F70AE125439AA2001E9D07 /* Invoice.swift in Sources */,
 				C05833622481477C004CA055 /* BaseNavigationController.swift in Sources */,
 				371D16872559DAC6007F6449 /* UsersCoordinator.swift in Sources */,
 				3786CD202573130A007366F6 /* LoadingAlertController.swift in Sources */,
@@ -1193,6 +1272,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		372964D5258AE44E00C310D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0455E582479BF8500D96F53 /* Milacci */;
+			targetProxy = 372964D4258AE44E00C310D8 /* PBXContainerItemProxy */;
+		};
 		37EEE7DD255790E700BC3C50 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C0455E582479BF8500D96F53 /* Milacci */;
@@ -1231,6 +1315,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		372964D6258AE44E00C310D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FRYD8HMFR6;
+				INFOPLIST_FILE = MilacciUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cvut.MilacciUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Milacci;
+			};
+			name = Debug;
+		};
+		372964D7258AE44E00C310D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FRYD8HMFR6;
+				INFOPLIST_FILE = MilacciUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cvut.MilacciUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Milacci;
+			};
+			name = Release;
+		};
 		37EEE7DF255790E700BC3C50 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1454,6 +1580,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		372964D8258AE44E00C310D8 /* Build configuration list for PBXNativeTarget "MilacciUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				372964D6258AE44E00C310D8 /* Debug */,
+				372964D7258AE44E00C310D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		37EEE7DE255790E700BC3C50 /* Build configuration list for PBXNativeTarget "MilacciTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FirstLetterGroup: Comparable {
+struct FirstLetterGroup<T>: Comparable {
     static func < (lhs: FirstLetterGroup, rhs: FirstLetterGroup) -> Bool {
         return lhs.firstLetter < rhs.firstLetter
     }
@@ -18,18 +18,5 @@ struct FirstLetterGroup: Comparable {
     }
 
     var firstLetter: String
-    var employees: [UserViewModel]
-}
-
-struct FirstLetterGroupWithHourRate: Comparable {
-    static func < (lhs: FirstLetterGroupWithHourRate, rhs: FirstLetterGroupWithHourRate) -> Bool {
-        return lhs.firstLetter < rhs.firstLetter
-    }
-
-    static func == (lhs: FirstLetterGroupWithHourRate, rhs: FirstLetterGroupWithHourRate) -> Bool {
-        return lhs.firstLetter == rhs.firstLetter
-    }
-
-    var firstLetter: String
-    var employees: [UserHourRateViewModel]
+    var models: [T]
 }

@@ -6,14 +6,19 @@
 //  Copyright © 2020 Michal Sousedik. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class InitiatingCoordinator: BaseCoordinator {
 
-    var vc: InitiatingViewController?
+    private let window: UIWindow
+
+    init(window: UIWindow) {
+        self.window = window
+    }
 
     override func start(){
-        self.vc = InitiatingViewController.instantiate()
+        window.rootViewController = InitiatingViewController.instantiate()
+        window.makeKeyAndVisible()
     }
 
 }

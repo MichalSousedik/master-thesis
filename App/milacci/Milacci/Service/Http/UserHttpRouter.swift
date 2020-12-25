@@ -9,6 +9,9 @@
 import Alamofire
 
 enum UserHttpRouter {
+
+    static let limit = 15
+
     case fetch(offset: Int, teamLeaderId: Int? = nil, searchedText: String? = nil)
     case detail(id: Int)
     case update(userDetail: UserDetail)
@@ -50,7 +53,7 @@ extension UserHttpRouter: HttpRouter {
             if let searchedText = searchedText {
                 params["fullName"] = searchedText
             }
-            params["limit"]=UserService.limit
+            params["limit"]=UserHttpRouter.limit
             params["offset"]=offset
             params["order"]="surname"
             return params

@@ -13,7 +13,6 @@ struct Invoice: Codable {
     let id: Int
     let periodOfIssue: String
     let state: InvoiceState
-    let totalHours: Double?
     let value: String?
     var filename: String?
     var userWorkType: WorkType?
@@ -22,8 +21,11 @@ struct Invoice: Codable {
 
 extension Invoice {
 
-    var formattedPeriodOfIssue: String {
+    var overviewPeriodOfIssue: String {
         let parts = periodOfIssue.components(separatedBy: "-")
+        guard parts.count == 2 else {
+            return ""
+        }
         let year = parts[0]
         let month = parts[1].month
         return "\(month) \(year)"
@@ -31,6 +33,9 @@ extension Invoice {
 
     var chartPeriodOfIssue: String {
         let parts = periodOfIssue.components(separatedBy: "-")
+        guard parts.count == 2 else {
+            return ""
+        }
         let year = parts[0]
         let month = parts[1]
         return "\(month)-\(year)"
@@ -44,7 +49,6 @@ extension Invoice {
                 id: invoice.id,
                 periodOfIssue: invoice.periodOfIssue,
                 state: state ?? invoice.state,
-                totalHours: invoice.totalHours,
                 value: invoice.value,
                 filename: invoice.filename,
                 userWorkType: invoice.userWorkType,
@@ -53,15 +57,10 @@ extension Invoice {
         }
 }
 
-extension Invoice: Hashable {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
-
 extension Invoice: Equatable {
     static func == (lhs: Invoice, rhs: Invoice) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.id == rhs.id && lhs.periodOfIssue == rhs.periodOfIssue && lhs.state == rhs.state
+            && lhs.value == rhs.value && lhs.filename == rhs.filename && lhs.userWorkType == rhs.userWorkType
     }
 }
 

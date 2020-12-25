@@ -129,12 +129,12 @@ private extension HourRateStatsViewModel {
                     let lastName = employee.lastname.isEmpty ? "-" : employee.lastname
                     return String(Array(lastName)[0]).uppercased()
                 }.map({ (firstLetter, employees) in
-                    return FirstLetterGroupWithHourRate(firstLetter: firstLetter, employees: employees)
+                    return FirstLetterGroup<UserHourRateViewModel>(firstLetter: firstLetter, models: employees)
                 }).sorted()
             }
             .map({ (firstLetterGroups) in
                 firstLetterGroups.map { (firstLetterGroup) in
-                    UserHourRateItemsSection(model: firstLetterGroup.firstLetter, items: firstLetterGroup.employees)
+                    UserHourRateItemsSection(model: firstLetterGroup.firstLetter, items: firstLetterGroup.models)
                 }
             })
             .asDriver(onErrorJustReturn: [])

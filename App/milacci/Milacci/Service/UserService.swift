@@ -18,11 +18,10 @@ protocol UserAPI {
 class UserService: UserAPI {
 
     static let shared: UserAPI = UserService()
-    static let limit = 15
     private lazy var httpService = SecuredHttpService()
 
     func fetchDetail(id: Int) -> Single<UserDetail> {
-//        mockDetailEndpoint()
+//        UserServiceMock.mockDetailEndpoint()
         return Single.create{ [httpService] (single) -> Disposable in
             do {
                 try UserHttpRouter.detail(id: id)
@@ -48,7 +47,7 @@ class UserService: UserAPI {
 //        UserServiceMock.mockFetch()
         return Single.create{ [httpService] (single) -> Disposable in
             do {
-                try UserHttpRouter.fetch(offset: (page - 1)*UserService.limit, teamLeaderId: teamLeaderId, searchedText: searchedText)
+                try UserHttpRouter.fetch(offset: (page - 1)*UserHttpRouter.limit, teamLeaderId: teamLeaderId, searchedText: searchedText)
                     .request(usingHttpService: httpService)
                     .responseJSON { result in
                         HttpResponseHandler.handle(result: result, completion: { (items, error) in

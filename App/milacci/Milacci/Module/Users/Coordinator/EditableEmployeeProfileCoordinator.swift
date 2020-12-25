@@ -54,7 +54,7 @@ class EditableEmployeeProfileCoordinator: EmployeeProfileCoordinator {
         coordinator.router.bind {[weak self] _ in
             self?.viewModel?.refresh()
         }.disposed(by: bag)
-        self.add(coordinator: coordinator)
+        self.addChild(coordinator: coordinator)
         coordinator.start()
     }
 
@@ -63,7 +63,7 @@ class EditableEmployeeProfileCoordinator: EmployeeProfileCoordinator {
         coordinator.complete.bind {[weak self] in
             self?.viewModel?.state.userDetail.accept($0)
         }.disposed(by: bag)
-        self.add(coordinator: coordinator)
+        self.addChild(coordinator: coordinator)
         coordinator.start()
     }
 

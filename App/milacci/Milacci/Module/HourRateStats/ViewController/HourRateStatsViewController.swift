@@ -73,7 +73,7 @@ private extension HourRateStatsViewController {
         }
     }
 
-    private var configureCell: RxTableViewSectionedAnimatedDataSource<UserHourRateItemsSection>.ConfigureCell {
+    var configureCell: RxTableViewSectionedAnimatedDataSource<UserHourRateItemsSection>.ConfigureCell {
         return { _, tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: UserHourRateViewCell.identifier, for: indexPath) as!  UserHourRateViewCell
             cell.configure(usingViewModel: item)

@@ -19,7 +19,7 @@ protocol Coordinator: class {
 
 extension Coordinator {
 
-    func add(coordinator: Coordinator) -> Void {
+    func addChild(coordinator: Coordinator) -> Void {
         self.childCoordinator.append(coordinator)
     }
 

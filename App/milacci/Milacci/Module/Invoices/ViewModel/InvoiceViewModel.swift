@@ -82,7 +82,7 @@ class MyInvoiceViewModel: InvoiceViewModel {
 
     override init(withInvoice invoice: Invoice){
         super.init(withInvoice: invoice)
-        self.title = invoice.formattedPeriodOfIssue
+        self.title = invoice.overviewPeriodOfIssue
         self.canUploadFile = (invoice.filename == nil || invoice.filename == "")
             && invoice.userWorkType != WorkType.agreement
             && (invoice.state == InvoiceState.notIssued || invoice.state == InvoiceState.waiting)

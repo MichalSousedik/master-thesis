@@ -25,26 +25,31 @@
         }
 
         func reload() {
+            var vc: UIViewController?
             if let signInModel = UserSettingsService.shared.getSignInModel() {
-                window.rootViewController = TabBarControllerFactory.create(roles: signInModel.user.roles ?? [])
+                vc = TabBarControllerFactory.create(roles: signInModel.user.roles ?? [])
             } else {
-                showSignIn()
+                vc = showSignIn()
             }
-            window.makeKeyAndVisible()
+            displayViewController(vc: vc)
         }
 
-        func showInitiatingViewController() {
-            let coordinator = InitiatingCoordinator()
-            self.add(coordinator: coordinator)
+        private func showInitiatingViewController() {
+            let coordinator = InitiatingCoordinator(window: window)
+            self.addChild(coordinator: coordinator)
             coordinator.start()
-            window.rootViewController = coordinator.vc
         }
 
-        func showSignIn() {
+        private func showSignIn() -> UIViewController? {
             let signInCoordinator = SignInCoordinator()
-            self.add(coordinator: signInCoordinator)
+            self.addChild(coordinator: signInCoordinator)
             signInCoordinator.start()
-            window.rootViewController = signInCoordinator.vc
+            return signInCoordinator.vc
+        }
+
+        private func displayViewController(vc: UIViewController?) {
+            window.rootViewController = vc
+            window.makeKeyAndVisible()
         }
 
     }

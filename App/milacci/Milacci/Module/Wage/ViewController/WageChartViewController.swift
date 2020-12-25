@@ -101,7 +101,7 @@ extension WageChartViewController: ChartViewDelegate {
         guard
             let invoiceChartEntry = data as? Invoice
         else {fatalError("Data in chart entry are not of type Invoice")}
-        self.monthLabel.text = invoiceChartEntry.formattedPeriodOfIssue
+        self.monthLabel.text = invoiceChartEntry.overviewPeriodOfIssue
     }
 
     func chartValueNothingSelected(_ chartView: ChartViewBase) {

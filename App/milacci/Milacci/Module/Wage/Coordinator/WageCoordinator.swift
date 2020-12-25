@@ -29,7 +29,7 @@ class WageCoordinator: BaseCoordinator {
         self.setupNavigationBar()
     }
 
-    func setupHourlyRateViewController(view: WageViewController) {
+    private func setupHourlyRateViewController(view: WageViewController) {
         view.hourlyRateViewController = HourlyRateViewController.instantiate()
         view.hourlyRateViewController.viewModelBuilder = { [userIdProvider] in
             return HourlyRateViewModel(input: $0,
@@ -39,7 +39,7 @@ class WageCoordinator: BaseCoordinator {
         }
     }
 
-    func setupChartViewController(view: WageViewController) {
+    private func setupChartViewController(view: WageViewController) {
         view.wageChartViewController = WageChartViewController.instantiate()
         view.wageChartViewController.viewModelBuilder = { [userIdProvider] in
             return WageChartViewModel(input: $0,
@@ -49,7 +49,7 @@ class WageCoordinator: BaseCoordinator {
         }
     }
 
-    func setupNavigationBar(){
+    private func setupNavigationBar(){
         let navigationBarAppearence = UINavigationBarAppearance()
         navigationBarAppearence.shadowColor = .none
         navigationBarAppearence.backgroundColor = Asset.Colors.primary.color

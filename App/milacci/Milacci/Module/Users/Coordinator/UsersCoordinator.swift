@@ -41,7 +41,7 @@ class UsersCoordinator: BaseCoordinator {
 
     func showDetail(usingModel model: UserDetail){
         let employeeProfileCoordinator = self.provideEmployeeProfileCoordinator(userDetail: model, navigationController: navigationController)
-        self.add(coordinator: employeeProfileCoordinator)
+        self.addChild(coordinator: employeeProfileCoordinator)
         employeeProfileCoordinator.start()
     }
 

@@ -17,10 +17,16 @@ extension InvoiceService {
         }) { (urlRequest) -> HTTPStubsResponse in
             var jsonObject: [[String: Any]] = []
             if(urlRequest.url?.queryParameters?["offset"] == "0"){
+                let user = [
+                    "id": 1,
+                    "name": "D",
+                    "surname": "M"
+                ] as [String: Any]
                 jsonObject = [
                     ["id": 1,
                      "periodOfIssue": "2020-10",
                      "state": "notIssued",
+                     "user": user,
                      "value": "25000.00"],
                     ["id": 2,
                      "periodOfIssue": "2020-09",
@@ -53,7 +59,7 @@ extension InvoiceService {
                 ]
             }
             return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 200, headers: nil)
-                .requestTime(1.0, responseTime: 3.0)
+                .requestTime(0.0, responseTime: 1.0)
         }
     }
 

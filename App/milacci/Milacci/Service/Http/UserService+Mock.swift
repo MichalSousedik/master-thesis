@@ -10,12 +10,13 @@ import OHHTTPStubs
 
 struct UserServiceMock {
 
-    func mockDetailEndpoint(){
+    static func mockDetailEndpoint(){
         stub(condition: {(urlRequest) -> Bool in
             return urlRequest.url?.absoluteString.contains("users") ?? false
         }) { (urlRequest) -> HTTPStubsResponse in
 
             let jsonObject = [
+                "id": 1,
                 "name": "Mate",
                 "surname": "Dragon",
                 "degree": "Mgr",
@@ -89,7 +90,7 @@ struct UserServiceMock {
             ] as [String: Any]
 
             return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 200, headers: nil)
-                .requestTime(1.0, responseTime: 3.0)
+                .requestTime(0.0, responseTime: 1.0)
         }
 
     }
@@ -99,22 +100,70 @@ struct UserServiceMock {
         stub(condition: {(urlRequest) -> Bool in
             return urlRequest.url?.absoluteString.contains("users") ?? false
         }) { (urlRequest) -> HTTPStubsResponse in
-            let jsonObject: [String: Any] = [:]
-            if count == 0 {
-                count+=1
-        return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 500, headers: nil)
-            .requestTime(1.0, responseTime: 3.0)
-            } else {
-                let jsonMate = [
-                    "id": 12,
-                    "name": "Mate",
-                    "surname": "Dragon"
-                ] as [String: Any]
-                return HTTPStubsResponse(jsonObject: [jsonMate], statusCode: 200, headers: nil)
-                    .requestTime(1.0, responseTime: 3.0)
+            var jsonObject: [[String: Any]] = []
+            if(urlRequest.url?.queryParameters?["offset"] == "0"){
+                jsonObject = [
+                    [
+                        "id": 11,
+                        "name": "Maten",
+                        "surname": "Dragon"
+                    ],
+                    [
+                        "id": 12,
+                        "name": "Mateen",
+                        "surname": "Dragoo"
+                    ],
+                    [
+                        "id": 13,
+                        "name": "Jane",
+                        "surname": "Austen"
+                    ]
+                ]
             }
+            if(urlRequest.url?.queryParameters?["offset"] == "15"){
+                jsonObject = [
+                    [
+                        "id": 14,
+                        "name": "Ernest",
+                        "surname": "Dragon"
+                    ],
+                    [
+                        "id": 15,
+                        "name": "Albert",
+                        "surname": "Dragoo"
+                    ],
+                    [
+                        "id": 16,
+                        "name": "Dave",
+                        "surname": "Austen"
+                    ]
+                ]
+            }
+            return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 200, headers: nil)
+                .requestTime(0.0, responseTime: 1.0)
+            //            let jsonMate = [
+            //                "id": 11,
+            //                "name": "Maten",
+            //                "surname": "Dragon"
+            //            ] as [String: Any]
+            ////            if count == 0 {
+            ////                count+=1
+            //        return HTTPStubsResponse(jsonObject: [jsonMate], statusCode: 200, headers: nil)
+            //            .requestTime(0.0, responseTime: 1.0)
+            //            } else if count == 1 {
+            //                let jsonMate = [
+            //                    "id": 12,
+            //                    "name": "Mate",
+            //                    "surname": "Dragon"
+            //                ] as [String: Any]
+            //                return HTTPStubsResponse(jsonObject: [jsonMate], statusCode: 200, headers: nil)
+            //                    .requestTime(0.0, responseTime: 1.0)
+            //                }
+            //            else {
+            //                return HTTPStubsResponse(jsonObject: [], statusCode: 500, headers: nil)
+            //                    .requestTime(0.0, responseTime: 1.0)
+            //            }
+
+        }
     }
-
-}
-
 }

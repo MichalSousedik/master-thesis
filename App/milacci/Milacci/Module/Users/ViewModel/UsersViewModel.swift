@@ -120,12 +120,12 @@ private extension UsersViewModel {
                     let lastName = employee.lastName.isEmpty ? "-" : employee.lastName
                     return String(Array(lastName)[0]).uppercased()
                 }.map({ (firstLetter, employees) in
-                    return FirstLetterGroup(firstLetter: firstLetter, employees: employees)
+                    return FirstLetterGroup<UserViewModel>(firstLetter: firstLetter, models: employees)
                 }).sorted()
             }
             .map({ (firstLetterGroups) in
                 firstLetterGroups.map { (firstLetterGroup) in
-                    UserItemsSection(model: firstLetterGroup.firstLetter, items: firstLetterGroup.employees)
+                    UserItemsSection(model: firstLetterGroup.firstLetter, items: firstLetterGroup.models)
                 }
             })
             .asDriver(onErrorJustReturn: [])
