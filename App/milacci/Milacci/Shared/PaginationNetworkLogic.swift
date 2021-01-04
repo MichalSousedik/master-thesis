@@ -29,7 +29,7 @@ extension PaginationSink {
     init(uiSource: PaginationUISource, loadData: @escaping (Int) -> Observable<[T]>) {
         let loadResults = BehaviorSubject<[Int: [T]]>(value: [:])
 
-        let maxPage = loadResults
+        let currentPageNumber = loadResults
             .map { $0.keys }
             .map { $0.max() ?? 1 }
 
@@ -37,7 +37,7 @@ extension PaginationSink {
             .map { -1 }
 
         let loadNext = uiSource.loadNextPage
-            .withLatestFrom(maxPage)
+            .withLatestFrom(currentPageNumber)
             .map { $0 + 1 }
 
         let start = Observable.merge(reload, loadNext, .just(-1))
@@ -46,10 +46,9 @@ extension PaginationSink {
             .flatMap { page in
                 Observable.combineLatest(Observable.just(page), loadData(page == -1 ? 1 : page)){
                     (pageNumber: $0, items: $1)
-
                 }
-                    .materialize()
-                    .filter { $0.isCompleted == false }
+                .materialize()
+                .filter { $0.isCompleted == false }
             }
             .share()
 

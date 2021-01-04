@@ -20,7 +20,6 @@ class HourRateService: HourRateAPI {
     private lazy var httpService = SecuredHttpService()
 
     func create(value: Double, since: Date, userId: Int) -> Single<HourRate> {
-//        mockCreate()
         return Single.create{ [httpService] (single) -> Disposable in
             do {
                 try HourRateHttpRouter.create(value: value, since: since, userId: userId)
@@ -43,7 +42,6 @@ class HourRateService: HourRateAPI {
     }
 
     func stats(period: Date) -> Single<[HourRateStat]> {
-//        mockStats()
         return Single.create{ [httpService] (single) -> Disposable in
             do {
                 try HourRateHttpRouter.stats(period: period)

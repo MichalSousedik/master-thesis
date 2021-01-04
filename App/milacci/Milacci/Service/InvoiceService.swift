@@ -11,9 +11,9 @@ import RxSwift
 import Alamofire
 
 protocol InvoicesAPI {
-    func updateInvoice(invoice: Invoice, url: URL?) -> Single<Invoice>
-    func fetchInvoices(page: Int, userId: Int?, periodOfIssue: Date?, state: InvoiceState?) -> Single<InvoicesResponse>
-    func fetchInvoice(id: Int) -> Single<Invoice>
+    func update(invoice: Invoice, url: URL?) -> Single<Invoice>
+    func fetch(page: Int, userId: Int?, periodOfIssue: Date?, state: InvoiceState?) -> Single<InvoicesResponse>
+    func detail(id: Int) -> Single<Invoice>
 }
 
 class InvoiceService: InvoicesAPI {
@@ -21,7 +21,7 @@ class InvoiceService: InvoicesAPI {
     static let shared: InvoiceService = InvoiceService()
     private lazy var httpService = SecuredHttpService()
 
-    func updateInvoice(invoice: Invoice, url: URL?) -> Single<Invoice> {
+    func update(invoice: Invoice, url: URL?) -> Single<Invoice> {
         return Single.create{[httpService] (single) -> Disposable in
             do {
                 try InvoiceHttpRouter.update(invoice: invoice, url: url)
@@ -42,7 +42,7 @@ class InvoiceService: InvoicesAPI {
         }
     }
 
-    func fetchInvoice(id: Int) -> Single<Invoice> {
+    func detail(id: Int) -> Single<Invoice> {
         return Single.create{ [httpService] (single) -> Disposable in
             do {
                 try InvoiceHttpRouter.detail(id: id)
@@ -64,11 +64,10 @@ class InvoiceService: InvoicesAPI {
         }
     }
 
-    func fetchInvoices(page: Int, userId: Int? = nil, periodOfIssue: Date? = nil, state: InvoiceState? = nil) -> Single<InvoicesResponse> {
-//        self.mockInvoicesEndpoint()
+    func fetch(page: Int, userId: Int? = nil, periodOfIssue: Date? = nil, state: InvoiceState? = nil) -> Single<InvoicesResponse> {
         return Single.create{ [httpService] (single) -> Disposable in
             do {
-                try InvoiceHttpRouter.fetch(offset: (page - 1)*10, userId: userId, periodOfIssue: periodOfIssue, state: state)
+                try InvoiceHttpRouter.fetch(offset: (page - 1)*InvoiceHttpRouter.limit, userId: userId, periodOfIssue: periodOfIssue, state: state)
                     .request(usingHttpService: httpService)
                     .responseJSON { result in
                         HttpResponseHandler.handle(result: result, completion: { (invoices, error) in

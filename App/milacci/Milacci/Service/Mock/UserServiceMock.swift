@@ -8,15 +8,84 @@
 
 import OHHTTPStubs
 
-struct UserServiceMock {
+class UserServiceMock {
 
-    static func mockDetailEndpoint(){
+    static func allEmployees() {
+        stub(condition: {(urlRequest) -> Bool in
+            return (urlRequest.url?.absoluteString.contains("users") ?? false) && (urlRequest.url?.absoluteString.contains("teamLeaderId") == false)
+        }) { (urlRequest) -> HTTPStubsResponse in
+
+            if(urlRequest.url?.queryParameters?["offset"] == "0") {
+                return HTTPStubsResponse(
+                    fileAtPath: OHPathForFile("employees.geojson", self)!,
+                    statusCode: 200,
+                    headers: ["Content-Type": "application/json"]
+                )
+            } else {
+                return HTTPStubsResponse(jsonObject: [], statusCode: 200, headers: nil)
+                    .requestTime(0.0, responseTime: 0.0)
+            }
+        }
+    }
+
+    static func broPopDetail() {
+        stub(condition: {(urlRequest) -> Bool in
+            return (urlRequest.url?.absoluteString.contains("users") ?? false) && (urlRequest.url?.absoluteString.contains("63") == true)
+        }) { (urlRequest) -> HTTPStubsResponse in
+            return HTTPStubsResponse(
+                fileAtPath: OHPathForFile("bro-pop.geojson", self)!,
+                statusCode: 200,
+                headers: ["Content-Type": "application/json"]
+            )
+
+        }
+    }
+
+    static func myTeam() {
+        stub(condition: {(urlRequest) -> Bool in
+            return (urlRequest.url?.absoluteString.contains("users") ?? false) && (urlRequest.url?.absoluteString.contains("teamLeaderId") ?? false)
+        }) { (urlRequest) -> HTTPStubsResponse in
+
+            if(urlRequest.url?.queryParameters?["offset"] == "0") {
+                return HTTPStubsResponse(
+                    fileAtPath: OHPathForFile("my-team.geojson", self)!,
+                    statusCode: 200,
+                    headers: ["Content-Type": "application/json"]
+                )
+            } else {
+                return HTTPStubsResponse(jsonObject: [], statusCode: 200, headers: nil)
+                    .requestTime(0.0, responseTime: 0.0)
+            }
+        }
+    }
+
+    static func myTeamSearched() {
+        stub(condition: {(urlRequest) -> Bool in
+            return (urlRequest.url?.absoluteString.contains("users") ?? false)
+                && (urlRequest.url?.absoluteString.contains("teamLeaderId") ?? false)
+                && (urlRequest.url?.absoluteString.contains("fullName") ?? false)
+        }) { (urlRequest) -> HTTPStubsResponse in
+
+            if(urlRequest.url?.queryParameters?["offset"] == "0") {
+                return HTTPStubsResponse(
+                    fileAtPath: OHPathForFile("my-team-searched.geojson", self)!,
+                    statusCode: 200,
+                    headers: ["Content-Type": "application/json"]
+                )
+            } else {
+                return HTTPStubsResponse(jsonObject: [], statusCode: 200, headers: nil)
+                    .requestTime(0.0, responseTime: 0.0)
+            }
+        }
+    }
+
+    static func detail() {
         stub(condition: {(urlRequest) -> Bool in
             return urlRequest.url?.absoluteString.contains("users") ?? false
         }) { (urlRequest) -> HTTPStubsResponse in
 
             let jsonObject = [
-                "id": 1,
+                "id": 1001,
                 "name": "Mate",
                 "surname": "Dragon",
                 "degree": "Mgr",
@@ -90,15 +159,15 @@ struct UserServiceMock {
             ] as [String: Any]
 
             return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 200, headers: nil)
-                .requestTime(0.0, responseTime: 1.0)
+                .requestTime(0.0, responseTime: 0.0)
         }
 
     }
 
     static var count = 0
-    static func mockFetch(){
+    static func fetch(){
         stub(condition: {(urlRequest) -> Bool in
-            return urlRequest.url?.absoluteString.contains("users") ?? false
+            return (urlRequest.url?.absoluteString.contains("users") ?? false) && (urlRequest.url?.absoluteString.contains("limit") ?? false)
         }) { (urlRequest) -> HTTPStubsResponse in
             var jsonObject: [[String: Any]] = []
             if(urlRequest.url?.queryParameters?["offset"] == "0"){
@@ -140,30 +209,15 @@ struct UserServiceMock {
                 ]
             }
             return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 200, headers: nil)
-                .requestTime(0.0, responseTime: 1.0)
-            //            let jsonMate = [
-            //                "id": 11,
-            //                "name": "Maten",
-            //                "surname": "Dragon"
-            //            ] as [String: Any]
-            ////            if count == 0 {
-            ////                count+=1
-            //        return HTTPStubsResponse(jsonObject: [jsonMate], statusCode: 200, headers: nil)
-            //            .requestTime(0.0, responseTime: 1.0)
-            //            } else if count == 1 {
-            //                let jsonMate = [
-            //                    "id": 12,
-            //                    "name": "Mate",
-            //                    "surname": "Dragon"
-            //                ] as [String: Any]
-            //                return HTTPStubsResponse(jsonObject: [jsonMate], statusCode: 200, headers: nil)
-            //                    .requestTime(0.0, responseTime: 1.0)
-            //                }
-            //            else {
-            //                return HTTPStubsResponse(jsonObject: [], statusCode: 500, headers: nil)
-            //                    .requestTime(0.0, responseTime: 1.0)
-            //            }
+                .requestTime(0.0, responseTime: 0.0)
 
+        }
+    }
+    static func update(model: UserDetail){
+        stub(condition: {(urlRequest) -> Bool in
+            return urlRequest.url?.absoluteString.contains("users/limit") ?? false
+        }) { (urlRequest) -> HTTPStubsResponse in
+            return HTTPStubsResponse(data: try! JSONEncoder().encode(model), statusCode: 200, headers: [:])
         }
     }
 }

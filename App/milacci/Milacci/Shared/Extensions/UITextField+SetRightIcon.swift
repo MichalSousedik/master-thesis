@@ -20,6 +20,16 @@ extension UITextField {
         rightView.addSubview(imageView)
         self.rightView = rightView
         self.rightViewMode = .always
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        rightView.isUserInteractionEnabled = true
+        rightView.addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        self.becomeFirstResponder()
+
+        // Your action
     }
 
 }

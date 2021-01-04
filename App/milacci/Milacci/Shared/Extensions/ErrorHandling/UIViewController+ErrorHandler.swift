@@ -11,6 +11,32 @@ import UIKit
 extension UIViewController {
     func handle(_ error: Error,
                 retryHandler: (() -> Void)?) {
-        handle(error, from: self, retryHandler: retryHandler)
+        let alert = UIAlertController(
+            title: L10n.errorOccured,
+            message: error.localizedDescription,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(
+            title: L10n.cancel,
+            style: .default
+        ))
+
+        switch error.resolveCategory() {
+        case .retryable:
+            alert.addAction(UIAlertAction(
+                title: L10n.retry,
+                style: .default,
+                handler: { _ in
+                    if let retryHandler = retryHandler {
+                        retryHandler()
+                    }
+            }))
+            break
+        case .nonRetryable:
+            break
+        }
+
+        present(alert, animated: true)
     }
 }

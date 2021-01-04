@@ -54,7 +54,7 @@ private extension HourlyRateViewModel {
 
     func load(api: UserAPI, userIdProvider: @escaping UserProfileViewPresentable.UserIdProvider){
         self.state.isLoading.accept(true)
-        api.fetchDetail(id: userIdProvider())
+        api.detail(id: userIdProvider())
             .subscribe { [state] (userDetail) in
                 state.userDetail.accept(userDetail)
                 state.isLoading.accept(false)

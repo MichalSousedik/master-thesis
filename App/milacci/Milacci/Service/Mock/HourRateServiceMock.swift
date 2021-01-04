@@ -8,32 +8,18 @@
 
 import OHHTTPStubs
 
-extension HourRateService {
+class HourRateServiceMock {
 
-    func mockCreate(){
+    static func create(model: HourRate){
         stub(condition: {(urlRequest) -> Bool in
             return urlRequest.url?.absoluteString.contains("hour-rates") ?? false
         }) { (urlRequest) -> HTTPStubsResponse in
-
-            let jsonObject = [
-                "id": 69,
-                "userId": 94,
-                "createdById": 96,
-                "since": "2020-11-17T23:00:00.000Z",
-                "type": "original",
-                "value": 300,
-                "percentageIncrease": 20,
-                "createdAt": "2020-02-25T15:18:04.000Z",
-                "updatedAt": "2020-02-25T15:18:04.000Z"
-            ] as [String: Any]
-
-            return HTTPStubsResponse(jsonObject: jsonObject, statusCode: 200, headers: nil)
-                .requestTime(1.0, responseTime: 3.0)
+            return HTTPStubsResponse(data: try! JSONEncoder().encode(model), statusCode: 200, headers: [:])
         }
 
     }
 
-    func mockStats(){
+    static func stats(){
         stub(condition: {(urlRequest) -> Bool in
             return urlRequest.url?.absoluteString.contains("hour-rate-stats") ?? false
         }) { (urlRequest) -> HTTPStubsResponse in
@@ -44,7 +30,7 @@ extension HourRateService {
                 "updatedAt": "2020-02-25T15:18:04.000Z"
             ] as [String: Any]
             return HTTPStubsResponse(jsonObject: [jsonObject], statusCode: 200, headers: nil)
-                .requestTime(1.0, responseTime: 3.0)
+                .requestTime(0.0, responseTime: 0.0)
         }
 
     }

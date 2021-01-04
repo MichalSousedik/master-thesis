@@ -24,17 +24,17 @@ class HourRateTests: XCTestCase {
     
     func testDayFormat_zeroDays_days() {
         let result = HourRate.dayFormat(numberOfDays: 0)
-        XCTAssertEqual(result, "Days")
+        XCTAssertEqual(result, "dní")
     }
     
     func testDayFormat_oneDay_day() {
         let result = HourRate.dayFormat(numberOfDays: 1)
-        XCTAssertEqual(result, "Day")
+        XCTAssertEqual(result, "den")
     }
     
     func testDayFormat_twoDays_days() {
         let result = HourRate.dayFormat(numberOfDays: 2)
-        XCTAssertEqual(result, "Days")
+        XCTAssertEqual(result, "dny")
     }
     
 }

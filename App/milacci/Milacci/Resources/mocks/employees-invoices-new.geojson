@@ -1,0 +1,40 @@
+[
+    {
+        "id": 1025,
+        "userId": 1,
+        "state": "notIssued",
+        "filename": null,
+        "userWorkType": "agreement",
+        "periodOfIssue": "2021-01",
+        "value": "0.00",
+        "createdAt": "2021-01-01T00:00:18.000Z",
+        "updatedAt": "2021-01-02T05:00:47.000Z",
+        "totalHours": 0,
+        "expensesId": null,
+        "uploadedAt": null,
+        "user": {
+            "id": 1,
+            "teamLeaderId": 4,
+            "hourlyCapacity": 168,
+            "trackingSystemId": 347,
+            "email": "stefan.prokop@ackee.cz",
+            "name": "Stefan",
+            "surname": "Prokop",
+            "state": "enabled",
+            "contactEmail": "toomas2d@gmail.comf",
+            "workType": "agreement",
+            "startDate": "2015-11-16T00:00:00.000Z",
+            "dateOfBirth": "1995-07-30T00:00:00.000Z",
+            "registrationNumber": "123456789",
+            "isInternal": 1,
+            "phoneNumber": "+420606123456",
+            "jobTitle": "backend",
+            "notes": "notes",
+            "createdAt": "2019-11-18T00:00:00.000Z",
+            "updatedAt": "2019-11-18T00:00:00.000Z",
+            "degree": "Ing. ",
+            "personnelFileUrl": "https://docs.google.com/spreadsheets/d/1UHIrkFgVeJr332b_hrmzSMJmkYCngBXGAv-7KW5hPv0/edit#gid=0",
+            "expensesId": 23
+        }
+    }
+]

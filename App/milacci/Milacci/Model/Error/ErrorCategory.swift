@@ -11,7 +11,6 @@ import Foundation
 enum ErrorCategory {
     case nonRetryable
     case retryable
-    case requiresLogout
 }
 
 protocol CategorizedError: Error {

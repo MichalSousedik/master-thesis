@@ -46,10 +46,8 @@ extension NetworkingError: CategorizedError {
         switch self {
         case .deviceIsOffline, .serverError:
             return .retryable
-        case .resourceNotFound, .missingData, .forbiden, .decodingFailed, .custom:
+        case .resourceNotFound, .missingData, .forbiden, .decodingFailed, .custom, .unauthorized:
             return .nonRetryable
-        case .unauthorized:
-            return .requiresLogout
         }
     }
 }

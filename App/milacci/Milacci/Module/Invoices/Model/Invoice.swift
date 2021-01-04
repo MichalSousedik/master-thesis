@@ -81,6 +81,14 @@ extension InvoiceState {
         case .waiting: return L10n.waiting
         }
     }
+    var action: String {
+        switch self {
+        case .notIssued: return L10n.returnToEmployee
+        case .paid: return L10n.pay
+        case .approved:return L10n.approve
+        case .waiting: return L10n.waiting
+        }
+    }
 
     var allowedTransitions: [InvoiceState] {
         switch self {

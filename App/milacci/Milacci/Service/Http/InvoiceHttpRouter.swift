@@ -9,6 +9,10 @@
 import Alamofire
 
 enum InvoiceHttpRouter {
+
+    static let limit = 10
+    static let invoices = "invoices"
+
     case fetch(offset: Int, userId: Int? = nil, periodOfIssue: Date?, state: InvoiceState?)
     case detail(id: Int)
     case update(invoice: Invoice, url: URL? = nil)
@@ -19,11 +23,11 @@ extension InvoiceHttpRouter: HttpRouter {
     var path: String {
         switch self {
         case .fetch:
-            return "invoices"
+            return InvoiceHttpRouter.invoices
         case .detail(let id):
-            return "invoices/\(id)"
+            return "\(InvoiceHttpRouter.invoices)/\(id)"
         case .update(let invoice, _):
-            return "invoices/\(invoice.id)"
+            return "\(InvoiceHttpRouter.invoices)/\(invoice.id)"
         }
     }
 

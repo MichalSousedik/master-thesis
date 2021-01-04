@@ -334,16 +334,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zxz-bD-QvV">
-                                <rect key="frame" x="20" y="59" width="394" height="102.5"/>
+                                <rect key="frame" x="20" y="59" width="394" height="105"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zf4-fv-evH" userLabel="Header">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="102.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="105"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FJX-sN-WNf">
-                                                <rect key="frame" x="0.0" y="0.0" width="394" height="52"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="54.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dGL-zh-zme">
-                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="52"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="54.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Increase In:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHR-LT-45A">
                                                                 <rect key="frame" x="0.0" y="0.0" width="190.5" height="24"/>
@@ -351,10 +351,10 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="05-2020" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="iMF-hD-xb5">
-                                                                <rect key="frame" x="0.0" y="29" width="78" height="23"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="05-2020" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="iMF-hD-xb5">
+                                                                <rect key="frame" x="0.0" y="29" width="86" height="25.5"/>
                                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
@@ -362,7 +362,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="200 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zxg-2h-9Ko">
-                                                <rect key="frame" x="0.0" y="62" width="394" height="30"/>
+                                                <rect key="frame" x="0.0" y="64.5" width="394" height="30"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <color key="textColor" name="primary-1"/>
                                                 <nil key="highlightedColor"/>
@@ -371,7 +371,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="447-Oq-Vfm">
-                                                <rect key="frame" x="0.0" y="102" width="394" height="0.5"/>
+                                                <rect key="frame" x="0.0" y="104.5" width="394" height="0.5"/>
                                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="0.5" id="b6q-S4-gf0"/>
@@ -403,7 +403,7 @@
                                 </variation>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TFM-Or-a3f">
-                                <rect key="frame" x="20" y="176.5" width="394" height="685.5"/>
+                                <rect key="frame" x="20" y="179" width="394" height="683"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="UserHourRateViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserHourRateViewCell" id="E1E-P0-ddR" customClass="UserHourRateViewCell" customModule="Milacci" customModuleProvider="target">
@@ -471,7 +471,7 @@
                                 </prototypes>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3L-6w-LPg" userLabel="Loading Indicator View">
-                                <rect key="frame" x="0.0" y="176.5" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="179" width="414" height="40"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="fvD-R0-zFQ">
                                         <rect key="frame" x="197" y="10" width="20" height="20"/>
@@ -726,7 +726,7 @@
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="graphView" destination="EbF-n3-wt4" id="HU1-QK-CMe"/>
+                        <outlet property="chartView" destination="EbF-n3-wt4" id="HU1-QK-CMe"/>
                         <outlet property="loadingActivityIndicator" destination="AAq-tL-vWB" id="cyh-iO-sPw"/>
                         <outlet property="loadingView" destination="aIg-DO-D3z" id="j07-bk-I97"/>
                         <outlet property="monthLabel" destination="XF7-i4-3RN" id="jaP-ge-mGR"/>
@@ -1508,14 +1508,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" text="June 2020" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="BQA-MJ-XcU">
-                                <rect key="frame" x="20" y="59" width="93" height="23"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" text="June 2020" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="BQA-MJ-XcU">
+                                <rect key="frame" x="20" y="59" width="102" height="25.5"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bDM-Cp-YOQ">
-                                <rect key="frame" x="15" y="97" width="384" height="32"/>
+                                <rect key="frame" x="15" y="99.5" width="384" height="32"/>
                                 <segments>
                                     <segment title="Waiting"/>
                                     <segment title="Approved"/>
@@ -1524,7 +1524,7 @@
                                 </segments>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T0v-im-C4W">
-                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
+                                <rect key="frame" x="0.0" y="140.5" width="414" height="721.5"/>
                                 <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InvoiceTableViewCell" id="PDi-cs-jlK" customClass="InvoiceTableViewCell" customModule="Milacci" customModuleProvider="target">
@@ -1626,7 +1626,7 @@
                                 </prototypes>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Suh-I2-fZu" userLabel="Loading Indicator View">
-                                <rect key="frame" x="0.0" y="138" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="140.5" width="414" height="40"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="X0O-xV-Wd4">
                                         <rect key="frame" x="197" y="10" width="20" height="20"/>

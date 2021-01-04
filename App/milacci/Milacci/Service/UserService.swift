@@ -10,7 +10,7 @@ import RxSwift
 import Alamofire
 
 protocol UserAPI {
-    func fetchDetail(id: Int) -> Single<UserDetail>
+    func detail(id: Int) -> Single<UserDetail>
     func fetch(page: Int, teamLeaderId: Int?, searchedText: String?) -> Single<EmployeesResponse>
     func update(userDetail: UserDetail) -> Single<UserDetail>
 }
@@ -20,8 +20,7 @@ class UserService: UserAPI {
     static let shared: UserAPI = UserService()
     private lazy var httpService = SecuredHttpService()
 
-    func fetchDetail(id: Int) -> Single<UserDetail> {
-//        UserServiceMock.mockDetailEndpoint()
+    func detail(id: Int) -> Single<UserDetail> {
         return Single.create{ [httpService] (single) -> Disposable in
             do {
                 try UserHttpRouter.detail(id: id)
@@ -44,7 +43,6 @@ class UserService: UserAPI {
     }
 
     func fetch(page: Int, teamLeaderId: Int? = nil, searchedText: String?) -> Single<EmployeesResponse> {
-//        UserServiceMock.mockFetch()
         return Single.create{ [httpService] (single) -> Disposable in
             do {
                 try UserHttpRouter.fetch(offset: (page - 1)*UserHttpRouter.limit, teamLeaderId: teamLeaderId, searchedText: searchedText)

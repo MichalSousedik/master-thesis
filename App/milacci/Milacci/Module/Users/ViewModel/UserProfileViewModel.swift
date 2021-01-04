@@ -118,7 +118,7 @@ private extension UserProfileViewModel {
 
     func load(api: UserAPI, userIdProvider: UserIdProvider){
         self.state.isLoading.accept(true)
-        api.fetchDetail(id: userIdProvider())
+        api.detail(id: userIdProvider())
             .subscribe { [state] (userDetail) in
                 state.userDetail.accept(userDetail)
                 state.isLoading.accept(false)
@@ -126,9 +126,7 @@ private extension UserProfileViewModel {
                 state.error.accept(error)
                 state.isLoading.accept(false)
             }.disposed(by: bag)
-
     }
-
 }
 
 private extension UserProfileViewModel {

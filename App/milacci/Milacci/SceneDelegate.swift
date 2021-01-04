@@ -25,6 +25,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
+          #if DEBUG
+            MockForUITests.mock()
+          #endif
+
         GIDSignIn.sharedInstance().delegate = self
         guard let windowScene = (scene as? UIWindowScene)
         else { fatalError("Scene is not of type UIWindowScene") }
@@ -70,6 +74,10 @@ extension SceneDelegate: GIDSignInDelegate {
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
+        if DisableGoogleSignIn.shared.disabled {
+            self.signIn(accessToken: "accessToken")
+            return
+        }
         if let error = error {
             if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
                 print("The user has not signed in before or they have since signed out.")
@@ -106,6 +114,7 @@ private extension SceneDelegate {
         self.authService.signIn(accessToken: accessToken)
             .subscribe { [weak self] signInModel in
                 print(signInModel.credentials.accessToken)
+                print(signInModel.credentials.expiresIn)
                 self?.userSettingsApi.saveCredentials(credentials: signInModel.credentials)
                 self?.userSettingsApi.saveUser(user: signInModel.user)
                 self?.appCoordinator?.reload()

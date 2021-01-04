@@ -11,6 +11,7 @@ import Alamofire
 
 protocol AuthAPI {
     func signIn(accessToken: String) -> Single<SignInResponse>
+    func refresh(refreshToken: String) -> Single<SignInResponse>
 }
 
 class AuthService: AuthAPI {
@@ -32,6 +33,28 @@ class AuthService: AuthAPI {
                             }
                         }, type: SignInResponse.self)
                 }
+            } catch {
+                single(.error(NetworkingError.serverError(error)))
+            }
+
+            return Disposables.create()
+        }
+    }
+
+    func refresh(refreshToken: String) -> Single<SignInResponse> {
+        return Single.create{ [httpService] (single) -> Disposable in
+            do {
+                try AuthHttpRouter.refreshToken(refreshToken: refreshToken)
+                    .request(usingHttpService: httpService)
+                    .responseJSON {
+                        HttpResponseHandler.handle(result: $0, completion: { (item, error) in
+                            if let error = error {
+                                single(.error(error))
+                            } else if let item = item {
+                                single(.success(item))
+                            }
+                        }, type: SignInResponse.self)
+                    }
             } catch {
                 single(.error(NetworkingError.serverError(error)))
             }

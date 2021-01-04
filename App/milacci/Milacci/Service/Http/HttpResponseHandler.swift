@@ -77,8 +77,4 @@ class HttpResponseHandler {
         }
     }
 
-    private init(){
-
-    }
-
 }

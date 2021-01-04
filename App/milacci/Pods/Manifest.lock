@@ -1,7 +1,7 @@
 PODS:
-  - Alamofire (5.0.5)
-  - AlamofireNetworkActivityLogger (3.0.0):
-    - Alamofire (~> 5.0.0-rc.2)
+  - Alamofire (5.4.1)
+  - AlamofireNetworkActivityLogger (3.4.0):
+    - Alamofire (~> 5.4.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
@@ -26,19 +26,21 @@ PODS:
   - IQKeyboardManagerSwift (6.5.6)
   - KeychainSwift (19.0.0)
   - MonthYearPicker (4.0.2)
-  - OHHTTPStubs/Core (9.0.0)
-  - OHHTTPStubs/Default (9.0.0):
+  - OHHTTPStubs/Core (9.1.0)
+  - OHHTTPStubs/Default (9.1.0):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (9.0.0):
+  - OHHTTPStubs/JSON (9.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (9.0.0):
+  - OHHTTPStubs/NSURLSession (9.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (9.0.0)
-  - OHHTTPStubs/Swift (9.0.0):
+  - OHHTTPStubs/OHPathHelpers (9.1.0)
+  - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
+  - RxBlocking (5.1.1):
+    - RxSwift (~> 5)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -49,10 +51,12 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - RxTest (5.1.1):
+    - RxSwift (~> 5)
   - SFSafeSymbols (2.0.2)
   - SkeletonView (1.11.0)
   - SwiftGen (6.4.0)
-  - SwiftLint (0.41.0)
+  - SwiftLint (0.42.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0)
@@ -63,9 +67,11 @@ DEPENDENCIES:
   - KeychainSwift (~> 19.0)
   - MonthYearPicker (~> 4.0.2)
   - OHHTTPStubs/Swift
+  - RxBlocking
   - RxCocoa (~> 5)
   - RxDataSources (~> 4.0)
   - RxSwift (~> 5)
+  - RxTest
   - SFSafeSymbols (~> 2.0.1)
   - SkeletonView
   - SwiftGen (~> 6.0)
@@ -85,18 +91,20 @@ SPEC REPOS:
     - KeychainSwift
     - MonthYearPicker
     - OHHTTPStubs
+    - RxBlocking
     - RxCocoa
     - RxDataSources
     - RxRelay
     - RxSwift
+    - RxTest
     - SFSafeSymbols
     - SkeletonView
     - SwiftGen
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
-  AlamofireNetworkActivityLogger: 94e8a7d454a4a9800cef1d0c1d3699754493684b
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  AlamofireNetworkActivityLogger: 162ab8aee00e6267a4304d7cc134e13ccfe3bcc5
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
@@ -106,16 +114,18 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   MonthYearPicker: 91f77106e6806d8c93c69e943ab0795fd420657f
-  OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
+  OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
+  RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxTest: 711632d5644dffbeb62c936a521b5b008a1e1faa
   SFSafeSymbols: c35b2b43b161619ca2236d90dd9eaf153acd7144
   SkeletonView: cc84ce90a804dd0dd7198dd802833411c8a64eaf
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
-  SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
 
-PODFILE CHECKSUM: 86244341f3474b330c859c42c0b2119284b863af
+PODFILE CHECKSUM: d47cee494e167779c924d59545ed547469989301
 
 COCOAPODS: 1.9.3

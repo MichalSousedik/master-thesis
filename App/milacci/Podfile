@@ -12,6 +12,7 @@ target 'Milacci' do
 
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
+  pod 'RxBlocking'
   pod 'RxDataSources', '~> 4.0'
   pod 'SkeletonView'
   pod 'KeychainSwift', '~> 19.0'
@@ -22,6 +23,11 @@ target 'Milacci' do
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
   pod "MonthYearPicker", '~> 4.0.2'
+  
+  target 'MilacciTests' do
+    pod 'RxTest'
+    pod 'RxBlocking'
+  end
   
 end
 

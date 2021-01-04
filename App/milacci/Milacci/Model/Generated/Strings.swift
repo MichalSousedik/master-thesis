@@ -20,6 +20,8 @@ internal enum L10n {
   internal static let agreement = L10n.tr("Localizable", "Agreement")
   /// Android Developer
   internal static let android = L10n.tr("Localizable", "Android")
+  /// Approve
+  internal static let approve = L10n.tr("Localizable", "Approve")
   /// Approved
   internal static let approved = L10n.tr("Localizable", "Approved")
   /// April
@@ -112,6 +114,8 @@ internal enum L10n {
   internal static let office = L10n.tr("Localizable", "Office")
   /// Paid
   internal static let paid = L10n.tr("Localizable", "Paid")
+  /// Pay
+  internal static let pay = L10n.tr("Localizable", "Pay")
   /// Please wait
   internal static let pleaseWait = L10n.tr("Localizable", "Please wait")
   /// Profile
@@ -126,6 +130,8 @@ internal enum L10n {
   internal static let resourceWasNotFound = L10n.tr("Localizable", "Resource was not found")
   /// Retry
   internal static let retry = L10n.tr("Localizable", "Retry")
+  /// Return Back
+  internal static let returnToEmployee = L10n.tr("Localizable", "Return To Employee")
   /// Reupload Invoice
   internal static let reuploadInvoice = L10n.tr("Localizable", "Reupload Invoice")
   /// Sales

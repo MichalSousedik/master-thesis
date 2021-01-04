@@ -1,0 +1,58 @@
+{
+    "id": 989,
+    "userId": 199,
+    "state": "waiting",
+    "filename": "https://storage.googleapis.com/milacci2-invoices-dev/invoices/96/2020-12-jaroslav-test.pdf?GoogleAccessId=milacci2%40infrastruktura-1307.iam.gserviceaccount.com&Expires=1609606502&Signature=CLtSYhSRZQyH%2FdMiIouhUMA42CcV9xWXnbfceYkGbpsWM5JgwX8TgsZrbE7PiTK6yA7yh6FLDUS3pK49PWzdQfF5DkNmc7WMCSEGgjVG3yCB70XN2LLIzqdhIG1nmPR28%2FaItlXL9sE4XYGM2Ta%2Fgyup0sAsXciyqCVSuOIMXgLYTB0uDaRuMnPYQJwINbLWc7QqSjl59RSWRvLyeZOyr1JwYq06tJRwgViEtbYnmd53VmYC%2FO27NYHTV%2BLdXpFENR0JkRwHFJmM1nDLFcxuxEbGd%2FoDvks23N74JHwbIYhI8WCnUxk9cKPpRZ1mfqmifW7mhZcUnoNYwmT5D9hfJA%3D%3D",
+    "userWorkType": "registrationNumber",
+    "periodOfIssue": "2020-12",
+    "value": "0.00",
+    "createdAt": "2020-12-01T00:00:25.000Z",
+    "updatedAt": "2020-12-29T15:35:38.000Z",
+    "totalHours": 0,
+    "expensesId": null,
+    "uploadedAt": "2020-12-29T15:35:38.000Z",
+    "user": {
+        "id": 199,
+        "teamLeaderId": 9,
+        "hourlyCapacity": 10,
+        "trackingSystemId": 505,
+        "email": "jaroslav.test@ack.ee",
+        "name": "Jaroslav",
+        "surname": "Test",
+        "state": "enabled",
+        "contactEmail": "jaroslav@test.cz",
+        "workType": "registrationNumber",
+        "startDate": "2020-02-12T00:00:00.000Z",
+        "dateOfBirth": "2020-02-19T00:00:00.000Z",
+        "registrationNumber": null,
+        "isInternal": 1,
+        "phoneNumber": "1023989",
+        "jobTitle": "frontend",
+        "notes": null,
+        "createdAt": "2020-02-27T14:25:23.000Z",
+        "updatedAt": "2020-02-27T14:25:28.000Z",
+        "degree": "MgR",
+        "personnelFileUrl": "https://redmine.ack.ee/issues/41478",
+        "expensesId": null
+    },
+    "meta": {
+        "timeEntries": {
+            "basic": {
+                "spentHours": "0.00",
+                "totalPrice": "0.00",
+                "averageHourRate": "0.00"
+            },
+            "support": {
+                "spentHours": "0.00",
+                "totalPrice": "0.00",
+                "averageHourRate": "0.00"
+            },
+            "standBy": {
+                "spentHours": "0.00",
+                "totalPrice": "0.00",
+                "averageHourRate": "0.00"
+            }
+        },
+        "hourRates": []
+    }
+}

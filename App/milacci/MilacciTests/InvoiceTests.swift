@@ -104,25 +104,25 @@ class InvoiceTests: XCTestCase {
     func testDescription_notIssued_new() {
         let invoiceState = InvoiceState.notIssued
         let result = invoiceState.description
-        XCTAssertEqual(result, "New")
+        XCTAssertEqual(result, "Nová")
     }
     
     func testDescription_paid_paid() {
         let invoiceState = InvoiceState.paid
         let result = invoiceState.description
-        XCTAssertEqual(result, "Paid")
+        XCTAssertEqual(result, "Zaplacená")
     }
     
     func testDescription_approved_approved() {
         let invoiceState = InvoiceState.approved
         let result = invoiceState.description
-        XCTAssertEqual(result, "Approved")
+        XCTAssertEqual(result, "Schválená")
     }
     
     func testDescription_waiting_waiting() {
         let invoiceState = InvoiceState.waiting
         let result = invoiceState.description
-        XCTAssertEqual(result, "Waiting")
+        XCTAssertEqual(result, "Čekajicí")
     }
     
     func testIcon_notIssued_return() {

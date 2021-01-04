@@ -13,13 +13,15 @@ import RxCocoa
 
 class WageChartViewController: UIViewController, Storyboardable {
 
-    @IBOutlet weak var graphView: BarChartView!
+    @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var monthWageLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
 
     private let visibleBarsTrashHold = 5
+    private let durationOfInitialAnimation = 1.5
+    private let durationOfScalingAnimation = 1.0
     private var viewModel: WageChartViewPresentable!
     var viewModelBuilder: WageChartViewPresentable.ViewModelBuilder!
     private let bag = DisposeBag()
@@ -46,7 +48,7 @@ extension WageChartViewController {
     func setupUI() {
         self.monthLabel.textColor = .clear
         self.monthWageLabel.textColor = .clear
-        self.graphView.noDataText = ""
+        self.chartView.noDataText = ""
         self.loadingActivityIndicator.startAnimating()
     }
 
@@ -70,27 +72,34 @@ extension WageChartViewController {
             self.values = $0
             var dataEntries: [ChartDataEntry] = []
             if $0.count > 0 {
-            for i in 0..<$0.count {
-                guard
-                    let stringValue = $0[i].value,
-                    let value = Double(stringValue) else {return}
-                let dataEntry = BarChartDataEntry(x: Double(i), y: value, data: $0[i])
-                dataEntries.append(dataEntry)
-            }
-            let set1 = BarChartDataSet(entries: dataEntries)
-            set1.colors = [Asset.Colors.chartBarDefault.color]
-            set1.highlightColor = Asset.Colors.chartBarHighlighted.color
-            let data = BarChartData(dataSets: [set1])
-            data.setDrawValues(false)
-            self.graphView.data = data
-            self.setChart()
-            self.animateChart()
+                for i in 0..<$0.count {
+                    guard let stringValue = $0[i].value,
+                        let value = Double(stringValue) else {return}
+                    let dataEntry = BarChartDataEntry(x: Double(i), y: value, data: $0[i])
+                    dataEntries.append(dataEntry)
+                }
+                let set = BarChartDataSet(entries: dataEntries)
+                self.setStyle(set: set)
+                let data = BarChartData(dataSets: [set])
+                self.setStyle(data: data)
+                self.chartView.data = data
+                self.setChart()
+                self.animateChart()
             }
         }).disposed(by: bag)
     }
 }
 
 extension WageChartViewController: ChartViewDelegate {
+
+    func setStyle(set: BarChartDataSet) {
+        set.colors = [Asset.Colors.chartBarDefault.color]
+        set.highlightColor = Asset.Colors.chartBarHighlighted.color
+    }
+
+    func setStyle(data: BarChartData) {
+        data.setDrawValues(false)
+    }
 
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
 
@@ -111,43 +120,41 @@ extension WageChartViewController: ChartViewDelegate {
     }
 
     func setChart() {
-        graphView.delegate = self
-        graphView.backgroundColor = .clear
-        graphView.rightAxis.enabled = false
-        graphView.leftAxis.enabled = false
-        graphView.xAxis.drawAxisLineEnabled = false
-        graphView.xAxis.labelPosition = .bottom
-        graphView.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .easeInQuad)
-        graphView.doubleTapToZoomEnabled = false
-        graphView.legend.enabled = false
-        graphView.xAxis.drawGridLinesEnabled = false
-        graphView.xAxis.granularity = 1
-        graphView.xAxis.valueFormatter = self
-        graphView.xAxis.labelFont = .systemFont(ofSize: 10, weight: .bold)
-        graphView.xAxis.avoidFirstLastClippingEnabled = false
-        graphView.leftAxis.axisMinimum = 0
+        chartView.delegate = self
+        chartView.backgroundColor = .clear
+        chartView.rightAxis.enabled = false
+        chartView.leftAxis.enabled = false
+        chartView.xAxis.drawAxisLineEnabled = false
+        chartView.xAxis.drawGridLinesEnabled = false
+        chartView.legend.enabled = false
+        chartView.xAxis.labelPosition = .bottom
+        chartView.doubleTapToZoomEnabled = false
+        chartView.xAxis.granularity = 1
+        chartView.xAxis.labelFont = .systemFont(ofSize: 10, weight: .bold)
+        chartView.xAxis.avoidFirstLastClippingEnabled = false
+        chartView.leftAxis.axisMinimum = 0
+        chartView.animate(xAxisDuration: durationOfInitialAnimation, yAxisDuration: durationOfInitialAnimation, easingOption: .easeInQuad)
+                chartView.xAxis.valueFormatter = self
 
     }
 
     func animateChart(){
-        guard let barData = self.graphView?.barData else {return}
-        let delayScaling = 1.5
-        var delayHighlight = 3.0
-        var val = Double(barData.entryCount) / Double(self.visibleBarsTrashHold)
-        if val < 1.0 {
-            val = 1.0
-        }
+        guard let barData = self.chartView?.barData else {return}
+        let delayScaling = durationOfInitialAnimation
+        var delayHighlight = durationOfInitialAnimation + durationOfScalingAnimation + 0.5
+        let val = Double(barData.entryCount) / Double(self.visibleBarsTrashHold)
         if val > 1.0 {
             DispatchQueue.main.asyncAfter(deadline: .now() + delayScaling) { [weak self, val] in
+                guard let self = self else {return}
                 let scaleX = CGFloat(val)
-                self?.graphView.zoomAndCenterViewAnimated(scaleX: scaleX, scaleY: 1, xValue: 0, yValue: 0, axis: YAxis.AxisDependency.left, duration: 1, easingOption: .easeInCubic)
+                self.chartView.zoomAndCenterViewAnimated(scaleX: scaleX, scaleY: 1, xValue: 0, yValue: 0, axis: YAxis.AxisDependency.left, duration: self.durationOfScalingAnimation, easingOption: .easeInCubic)
             }
         } else {
-            delayHighlight = 1.5
+            delayHighlight = durationOfInitialAnimation
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + delayHighlight) { [weak self] in
-            self?.graphView.highlightValue(x: 0, dataSetIndex: 0)
+            self?.chartView.highlightValue(x: 0, dataSetIndex: 0)
         }
     }
 }

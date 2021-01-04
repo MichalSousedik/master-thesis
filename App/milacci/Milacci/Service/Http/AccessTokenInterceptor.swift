@@ -44,8 +44,13 @@ extension AccessTokenInterceptor {
             completion(.doNotRetry)
             return
         }
-
         if statusCode == 401 {
+
+            guard request.retryCount < 3 else {
+                completion(.doNotRetry)
+                return
+            }
+
             guard !isRefreshing else {
                 return
             }
@@ -64,7 +69,6 @@ extension AccessTokenInterceptor {
         } else {
             completion(.doNotRetry)
         }
-
     }
 
 }

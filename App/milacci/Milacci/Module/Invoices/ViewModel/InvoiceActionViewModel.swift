@@ -71,7 +71,7 @@ private extension InvoiceActionViewModel {
     func processInput() {
         input.invoiceActionTrigger.drive {[api, state, bag] (invoice) in
             state.isProcessingInvoice.onNext((isProcessing: true, invoice: invoice))
-            api.updateInvoice(invoice: invoice, url: nil)
+            api.update(invoice: invoice, url: nil)
                 .subscribe { (invoice) in
                     state.isProcessingInvoice.onNext((isProcessing: false, invoice: nil))
                     state.changedInvoice.accept(invoice)
@@ -109,7 +109,7 @@ private extension InvoiceActionViewModel {
                     state.isProcessingInvoice.onNext(
                         (isProcessing: true, invoice: $0.invoice)
                     )
-                    api.fetchInvoice(id: $0.invoice.id).subscribe(onSuccess: { [state] (invoice) in
+                    api.detail(id: $0.invoice.id).subscribe(onSuccess: { [state] (invoice) in
                         state.isProcessingInvoice.onNext(
                             (isProcessing: false, invoice: nil)
                         )
@@ -137,7 +137,7 @@ private extension InvoiceActionViewModel {
                 self.state.isProcessingInvoice.onNext(
                     (isProcessing: true, invoice: invoiceViewModel.invoice)
                 )
-                self.api.updateInvoice(invoice: invoiceViewModel.invoice, url: url)
+                self.api.update(invoice: invoiceViewModel.invoice, url: url)
                     .subscribe { (item) in
                         self.state.changedInvoice.accept(item)
                         self.state.isProcessingInvoice.onNext(

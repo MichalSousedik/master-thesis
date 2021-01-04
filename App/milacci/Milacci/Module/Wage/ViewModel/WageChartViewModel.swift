@@ -56,7 +56,7 @@ private extension WageChartViewModel {
 
     func load(api: InvoicesAPI, userIdProvider: @escaping UserProfileViewPresentable.UserIdProvider, page: Int){
         self.state.isLoading.accept(true)
-        api.fetchInvoices(page: page, userId: userIdProvider(), periodOfIssue: nil, state: nil)
+        api.fetch(page: page, userId: userIdProvider(), periodOfIssue: nil, state: nil)
             .subscribe { [state] (invoices) in
                 state.pages.accept(state.pages.value + invoices)
                 state.isLoading.accept(false)
