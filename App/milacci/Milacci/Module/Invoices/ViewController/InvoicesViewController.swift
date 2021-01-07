@@ -23,6 +23,7 @@ class InvoicesViewController: BaseViewController, Storyboardable {
     private let loadingSubject = PublishSubject<Void>()
     private let loadNextSubject = PublishSubject<Void>()
     private let filePick = PublishSubject<URL>()
+    private let invoiceSelectSubject = PublishSubject<InvoiceViewModel>()
 
     private var viewModel: InvoicesViewPresentable!
     var viewModelBuilder: InvoicesViewPresentable.ViewModelBuilder!
@@ -42,7 +43,7 @@ class InvoicesViewController: BaseViewController, Storyboardable {
         super.viewDidLoad()
 
         actionViewModel = actionViewModelBuilder((
-            invoiceSelect: tableView.rx.modelSelected(InvoiceViewModel.self).asDriver(),
+            invoiceSelect: invoiceSelectSubject.asDriver(onErrorDriveWith: .empty()),
             invoiceActionTrigger: .empty(),
             filePick: filePick.asDriver(onErrorDriveWith: .empty())
         ))
@@ -57,6 +58,7 @@ class InvoicesViewController: BaseViewController, Storyboardable {
         setupUI()
         setupViewModelBinding()
         showLoadingIndicator()
+        setupViewBinding()
     }
 }
 
@@ -82,6 +84,37 @@ extension InvoicesViewController: UITableViewDelegate {
         let configuration = UISwipeActionsConfiguration(actions: actions)
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
+    }
+
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        var actions: [UIAction] = []
+        if let invoiceViewModels = invoiceViewModels {
+            let invoiceViewModel = invoiceViewModels[indexPath.row]
+            if invoiceViewModel.canDownloadFile {
+                actions.append(UIAction(title: L10n.show, image: UIImage(systemSymbol: .squareAndArrowDown)){ [invoiceSelectSubject] _ in
+                    invoiceSelectSubject.onNext(invoiceViewModel)
+                })
+            }
+            if invoiceViewModel.canUploadFile {
+                actions.append(UIAction(title: L10n.upload, image: UIImage(systemSymbol: .squareAndArrowUp)){ [invoiceSelectSubject] _ in
+                    invoiceSelectSubject.onNext(invoiceViewModel)
+                })
+            }
+            if (invoiceViewModel.invoice.state == .notIssued ||
+                    invoiceViewModel.invoice.state == .waiting) && invoiceViewModel.canDownloadFile {
+                actions.append(UIAction(title: L10n.reuploadInvoice, image: UIImage(systemSymbol: .squareAndArrowUp)){ [weak self] _ in
+                    self?.pickFile()
+                })
+            }
+        }
+
+        let identifier = "\(indexPath.row)" as NSString
+
+        return UIContextMenuConfiguration(
+            identifier: identifier,
+            previewProvider: nil) { _ in
+            UIMenu(children: actions)
+        }
     }
 
 }
@@ -170,6 +203,13 @@ private extension InvoicesViewController {
             self?.present(alert, animated: true)
         }).disposed(by: bag)
 
+    }
+
+    func setupViewBinding() {
+        tableView.rx.modelSelected(InvoiceViewModel.self)
+            .asDriver()
+            .drive(invoiceSelectSubject)
+            .disposed(by: bag)
     }
 
     func setupUI() {

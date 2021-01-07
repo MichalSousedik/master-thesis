@@ -27,7 +27,7 @@
 "New" = "Nová";
 "Paid" = "Zaplacená";
 "Approved" = "Schválená";
-"Waiting" = "Čekajicí";
+"Waiting" = "Čekající";
 "Invoices" = "Faktury";
 "Error occured" = "Vyskytla se chyba";
 "Cancel" = "Zrušit";
@@ -81,3 +81,6 @@
 "Return To Employee" = "Vrátit zpět";
 "Pay" = "Zaplatit";
 "Approve" = "Schválit";
+"Show" = "Zobrazit";
+"Upload" = "Nahrát";
+"Select month" = "Zvolte měsíc";

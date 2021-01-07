@@ -122,7 +122,7 @@ class InvoiceTests: XCTestCase {
     func testDescription_waiting_waiting() {
         let invoiceState = InvoiceState.waiting
         let result = invoiceState.description
-        XCTAssertEqual(result, "Čekajicí")
+        XCTAssertEqual(result, "Čekající")
     }
     
     func testIcon_notIssued_return() {

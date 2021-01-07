@@ -140,18 +140,24 @@ internal enum L10n {
   internal static let searchTeamMember = L10n.tr("Localizable", "Search Team Member")
   /// Searched data couldn't be located
   internal static let searchedDataCouldnTBeLocated = L10n.tr("Localizable", "Searched data couldn't be located")
+  /// Select month
+  internal static let selectMonth = L10n.tr("Localizable", "Select month")
   /// Selected URL is not accessible
   internal static let selectedURLIsNotAccessible = L10n.tr("Localizable", "Selected URL is not accessible")
   /// September
   internal static let september = L10n.tr("Localizable", "September")
   /// Server got into trouble
   internal static let serverGotIntoTrouble = L10n.tr("Localizable", "Server got into trouble")
+  /// Show
+  internal static let show = L10n.tr("Localizable", "Show")
   /// Tester
   internal static let tester = L10n.tr("Localizable", "Tester")
   /// Days
   internal static let twoToFourDays = L10n.tr("Localizable", "Two To Four Days")
   /// Unknown month
   internal static let unknownMonth = L10n.tr("Localizable", "Unknown month")
+  /// Upload
+  internal static let upload = L10n.tr("Localizable", "Upload")
   /// User's work type for selected month is 'agreement'
   internal static let userWorkTypeIsAgreement = L10n.tr("Localizable", "User work type is agreement")
   /// ViewController Delegate is not present

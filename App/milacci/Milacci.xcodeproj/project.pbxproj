@@ -1684,11 +1684,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D01D35A00D62CD44ECB82C60 /* Pods-Milacci.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-v2";
 				CODE_SIGN_ENTITLEMENTS = Milacci/MilacciDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "Milacci/Resources/Images.xcassets Milacci/Resources/Colors.xcassets";
 				DEVELOPMENT_TEAM = FRYD8HMFR6;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1713,11 +1713,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BF0C5AEAF214F5D05E4F750C /* Pods-Milacci.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-v2";
 				CODE_SIGN_ENTITLEMENTS = Milacci/Milacci.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "Milacci/Resources/Images.xcassets Milacci/Resources/Colors.xcassets";
 				DEVELOPMENT_TEAM = FRYD8HMFR6;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -29,7 +29,9 @@ class EditPersonalInfoCoordinator: BaseCoordinator {
             let vm = EditPersonalInfoViewModel(input: $0, dependecies: (api: UserService.shared, userDetail: model))
             vm.complete.bind { (userDetail) in
                 self?.complete.accept(userDetail)
-                self?.navigationController.popViewController(animated: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self?.navigationController.popViewController(animated: true)
+                }
             }.disposed(by: bag)
             return vm
         }

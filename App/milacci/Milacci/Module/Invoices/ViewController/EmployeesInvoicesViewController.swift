@@ -25,6 +25,7 @@ class EmployeesInvoicesViewController: BaseViewController, Storyboardable {
     private let refreshControl = UIRefreshControl()
     private let loadingSubject = PublishSubject<Void>()
     private let stateChageSubject = PublishSubject<Invoice>()
+    private let invoiceSelectSubject = PublishSubject<InvoiceViewModel>()
 
     private var viewModel: EmployeesInvoicesViewPresentable!
     var viewModelBuilder: EmployeesInvoicesViewPresentable.ViewModelBuilder!
@@ -45,7 +46,7 @@ class EmployeesInvoicesViewController: BaseViewController, Storyboardable {
         super.viewDidLoad()
 
         actionViewModel = actionViewModelBuilder((
-            invoiceSelect: tableView.rx.modelSelected(InvoiceViewModel.self).asDriver(),
+            invoiceSelect: invoiceSelectSubject.asDriver(onErrorDriveWith: .empty()),
             invoiceActionTrigger: stateChageSubject.asDriver(onErrorDriveWith: .empty()),
             filePick: .empty()
         ))
@@ -107,6 +108,31 @@ extension EmployeesInvoicesViewController: UITableViewDelegate {
         return configuration
     }
 
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        var actions: [UIAction] = []
+        if let invoiceViewModels = invoiceViewModels {
+            let invoiceViewModel = invoiceViewModels[indexPath.row]
+            actions = invoiceViewModel.invoice.state.allowedTransitions.map { [stateChageSubject] state in
+                UIAction(title: state.action, image: state.image){ _ in
+                    stateChageSubject.onNext(Invoice(invoiceViewModel.invoice, state: state))
+                }
+            }
+            if invoiceViewModel.canDownloadFile {
+                actions.append(UIAction(title: L10n.show, image: UIImage(systemSymbol: .squareAndArrowDown)){ [invoiceSelectSubject] _ in
+                    invoiceSelectSubject.onNext(invoiceViewModel)
+                })
+            }
+        }
+
+        let identifier = "\(indexPath.row)" as NSString
+
+        return UIContextMenuConfiguration(
+            identifier: identifier,
+            previewProvider: nil) { _ in
+            UIMenu(children: actions)
+        }
+    }
+
 }
 
 private extension EmployeesInvoicesViewController {
@@ -166,7 +192,7 @@ private extension EmployeesInvoicesViewController {
 
             let vc = SFSafariViewController(url: url, configuration: config)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            self?.present(vc, animated: true)
+                self?.present(vc, animated: true)
             }
         }).disposed(by: bag)
 
@@ -177,6 +203,10 @@ private extension EmployeesInvoicesViewController {
             self?.tableView.tableFooterView?.isHidden = false
         }).disposed(by: bag)
 
+        tableView.rx.modelSelected(InvoiceViewModel.self)
+            .asDriver()
+            .drive(invoiceSelectSubject)
+            .disposed(by: bag)
     }
 
     func setupUI() {

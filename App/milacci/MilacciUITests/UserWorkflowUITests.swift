@@ -124,15 +124,15 @@ class UserWorkflowUITests: XCTestCase {
         if tablesQuery.cells.containing(.staticText, identifier:"Prosinec 2019").children(matching: .other).element(boundBy: 1).exists {
             XCTFail("Prosinec 2019 is visible")
         }
-        tablesQuery.cells.containing(.staticText, identifier:"Červen 2020").children(matching: .other).element(boundBy: 1).press(forDuration: 1, thenDragTo: XCUIApplication().staticTexts["Faktury"])
+        tablesQuery.cells.containing(.staticText, identifier:"Červen 2020").children(matching: .other).element(boundBy: 1).press(forDuration: 0, thenDragTo: XCUIApplication().staticTexts["Faktury"])
         
         if !tablesQuery.cells.containing(.staticText, identifier:"Prosinec 2019").children(matching: .other).element(boundBy: 1).exists {
             XCTFail("Prosinec 2019 is not visible")
         }
         
-        tablesQuery.cells.containing(.staticText, identifier:"Únor 2020").children(matching: .other).element(boundBy: 1).press(forDuration: 1, thenDragTo: tablesQuery.cells.containing(.staticText, identifier:"Listopad 2019").children(matching: .other).element(boundBy: 1))
-        tablesQuery.cells.containing(.staticText, identifier:"Srpen 2020").children(matching: .other).element(boundBy: 1).press(forDuration: 1, thenDragTo: tablesQuery.cells.containing(.staticText, identifier:"Duben 2020").children(matching: .other).element(boundBy: 1))
-        tablesQuery.cells.containing(.staticText, identifier:"Říjen 2020").children(matching: .other).element(boundBy: 1).press(forDuration: 1, thenDragTo: tablesQuery.cells.containing(.staticText, identifier:"Srpen 2020").children(matching: .other).element(boundBy: 1))
+        tablesQuery.cells.containing(.staticText, identifier:"Únor 2020").children(matching: .other).element(boundBy: 1).press(forDuration: 0, thenDragTo: tablesQuery.cells.containing(.staticText, identifier:"Listopad 2019").children(matching: .other).element(boundBy: 1))
+        tablesQuery.cells.containing(.staticText, identifier:"Srpen 2020").children(matching: .other).element(boundBy: 1).press(forDuration: 0, thenDragTo: tablesQuery.cells.containing(.staticText, identifier:"Duben 2020").children(matching: .other).element(boundBy: 1))
+        tablesQuery.cells.containing(.staticText, identifier:"Říjen 2020").children(matching: .other).element(boundBy: 1).press(forDuration: 0, thenDragTo: tablesQuery.cells.containing(.staticText, identifier:"Srpen 2020").children(matching: .other).element(boundBy: 1))
         
         
         if tablesQuery.cells.containing(.staticText, identifier:"Prosinec 2019").children(matching: .other).element(boundBy: 1).exists {

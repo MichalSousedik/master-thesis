@@ -115,7 +115,7 @@ extension WageChartViewController: ChartViewDelegate {
 
     func chartValueNothingSelected(_ chartView: ChartViewBase) {
 
-        self.monthLabel.text = "Select month"
+        self.monthLabel.text = L10n.selectMonth
         self.monthWageLabel.text = "- Kč"
     }
 
