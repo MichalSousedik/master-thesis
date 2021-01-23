@@ -24,6 +24,7 @@ extension UIViewController {
 
         switch error.resolveCategory() {
         case .retryable:
+            if retryHandler != nil {
             alert.addAction(UIAlertAction(
                 title: L10n.retry,
                 style: .default,
@@ -31,7 +32,7 @@ extension UIViewController {
                     if let retryHandler = retryHandler {
                         retryHandler()
                     }
-            }))
+                }))}
             break
         case .nonRetryable:
             break

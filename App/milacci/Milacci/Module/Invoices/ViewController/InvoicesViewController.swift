@@ -161,6 +161,14 @@ private extension InvoicesViewController {
                 })                }
         }).disposed(by: bag)
 
+        self.actionViewModel.output.errorOccured.drive(onNext: {[weak self] error in
+            guard let self = self else { return }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                self?.handle(error, retryHandler: nil)
+            }
+        }).disposed(by: bag)
+
         self.actionViewModel.output.showUrl.drive(onNext: { [weak self] url in
             guard let self = self else { return }
 

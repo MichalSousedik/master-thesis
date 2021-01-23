@@ -177,6 +177,14 @@ private extension EmployeesInvoicesViewController {
                 })                }
         }).disposed(by: bag)
 
+        self.actionViewModel.output.errorOccured.drive(onNext: {[weak self] error in
+            guard let self = self else { return }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                self?.handle(error, retryHandler: nil)
+            }
+        }).disposed(by: bag)
+
         self.actionViewModel.output.isProcessingInvoice.drive(onNext: { [weak self] invoiceProcessing in
             if(invoiceProcessing.isProcessing) {
                 self?.startModalLoader()
